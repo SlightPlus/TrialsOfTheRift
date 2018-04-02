@@ -14,6 +14,7 @@ public sealed class Calligrapher : MonoBehaviour {
     [SerializeField] private Text txt_redScoreText, txt_blueScoreText;
     [SerializeField] private Image img_redCTFIcon, img_blueCTFIcon;
     [SerializeField] private Image img_redHockeyIcon, img_blueHockeyIcon;
+    [SerializeField] private Image img_redNecroIcon, img_blueNecroIcon;
 
     [SerializeField] private Text txt_redCrystalHealthText, txt_blueCrystalHealthText;
     [SerializeField] private Image img_redCrystalDestructIcon, img_blueCrystalDestructIcon;
@@ -139,6 +140,25 @@ public sealed class Calligrapher : MonoBehaviour {
         PopupFadeIn(colorIn);
     }
 
+    public void DefeatNecromancersInit(Constants.Global.Color colorIn) {
+        if (colorIn == Constants.Global.Color.RED) {
+            txt_redScoreText.transform.parent.gameObject.SetActive(true);
+            img_redNecroIcon.gameObject.SetActive(true);
+
+            txt_redObjvTitle.text = txt_redPauseObjvTitle.text = Constants.ObjectiveText.C_DefeatNecromancersTitle;
+            txt_redObjvDescription.text = txt_redPauseObjvDescription.text = Constants.ObjectiveText.C_DefeatNecromancersDescription;
+        }
+        else {
+            txt_blueScoreText.transform.parent.gameObject.SetActive(true);
+            img_blueNecroIcon.gameObject.SetActive(true);
+
+            txt_blueObjvTitle.text = txt_bluePauseObjvTitle.text = Constants.ObjectiveText.C_DefeatNecromancersTitle;
+            txt_blueObjvDescription.text = txt_bluePauseObjvDescription.text = Constants.ObjectiveText.C_DefeatNecromancersDescription;
+        }
+        UpdateScoreUI(colorIn, 0);
+        PopupFadeIn(colorIn);
+    }
+
     public void CrystalDestructionInit(Constants.Global.Color colorIn) {
         // colorIn will be crystal color, not objective/team color
         if (colorIn == Constants.Global.Color.RED) {
@@ -231,11 +251,13 @@ public sealed class Calligrapher : MonoBehaviour {
             txt_redScoreText.transform.parent.gameObject.SetActive(false);
             img_redHockeyIcon.gameObject.SetActive(false);
             img_redCTFIcon.gameObject.SetActive(false);
+            img_redNecroIcon.gameObject.SetActive(false);
         }
         else {
             txt_blueScoreText.transform.parent.gameObject.SetActive(false);
             img_blueHockeyIcon.gameObject.SetActive(false);
             img_blueCTFIcon.gameObject.SetActive(false);
+            img_blueNecroIcon.gameObject.SetActive(false);
         }
     }
 

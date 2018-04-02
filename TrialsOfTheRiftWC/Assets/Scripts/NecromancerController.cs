@@ -9,11 +9,19 @@ using System.Collections;
 using UnityEngine.AI;
 
 public class NecromancerController : EnemyController {
+#region Variables and Declarations
+    [SerializeField] private DefeatNecromancersObjective dno_owner;    // identifies objective necromancer is a part of
+    private bool b_teleported = false;
+#endregion
 
 	public override void Init(Constants.Global.Side side) {
-		base.Init(side);
+        //if (b_teleported)   // must turn off gameobject when teleporting, don't want to reinitialize
+        //    return;
+
+        base.Init(side);
 		nma_agent.speed = Constants.EnemyStats.C_NecromancerBaseSpeed;
 		f_health = Constants.EnemyStats.C_NecromancerHealth;
+        b_teleported = false;
 		InvokeRepeating("DropRune", 10.0f, Constants.EnemyStats.C_RuneTimer);
 		InvokeRepeating("Summon", 16.0f, Constants.EnemyStats.C_SummonTimer);
 		maestro.PlayNecromancerSpawn();
@@ -138,18 +146,29 @@ public class NecromancerController : EnemyController {
 		f_timer = f_timeLimit;
 	}
 	
-	protected override void EnterStateDie() {
+	protected override void EnterStateDie(Constants.Global.Color color) {
 		CancelInvoke();
-		base.EnterStateDie();
-		riftController.DecreaseNecromancers(e_startSide);
-		maestro.PlayNecromancerDie();
+        maestro.PlayNecromancerDie();
+        if(e_color == color) {
+            dno_owner.UpdateNecroScore();
+        }
+        ResetNecroPosition();
+        Init(e_startSide);
     }
 
 	protected override void UpdateDie() {
 		base.UpdateDie();
 	}
 
-	private void DropRune() {
+    public override void TakeDamage(float damage, Constants.Global.Color color) {
+        base.TakeDamage(damage, color);
+        if(f_health < (0.25f * Constants.EnemyStats.C_NecromancerHealth) && !b_teleported) {
+            b_teleported = true;
+            riftController.TeleportNecromancer(gameObject);
+        }
+    }
+
+    private void DropRune() {
 		riftController.ActivateRune(transform.position);
 	}
 
@@ -158,4 +177,25 @@ public class NecromancerController : EnemyController {
 			riftController.CircularEnemySpawn(transform.position, e_startSide);
 		}
 	}
+
+    private void ResetNecroPosition() {
+        gameObject.SetActive(false);
+        if (e_color == Constants.Global.Color.RED) {
+            transform.localPosition = Constants.ObjectiveStats.C_RedNecromancerSpawn;
+        }
+        else {
+            transform.localPosition = Constants.ObjectiveStats.C_BlueNecromancerSpawn;
+        }
+        b_teleported = false;
+        gameObject.SetActive(true);
+    }
+
+#region Unity Overrides	
+    void Start() {
+        if (e_color == Constants.Global.Color.RED)
+            Init(Constants.Global.Side.LEFT);
+        else
+            Init(Constants.Global.Side.RIGHT);
+    }
+#endregion
 }

@@ -16,20 +16,14 @@ public sealed class RiftController : MonoBehaviour {
 
     // enemies
 	[SerializeField] private GameObject[] go_skeletons;
-	[SerializeField] private GameObject[] go_necromancers;
 	[SerializeField] private GameObject[] go_runes;
     
-    [SerializeField] private GameObject go_enemyIndiPrefab;
-    [SerializeField] private Camera cam_camera;
     [SerializeField] private Animator anim;
 
 
     private int i_leftEnemies = 0;
     private int i_rightEnemies = 0;
-    private int i_leftNecromancers = 0;
-    private int i_rightNecromancers = 0;
     private int i_nextEnemySpawnIndex = 0;
-    private int i_nextNecromancerSpawnIndex = 0;
     private GameObject[] go_rightEnemySpawners;
     private GameObject[] go_leftEnemySpawners;
 
@@ -190,10 +184,10 @@ public sealed class RiftController : MonoBehaviour {
 				go_skeletons[i].SetActive(false);
         }
 
-        for (int i = 0; i < go_necromancers.Length; i++) {
-			if (go_necromancers[i].activeSelf)
-				go_necromancers[i].SetActive(false);
-        }
+   //     for (int i = 0; i < go_necromancers.Length; i++) {
+			//if (go_necromancers[i].activeSelf)
+			//	go_necromancers[i].SetActive(false);
+   //     }
 
         for (int i = 0; i < go_runes.Length; i++) {
 			if (go_runes[i].activeSelf)
@@ -202,12 +196,10 @@ public sealed class RiftController : MonoBehaviour {
     }
 
 	public void ActivateEnemy(Vector3 position) {
+        // move skeleton into position - must happen before Init() is called
+        go_skeletons[i_nextEnemySpawnIndex].transform.position = position;
 
-		if (!(go_skeletons[i_nextEnemySpawnIndex].activeSelf)) {
-
-			GameObject enemyIndi = Instantiate(go_enemyIndiPrefab, position, Quaternion.identity);
-			CameraFacingBillboard cfb_this = enemyIndi.GetComponent<CameraFacingBillboard>();
-			cfb_this.Init(cam_camera, go_skeletons[i_nextEnemySpawnIndex]);
+        if (!(go_skeletons[i_nextEnemySpawnIndex].activeSelf)) {
 
 			if (position.x < 0f) {
 				go_skeletons[i_nextEnemySpawnIndex].GetComponent<SkeletonController>().Init(Constants.Global.Side.LEFT);
@@ -217,34 +209,10 @@ public sealed class RiftController : MonoBehaviour {
 				go_skeletons[i_nextEnemySpawnIndex].GetComponent<SkeletonController>().Init(Constants.Global.Side.RIGHT);
 				i_rightEnemies++;
 			}
-			go_skeletons[i_nextEnemySpawnIndex].transform.position = position;
+
 			go_skeletons[i_nextEnemySpawnIndex].SetActive(true);
 		}
 		i_nextEnemySpawnIndex = (i_nextEnemySpawnIndex+1)%go_skeletons.Length;
-	}
-
-
-	public void ActivateNecromancer(Vector3 position) {
-
-		if (!(go_necromancers[i_nextNecromancerSpawnIndex].activeSelf)) {
-
-			GameObject enemyIndi = Instantiate(go_enemyIndiPrefab, position, Quaternion.identity);
-			CameraFacingBillboard cfb_this = enemyIndi.GetComponent<CameraFacingBillboard>();
-			cfb_this.Init(cam_camera, go_necromancers[i_nextNecromancerSpawnIndex]);
-
-			if (position.x < 0f) {
-				go_necromancers[i_nextNecromancerSpawnIndex].GetComponent<NecromancerController>().Init(Constants.Global.Side.LEFT);
-				i_leftNecromancers++;
-			}
-			else {
-				go_necromancers[i_nextNecromancerSpawnIndex].GetComponent<NecromancerController>().Init(Constants.Global.Side.RIGHT);
-				i_rightNecromancers++;
-			}
-
-			go_necromancers[i_nextNecromancerSpawnIndex].transform.position = position;
-			go_necromancers[i_nextNecromancerSpawnIndex].SetActive(true);
-		}
-		i_nextNecromancerSpawnIndex = (i_nextNecromancerSpawnIndex+1)%go_necromancers.Length;
 	}
 
 	public void ActivateRune(Vector3 position) {
@@ -276,23 +244,6 @@ public sealed class RiftController : MonoBehaviour {
         if (i_rightEnemies < Constants.EnemyStats.C_EnemySpawnCapPerSide) {
             Vector3 pos = go_rightEnemySpawners[randRight].transform.position;
             CircularEnemySpawn(pos, Constants.Global.Side.RIGHT);
-        }
-    }
-
-    // Spawns one necromancers on either side of the Rift, randomly chosen position
-    public void SpawnNecromancers() {
-        int randLeft = UnityEngine.Random.Range(0, go_leftEnemySpawners.Length);
-        int randRight = UnityEngine.Random.Range(0, go_rightEnemySpawners.Length);
-
-        if (i_leftNecromancers < Constants.EnemyStats.C_NecromancerSpawnCapPerSide) {
-            Vector3 pos = go_leftEnemySpawners[randLeft].transform.position;
-			ActivateNecromancer(pos);
-			//i_leftNecromancers++;
-        }
-        if (i_rightNecromancers < Constants.EnemyStats.C_NecromancerSpawnCapPerSide) {
-            Vector3 pos = go_rightEnemySpawners[randRight].transform.position;
-            ActivateNecromancer(pos);
-			//i_rightNecromancers++;
         }
     }
 
@@ -329,15 +280,6 @@ public sealed class RiftController : MonoBehaviour {
         }
     }
 
-    public void DecreaseNecromancers(Constants.Global.Side side) {
-        if (side == Constants.Global.Side.LEFT) {
-            i_leftNecromancers--;
-        }
-        else {
-            i_rightNecromancers--;
-        }
-    }
-
     // Gets a random Vector3 position within a given radius
     private Vector3 RandomCircle(Vector3 center, Constants.Global.Side side, float radius) {
         float ang = UnityEngine.Random.value * 360;
@@ -369,6 +311,12 @@ public sealed class RiftController : MonoBehaviour {
         }
 
         return pos;
+    }
+
+    public void TeleportNecromancer(GameObject n) {   // this sucks
+        n.SetActive(false);
+        n.transform.localPosition = new Vector3(-n.transform.localPosition.x, n.transform.localPosition.y, n.transform.localPosition.z);
+        n.SetActive(true);
     }
 
     // @Joe get this working

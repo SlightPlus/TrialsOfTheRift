@@ -73,6 +73,7 @@ public class DebugParametersController : MonoBehaviour {
     [SerializeField] private Slider slider_puckBaseSpeed;
     [SerializeField] private Slider slider_puckMaxSpeed;
     [SerializeField] private Slider slider_puckHitIncreaseSpeed;
+    [SerializeField] private Slider slider_necroMaxScore;
     [SerializeField] private Slider slider_riftBossHealth;
     [SerializeField] private Slider slider_runeSpawnInterval;
     [SerializeField] private Slider slider_deathBoltCooldown;
@@ -115,6 +116,7 @@ public class DebugParametersController : MonoBehaviour {
     [SerializeField] private Text txt_puckBaseSpeed;
     [SerializeField] private Text txt_puckMaxSpeed;
     [SerializeField] private Text txt_puckHitIncreaseSpeed;
+    [SerializeField] private Text txt_necroMaxScore;
     [SerializeField] private Text txt_riftBossHealth;
     [SerializeField] private Text txt_runeSpawnInterval;
     [SerializeField] private Text txt_deathBoltCooldown;
@@ -317,6 +319,11 @@ public class DebugParametersController : MonoBehaviour {
     public void ChangePuckHitIncreaseSpeed(float f_hit) {
         txt_puckHitIncreaseSpeed.text = slider_puckHitIncreaseSpeed.value.ToString();
         Constants.ObjectiveStats.C_PuckSpeedHitIncrease = (int)f_hit;
+    }
+
+    public void ChangeNecroMaxScore(float f_score) {
+        txt_necroMaxScore.text = slider_necroMaxScore.value.ToString();
+        Constants.ObjectiveStats.C_NecromancersMaxScore = (int)f_score;
     }
 
     public void ChangeRiftBossHealth(float f_riftBossHealthIn) {
@@ -551,6 +558,10 @@ public class DebugParametersController : MonoBehaviour {
         // Hockey Puck Speed Decrease Amount
         txt_puckSpeedDecreaseRate.text = Constants.ObjectiveStats.C_PuckSpeedDecreaseAmount.ToString();
         slider_puckSpeedDecreaseRate.value = Constants.ObjectiveStats.C_PuckSpeedDecreaseAmount;
+
+        // Necromancers to Defeat
+        txt_necroMaxScore.text = Constants.ObjectiveStats.C_NecromancersMaxScore.ToString();
+        slider_necroMaxScore.value = Constants.ObjectiveStats.C_NecromancersMaxScore;
 
         // Rift Boss Max Health
         txt_riftBossHealth.text = Constants.ObjectiveStats.C_RiftBossMaxHealth.ToString();

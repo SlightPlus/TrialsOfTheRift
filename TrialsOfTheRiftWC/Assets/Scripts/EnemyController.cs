@@ -13,6 +13,8 @@ using System;
 public abstract class EnemyController : SpellTarget {
 
     [SerializeField] protected UnityEngine.AI.NavMeshAgent nma_agent;
+    [SerializeField] protected GameObject go_enemyIndiPrefab;
+    [SerializeField] protected Camera cam_camera;
 
     //Added WANDER and FLEE states
     protected enum State {CHASE, ATTACK, FROZEN, SLOWED, DIE, WANDER, FLEE, SUMMONING, DROPPING};
@@ -47,7 +49,7 @@ public abstract class EnemyController : SpellTarget {
                 Slow();
                 break;
         }
-        TakeDamage(damage);
+        TakeDamage(damage, color);
     }
 
     override public void NegateSpellEffect(Constants.SpellStats.SpellType spell) {
@@ -114,7 +116,7 @@ public abstract class EnemyController : SpellTarget {
 		}
     }
 
-    protected virtual void EnterStateDie() {
+    protected virtual void EnterStateDie(Constants.Global.Color color) {
 		e_state = State.DIE;
 		this.enabled = false;
 		gameObject.SetActive(false);							  
@@ -126,7 +128,7 @@ public abstract class EnemyController : SpellTarget {
 		//gameObject.SetActive(false);
     }
 	
-	public void TakeDamage(float damage){
+	public virtual void TakeDamage(float damage, Constants.Global.Color color){
 		//If for some reason this enemy is dead but it's still taking damage
 		//This if statement will prevent it
 		if (gameObject.activeSelf) {
@@ -135,7 +137,7 @@ public abstract class EnemyController : SpellTarget {
 			//Debug.Log(i_health);
 			if(f_health <= 0f){
 				Debug.Log("death");
-				EnterStateDie();
+				EnterStateDie(color);
 			}
 		}
 	}
@@ -216,7 +218,11 @@ public abstract class EnemyController : SpellTarget {
 	}
 
 	public virtual void Init(Constants.Global.Side side) {
-		this.enabled = true;
+        GameObject enemyIndi = Instantiate(go_enemyIndiPrefab, transform.position, Quaternion.identity);
+        CameraFacingBillboard cfb_this = enemyIndi.GetComponent<CameraFacingBillboard>();
+        cfb_this.Init(cam_camera, gameObject);
+
+        this.enabled = true;
         riftController = RiftController.Instance;   // Init() is called before Start(), these must be set here (repeatedly...)
         maestro = Maestro.Instance;
         EnterStateWander();
@@ -238,10 +244,11 @@ public abstract class EnemyController : SpellTarget {
     }
 
 	void OnDisable() {
-		if (this.enabled) {
-			Debug.Log("OnDisable");
-			EnterStateDie();
-		}
+        // @Jeff, this is no longer necessary because of new necro behavior, right?
+		//if (this.enabled) {
+		//	Debug.Log("OnDisable");
+		//	EnterStateDie();
+		//}
 	}				 
 	// Update is called once per frame
 	protected virtual void Update () {

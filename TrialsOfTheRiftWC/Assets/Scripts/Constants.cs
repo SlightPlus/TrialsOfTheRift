@@ -138,6 +138,11 @@ public static class Constants {
         public static float C_PuckBaseSpeed = 10.0f;
         public static float C_PuckMaxSpeed = 15.0f;
 
+        // Defeat Necromancers Stats
+        public static int C_NecromancersMaxScore = 3;
+        public static Vector3 C_RedNecromancerSpawn = new Vector3(-5.0f, 0.5f, 0f);
+        public static Vector3 C_BlueNecromancerSpawn = new Vector3(5.0f, 0.5f, 0f);
+
         // Rift Boss Stats
         //public static Vector3 C_RedRiftBossSpawn = new Vector3(-5.0f, 0.5f, 0f);
         //public static Vector3 C_BlueRiftBossSpawn = new Vector3(5.0f, 0.5f, 0f);
@@ -158,7 +163,7 @@ public static class Constants {
 		public static float C_WanderingRadius = 10.0f;
 		public static float C_RuneExplosionCountDownTime = 5.0f;
         public static float C_RuneExplosionLiveTime = 1.5f;
-        public static float C_RuneTimer = 2.0f;
+        public static float C_RuneTimer = 4.0f;
 		public static float C_SummonTimer = 8.0f;
 
         public static int C_EnemySpawnCapPerSide = 7;
@@ -209,6 +214,8 @@ public static class Constants {
         public static string C_HockeyDescription = "Shoot and parry your puck into the enemy's goal! Careful, you can't score from behind!";
         public static string C_PotatoTitle = "Keep Away";
         public static string C_PotatoDescription = "Shove your object onto the opponent's side and keep it there. Be careful! If you leave yours on your side for too long, bad things will happen!";
+        public static string C_DefeatNecromancersTitle = "Defeat Necromancers";
+        public static string C_DefeatNecromancersDescription = "Defeat Necromancers of your team's color!  They teleport across The Rift when they get low on health!";
         public static string C_BossTitle = "The Final Trial";
         public static string C_BossDescription = "Use all your prowess and spells to defeat the Rift!";
     }

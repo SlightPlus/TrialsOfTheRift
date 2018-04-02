@@ -103,9 +103,9 @@ public class SkeletonController : EnemyController {
 		}
 	}
 	
-	protected override void EnterStateDie() {
+	protected override void EnterStateDie(Constants.Global.Color color) {
 		riftController.DecreaseEnemies(e_startSide);									  
-		base.EnterStateDie();
+		base.EnterStateDie(color);
 		maestro.PlaySkeletonDie();
     }
 

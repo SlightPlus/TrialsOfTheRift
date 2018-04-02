@@ -127,8 +127,8 @@ public class HockeyPuckController : SpellTarget {
     public IEnumerator ApplyDamage(GameObject go_target) {
         if (go_target.GetComponent<PlayerController>()) {
             go_target.GetComponent<PlayerController>().TakeDamage(Constants.ObjectiveStats.C_PuckDamage, Constants.Global.DamageType.PUCK);
-        } else if (go_target.GetComponent<EnemyController>()) {
-            go_target.GetComponent<EnemyController>().TakeDamage(Constants.ObjectiveStats.C_PuckDamage);
+        } else if (go_target.GetComponent<EnemyController>()) { //TODO: this can never happen now, right?  right?
+            go_target.GetComponent<EnemyController>().TakeDamage(Constants.ObjectiveStats.C_PuckDamage, e_color);
         }
 
         yield return new WaitForSeconds(1);
