@@ -28,6 +28,10 @@ public class NecromancerController : EnemyController {
 		base.Update();
 	}
 
+    protected override void EnterStateChase() {
+        EnterStateWander(); // necromancer has no chase state, wander instead
+    }
+
     protected override void UpdateWander() {
 		base.UpdateWander();
 		bool b_playersAvailable = false;
@@ -149,6 +153,7 @@ public class NecromancerController : EnemyController {
         if(e_color == color) {
             dno_owner.UpdateNecroScore();
         }
+        gameObject.transform.localPosition = new Vector3(gameObject.transform.localPosition.x, -1000.0f, gameObject.transform.localPosition.z);
         gameObject.SetActive(false);    // nav mesh must be turned off before moving
         Invoke("ResetNecroPosition", Constants.ObjectiveStats.C_NecromancerSpawnTime);
     }
@@ -161,8 +166,9 @@ public class NecromancerController : EnemyController {
         base.TakeDamage(damage, color);
         if(f_health < (0.25f * Constants.EnemyStats.C_NecromancerHealth) && !b_teleported) {
             b_teleported = true;
+            NegateSpellEffect(Constants.SpellStats.SpellType.ELECTRICITYAOE);    // manually stop the coroutine if it's running
             gameObject.SetActive(false);    // nav mesh must be turned off before moving
-            gameObject.transform.localPosition = new Vector3(-gameObject.transform.localPosition.x, gameObject.transform.localPosition.y, gameObject.transform.localPosition.z);
+            gameObject.transform.localPosition = new Vector3(-gameObject.transform.localPosition.x, 0.5f, gameObject.transform.localPosition.z);
             gameObject.SetActive(true);
         }
     }
