@@ -15,9 +15,6 @@ public class NecromancerController : EnemyController {
 #endregion
 
 	public override void Init(Constants.Global.Side side) {
-        //if (b_teleported)   // must turn off gameobject when teleporting, don't want to reinitialize
-        //    return;
-
         base.Init(side);
 		nma_agent.speed = Constants.EnemyStats.C_NecromancerBaseSpeed;
 		f_health = Constants.EnemyStats.C_NecromancerHealth;
@@ -152,8 +149,8 @@ public class NecromancerController : EnemyController {
         if(e_color == color) {
             dno_owner.UpdateNecroScore();
         }
-        ResetNecroPosition();
-        Init(e_startSide);
+        gameObject.SetActive(false);    // nav mesh must be turned off before moving
+        Invoke("ResetNecroPosition", Constants.ObjectiveStats.C_NecromancerSpawnTime);
     }
 
 	protected override void UpdateDie() {
@@ -164,7 +161,9 @@ public class NecromancerController : EnemyController {
         base.TakeDamage(damage, color);
         if(f_health < (0.25f * Constants.EnemyStats.C_NecromancerHealth) && !b_teleported) {
             b_teleported = true;
-            riftController.TeleportNecromancer(gameObject);
+            gameObject.SetActive(false);    // nav mesh must be turned off before moving
+            gameObject.transform.localPosition = new Vector3(-gameObject.transform.localPosition.x, gameObject.transform.localPosition.y, gameObject.transform.localPosition.z);
+            gameObject.SetActive(true);
         }
     }
 
@@ -179,7 +178,6 @@ public class NecromancerController : EnemyController {
 	}
 
     private void ResetNecroPosition() {
-        gameObject.SetActive(false);
         if (e_color == Constants.Global.Color.RED) {
             transform.localPosition = Constants.ObjectiveStats.C_RedNecromancerSpawn;
         }
@@ -188,6 +186,7 @@ public class NecromancerController : EnemyController {
         }
         b_teleported = false;
         gameObject.SetActive(true);
+        Init(e_startSide);
     }
 
 #region Unity Overrides	

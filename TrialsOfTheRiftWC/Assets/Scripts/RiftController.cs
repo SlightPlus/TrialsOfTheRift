@@ -313,12 +313,6 @@ public sealed class RiftController : MonoBehaviour {
         return pos;
     }
 
-    public void TeleportNecromancer(GameObject n) {   // this sucks
-        n.SetActive(false);
-        n.transform.localPosition = new Vector3(-n.transform.localPosition.x, n.transform.localPosition.y, n.transform.localPosition.z);
-        n.SetActive(true);
-    }
-
     // @Joe get this working
     // Joe: NO BITCH, I DO WHAT I WANT! >:(
     public void FireDeathBolts(Constants.Global.Color c) {

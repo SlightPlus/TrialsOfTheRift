@@ -142,6 +142,7 @@ public static class Constants {
         public static int C_NecromancersMaxScore = 3;
         public static Vector3 C_RedNecromancerSpawn = new Vector3(-5.0f, 0.5f, 0f);
         public static Vector3 C_BlueNecromancerSpawn = new Vector3(5.0f, 0.5f, 0f);
+        public static float C_NecromancerSpawnTime = 10.0f;
 
         // Rift Boss Stats
         //public static Vector3 C_RedRiftBossSpawn = new Vector3(-5.0f, 0.5f, 0f);
