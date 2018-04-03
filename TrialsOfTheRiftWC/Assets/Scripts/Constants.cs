@@ -18,6 +18,12 @@ public static class Constants {
 		public enum DamageType { WIND, ICE, ELECTRICITY, MAGICMISSILE, ENEMY, RIFT, DEATHBOLT, RUNE, PUCK };
     }
 
+    // Team Stats
+    public static class TeamStats {
+        public static int C_RedTeamScore = 0;
+        public static int C_BlueTeamScore = 0;
+    }
+
     // Player Stats
     public static class PlayerStats {
         public static float C_MovementSpeed = 6.0f;
@@ -148,6 +154,7 @@ public static class Constants {
         //public static Vector3 C_RedRiftBossSpawn = new Vector3(-5.0f, 0.5f, 0f);
         //public static Vector3 C_BlueRiftBossSpawn = new Vector3(5.0f, 0.5f, 0f);
         public static float C_RiftBossMaxHealth = 3000f;
+        public static int C_RiftBossHealthReductionMultiplier = 200;
         public static float C_RuneSpawnInterval = 8.0f;
         public static float C_DeathBoltCooldown = 6.0f;
         public static float C_ForceFieldCooldown = 7.0f;

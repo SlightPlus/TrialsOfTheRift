@@ -53,7 +53,7 @@ public abstract class EnemyController : SpellTarget {
     }
 
     override public void NegateSpellEffect(Constants.SpellStats.SpellType spell) {
-        if (spell == Constants.SpellStats.SpellType.ELECTRICITYAOE) {
+        if (spell == Constants.SpellStats.SpellType.ELECTRICITYAOE && cor_AOECoroutine != null) {
             StopCoroutine(cor_AOECoroutine);
             Unslow();
         }

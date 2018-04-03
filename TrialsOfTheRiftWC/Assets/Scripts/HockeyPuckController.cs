@@ -109,15 +109,6 @@ public class HockeyPuckController : SpellTarget {
         else if (other.CompareTag("Enemy") || other.CompareTag("Player")) {
             StartCoroutine("ApplyDamage", other.gameObject);
         }
-        else if (other.CompareTag("ParryShield")) {
-            // Reset slowdown invoke
-            CancelInvoke();
-            InvokeRepeating("DecreaseSpeed", Constants.ObjectiveStats.C_PuckSpeedDecayDelay, Constants.ObjectiveStats.C_PuckSpeedDecayRate);
-
-            Vector3 facingDirection = other.gameObject.transform.forward.normalized;
-            transform.Rotate(facingDirection);
-            rb.velocity = facingDirection * f_speed;
-        }
     }
 
     void OnTriggerExit(Collider other) {

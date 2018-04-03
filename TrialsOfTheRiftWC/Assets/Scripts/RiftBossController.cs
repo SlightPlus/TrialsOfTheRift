@@ -51,15 +51,17 @@ public class RiftBossController : SpellTarget {
 #region Unity Overrides
     void Start() {
         riftController = RiftController.Instance;
-        f_health = Constants.ObjectiveStats.C_RiftBossMaxHealth;     // cannot read from Constants.cs in initialization at top
+        if (e_color == Constants.Global.Color.RED) {
+            f_health = (Constants.ObjectiveStats.C_RiftBossMaxHealth - (Constants.ObjectiveStats.C_RiftBossHealthReductionMultiplier * Constants.TeamStats.C_RedTeamScore));     // cannot read from Constants.cs in initialization at top
+            rbo_owner.UpdateRiftBossHealth(f_health);
+        }
+        else if (e_color == Constants.Global.Color.BLUE) {
+            f_health = (Constants.ObjectiveStats.C_RiftBossMaxHealth - (Constants.ObjectiveStats.C_RiftBossHealthReductionMultiplier * Constants.TeamStats.C_BlueTeamScore));     // cannot read from Constants.cs in initialization at top
+            rbo_owner.UpdateRiftBossHealth(f_health);
+        }
 
         InvokeRepeating("FireDeathBolts", Constants.ObjectiveStats.C_DeathBoltCooldown, Constants.ObjectiveStats.C_DeathBoltCooldown + Constants.ObjectiveStats.C_ForceFieldCooldown);
         InvokeRepeating("SpawnRunes", Constants.ObjectiveStats.C_RuneSpawnInterval, Constants.ObjectiveStats.C_RuneSpawnInterval);
     }
-#endregion
-
-
-
-
-    
+    #endregion
 }

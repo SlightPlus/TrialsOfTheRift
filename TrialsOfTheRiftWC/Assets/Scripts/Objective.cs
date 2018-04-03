@@ -56,6 +56,12 @@ public abstract class Objective : MonoBehaviour {
     // Destroy this objective once it is complete
     public void Complete() {
         maestro.PlayAnnouncementTrialTransition();
+        if (e_color == Constants.Global.Color.RED) {
+            Constants.TeamStats.C_RedTeamScore += i_score;
+        }
+        else if (e_color == Constants.Global.Color.BLUE) {
+            Constants.TeamStats.C_BlueTeamScore += i_score;
+        }
         riftController.IncrementObjectiveCount(e_color);
         riftController.IncreaseVolatility(Constants.RiftStats.C_VolatilityIncrease_RoomAdvance);
         ResetUI();                              // turn off UI

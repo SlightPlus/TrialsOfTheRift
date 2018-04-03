@@ -40,15 +40,11 @@ public sealed class DarkMagician : MonoBehaviour {
 			return;
 		}
         objectiveNumber++;
-
-        if (c == Constants.Global.Color.RED) {
-            objv_currentRedObjective.Complete();
-            objv_currentRedObjective = objv_redObjectiveList[objectiveNumber-1].Activate(objectiveNumber);	// objectiveNumber starts with 1 but array is 0-based
-        }
-        else if (c == Constants.Global.Color.BLUE) {
-            objv_currentBlueObjective.Complete();
-            objv_currentBlueObjective = objv_blueObjectiveList[objectiveNumber - 1].Activate(objectiveNumber);  // objectiveNumber starts with 1 but array is 0-based
-        }
+        
+        objv_currentRedObjective.Complete();
+        objv_currentRedObjective = objv_redObjectiveList[objectiveNumber-1].Activate(objectiveNumber);	// objectiveNumber starts with 1 but array is 0-based
+        objv_currentBlueObjective.Complete();
+        objv_currentBlueObjective = objv_blueObjectiveList[objectiveNumber - 1].Activate(objectiveNumber);  // objectiveNumber starts with 1 but array is 0-based
     }
 #endregion
 

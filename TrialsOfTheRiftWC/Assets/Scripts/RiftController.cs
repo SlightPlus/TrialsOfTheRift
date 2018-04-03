@@ -69,11 +69,9 @@ public sealed class RiftController : MonoBehaviour {
 #region RiftController Methods
     #region Volatility
     public void IncreaseVolatility(float volatilityUp) {
-        Debug.Log("Volatility increased!");
 		maestro.PlayAnnouncementVolatilityUp();
         volatilityUp += (volatilityUp * f_volatilityMultiplier);
         f_volatility += volatilityUp;
-		Debug.Log("Volatility,"+f_volatility);
         if (f_volatility >= 100.0f && e_currentVolatilityLevel != Constants.RiftStats.Volatility.ONEHUNDRED) {
             e_currentVolatilityLevel = Constants.RiftStats.Volatility.ONEHUNDRED;
             Invoke("ResetVolatility", Constants.RiftStats.C_VolatilityResetTime);
@@ -84,7 +82,6 @@ public sealed class RiftController : MonoBehaviour {
             e_currentVolatilityLevel = Constants.RiftStats.Volatility.SEVENTYFIVE;
 			i_volatilityLevel = 4;
             EnterNewVolatilityLevel();
-			InvokeRepeating("SpawnNecromancers", 0.0f, Constants.RiftStats.C_VolatilityNecromancerSpawnTimer);
             anim.SetTrigger("rawrTrigger");
             anim.SetInteger("volatility", 4);
         }
@@ -93,9 +90,6 @@ public sealed class RiftController : MonoBehaviour {
 			i_volatilityLevel = 3;
             anim.SetTrigger("rawrTrigger");
             EnterNewVolatilityLevel();
-            for (int i = 0; i < 5; i++) {
-                SpawnEnemies();
-            }
         }
         else if (f_volatility >= 50.0f && e_currentVolatilityLevel != Constants.RiftStats.Volatility.FIFTY) {
             e_currentVolatilityLevel = Constants.RiftStats.Volatility.FIFTY;
@@ -109,7 +103,6 @@ public sealed class RiftController : MonoBehaviour {
 			i_volatilityLevel = 2;
             anim.SetTrigger("rawrTrigger");
             EnterNewVolatilityLevel();
-            f_enemySpeed += 1.0f;
         }
         else if (f_volatility >= 25.0f && e_currentVolatilityLevel != Constants.RiftStats.Volatility.TWENTYFIVE) {
             e_currentVolatilityLevel = Constants.RiftStats.Volatility.TWENTYFIVE;
@@ -126,7 +119,6 @@ public sealed class RiftController : MonoBehaviour {
             anim.SetTrigger("rawrTrigger");
             anim.SetInteger("volatility", 1);
             EnterNewVolatilityLevel();
-            InvokeRepeating("SpawnEnemies", 0.0f, Constants.RiftStats.C_VolatilityEnemySpawnTimer);
         }
         else if (f_volatility < 5.0f) {
 			i_volatilityLevel = 0;
@@ -142,8 +134,6 @@ public sealed class RiftController : MonoBehaviour {
                 // Change rift visual to L0
                 e_currentVolatilityLevel = Constants.RiftStats.Volatility.ZERO;
                 f_volatilityMultiplier = Constants.RiftStats.C_VolatilityMultiplier_L1;     // there is no L0, L1 is already 0
-                CancelInvoke("SpawnEnemies");
-				CancelInvoke("SpawnNecromancers");
                 f_enemySpeed = Constants.EnemyStats.C_EnemyBaseSpeed;
                 break;
             case 1:
