@@ -178,13 +178,13 @@ public abstract class EnemyController : SpellTarget {
 	}
 
 	public void Unslow(){
-		f_canMove = 1f;
+        f_canMove = 1f;
 		UpdateSpeed();
 		EnterStateChase();
 	}
 	
 	private void UpdateSpeed(){
-		nma_agent.speed = riftController.EnemySpeed * f_canMove;
+        nma_agent.speed = riftController.EnemySpeed * f_canMove;
 		//nma_agent.speed = riftController.f_enemySpeed * f_canMove;
 		//nma_agent.acceleration = nma_agent.acceleration* (Constants.EnviroStats.C_EnemySpeed / 3.5f) * f_canMove;
 	}

@@ -34,7 +34,7 @@ public abstract class SpellTarget : MonoBehaviour {
     public abstract void ApplySpellEffect(Constants.SpellStats.SpellType spell, Constants.Global.Color color, float damage, Vector3 direction);
 
     public virtual void NegateSpellEffect(Constants.SpellStats.SpellType spell) {
-        if (spell == Constants.SpellStats.SpellType.ELECTRICITYAOE) {
+        if (spell == Constants.SpellStats.SpellType.ELECTRICITYAOE && cor_AOECoroutine != null) {
             StopCoroutine(cor_AOECoroutine);
         }
     }
@@ -43,7 +43,7 @@ public abstract class SpellTarget : MonoBehaviour {
 		if (gameObject && gameObject.activeSelf) {
             ApplySpellEffect(Constants.SpellStats.SpellType.ELECTRICITYAOE, color, damage, Vector3.zero);
             yield return new WaitForSeconds(Constants.SpellStats.C_ElectricAOEDamageRate);
-            if (gameObject.activeSelf) {
+            if (gameObject && gameObject.activeSelf) {
                 cor_AOECoroutine = StartCoroutine(ApplyAOE(color, damage));
             }
         }
