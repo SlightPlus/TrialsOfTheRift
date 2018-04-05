@@ -15,10 +15,10 @@ public class ElectricSpellController : SpellController {
     protected override void Charge(float f_chargeTime) {
         f_damage = Constants.SpellStats.C_ElectricDamage;
         f_charge = ((1f / 12f) * f_chargeTime) + 0.05f;
-        if (f_charge > 1f) {
-            f_charge = 1f;
+        if (f_charge > 2f) {
+            f_charge = 2f;
         }
-        Invoke("SpawnAOE", Constants.SpellStats.C_SpellLiveTime * f_charge);
+        Invoke("SpawnAOE", Constants.SpellStats.C_ElectricLiveTime * f_charge);
     }
 
     protected override void BuffSpell() {

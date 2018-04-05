@@ -50,8 +50,8 @@ public static class Constants {
         public static float C_SpellScaleMultiplier = 1.15f;
         public static float C_SpellParticlesLiveTime = 2.0f;
 
-        // Magic Missile Stats
-        public static float C_MagicMissileLiveTime = 0.35f;
+        // Magic Missile Stats TODO:
+        public static float C_MagicMissileLiveTime = 0.35f; //2 sec in GDD
 		public static float C_MagicMissileSpeed = 10.0f;
         public static float C_MagicMissileDamage = 25.0f;
         public static float C_MagicMissileCooldown = 1.0f;
@@ -81,7 +81,7 @@ public static class Constants {
 
         // it's ELECTRIC! (boogie woogie woogie) Stats
         // TODO: make charge time and Live time tied
-        //public static float C_ElectricLiveTime = 0.3f;
+        public static float C_ElectricLiveTime = 0.3f;
         public static float C_ElectricSpeed = 15.0f;
 		public static float C_ElectricDamage = 40.0f;
 		public static float C_ElectricCooldown = 8.0f;
@@ -142,38 +142,40 @@ public static class Constants {
         public static int C_NecromancersMaxScore = 3;
         public static Vector3 C_RedNecromancerSpawn = new Vector3(-5.0f, 0.5f, 0f);
         public static Vector3 C_BlueNecromancerSpawn = new Vector3(5.0f, 0.5f, 0f);
-        public static float C_NecromancerSpawnTime = 10.0f;
+        public static float C_NecromancerSpawnTime = 6.0f;
+        public static float C_NecromancerTeleportHealthThreshold = 0.25f;
 
         // Rift Boss Stats
         //public static Vector3 C_RedRiftBossSpawn = new Vector3(-5.0f, 0.5f, 0f);
         //public static Vector3 C_BlueRiftBossSpawn = new Vector3(5.0f, 0.5f, 0f);
-        public static float C_RiftBossMaxHealth = 3000f;
+        public static float C_RiftBossMaxHealth = 4000f;
         public static float C_RuneSpawnInterval = 8.0f;
         public static float C_DeathBoltCooldown = 6.0f;
         public static float C_ForceFieldCooldown = 7.0f;
-        public static float C_RuneDamage = 750.0f;
+        public static float C_RuneDamage = 75.0f;
     }
        
     // Enemy Stats
     public static class EnemyStats {
 
         public static float C_NecromancerBaseSpeed = 1.5f;
-        public static float C_NecromancerHealth = 150.0f;
+        public static float C_NecromancerHealth = 300.0f;
 		public static float C_NecromancerAvoidDistance = 5.0f;
-		public static int C_NecromancerSpawnCapPerSide = 2;
+		public static int C_NecromancerSpawnCapPerSide = 1;
 		public static float C_WanderingRadius = 10.0f;
 		public static float C_RuneExplosionCountDownTime = 5.0f;
         public static float C_RuneExplosionLiveTime = 1.5f;
         public static float C_RuneTimer = 4.0f;
-		public static float C_SummonTimer = 8.0f;
+        public static float C_RuneDamage = 75.0f;
+        public static float C_SummonTimer = 8.0f;
 
-        public static int C_EnemySpawnCapPerSide = 7;
-        public static float C_EnemyBaseSpeed = 1.5f;
+        public static int C_EnemySpawnCapPerSide = 4;
+        public static float C_EnemyBaseSpeed = 1.2f;
 		public static float C_EnemyAttackRange = 1.5f;
-        public static float C_EnemyHealth = 75.0f;
-        public static float C_EnemyDamage = 15.0f;
-		public static float C_RuneDamage = 75.0f;
+        public static float C_EnemyHealth = 125.0f;
+        public static float C_EnemyDamage = 25.0f;
         public static float C_SpawnRadius = 2.5f;
+        //public static float C_EnemySpawnDelayDuration = 2.0f;
         public static float C_MapBoundryXAxis = 14.5f;
         public static float C_MapBoundryZAxis = 9.5f;
     }

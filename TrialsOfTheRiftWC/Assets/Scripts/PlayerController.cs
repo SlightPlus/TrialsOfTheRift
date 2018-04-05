@@ -113,7 +113,7 @@ public class PlayerController : SpellTarget {
                     anim.SetTrigger("hitTrigger");
                 }
                 else {
-                    Heal(Constants.SpellStats.C_MagicMissileHeal);
+                    Heal(damage / 2.5f);
                 }
                 break;
         }
