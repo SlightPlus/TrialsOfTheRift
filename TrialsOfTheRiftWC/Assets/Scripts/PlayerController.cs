@@ -113,7 +113,7 @@ public class PlayerController : SpellTarget {
                     anim.SetTrigger("hitTrigger");
                 }
                 else {
-                    Heal(Constants.SpellStats.C_MagicMissileHeal);
+                    Heal(damage / 2.5f);
                 }
                 break;
         }
@@ -369,32 +369,11 @@ public class PlayerController : SpellTarget {
             sc_firing.Init(this, e_color, f_mmCharge);
             f_mmCharge = 0;
         }
-  //      // Wind Spell
-  //      if (f_nextWind > Constants.SpellStats.C_WindCooldown && f_nextCast > Constants.SpellStats.C_NextSpellDelay) {
-		//    if (p_player.GetButtonDown("WindSpell"))
-		//		maestro.PlaySpellCharge();
-  //          if (p_player.GetButtonTimePressed("WindSpell") != 0) {
-  //              f_windCharge += p_player.GetButtonTimePressed("WindSpell");
-		//	    //anim.SetTrigger ("windChargeTrigger");
-		//		//anim.SetFloat ("windCharge", f_windCharge);
-  //          }
-  //          if (p_player.GetButtonUp("WindSpell")) {
-		//		maestro.PlayWindShoot();
-		//		//anim.SetTrigger("windSpellTrigger");
-  //              f_nextWind = 0;
-		//	    f_nextCast = 0;
-  //              for (int i = -30; i <= 30; i += 30) {
-  //                  GameObject go_spell = Instantiate(go_windShot, t_spellSpawn.position, t_spellSpawn.rotation);
-  //                  go_spell.transform.eulerAngles = go_spell.transform.eulerAngles + new Vector3(0, i, 0);
-  //                  go_spell.transform.localScale = new Vector3(f_projectileSize, f_projectileSize, f_projectileSize);
-  //                  go_spell.GetComponent<Rigidbody>().velocity = go_spell.transform.forward * Constants.SpellStats.C_WindSpeed;
-  //                  SpellController sc_firing = go_spell.GetComponent<SpellController>();
-  //                  sc_firing.Init(this, e_color, f_windCharge);
-  //              }
-  //              //anim.SetFloat("windCharge", f_windCharge);
-  //              f_windCharge = 0;
-		//	} 
-		//}
+        // Wind Parry Spell
+        if (p_player.GetButtonDown("Parry")) {
+            go_parryShield.SetActive(true);
+            Invoke("TurnOffParryShield", 0.25f);
+        }
         // Ice Spell
         if (f_nextIce > Constants.SpellStats.C_IceCooldown && f_nextCast > Constants.SpellStats.C_NextSpellDelay) {
             if (p_player.GetButtonDown("IceSpell")) {
@@ -433,12 +412,7 @@ public class PlayerController : SpellTarget {
                 f_electricCharge = 0;
             }        
 		}
-        
-        // parry
-        if (p_player.GetButtonDown("Parry")) {
-            go_parryShield.SetActive(true);
-            Invoke("TurnOffParryShield", 0.25f);
-        }
+       
     }
 #endregion
 }

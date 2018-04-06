@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23507626214037082}
   - component: {fileID: 65036305737706206}
   - component: {fileID: 114036783444510108}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: IceHockey_RedGoal
   m_TagString: HockeyGoal
   m_Icon: {fileID: 0}
@@ -241,8 +241,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 2, z: 10}
-  m_Center: {x: 4.75, y: 1, z: 0}
+  m_Size: {x: 10, y: 2, z: 10}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &114036783444510108
 MonoBehaviour:
   m_ObjectHideFlags: 1

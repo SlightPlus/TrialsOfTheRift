@@ -102,8 +102,8 @@ public class HockeyPuckController : SpellTarget {
     void OnTriggerEnter(Collider other) {
         if (other.CompareTag("HockeyGoal")) {   // player scoring with puck TODO: look at layers and tags
             if (other.GetComponent<GoalController>().Color != e_color) {
-                iho_owner.UpdatePuckScore();
                 ResetPuckPosition();
+                iho_owner.UpdatePuckScore();
             }
         }
         else if (other.CompareTag("Enemy") || other.CompareTag("Player")) {

@@ -164,7 +164,7 @@ public class NecromancerController : EnemyController {
 
     public override void TakeDamage(float damage, Constants.Global.Color color) {
         base.TakeDamage(damage, color);
-        if(f_health < (0.25f * Constants.EnemyStats.C_NecromancerHealth) && !b_teleported) {
+        if(f_health < (Constants.ObjectiveStats.C_NecromancerTeleportHealthThreshold * Constants.EnemyStats.C_NecromancerHealth) && !b_teleported) {
             b_teleported = true;
             NegateSpellEffect(Constants.SpellStats.SpellType.ELECTRICITYAOE);    // manually stop the coroutine if it's running
             gameObject.SetActive(false);    // nav mesh must be turned off before moving

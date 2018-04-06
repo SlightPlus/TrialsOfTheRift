@@ -14,11 +14,11 @@ public class ElectricSpellController : SpellController {
 #region ElectricSpellController Methods
     protected override void Charge(float f_chargeTime) {
         f_damage = Constants.SpellStats.C_ElectricDamage;
-        f_charge = ((1f / 12f) * f_chargeTime) + 0.05f;
-        if (f_charge > 1f) {
-            f_charge = 1f;
+        if (f_charge > 3f) {
+            f_charge = 3f;
         }
-        Invoke("SpawnAOE", Constants.SpellStats.C_SpellLiveTime * f_charge);
+        f_charge = f_chargeTime * 0.1f;
+        Invoke("SpawnAOE", Constants.SpellStats.C_ElectricLiveTime + f_charge);
     }
 
     protected override void BuffSpell() {
