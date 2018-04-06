@@ -370,7 +370,7 @@ public class PlayerController : SpellTarget {
             f_mmCharge = 0;
         }
         // Wind Parry Spell
-        if (p_player.GetButtonDown("Parry")) {
+        if (p_player.GetButtonDown("WindSpell")) {
             go_parryShield.SetActive(true);
             Invoke("TurnOffParryShield", 0.25f);
         }
