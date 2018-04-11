@@ -2987,12 +2987,17 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114712093101712036, guid: f133622674575e54c89142093b338ea6,
+    - target: {fileID: 114959689574883570, guid: f133622674575e54c89142093b338ea6,
         type: 2}
       propertyPath: cam_Camera
       value: 
       objectReference: {fileID: 1859528229}
     - target: {fileID: 114896215700035850, guid: f133622674575e54c89142093b338ea6,
+        type: 2}
+      propertyPath: cam_Camera
+      value: 
+      objectReference: {fileID: 1859528229}
+    - target: {fileID: 114712093101712036, guid: f133622674575e54c89142093b338ea6,
         type: 2}
       propertyPath: cam_Camera
       value: 
@@ -3012,6 +3017,54 @@ Prefab:
       propertyPath: go_roomPool.Array.data[2]
       value: 
       objectReference: {fileID: 2099098997}
+    - target: {fileID: 1258882638583858, guid: f133622674575e54c89142093b338ea6, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114959689574883570, guid: f133622674575e54c89142093b338ea6,
+        type: 2}
+      propertyPath: v3_offset.y
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1877920773704598, guid: f133622674575e54c89142093b338ea6, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114751850926734540, guid: f133622674575e54c89142093b338ea6,
+        type: 2}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224569497512742070, guid: f133622674575e54c89142093b338ea6,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 165
+      objectReference: {fileID: 0}
+    - target: {fileID: 224569497512742070, guid: f133622674575e54c89142093b338ea6,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 165
+      objectReference: {fileID: 0}
+    - target: {fileID: 114959689574883570, guid: f133622674575e54c89142093b338ea6,
+        type: 2}
+      propertyPath: b_persistent
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 65499699856139974, guid: f133622674575e54c89142093b338ea6,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 65499699856139974, guid: f133622674575e54c89142093b338ea6,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 65499699856139974, guid: f133622674575e54c89142093b338ea6,
+        type: 2}
+      propertyPath: m_Size.z
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f133622674575e54c89142093b338ea6, type: 2}
   m_IsPrefabParent: 0
@@ -4382,12 +4435,17 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114261836794198302, guid: 1f6452573653d4242b25fd7aba3f2dbf,
+    - target: {fileID: 114293818077735212, guid: 1f6452573653d4242b25fd7aba3f2dbf,
         type: 2}
       propertyPath: cam_Camera
       value: 
       objectReference: {fileID: 1859528229}
     - target: {fileID: 114408319493158754, guid: 1f6452573653d4242b25fd7aba3f2dbf,
+        type: 2}
+      propertyPath: cam_Camera
+      value: 
+      objectReference: {fileID: 1859528229}
+    - target: {fileID: 114261836794198302, guid: 1f6452573653d4242b25fd7aba3f2dbf,
         type: 2}
       propertyPath: cam_Camera
       value: 
@@ -4407,6 +4465,46 @@ Prefab:
       propertyPath: go_roomPool.Array.data[2]
       value: 
       objectReference: {fileID: 34448824}
+    - target: {fileID: 114293818077735212, guid: 1f6452573653d4242b25fd7aba3f2dbf,
+        type: 2}
+      propertyPath: v3_offset.y
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114915163462803290, guid: 1f6452573653d4242b25fd7aba3f2dbf,
+        type: 2}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224149506127255710, guid: 1f6452573653d4242b25fd7aba3f2dbf,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 165
+      objectReference: {fileID: 0}
+    - target: {fileID: 224149506127255710, guid: 1f6452573653d4242b25fd7aba3f2dbf,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 165
+      objectReference: {fileID: 0}
+    - target: {fileID: 114293818077735212, guid: 1f6452573653d4242b25fd7aba3f2dbf,
+        type: 2}
+      propertyPath: b_persistent
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 65481945360956276, guid: 1f6452573653d4242b25fd7aba3f2dbf,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 65481945360956276, guid: 1f6452573653d4242b25fd7aba3f2dbf,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 65481945360956276, guid: 1f6452573653d4242b25fd7aba3f2dbf,
+        type: 2}
+      propertyPath: m_Size.z
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1f6452573653d4242b25fd7aba3f2dbf, type: 2}
   m_IsPrefabParent: 0
@@ -4612,6 +4710,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4600756672037920, guid: 7e0373141a7de8e4fb83638891c59bde, type: 2}
       propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1091249569307088, guid: 7e0373141a7de8e4fb83638891c59bde, type: 2}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

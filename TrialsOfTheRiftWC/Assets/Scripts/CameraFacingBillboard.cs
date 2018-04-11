@@ -10,6 +10,7 @@ public class CameraFacingBillboard : MonoBehaviour {
 #region Variables and Declarations
     [SerializeField] private Camera cam_Camera;
     [SerializeField] private GameObject go_trackedObject;
+    [SerializeField] private bool b_persistent;
     [SerializeField] private Vector3 v3_offset;
 #endregion
 
@@ -26,7 +27,7 @@ public class CameraFacingBillboard : MonoBehaviour {
 
 #region Unity Overrides
     void OnEnable() {
-        if (go_trackedObject.GetComponent<PlayerController>() == null) {
+        if (!b_persistent && go_trackedObject.GetComponent<PlayerController>() == null) {
             Invoke("SetInactive", 2.0f);  // non-player indicators do not persist after spawn
         }
     }
