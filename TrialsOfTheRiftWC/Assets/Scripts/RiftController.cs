@@ -17,7 +17,9 @@ public sealed class RiftController : MonoBehaviour {
     // enemies
 	[SerializeField] private GameObject[] go_skeletons;
 	[SerializeField] private GameObject[] go_runes;
-    
+
+	[SerializeField] private GameObject[] go_necromancers;
+
     [SerializeField] private Animator anim;
 
 
@@ -169,20 +171,23 @@ public sealed class RiftController : MonoBehaviour {
             player.GetComponent<PlayerController>().TakeDamage(Constants.PlayerStats.C_MaxHealth,Constants.Global.DamageType.RIFT);
         }
 
-        for (int i = 0; i < go_skeletons.Length; i++) {
-			if (go_skeletons[i].activeSelf)
-				go_skeletons[i].SetActive(false);
-        }
+		if (go_necromancers[0]) {
+			for (int i = 0; i < go_skeletons.Length; i++) {
+				if (go_skeletons[i].activeSelf) {
+					go_skeletons[i].GetComponent<SkeletonController>().TakeDamage(Constants.EnemyStats.C_EnemyHealth, Constants.Global.Color.Null);
+				}
+			}
 
-   //     for (int i = 0; i < go_necromancers.Length; i++) {
-			//if (go_necromancers[i].activeSelf)
-			//	go_necromancers[i].SetActive(false);
-   //     }
+			for (int i = 0; i < go_necromancers.Length; i++) {
+				if (go_necromancers[i].activeSelf)
+					go_necromancers[i].GetComponent<NecromancerController>().TakeDamage(Constants.EnemyStats.C_NecromancerHealth, Constants.Global.Color.Null);
+			}
 
-        for (int i = 0; i < go_runes.Length; i++) {
-			if (go_runes[i].activeSelf)
-				go_runes[i].SetActive(false);
-        }
+			for (int i = 0; i < go_runes.Length; i++) {
+				if (go_runes[i].activeSelf)
+					go_runes[i].SetActive(false);
+			}
+		}
     }
 
 	public void ActivateEnemy(Vector3 position) {

@@ -193,27 +193,27 @@ public abstract class EnemyController : SpellTarget {
 	//This will reset the destination with in bounds
 	protected void CheckOutOfBounds() {
 		if (e_startSide == Constants.Global.Side.LEFT) {
-			if (v3_destination.x < -1*Constants.EnemyStats.C_MapBoundryXAxis+1) {
-				v3_destination.x = -1*Constants.EnemyStats.C_MapBoundryXAxis+1;
+			if (v3_destination.x < -1*Constants.EnemyStats.C_MapBoundryXAxis+2) {
+				v3_destination.x = -1*Constants.EnemyStats.C_MapBoundryXAxis+2;
 			}
-			else if (v3_destination.x > -1.0f) {
-				v3_destination.x = -1.0f;
+			else if (v3_destination.x > -2.0f) {
+				v3_destination.x = -2.0f;
 			}
 		}
 		else {
-			if (v3_destination.x > Constants.EnemyStats.C_MapBoundryXAxis-1) {
-				v3_destination.x = Constants.EnemyStats.C_MapBoundryXAxis-1;
+			if (v3_destination.x > Constants.EnemyStats.C_MapBoundryXAxis-2) {
+				v3_destination.x = Constants.EnemyStats.C_MapBoundryXAxis-2;
 			}
-			else if (v3_destination.x < 1.0f) {
-				v3_destination.x = 1.0f;
+			else if (v3_destination.x < 2.0f) {
+				v3_destination.x = 2.0f;
 			}
 		}
 
-		if (v3_destination.z > Constants.EnemyStats.C_MapBoundryZAxis-1) {
-			v3_destination.z = Constants.EnemyStats.C_MapBoundryZAxis-1;
+		if (v3_destination.z > Constants.EnemyStats.C_MapBoundryZAxis-2) {
+			v3_destination.z = Constants.EnemyStats.C_MapBoundryZAxis-2;
 		}
-		else if (v3_destination.z < -1*Constants.EnemyStats.C_MapBoundryZAxis+1) {
-			v3_destination.z = -1*Constants.EnemyStats.C_MapBoundryZAxis+1;
+		else if (v3_destination.z < -1*Constants.EnemyStats.C_MapBoundryZAxis+2) {
+			v3_destination.z = -1*Constants.EnemyStats.C_MapBoundryZAxis+2;
 		}
 	}
 
@@ -247,7 +247,7 @@ public abstract class EnemyController : SpellTarget {
         // @Jeff, this is no longer necessary because of new necro behavior, right?
 		//if (this.enabled) {
 		//	Debug.Log("OnDisable");
-		//	EnterStateDie();
+		//	EnterStateDie(Constants.Global.Color.Null);
 		//}
 	}				 
 	// Update is called once per frame

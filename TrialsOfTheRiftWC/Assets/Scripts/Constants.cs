@@ -13,7 +13,7 @@ public static class Constants {
 
     // Global Constants
     public static class Global {
-        public enum Color { RED, BLUE };
+        public enum Color { Null, RED, BLUE };
         public enum Side { LEFT = -1, RIGHT = 1 };
 		public enum DamageType { WIND, ICE, ELECTRICITY, MAGICMISSILE, ENEMY, RIFT, DEATHBOLT, RUNE, PUCK };
     }
@@ -166,8 +166,8 @@ public static class Constants {
     public static class EnemyStats {
 
         public static float C_NecromancerBaseSpeed = 1.5f;
-        public static float C_NecromancerHealth = 600.0f;
-		public static float C_NecromancerAvoidDistance = 5.0f;
+        public static float C_NecromancerHealth = 650.0f;
+		public static float C_NecromancerAvoidDistance = 3.0f;
 		public static int C_NecromancerSpawnCapPerSide = 1;
 		public static float C_WanderingRadius = 10.0f;
 		public static float C_RuneExplosionCountDownTime = 5.0f;
