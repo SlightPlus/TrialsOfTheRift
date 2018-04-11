@@ -18,6 +18,8 @@ public class RiftBossController : SpellTarget {
         if (!go_ForceField.activeSelf) {
             f_health -= damage;
             rbo_owner.UpdateRiftBossHealth(f_health);
+            CancelInvoke("Notify");
+            InvokeRepeating("Notify", Constants.ObjectiveStats.C_NotificationTimer, Constants.ObjectiveStats.C_NotificationTimer);
         }
     }
 

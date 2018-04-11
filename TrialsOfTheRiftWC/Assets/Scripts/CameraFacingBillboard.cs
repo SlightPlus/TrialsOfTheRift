@@ -14,17 +14,20 @@ public class CameraFacingBillboard : MonoBehaviour {
 #endregion
 
 #region Camera Facing Billboard Methods
-    public void Init(Camera cam, GameObject target)
-    {
-        cam_Camera = cam;
-        go_trackedObject = target;
+    //public void Init(Camera cam, GameObject target) {
+    //    cam_Camera = cam;
+    //    go_trackedObject = target;
+    //}
+
+    private void SetInactive() {
+        gameObject.SetActive(false);
     }
 #endregion
 
 #region Unity Overrides
-    void Start() {
+    void OnEnable() {
         if (go_trackedObject.GetComponent<PlayerController>() == null) {
-            Destroy(gameObject, 1.0f);  // enemy indicators do not persist after spawn
+            Invoke("SetInactive", 2.0f);  // non-player indicators do not persist after spawn
         }
     }
 

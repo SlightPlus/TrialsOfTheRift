@@ -16,15 +16,15 @@ public sealed class Calligrapher : MonoBehaviour {
     [SerializeField] private Image img_redHockeyIcon, img_blueHockeyIcon;
     [SerializeField] private Image img_redNecroIcon, img_blueNecroIcon;
 
-    [SerializeField] private Text txt_redCrystalHealthText, txt_blueCrystalHealthText;
-    [SerializeField] private Image img_redCrystalDestructIcon, img_blueCrystalDestructIcon;
+    //[SerializeField] private Text txt_redCrystalHealthText, txt_blueCrystalHealthText;
+    //[SerializeField] private Image img_redCrystalDestructIcon, img_blueCrystalDestructIcon;
 
     [SerializeField] private Text txt_redRiftBossHealthText, txt_blueRiftBossHealthText;
     [SerializeField] private Image img_redBossIcon, img_blueBossIcon;
 
-    [SerializeField] private Text txt_redCompletionTimer, txt_blueCompletionTimer;
-    [SerializeField] private Text txt_redDestructionTimer, txt_blueDestructionTimer;
-    [SerializeField] private Image img_redKeepAwayIcon, img_blueKeepAwayIcon;
+    //[SerializeField] private Text txt_redCompletionTimer, txt_blueCompletionTimer;
+    //[SerializeField] private Text txt_redDestructionTimer, txt_blueDestructionTimer;
+    //[SerializeField] private Image img_redKeepAwayIcon, img_blueKeepAwayIcon;
 
     [SerializeField] private Text txt_redObjvTitle, txt_blueObjvTitle;
     [SerializeField] private Text txt_redObjvDescription, txt_blueObjvDescription;
@@ -57,14 +57,14 @@ public sealed class Calligrapher : MonoBehaviour {
     }
 
     // update health (Crystal Destruction)
-	public void UpdateCrystalHealthUI(Constants.Global.Color colorIn, float healthIn) {
-        if (colorIn == Constants.Global.Color.RED) {
-            txt_redCrystalHealthText.text = Mathf.CeilToInt(healthIn).ToString();
-        }
-        else if (colorIn == Constants.Global.Color.BLUE) {
-            txt_blueCrystalHealthText.text = Mathf.CeilToInt(healthIn).ToString();
-        }
-    }
+	//public void UpdateCrystalHealthUI(Constants.Global.Color colorIn, float healthIn) {
+ //       if (colorIn == Constants.Global.Color.RED) {
+ //           txt_redCrystalHealthText.text = Mathf.CeilToInt(healthIn).ToString();
+ //       }
+ //       else if (colorIn == Constants.Global.Color.BLUE) {
+ //           txt_blueCrystalHealthText.text = Mathf.CeilToInt(healthIn).ToString();
+ //       }
+ //   }
 
     // update health (Rift Boss)
 	public void UpdateRiftBossHealthUI(Constants.Global.Color colorIn, float healthIn) {
@@ -81,24 +81,24 @@ public sealed class Calligrapher : MonoBehaviour {
     }
 
     // update completion timer (Hot Potato)
-    public void UpdateCompletionTimerUI(Constants.Global.Color colorIn, int timeIn) {
-        if (colorIn == Constants.Global.Color.RED) {
-            txt_redCompletionTimer.text = timeIn.ToString();
-        }
-        else if (colorIn == Constants.Global.Color.BLUE) {
-            txt_blueCompletionTimer.text = timeIn.ToString();
-        }
-    }
+    //public void UpdateCompletionTimerUI(Constants.Global.Color colorIn, int timeIn) {
+    //    if (colorIn == Constants.Global.Color.RED) {
+    //        txt_redCompletionTimer.text = timeIn.ToString();
+    //    }
+    //    else if (colorIn == Constants.Global.Color.BLUE) {
+    //        txt_blueCompletionTimer.text = timeIn.ToString();
+    //    }
+    //}
 
-    // update destruction timer (Hot Potato)
-    public void UpdateDestructionTimerUI(Constants.Global.Color colorIn, int timeIn) {
-        if (colorIn == Constants.Global.Color.RED) {
-            txt_redDestructionTimer.text = timeIn.ToString();
-        }
-        else if (colorIn == Constants.Global.Color.BLUE) {
-            txt_blueDestructionTimer.text = timeIn.ToString();
-        }
-    }
+    //// update destruction timer (Hot Potato)
+    //public void UpdateDestructionTimerUI(Constants.Global.Color colorIn, int timeIn) {
+    //    if (colorIn == Constants.Global.Color.RED) {
+    //        txt_redDestructionTimer.text = timeIn.ToString();
+    //    }
+    //    else if (colorIn == Constants.Global.Color.BLUE) {
+    //        txt_blueDestructionTimer.text = timeIn.ToString();
+    //    }
+    //}
 
     //----------------------------
     // Initialization of different objectives
@@ -159,48 +159,48 @@ public sealed class Calligrapher : MonoBehaviour {
         PopupFadeIn(colorIn);
     }
 
-    public void CrystalDestructionInit(Constants.Global.Color colorIn) {
-        // colorIn will be crystal color, not objective/team color
-        if (colorIn == Constants.Global.Color.RED) {
-            txt_redCrystalHealthText.transform.parent.gameObject.SetActive(true);
-            img_blueCrystalDestructIcon.gameObject.SetActive(true);
+    //public void CrystalDestructionInit(Constants.Global.Color colorIn) {
+    //    // colorIn will be crystal color, not objective/team color
+    //    if (colorIn == Constants.Global.Color.RED) {
+    //        txt_redCrystalHealthText.transform.parent.gameObject.SetActive(true);
+    //        img_blueCrystalDestructIcon.gameObject.SetActive(true);
 
-            txt_blueObjvTitle.text = txt_bluePauseObjvTitle.text = Constants.ObjectiveText.C_CrystalDestructTitle;
-            txt_blueObjvDescription.text = txt_bluePauseObjvDescription.text = Constants.ObjectiveText.C_CrystalDestructDescription;
-            PopupFadeIn(Constants.Global.Color.BLUE);
-        }
-        else {
-            txt_blueCrystalHealthText.transform.parent.gameObject.SetActive(true);
-            img_redCrystalDestructIcon.gameObject.SetActive(true);
+    //        txt_blueObjvTitle.text = txt_bluePauseObjvTitle.text = Constants.ObjectiveText.C_CrystalDestructTitle;
+    //        txt_blueObjvDescription.text = txt_bluePauseObjvDescription.text = Constants.ObjectiveText.C_CrystalDestructDescription;
+    //        PopupFadeIn(Constants.Global.Color.BLUE);
+    //    }
+    //    else {
+    //        txt_blueCrystalHealthText.transform.parent.gameObject.SetActive(true);
+    //        img_redCrystalDestructIcon.gameObject.SetActive(true);
 
-            txt_redObjvTitle.text = txt_redPauseObjvTitle.text = Constants.ObjectiveText.C_CrystalDestructTitle;
-            txt_redObjvDescription.text = txt_redPauseObjvDescription.text = Constants.ObjectiveText.C_CrystalDestructDescription;
-            PopupFadeIn(Constants.Global.Color.RED);
-        }
-        UpdateCrystalHealthUI(colorIn, Constants.ObjectiveStats.C_CrystalMaxHealth);
-    }
+    //        txt_redObjvTitle.text = txt_redPauseObjvTitle.text = Constants.ObjectiveText.C_CrystalDestructTitle;
+    //        txt_redObjvDescription.text = txt_redPauseObjvDescription.text = Constants.ObjectiveText.C_CrystalDestructDescription;
+    //        PopupFadeIn(Constants.Global.Color.RED);
+    //    }
+    //    UpdateCrystalHealthUI(colorIn, Constants.ObjectiveStats.C_CrystalMaxHealth);
+    //}
 
-    public void HotPotatoInit(Constants.Global.Color colorIn) {
-        if (colorIn == Constants.Global.Color.RED) {
-            txt_redCompletionTimer.transform.parent.gameObject.SetActive(true);
-            txt_redDestructionTimer.transform.parent.gameObject.SetActive(true);
-            img_redKeepAwayIcon.gameObject.SetActive(true);
+    //public void HotPotatoInit(Constants.Global.Color colorIn) {
+    //    if (colorIn == Constants.Global.Color.RED) {
+    //        txt_redCompletionTimer.transform.parent.gameObject.SetActive(true);
+    //        txt_redDestructionTimer.transform.parent.gameObject.SetActive(true);
+    //        img_redKeepAwayIcon.gameObject.SetActive(true);
 
-            txt_redObjvTitle.text = txt_redPauseObjvTitle.text = Constants.ObjectiveText.C_PotatoTitle;
-            txt_redObjvDescription.text = txt_redPauseObjvDescription.text = Constants.ObjectiveText.C_PotatoDescription;
-        }
-        else {
-            txt_blueCompletionTimer.transform.parent.gameObject.SetActive(true);
-            txt_blueDestructionTimer.transform.parent.gameObject.SetActive(true);
-            img_blueKeepAwayIcon.gameObject.SetActive(true);
+    //        txt_redObjvTitle.text = txt_redPauseObjvTitle.text = Constants.ObjectiveText.C_PotatoTitle;
+    //        txt_redObjvDescription.text = txt_redPauseObjvDescription.text = Constants.ObjectiveText.C_PotatoDescription;
+    //    }
+    //    else {
+    //        txt_blueCompletionTimer.transform.parent.gameObject.SetActive(true);
+    //        txt_blueDestructionTimer.transform.parent.gameObject.SetActive(true);
+    //        img_blueKeepAwayIcon.gameObject.SetActive(true);
 
-            txt_blueObjvTitle.text = txt_bluePauseObjvTitle.text = Constants.ObjectiveText.C_PotatoTitle;
-            txt_blueObjvDescription.text = txt_bluePauseObjvDescription.text = Constants.ObjectiveText.C_PotatoDescription;
-        }
-        UpdateCompletionTimerUI(colorIn, Constants.ObjectiveStats.C_PotatoCompletionTimer);
-        UpdateDestructionTimerUI(colorIn, Constants.ObjectiveStats.C_PotatoSelfDestructTimer);
-        PopupFadeIn(colorIn);
-    }
+    //        txt_blueObjvTitle.text = txt_bluePauseObjvTitle.text = Constants.ObjectiveText.C_PotatoTitle;
+    //        txt_blueObjvDescription.text = txt_bluePauseObjvDescription.text = Constants.ObjectiveText.C_PotatoDescription;
+    //    }
+    //    UpdateCompletionTimerUI(colorIn, Constants.ObjectiveStats.C_PotatoCompletionTimer);
+    //    UpdateDestructionTimerUI(colorIn, Constants.ObjectiveStats.C_PotatoSelfDestructTimer);
+    //    PopupFadeIn(colorIn);
+    //}
 
     public void RiftBossInit(Constants.Global.Color colorIn) {
         if (colorIn == Constants.Global.Color.RED) {
@@ -261,29 +261,29 @@ public sealed class Calligrapher : MonoBehaviour {
         }
     }
 
-    public void CrystalDestructionReset(Constants.Global.Color colorIn) {
-        if (colorIn == Constants.Global.Color.RED) {
-            txt_redCrystalHealthText.transform.parent.gameObject.SetActive(false);
-            img_blueCrystalDestructIcon.gameObject.SetActive(false);
-        }
-        else {
-            txt_blueCrystalHealthText.transform.parent.gameObject.SetActive(false);            
-            img_redCrystalDestructIcon.gameObject.SetActive(false);
-        }
-    }
+    //public void CrystalDestructionReset(Constants.Global.Color colorIn) {
+    //    if (colorIn == Constants.Global.Color.RED) {
+    //        txt_redCrystalHealthText.transform.parent.gameObject.SetActive(false);
+    //        img_blueCrystalDestructIcon.gameObject.SetActive(false);
+    //    }
+    //    else {
+    //        txt_blueCrystalHealthText.transform.parent.gameObject.SetActive(false);            
+    //        img_redCrystalDestructIcon.gameObject.SetActive(false);
+    //    }
+    //}
 
-    public void HotPotatoReset(Constants.Global.Color colorIn) {
-        if (colorIn == Constants.Global.Color.RED) {
-            txt_redCompletionTimer.transform.parent.gameObject.SetActive(false);
-            txt_redDestructionTimer.transform.parent.gameObject.SetActive(false);
-            img_redKeepAwayIcon.gameObject.SetActive(false);
-        }
-        else {
-            txt_blueCompletionTimer.transform.parent.gameObject.SetActive(false);
-            txt_blueDestructionTimer.transform.parent.gameObject.SetActive(false);
-            img_blueKeepAwayIcon.gameObject.SetActive(false);
-        }
-    }
+    //public void HotPotatoReset(Constants.Global.Color colorIn) {
+    //    if (colorIn == Constants.Global.Color.RED) {
+    //        txt_redCompletionTimer.transform.parent.gameObject.SetActive(false);
+    //        txt_redDestructionTimer.transform.parent.gameObject.SetActive(false);
+    //        img_redKeepAwayIcon.gameObject.SetActive(false);
+    //    }
+    //    else {
+    //        txt_blueCompletionTimer.transform.parent.gameObject.SetActive(false);
+    //        txt_blueDestructionTimer.transform.parent.gameObject.SetActive(false);
+    //        img_blueKeepAwayIcon.gameObject.SetActive(false);
+    //    }
+    //}
 
     public void RiftBossReset(Constants.Global.Color colorIn) {
         if (colorIn == Constants.Global.Color.RED) {

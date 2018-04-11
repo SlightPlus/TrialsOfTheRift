@@ -163,6 +163,9 @@ public class NecromancerController : EnemyController {
 	}
 
     public override void TakeDamage(float damage, Constants.Global.Color color) {
+        CancelInvoke("Notify");
+        InvokeRepeating("Notify", Constants.ObjectiveStats.C_NotificationTimer, Constants.ObjectiveStats.C_NotificationTimer);
+
         base.TakeDamage(damage, color);
         if(f_health < (Constants.ObjectiveStats.C_NecromancerTeleportHealthThreshold * Constants.EnemyStats.C_NecromancerHealth) && !b_teleported) {
             b_teleported = true;
@@ -171,7 +174,6 @@ public class NecromancerController : EnemyController {
             gameObject.transform.localPosition = new Vector3(-gameObject.transform.localPosition.x, 0.5f, gameObject.transform.localPosition.z);
             gameObject.SetActive(true);
         }
-		Debug.Log(f_health);
     }
 
     private void DropRune() {

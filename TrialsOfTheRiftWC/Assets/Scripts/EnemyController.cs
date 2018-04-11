@@ -13,8 +13,6 @@ using System;
 public abstract class EnemyController : SpellTarget {
 
     [SerializeField] protected UnityEngine.AI.NavMeshAgent nma_agent;
-    [SerializeField] protected GameObject go_enemyIndiPrefab;
-    [SerializeField] protected Camera cam_camera;
 
     //Added WANDER and FLEE states
     protected enum State {CHASE, ATTACK, FROZEN, SLOWED, DIE, WANDER, FLEE, SUMMONING, DROPPING};
@@ -218,10 +216,11 @@ public abstract class EnemyController : SpellTarget {
 	}
 
 	public virtual void Init(Constants.Global.Side side) {
-        GameObject enemyIndi = Instantiate(go_enemyIndiPrefab, transform.position, Quaternion.identity);
-        CameraFacingBillboard cfb_this = enemyIndi.GetComponent<CameraFacingBillboard>();
-        cfb_this.Init(cam_camera, gameObject);
+        //GameObject enemyIndi = Instantiate(go_enemyIndiPrefab, transform.position, Quaternion.identity);
+        //CameraFacingBillboard cfb_this = enemyIndi.GetComponent<CameraFacingBillboard>();
+        //cfb_this.Init(cam_camera, gameObject);
 
+        //go_enemyIndiPrefab.ena
         this.enabled = true;
         riftController = RiftController.Instance;   // Init() is called before Start(), these must be set here (repeatedly...)
         maestro = Maestro.Instance;
@@ -243,7 +242,7 @@ public abstract class EnemyController : SpellTarget {
 		EnterStateWander ();
     }
 
-	void OnDisable() {
+    void OnDisable() {
         // @Jeff, this is no longer necessary because of new necro behavior, right?
 		//if (this.enabled) {
 		//	Debug.Log("OnDisable");

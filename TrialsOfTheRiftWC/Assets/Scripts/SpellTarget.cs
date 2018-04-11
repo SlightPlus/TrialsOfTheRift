@@ -11,6 +11,7 @@ public abstract class SpellTarget : MonoBehaviour {
 #region Variables and Declarations
     [SerializeField] protected Constants.Global.Color e_color;  // identifies owning team
     [SerializeField] protected Constants.Global.Side e_startSide;
+    [SerializeField] protected GameObject go_indicator;
     [SerializeField] protected Rigidbody rb;
     [SerializeField] protected Animator anim;
     protected float f_health;
@@ -51,5 +52,17 @@ public abstract class SpellTarget : MonoBehaviour {
             NegateSpellEffect(Constants.SpellStats.SpellType.ELECTRICITYAOE);
         }
 	}
+
+    public virtual void Notify() {
+        go_indicator.SetActive(true);
+    }
+#endregion
+
+#region Unity Overrides
+    void OnEnable() {
+        if (go_indicator) {
+            InvokeRepeating("Notify", 0, Constants.ObjectiveStats.C_NotificationTimer);
+        }
+    }
 #endregion
 }
