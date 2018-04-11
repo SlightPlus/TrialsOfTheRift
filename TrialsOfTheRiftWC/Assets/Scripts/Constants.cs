@@ -13,7 +13,7 @@ public static class Constants {
 
     // Global Constants
     public static class Global {
-        public enum Color { Null, RED, BLUE };
+        public enum Color { RED, BLUE, NULL };
         public enum Side { LEFT = -1, RIGHT = 1 };
 		public enum DamageType { WIND, ICE, ELECTRICITY, MAGICMISSILE, ENEMY, RIFT, DEATHBOLT, RUNE, PUCK };
     }

@@ -150,7 +150,7 @@ public class NecromancerController : EnemyController {
 	protected override void EnterStateDie(Constants.Global.Color color) {
 		CancelInvoke();
         maestro.PlayNecromancerDie();
-        if(color != Constants.Global.Color.Null && e_color == color) {
+        if(color != Constants.Global.Color.NULL && e_color == color) {
             dno_owner.UpdateNecroScore();
         }
         gameObject.transform.localPosition = new Vector3(gameObject.transform.localPosition.x, -1000.0f, gameObject.transform.localPosition.z);

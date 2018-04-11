@@ -174,13 +174,13 @@ public sealed class RiftController : MonoBehaviour {
 		if (go_necromancers[0]) {
 			for (int i = 0; i < go_skeletons.Length; i++) {
 				if (go_skeletons[i].activeSelf) {
-					go_skeletons[i].GetComponent<SkeletonController>().TakeDamage(Constants.EnemyStats.C_EnemyHealth, Constants.Global.Color.Null);
+					go_skeletons[i].GetComponent<SkeletonController>().TakeDamage(Constants.EnemyStats.C_EnemyHealth, Constants.Global.Color.NULL);
 				}
 			}
 
 			for (int i = 0; i < go_necromancers.Length; i++) {
 				if (go_necromancers[i].activeSelf)
-					go_necromancers[i].GetComponent<NecromancerController>().TakeDamage(Constants.EnemyStats.C_NecromancerHealth, Constants.Global.Color.Null);
+					go_necromancers[i].GetComponent<NecromancerController>().TakeDamage(Constants.EnemyStats.C_NecromancerHealth, Constants.Global.Color.NULL);
 			}
 
 			for (int i = 0; i < go_runes.Length; i++) {
