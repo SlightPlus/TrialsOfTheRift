@@ -631,7 +631,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1095454940350538
 GameObject:
   m_ObjectHideFlags: 1
@@ -11156,7 +11156,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1578658822203450}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -14992,6 +14992,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam_Camera: {fileID: 0}
   go_trackedObject: {fileID: 1046801020982888}
+  b_persistent: 0
   v3_offset: {x: -0.1, y: 0.2, z: -0.55}
 --- !u!114 &114057636586604300
 MonoBehaviour:
@@ -15006,6 +15007,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   e_color: 0
   e_startSide: 0
+  go_indicator: {fileID: 0}
   rb: {fileID: 54541032025485842}
   anim: {fileID: 95597660100240548}
   go_playerCapsule: {fileID: 1158233791249846}
@@ -15022,6 +15024,7 @@ MonoBehaviour:
   go_interactCollider: {fileID: 1059748687912170}
   go_parryShield: {fileID: 1162340432778876}
   pauc_pause: {fileID: 0}
+  go_playerBody: {fileID: 1944974508814514}
 --- !u!114 &114071397385997462
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -15099,6 +15102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam_Camera: {fileID: 0}
   go_trackedObject: {fileID: 1353153185889728}
+  b_persistent: 0
   v3_offset: {x: 0, y: 1, z: 1.6}
 --- !u!114 &114153149240008622
 MonoBehaviour:
@@ -15262,6 +15266,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam_Camera: {fileID: 0}
   go_trackedObject: {fileID: 1249339083703078}
+  b_persistent: 0
   v3_offset: {x: -0.1, y: 0.2, z: -0.55}
 --- !u!114 &114278817969382078
 MonoBehaviour:
@@ -15276,6 +15281,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   e_color: 1
   e_startSide: 0
+  go_indicator: {fileID: 0}
   rb: {fileID: 54155329791976608}
   anim: {fileID: 95629151370858986}
   go_playerCapsule: {fileID: 1596629139432532}
@@ -15292,6 +15298,7 @@ MonoBehaviour:
   go_interactCollider: {fileID: 1315272423512706}
   go_parryShield: {fileID: 1337816872148532}
   pauc_pause: {fileID: 0}
+  go_playerBody: {fileID: 1166693149777088}
 --- !u!114 &114284601337949634
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -15685,6 +15692,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam_Camera: {fileID: 0}
   go_trackedObject: {fileID: 1353153185889728}
+  b_persistent: 0
   v3_offset: {x: -0.1, y: 0.2, z: -0.55}
 --- !u!114 &114502435334300102
 MonoBehaviour:
@@ -15813,6 +15821,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   e_color: 0
   e_startSide: 0
+  go_indicator: {fileID: 0}
   rb: {fileID: 54181581919302652}
   anim: {fileID: 95682342582678100}
   go_playerCapsule: {fileID: 1013279725047502}
@@ -15829,6 +15838,7 @@ MonoBehaviour:
   go_interactCollider: {fileID: 1939960635231632}
   go_parryShield: {fileID: 1145716513609388}
   pauc_pause: {fileID: 0}
+  go_playerBody: {fileID: 1719427385870312}
 --- !u!114 &114552481737315232
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -15879,6 +15889,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam_Camera: {fileID: 0}
   go_trackedObject: {fileID: 1368670690458974}
+  b_persistent: 0
   v3_offset: {x: 0, y: 1, z: 1.6}
 --- !u!114 &114611018654624916
 MonoBehaviour:
@@ -15964,6 +15975,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam_Camera: {fileID: 0}
   go_trackedObject: {fileID: 1249339083703078}
+  b_persistent: 0
   v3_offset: {x: 0, y: 1, z: 1.6}
 --- !u!114 &114693623333822452
 MonoBehaviour:
@@ -16139,6 +16151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   e_color: 1
   e_startSide: 0
+  go_indicator: {fileID: 0}
   rb: {fileID: 54107930626215568}
   anim: {fileID: 95951857345941550}
   go_playerCapsule: {fileID: 1007310673532262}
@@ -16155,6 +16168,7 @@ MonoBehaviour:
   go_interactCollider: {fileID: 1091249569307088}
   go_parryShield: {fileID: 1914936371888438}
   pauc_pause: {fileID: 0}
+  go_playerBody: {fileID: 1371219045366256}
 --- !u!114 &114813199882028540
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16349,6 +16363,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam_Camera: {fileID: 0}
   go_trackedObject: {fileID: 1046801020982888}
+  b_persistent: 0
   v3_offset: {x: 0, y: 1, z: 1.6}
 --- !u!114 &114955503295735950
 MonoBehaviour:
@@ -16363,6 +16378,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam_Camera: {fileID: 0}
   go_trackedObject: {fileID: 1368670690458974}
+  b_persistent: 0
   v3_offset: {x: -0.1, y: 0.2, z: -0.55}
 --- !u!114 &114961692489500662
 MonoBehaviour:

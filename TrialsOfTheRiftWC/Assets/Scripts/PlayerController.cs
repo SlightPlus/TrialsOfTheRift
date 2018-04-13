@@ -21,12 +21,14 @@ public class PlayerController : SpellTarget {
     [SerializeField] private GameObject go_interactCollider;  // activated with button-press to interact with objectives
     [SerializeField] private GameObject go_parryShield;       // activated with right stick click
     [SerializeField] private PauseController pauc_pause;        // for pausing
+    [SerializeField] private GameObject go_playerBody;        // for invuln flicker
 
     private int i_playerNumber;             // designates player's number for controller mappings
     private Player p_player;                // rewired player for input control
     private Constants.Global.Side e_side;   // identifies which side of the rift player is on
     private float f_canMove = 1;            // identifies if the player is frozen
     private bool isWisp = false;            // player has "died"
+    private bool isInvuln = false;          // player is invincible (after respawn)
     private bool b_iceboltMode = false;     // player is controlling an icebolt
     private GameObject go_icebolt;          // the icebolt the player is controlling
     private GameObject go_flagObj;          // flag game object; if not null, player is carrying flag
@@ -200,6 +202,9 @@ public class PlayerController : SpellTarget {
 
     private void PlayerRespawn() {
 		isWisp = false;
+        isInvuln = true;
+        Invoke("EndInvuln", Constants.PlayerStats.C_InvulnTime);
+        InvokeRepeating("InvulnFlicker", 0f, 0.25f);
 		maestro.PlayPlayerSpawn();
         go_playerCapsule.SetActive(true);
         go_playerWisp.SetActive(false);
@@ -207,7 +212,7 @@ public class PlayerController : SpellTarget {
     }
 
 	public void TakeDamage(float damage, Constants.Global.DamageType d) {
-		if (!isWisp) {
+		if (!isWisp || !isInvuln) {
 			maestro.PlayAnnouncmentPlayerHit(i_playerNumber,d);
 			maestro.PlayPlayerHit();
 			f_health -= damage;
@@ -227,6 +232,20 @@ public class PlayerController : SpellTarget {
                 f_health = tempHp;
             }
             //HealVisualOn();
+        }
+    }
+
+    private void EndInvuln() {
+        isInvuln = false;
+        go_playerBody.SetActive(true);
+        CancelInvoke("InvulnFlicker");
+    }
+
+    private void InvulnFlicker() {
+        if (go_playerBody.activeSelf == true) {
+            go_playerBody.SetActive(false);
+        } else {
+            go_playerBody.SetActive(true);
         }
     }
     #endregion
