@@ -37,9 +37,7 @@ public class PlayerController : SpellTarget {
 	private float f_nextIce = 0;                    // time next ice spell can be cast
 	private float f_nextElectric = 0;               // time next electric spell can be cast
 	private float f_nextMagicMissile = 0;           // time next magic missile can be cast
-    private float f_nextChargedMagicMissile = 0;    // time next charged magic missile can be cast
     private float f_nextCast = 0;                   // time next spell in general can be cast (does not include magic missile)
-    private float f_mmCharge;               // current charge of magic missile
     private float f_iceCharge;              // current charge of ice spell
     private float f_windCharge;             // current charge of wind spell
     private float f_electricCharge;         // current charge of electric charge
@@ -197,7 +195,6 @@ public class PlayerController : SpellTarget {
         f_nextIce = 0;
         f_nextElectric = 0;
         f_nextCast = 0;
-        f_nextChargedMagicMissile = 0;
         Invoke("PlayerRespawn", Constants.PlayerStats.C_RespawnTimer);
     }
 
@@ -316,7 +313,6 @@ public class PlayerController : SpellTarget {
         f_nextIce += Time.deltaTime;
         f_nextElectric += Time.deltaTime;
 		f_nextCast += Time.deltaTime;
-        f_nextChargedMagicMissile += Time.deltaTime;
 
         // interact
         if (p_player.GetButtonDown("Interact")) {

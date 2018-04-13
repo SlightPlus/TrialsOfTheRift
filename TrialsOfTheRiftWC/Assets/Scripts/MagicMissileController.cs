@@ -12,18 +12,7 @@ public class MagicMissileController : SpellController {
 #endregion
 
 #region Magic Missile Methods
-    override protected void Charge(float f_chargeTime) {
-        /*f_charge = (f_chargeTime * 1 / 3) + 1;
-        if (f_charge > 2f) {
-            f_charge = 2f;
-        }
-        transform.localScale *= f_charge;
-        f_damage = Constants.SpellStats.C_MagicMissileDamage;
-        f_damage *= f_charge;
-        if (f_chargeTime > 0) {
-            i_reflect = true;
-        }*/
-    }
+    override protected void Charge(float f_chargeTime) {}
 
     override protected void BuffSpell() {
         // Magic Missile doesn't cross the rift. Destroy it
