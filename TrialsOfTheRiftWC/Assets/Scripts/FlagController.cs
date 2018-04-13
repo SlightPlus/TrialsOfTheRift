@@ -10,12 +10,14 @@ public class FlagController : MonoBehaviour {
 #region Variables and Declarations
     [SerializeField] private CaptureTheFlagObjective ctfo_owner;    // identifies Objective flag is a part of
     [SerializeField] private Constants.Global.Color e_color;        // identifies owning team
+    [SerializeField] private GameObject go_buttonPrompt;            // indicator to pickup
 #endregion
 
-#region FlagController Methods
+    #region FlagController Methods
     public void DropFlag() {
         transform.SetParent(ctfo_owner.gameObject.transform);   // resets flag parent so Objective can be deactivated correctly
         transform.localPosition = new Vector3(transform.localPosition.x, Constants.ObjectiveStats.C_RedFlagSpawn.y, transform.localPosition.z);
+        ctfo_owner.StartCoroutine("Notify");
     }
 
     public void ResetFlagPosition() {
@@ -26,16 +28,21 @@ public class FlagController : MonoBehaviour {
             transform.localPosition = Constants.ObjectiveStats.C_BlueFlagSpawn;
         }
     }
+
+    private bool IsPickedUp() {
+        return transform.parent.parent.gameObject.CompareTag("Player");
+    }
 #endregion
 
 #region Unity Overrides
     void OnTriggerEnter(Collider other) {
         // Player trying to pick up flag (and flag not already picked up)
-
-        if (other.CompareTag("InteractCollider") && !transform.parent.parent.gameObject.CompareTag("Player")) {
+        if (other.CompareTag("InteractCollider") && !IsPickedUp()) {
 			other.GetComponentInParent<PlayerController>().Pickup(gameObject);
 			other.gameObject.SetActive(false);
-		}
+            ctfo_owner.StopCoroutine("Notify");
+            go_buttonPrompt.SetActive(false);
+        }
         // Player scoring with flag
 		if (other.CompareTag("Goal")) {
 			if (other.GetComponent<GoalController>().Color != e_color) {        // check for correct color of flag/goal
@@ -45,5 +52,17 @@ public class FlagController : MonoBehaviour {
             }
 		}
 	}
+
+    void OnTriggerStay(Collider other) {
+        if (other.CompareTag("Player") && !IsPickedUp()) {
+            go_buttonPrompt.SetActive(true);
+        }
+    }
+
+    void OnTriggerExit(Collider other) {
+        if (other.CompareTag("Player") && !IsPickedUp()) {
+            go_buttonPrompt.SetActive(false);
+        }
+    }
 #endregion
 }

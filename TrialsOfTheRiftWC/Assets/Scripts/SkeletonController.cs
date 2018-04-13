@@ -151,4 +151,7 @@ public class SkeletonController : EnemyController {
 		}
 	}
 
+    void OnEnable() {
+        // do nothing; need to override the InvokeRepeating in SpellTarget
+    }
 }
