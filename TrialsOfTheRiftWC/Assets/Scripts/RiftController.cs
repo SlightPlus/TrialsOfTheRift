@@ -13,6 +13,10 @@ public sealed class RiftController : MonoBehaviour {
     [SerializeField] private GameObject go_riftDeathBolt;
     public GameObject[] go_playerReferences;    // TODO: write a getter for this
     [SerializeField] private GameObject[] go_deathOrbs;
+    [SerializeField]
+    private GameObject go_blueRiftBossHead;
+    [SerializeField]
+    private GameObject go_redRiftBossHead;
 
     // enemies
 	[SerializeField] private GameObject[] go_skeletons;
@@ -327,6 +331,24 @@ public sealed class RiftController : MonoBehaviour {
             }
         }
     }
+
+    public void FireDeathBolts(Constants.RiftStats.DeathboltSpawnPosition initialFirePosition, Constants.Global.Color c) {
+        float f_projectileSize = Constants.SpellStats.C_PlayerProjectileSize;
+
+        var array = new int[] { 0, 1, 2, 3 };
+        new System.Random().Shuffle(array);
+
+        Transform firePosition = DetermineFiringPosition(initialFirePosition, c);
+
+        for (int i = 0; i < 4; i++) {
+            if (go_playerReferences[array[i]].GetComponent<PlayerController>().Color == c) {
+                GameObject go_spell = Instantiate(go_riftDeathBolt, firePosition.position, firePosition.rotation);
+                go_spell.transform.localScale = new Vector3(f_projectileSize, f_projectileSize, f_projectileSize);
+                go_spell.GetComponent<Rigidbody>().velocity = go_playerReferences[array[i]].transform.position.normalized * Constants.RiftStats.C_VolatilityDeathboltSpeed;
+                break;
+            }
+        }
+    }
     #endregion
 
     #region FireDeathbolt() Helper Functions
@@ -336,6 +358,23 @@ public sealed class RiftController : MonoBehaviour {
         }
         else if (e_colorIn == Constants.Global.Color.RED) {
             i_redObjectivesComplete++;
+        }
+    }
+
+    private Transform DetermineFiringPosition(Constants.RiftStats.DeathboltSpawnPosition initialFirePosition, Constants.Global.Color c) {
+        if (initialFirePosition == Constants.RiftStats.DeathboltSpawnPosition.RIFT) {
+            return gameObject.transform;
+        }
+        else {
+            if (c == Constants.Global.Color.BLUE) {
+                return go_blueRiftBossHead.transform;
+            }
+            else if (c == Constants.Global.Color.RED) {
+                return go_redRiftBossHead.transform;
+            }
+            else {
+                return gameObject.transform;
+            }
         }
     }
 

@@ -39,7 +39,7 @@ public class RiftBossController : SpellTarget {
     }
 
     private void FireDeathBolts() {
-        riftController.FireDeathBolts(e_color);
+        riftController.FireDeathBolts(Constants.RiftStats.DeathboltSpawnPosition.RIFTBOSS ,e_color);
         go_ForceField.SetActive(false);
         Invoke("TurnOnForceField", Constants.ObjectiveStats.C_ForceFieldCooldown);
         anim.SetTrigger("deathboltTrigger");
