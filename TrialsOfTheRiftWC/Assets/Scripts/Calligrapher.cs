@@ -28,17 +28,24 @@ public sealed class Calligrapher : MonoBehaviour {
     [SerializeField] private Image img_redFlashBacking, img_blueFlashBacking;
     [SerializeField] private Text  txt_redRoomCounter, txt_blueRoomCounter;
 
+    private Light lgt_redGoal, lgt_blueGoal;
+
     private float f_redStartTime, f_blueStartTime;  // controls UI pop-up fading
     private float f_redFlashTime, f_blueFlashTime;  // separate timers for flash to avoid overwriting, since both animations play at roughly the same time.
+    private float f_redGoalFlashTime, f_blueGoalFlashTime;
 
+
+    #region Singletons
     // Singleton
     private static Calligrapher instance;
     public static Calligrapher Instance {
         get { return instance; }
     }
+    #endregion
 
     /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
+    #region UI Initialization and Updating Methods
     // update score (CTF and Ice Hockey)
     public void UpdateScoreUI(Constants.Global.Color colorIn, int scoreIn) {
         if (colorIn == Constants.Global.Color.RED) {
@@ -192,6 +199,20 @@ public sealed class Calligrapher : MonoBehaviour {
         }
     }
 
+    public void GoalFlashInit(Constants.Global.Color colorIn, Light lightIn) {
+        if (colorIn == Constants.Global.Color.RED) {
+            lgt_redGoal = lightIn;
+            f_redGoalFlashTime = Time.time;
+            InvokeRepeating("RedGoalFlash", 0f, 0.075f);
+        } else {
+            lgt_blueGoal = lightIn;
+            f_blueGoalFlashTime = Time.time;
+            InvokeRepeating("BlueGoalFlash", 0f, 0.075f);
+        }    
+    }
+    #endregion
+
+    #region UI Fade In/Out Methods
     //----------------------------
     // Fade in/out objective description UI at the start of each objective
     private void PopupFadeIn(Constants.Global.Color colorIn) {
@@ -280,9 +301,34 @@ public sealed class Calligrapher : MonoBehaviour {
         }
     }
 
+    private void BlueGoalFlash() {
+        float timer = (Time.time - f_blueGoalFlashTime);
+        float fracJourney = timer / 0.25f;
+        lgt_blueGoal.range = Mathf.Lerp(lgt_blueGoal.range, 8f, fracJourney);
+        if (timer > 0.25f) {
+            lgt_blueGoal.range = 0;
+            CancelInvoke("BlueGoalFlash");
+        }
+    }
+
+    private void RedGoalFlash() {
+        float timer = (Time.time - f_redGoalFlashTime);
+        float fracJourney = timer / 0.25f;
+        lgt_redGoal.range = Mathf.Lerp(lgt_redGoal.range, 8f, fracJourney);
+        Debug.Log("lgtRedGoal.range : " + lgt_redGoal.range);
+        if (timer > 0.25f) {
+            lgt_redGoal.range = 0;
+            CancelInvoke("RedGoalFlash");
+        }
+    }
+
+    #endregion
+
     /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
+    #region Unity Overrides
     void Awake() {
         instance = this;
     }
+    #endregion
 }

@@ -9,6 +9,7 @@ using UnityEngine;
 public class HockeyPuckController : SpellTarget {
 #region Variables and Declarations
     [SerializeField] private IceHockeyObjective iho_owner;    // identifies objective puck is a part of
+    [SerializeField] private Light lgt_goalGlow;              // Goal glow here.
 #endregion
 
 #region HockeyPuckController Methods
@@ -106,6 +107,7 @@ public class HockeyPuckController : SpellTarget {
                 iho_owner.UpdatePuckScore();
                 iho_owner.StopCoroutine("Notify");
                 iho_owner.StartCoroutine("Notify");
+                iho_owner.GoalFlash(lgt_goalGlow);
             }
         }
         else if (other.CompareTag("Enemy") || other.CompareTag("Player")) {

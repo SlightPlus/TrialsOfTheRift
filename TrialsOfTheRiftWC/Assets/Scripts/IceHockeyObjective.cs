@@ -22,6 +22,10 @@ public class IceHockeyObjective : Objective {
             b_isComplete = true;
         }
     }
+
+    public void GoalFlash(UnityEngine.Light light_in) {
+        calligrapher.GoalFlashInit(e_color, light_in);
+    }
 #endregion
 
 #region Unity Overrides

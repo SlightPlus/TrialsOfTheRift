@@ -20,6 +20,7 @@ public class PauseController : MonoBehaviour {
     [SerializeField] GameObject go_options;
     [SerializeField] GameObject go_pause;
 
+    [SerializeField]Text txt_buildLabel;
     [SerializeField]Button butt_select;
     [SerializeField]Button butt_optSelect;
     //private Player p_player;
@@ -73,5 +74,9 @@ public class PauseController : MonoBehaviour {
     public void MatchRestart() {
 		Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    private void Start() {
+        txt_buildLabel.text = "Build: v" + Constants.Global.C_BuildNumber;
     }
 }
