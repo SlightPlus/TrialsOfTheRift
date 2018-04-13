@@ -342,11 +342,6 @@ public class PlayerController : SpellTarget {
 
         // Magic Missile (Auto-fire)
         if (f_nextMagicMissile > Constants.SpellStats.C_MagicMissileCooldown) {
-            if (p_player.GetButtonDown("MagicMissile"))
-				maestro.PlaySpellCharge();
-            if (p_player.GetButtonTimePressed("MagicMissile") != 0) {
-                f_mmCharge += p_player.GetButtonTimePressed("MagicMissile");
-            }
             if (p_player.GetButton("MagicMissile")) {
                 maestro.PlayMagicMissileShoot();
 				anim.SetTrigger ("attackTrigger");
@@ -358,17 +353,6 @@ public class PlayerController : SpellTarget {
                 sc_firing.Init(this, e_color, 0);
             }                
 	    }
-        // Charged Magic Missile (Release)
-        if (p_player.GetButtonUp("MagicMissile") && f_nextChargedMagicMissile > Constants.SpellStats.C_MagicMissileChargeCooldown) {
-			maestro.PlayMagicMissileShoot();
-            f_nextChargedMagicMissile = 0;
-			GameObject go_spell = Instantiate(go_magicMissileShot, t_spellSpawn.position, t_spellSpawn.rotation);
-            go_spell.transform.localScale = new Vector3(f_projectileSize, f_projectileSize, f_projectileSize);
-            go_spell.GetComponent<Rigidbody>().velocity = transform.forward * Constants.SpellStats.C_MagicMissileSpeed;
-            SpellController sc_firing = go_spell.GetComponent<SpellController>();
-            sc_firing.Init(this, e_color, f_mmCharge);
-            f_mmCharge = 0;
-        }
         // Wind Parry Spell
         if (p_player.GetButtonDown("WindSpell")) {
             go_parryShield.SetActive(true);
