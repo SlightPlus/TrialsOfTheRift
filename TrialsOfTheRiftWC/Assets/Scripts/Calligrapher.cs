@@ -6,6 +6,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System.Timers;
 using UnityEngine.UI;
 using UnityEngine;
 
@@ -32,6 +33,7 @@ public sealed class Calligrapher : MonoBehaviour {
 
     private float f_redStartTime, f_blueStartTime;  // controls UI pop-up fading
     private float f_redFlashTime, f_blueFlashTime;  // separate timers for flash to avoid overwriting, since both animations play at roughly the same time.
+    private Timer timer_redFlashInterval, timer_blueFlashInterval;    // for timeScale independant flashing.
     private float f_redGoalFlashTime, f_blueGoalFlashTime;
 
 
@@ -153,12 +155,13 @@ public sealed class Calligrapher : MonoBehaviour {
     // Flash to mask room switching.
 
     public void Flash(Constants.Global.Color colorIn) {
+        Time.timeScale = 0f;
         if (colorIn == Constants.Global.Color.RED) {
-            f_redFlashTime = Time.time;
-            InvokeRepeating("RedFlash", 0.05f, 0.075f);
+            f_redFlashTime = Time.realtimeSinceStartup;
+            StartCoroutine(RedFlash());
         } else {
-            f_blueFlashTime = Time.time;
-            InvokeRepeating("BlueFlash", 0.05f, 0.075f);
+            f_blueFlashTime = Time.realtimeSinceStartup;
+            StartCoroutine(BlueFlash());
         }
     }
 
@@ -283,30 +286,42 @@ public sealed class Calligrapher : MonoBehaviour {
         }
     }
 
-    private void BlueFlash() {
-        float timer = (Time.time - f_blueFlashTime);
+    private IEnumerator BlueFlash() {
+        float timer = (Time.realtimeSinceStartup - f_blueFlashTime);
         float fracJourney = timer / 0.4f;
         img_blueFlashBacking.color = Color.Lerp(img_blueFlashBacking.color, new Color(1,1,1,0), fracJourney);
         if (timer > 0.4f) {
-            CancelInvoke("BlueFlash");
+            Time.timeScale = 1;
+            StopCoroutine(BlueFlash());
+            yield break;
         }
+        yield return new WaitForSecondsRealtime(0.075f);
+        StartCoroutine(BlueFlash());
     }
 
-    private void RedFlash() {
-        float timer = (Time.time - f_redFlashTime);
+    private IEnumerator RedFlash() {
+        float timer = (Time.realtimeSinceStartup - f_redFlashTime);
         float fracJourney = timer / 0.4f;
         img_redFlashBacking.color = Color.Lerp(img_redFlashBacking.color, new Color(1,1,1,0), fracJourney);
         if (timer > 0.4f) {
-            CancelInvoke("RedFlash");
+            StopCoroutine(RedFlash());
+            yield break;
         }
+        yield return new WaitForSecondsRealtime(0.075f);
+        StartCoroutine(RedFlash());
     }
 
     private void BlueGoalFlash() {
         float timer = (Time.time - f_blueGoalFlashTime);
         float fracJourney = timer / 0.25f;
-        lgt_blueGoal.range = Mathf.Lerp(lgt_blueGoal.range, 8f, fracJourney);
+        if (lgt_blueGoal != null) {
+            lgt_blueGoal.range = Mathf.Lerp(lgt_blueGoal.range, 8f, fracJourney);
+        }
+        
         if (timer > 0.25f) {
-            lgt_blueGoal.range = 0;
+            if (lgt_blueGoal != null) {
+                lgt_blueGoal.range = 0;
+            }
             CancelInvoke("BlueGoalFlash");
         }
     }
@@ -314,10 +329,14 @@ public sealed class Calligrapher : MonoBehaviour {
     private void RedGoalFlash() {
         float timer = (Time.time - f_redGoalFlashTime);
         float fracJourney = timer / 0.25f;
-        lgt_redGoal.range = Mathf.Lerp(lgt_redGoal.range, 8f, fracJourney);
-        Debug.Log("lgtRedGoal.range : " + lgt_redGoal.range);
+        if (lgt_redGoal != null) {
+            lgt_redGoal.range = Mathf.Lerp(lgt_redGoal.range, 8f, fracJourney);
+        }
+        
         if (timer > 0.25f) {
-            lgt_redGoal.range = 0;
+            if (lgt_redGoal != null) {
+                lgt_redGoal.range = 0;
+            }
             CancelInvoke("RedGoalFlash");
         }
     }

@@ -3093,6 +3093,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f133622674575e54c89142093b338ea6, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &567205328 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114980289765004476, guid: f133622674575e54c89142093b338ea6,
+    type: 2}
+  m_PrefabInternal: {fileID: 567205327}
+  m_Script: {fileID: 11500000, guid: ac7a40619ab212b4fa170935035fb96c, type: 3}
 --- !u!1 &570329476 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1938367555442768, guid: ba51cd5f17113b846af6592fc466392c,
@@ -4546,6 +4552,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1f6452573653d4242b25fd7aba3f2dbf, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &815861362 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114651926557978906, guid: 1f6452573653d4242b25fd7aba3f2dbf,
+    type: 2}
+  m_PrefabInternal: {fileID: 815861361}
+  m_Script: {fileID: 11500000, guid: ac7a40619ab212b4fa170935035fb96c, type: 3}
 --- !u!1 &819709228
 GameObject:
   m_ObjectHideFlags: 0
@@ -5659,6 +5671,11 @@ Prefab:
       propertyPath: go_roomPool.Array.data[2]
       value: 
       objectReference: {fileID: 2099098997}
+    - target: {fileID: 23521433410285188, guid: f981430eb51e2cb44bd79bb554e56b86,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f981430eb51e2cb44bd79bb554e56b86, type: 2}
   m_IsPrefabParent: 0
@@ -8678,6 +8695,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9de8c005069aeca4fac05ee8f9619fe4, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1340965341 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114247102603062988, guid: 9de8c005069aeca4fac05ee8f9619fe4,
+    type: 2}
+  m_PrefabInternal: {fileID: 1340965340}
+  m_Script: {fileID: 11500000, guid: 0fbe393dd7019ea4a9b36479d14adc42, type: 3}
 --- !u!1 &1342396672
 GameObject:
   m_ObjectHideFlags: 0
@@ -10337,13 +10360,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objv_redObjectiveList:
-  - {fileID: 763480513}
-  - {fileID: 763480513}
+  - {fileID: 567205328}
+  - {fileID: 1340965341}
   - {fileID: 763480513}
   - {fileID: 20138564}
   objv_blueObjectiveList:
-  - {fileID: 506121611}
-  - {fileID: 506121611}
+  - {fileID: 815861362}
+  - {fileID: 1905325149}
   - {fileID: 506121611}
   - {fileID: 1068293295}
   txt_winMsg: {fileID: 2146816463}
@@ -10956,6 +10979,12 @@ Transform:
   m_PrefabParentObject: {fileID: 4514362183137876, guid: 2e5fc77228c0f3c4fb40961dae78efe4,
     type: 2}
   m_PrefabInternal: {fileID: 1905325147}
+--- !u!114 &1905325149 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114349391363184172, guid: 2e5fc77228c0f3c4fb40961dae78efe4,
+    type: 2}
+  m_PrefabInternal: {fileID: 1905325147}
+  m_Script: {fileID: 11500000, guid: 0fbe393dd7019ea4a9b36479d14adc42, type: 3}
 --- !u!1 &1905325150 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1394911406933612, guid: 2e5fc77228c0f3c4fb40961dae78efe4,
