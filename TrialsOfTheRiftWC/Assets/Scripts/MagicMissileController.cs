@@ -12,7 +12,10 @@ public class MagicMissileController : SpellController {
 #endregion
 
 #region Magic Missile Methods
-    override protected void Charge(float f_chargeTime) {}
+    override protected void Charge(float f_chargeTime) {
+        //This shouldn't be called
+        Debug.Log("You fucked up somewhere: Magic Missile.");
+    }
 
     override protected void BuffSpell() {
         // Magic Missile doesn't cross the rift. Destroy it
