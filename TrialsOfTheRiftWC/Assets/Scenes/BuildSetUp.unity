@@ -3125,7 +3125,7 @@ Prefab:
         type: 2}
       propertyPath: go_goalGlow
       value: 
-      objectReference: {fileID: 1460138108}
+      objectReference: {fileID: 1027128265}
     - target: {fileID: 1477190007887624, guid: f133622674575e54c89142093b338ea6, type: 2}
       propertyPath: m_IsActive
       value: 1
@@ -4629,7 +4629,7 @@ Prefab:
         type: 2}
       propertyPath: go_goalGlow
       value: 
-      objectReference: {fileID: 1027128265}
+      objectReference: {fileID: 1460138108}
     - target: {fileID: 114651926557978906, guid: 1f6452573653d4242b25fd7aba3f2dbf,
         type: 2}
       propertyPath: gc_owned
@@ -6550,7 +6550,7 @@ Light:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1016017372}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 0, g: 0.006896496, b: 1, a: 1}
@@ -6800,9 +6800,9 @@ Transform:
   m_GameObject: {fileID: 1027128265}
   m_LocalRotation: {x: -0.67693824, y: -0.0036948011, z: 0.004017273, w: 0.7360196}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.45779318, y: 0.4609288, z: 0.91223365}
+  m_LocalScale: {x: 0.45779306, y: 0.46092886, z: 0.91223365}
   m_Children: []
-  m_Father: {fileID: 815861363}
+  m_Father: {fileID: 1740854646}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -85.171005, y: -7.4240003, z: 7.4500003}
 --- !u!108 &1027128267
@@ -9582,9 +9582,9 @@ Transform:
   m_GameObject: {fileID: 1460138108}
   m_LocalRotation: {x: -0.67693824, y: -0.0036948011, z: 0.004017273, w: 0.7360196}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4578269, y: 0.46251497, z: 0.9154503}
+  m_LocalScale: {x: 0.4578268, y: 0.4625151, z: 0.91545033}
   m_Children: []
-  m_Father: {fileID: 1740854646}
+  m_Father: {fileID: 815861363}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -85.171005, y: -7.4240003, z: 7.4500003}
 --- !u!108 &1460138110
