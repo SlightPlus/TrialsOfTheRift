@@ -18,7 +18,7 @@ public class CaptureTheFlagObjective : Objective {
     }
 
     // Update UI and check for completion
-    public void UpdateFlagScore(UnityEngine.GameObject go_in) {
+    public void UpdateFlagScore() {
         i_score++;
         calligrapher.UpdateScoreUI(e_color, i_score);
         gc_owned.FlashOn();

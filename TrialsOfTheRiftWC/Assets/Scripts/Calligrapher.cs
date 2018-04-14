@@ -31,7 +31,6 @@ public sealed class Calligrapher : MonoBehaviour {
 
     private float f_redStartTime, f_blueStartTime;  // controls UI pop-up fading
     private float f_redFlashTime, f_blueFlashTime;  // separate timers for flash to avoid overwriting, since both animations play at roughly the same time.
-    private float f_redGoalFlashTime, f_blueGoalFlashTime;
 
 
     #region Singletons
