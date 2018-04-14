@@ -13,6 +13,10 @@ public sealed class RiftController : MonoBehaviour {
     [SerializeField] private GameObject go_riftDeathBolt;
     public GameObject[] go_playerReferences;    // TODO: write a getter for this
     [SerializeField] private GameObject[] go_deathOrbs;
+    [SerializeField]
+    private RiftBossController rbc_redRiftBossController;
+    [SerializeField]
+    private RiftBossController rbc_blueRiftBossController;
 
     // enemies
 	[SerializeField] private GameObject[] go_skeletons;
@@ -64,6 +68,15 @@ public sealed class RiftController : MonoBehaviour {
 
     public GameObject[] LeftEnemySpawners {
         set { go_leftEnemySpawners = value; }
+    }
+
+    public Constants.Global.Color GetRiftBossWinningTeamColor() {
+        if (rbc_redRiftBossController.Health < rbc_blueRiftBossController.Health) {
+            return Constants.Global.Color.RED;
+        }
+        else {
+            return Constants.Global.Color.BLUE;
+        }
     }
     #endregion
 #endregion
@@ -210,7 +223,7 @@ public sealed class RiftController : MonoBehaviour {
 		i_nextEnemySpawnIndex = (i_nextEnemySpawnIndex+1)%go_skeletons.Length;
 	}
 
-	public void ActivateRune(Vector3 position) {
+    public void ActivateRune(Vector3 position) {
 	    for (int i = 0; i < go_runes.Length; i++) {
 			if (!(go_runes[i].activeSelf)) {
 
