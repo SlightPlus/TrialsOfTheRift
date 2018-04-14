@@ -5277,7 +5277,7 @@ Transform:
   m_GameObject: {fileID: 1451983433892108}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4257848300808392}
   - {fileID: 4726487253296154}
@@ -8375,7 +8375,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 10, y: 10, z: 5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &65261333728835146
 BoxCollider:
@@ -8792,6 +8792,10 @@ MonoBehaviour:
   - {fileID: 1832096744400442}
   - {fileID: 1805664559639406}
   - {fileID: 1630689339024924}
+  go_skeletons:
+  - {fileID: 1735926423635914}
+  - {fileID: 1086116161993094}
+  - {fileID: 1780300345889864}
 --- !u!114 &114722675734106524
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8864,7 +8868,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   e_color: 2
   e_startSide: 0
-  go_indicator: {fileID: 0}
+  go_indicator: {fileID: 1971260093398270}
   rb: {fileID: 54261029104748490}
   anim: {fileID: 95450560265728778}
   nma_agent: {fileID: 195784079691307892}
@@ -8930,7 +8934,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   e_color: 2
   e_startSide: 0
-  go_indicator: {fileID: 0}
+  go_indicator: {fileID: 1061498763701452}
   rb: {fileID: 54666643171626412}
   anim: {fileID: 95304812400729600}
   nma_agent: {fileID: 195236521700956070}
@@ -8947,7 +8951,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   e_color: 2
   e_startSide: 0
-  go_indicator: {fileID: 0}
+  go_indicator: {fileID: 1114207972477656}
   rb: {fileID: 54453936520702740}
   anim: {fileID: 95888945555584756}
   nma_agent: {fileID: 195707505200904276}

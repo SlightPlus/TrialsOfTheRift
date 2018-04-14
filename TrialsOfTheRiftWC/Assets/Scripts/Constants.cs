@@ -161,6 +161,7 @@ public static class Constants {
         public static float C_DeathBoltCooldown = 6.0f;
         public static float C_ForceFieldCooldown = 7.0f;
         public static float C_RuneDamage = 75.0f;
+		public static int C_RiftBossEnemies = 3;
     }
        
     // Enemy Stats

@@ -11,8 +11,8 @@ public class RiftBossController : SpellTarget {
     [SerializeField] private RiftBossObjective rbo_owner;  // identifies objective rift boss is a part of
     [SerializeField] private GameObject go_ForceField;
     [SerializeField] private GameObject[] go_runes;
-    [SerializeField]
-    private GameObject[] go_skeletons;
+    [SerializeField] private GameObject[] go_skeletons;
+	private bool b_firstShield, b_secondShield = false;
 #endregion
 
 #region RiftBossController Methods
@@ -50,19 +50,22 @@ public class RiftBossController : SpellTarget {
     private void TurnOnForceField() {
         go_ForceField.SetActive(true);
 
-        if (e_color == Constants.Global.Color.RED) {
-            int skeletonSpawnCount = 3;
-            if (RiftController.Instance.GetRiftBossWinningTeamColor() == Constants.Global.Color.BLUE) {
-                skeletonSpawnCount = 2;
-            }
-            RiftController.Instance.RiftBossSpawnEnemies(Constants.Global.Side.LEFT, go_skeletons, skeletonSpawnCount);
-            }
-        else {
-            int skeletonSpawnCount = 3;
-            if (RiftController.Instance.GetRiftBossWinningTeamColor() == Constants.Global.Color.RED) {
-                skeletonSpawnCount = 2;
-            }
-            RiftController.Instance.RiftBossSpawnEnemies(Constants.Global.Side.RIGHT, go_skeletons, skeletonSpawnCount);
+        if (e_color == riftController.GetRiftBossWinningTeamColor())
+        {
+            ActivateEnemies(Constants.ObjectiveStats.C_RiftBossEnemies);
+        }
+        else
+        {
+            ActivateEnemies(Constants.ObjectiveStats.C_RiftBossEnemies-1);
+        }
+    }
+	
+	private void ActivateEnemies(float skeletonSpawnCount){
+        for (int i = 0; i < skeletonSpawnCount; i++) {
+            // move skeleton into position - must happen before Init() is called
+            go_skeletons[i].transform.position = go_runes[i].transform.position;
+            go_skeletons[i].GetComponent<SkeletonController>().Init(e_startSide);
+            go_skeletons[i].SetActive(true);
         }
     }
 #endregion
@@ -84,7 +87,12 @@ public class RiftBossController : SpellTarget {
     }
 
     private void Update() {
-        if ( ((f_health <= (Constants.ObjectiveStats.C_RiftBossMaxHealth * 0.6667)) || (f_health <= (Constants.ObjectiveStats.C_RiftBossMaxHealth * 0.3334))) ) {
+        if ((f_health <= (Constants.ObjectiveStats.C_RiftBossMaxHealth * 0.6667)) && !b_firstShield) {
+			b_firstShield = true;
+            TurnOnForceField();
+        }
+		else if ((f_health <= (Constants.ObjectiveStats.C_RiftBossMaxHealth * 0.3334)) && !b_secondShield) {
+			b_secondShield = true;
             TurnOnForceField();
         }
 

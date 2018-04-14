@@ -28,10 +28,10 @@ public abstract class SpellTarget : MonoBehaviour {
     public Coroutine AOECoroutine {
         set { cor_AOECoroutine = value; }
     }
-
-    public float GetHealth() {
-        return f_health;
-    }
+	
+	public float Health{
+		get { return f_health; }
+	}
     #endregion
 #endregion
 
