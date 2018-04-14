@@ -1792,6 +1792,14 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1012262202485274, guid: 8fb093fcf1223414d9e926575e23da84, type: 2}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 1012262202485274, guid: 8fb093fcf1223414d9e926575e23da84, type: 2}
+      propertyPath: m_Layer
+      value: 19
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8fb093fcf1223414d9e926575e23da84, type: 2}
   m_IsPrefabParent: 0
@@ -3365,9 +3373,9 @@ GameObject:
   - component: {fileID: 653894004}
   - component: {fileID: 653894003}
   - component: {fileID: 653894002}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: DA_ENV-S_SideWall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11099,9 +11107,9 @@ GameObject:
   - component: {fileID: 1868287710}
   - component: {fileID: 1868287709}
   - component: {fileID: 1868287708}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: DA_ENV-S_LongWall (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11230,6 +11238,14 @@ Prefab:
     - target: {fileID: 4470773925901636, guid: 70659f77934cced499ad3811535b9259, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1995981368845428, guid: 70659f77934cced499ad3811535b9259, type: 2}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 1995981368845428, guid: 70659f77934cced499ad3811535b9259, type: 2}
+      propertyPath: m_Layer
+      value: 19
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 70659f77934cced499ad3811535b9259, type: 2}
