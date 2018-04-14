@@ -56,6 +56,16 @@ public abstract class SpellTarget : MonoBehaviour {
     public virtual void Notify() {
         go_indicator.SetActive(true);
     }
+	
+	public IEnumerator WindPush(Rigidbody target, Vector3 direction){
+		float startTime = Time.time;
+		float elapsedTime = 0;
+		while(elapsedTime < .99f){
+			elapsedTime = (Time.time - startTime)/C_WindPushTime;
+			target.AddForce(direction * Mathf.Lerp(Constants.SpellStats.C_WindForce,0f,elapsedTime));
+			yield return 0;
+		}
+	}
 #endregion
 
 #region Unity Overrides

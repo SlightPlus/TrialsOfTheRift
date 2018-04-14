@@ -38,7 +38,7 @@ public abstract class EnemyController : SpellTarget {
     override public void ApplySpellEffect(Constants.SpellStats.SpellType spell, Constants.Global.Color color, float damage, Vector3 direction) {
         switch(spell) {
             case Constants.SpellStats.SpellType.WIND:
-                rb.AddForce(direction * Constants.SpellStats.C_WindForce);
+                StartCoroutine(WindPush(rb,direction));
                 break;
             case Constants.SpellStats.SpellType.ICE:
                 Freeze();
