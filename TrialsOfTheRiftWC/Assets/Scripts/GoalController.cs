@@ -7,12 +7,12 @@
 using UnityEngine;
 
 public class GoalController : MonoBehaviour {
-#region Variables and Declarations
+    #region Variables and Declarations
     [SerializeField] private Constants.Global.Color e_color; // identifies owning team
     [SerializeField] private GameObject go_goalGlow;
     #endregion
 
-#region Visual Methods
+    #region Visual Methods
     public void FlashOn() {
         go_goalGlow.SetActive(true);
         Invoke("FlashOff", 1.0f);
@@ -21,13 +21,12 @@ public class GoalController : MonoBehaviour {
     private void FlashOff() {
         go_goalGlow.SetActive(false);
     }
-#endregion
+    #endregion
 
     #region Getters and Setters
     public Constants.Global.Color Color {
         get { return e_color; }
     }
-#endregion
-
+    #endregion
      
 }
