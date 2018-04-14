@@ -13,6 +13,10 @@ public sealed class RiftController : MonoBehaviour {
     [SerializeField] private GameObject go_riftDeathBolt;
     public GameObject[] go_playerReferences;    // TODO: write a getter for this
     [SerializeField] private GameObject[] go_deathOrbs;
+    [SerializeField]
+    private RiftBossController rbc_redRiftBossController;
+    [SerializeField]
+    private RiftBossController rbc_blueRiftBossController;
 
     // enemies
 	[SerializeField] private GameObject[] go_skeletons;
@@ -64,6 +68,15 @@ public sealed class RiftController : MonoBehaviour {
 
     public GameObject[] LeftEnemySpawners {
         set { go_leftEnemySpawners = value; }
+    }
+
+    public Constants.Global.Color GetRiftBossWinningTeamColor() {
+        if (rbc_redRiftBossController.GetHealth() < rbc_blueRiftBossController.GetHealth()) {
+            return Constants.Global.Color.RED;
+        }
+        else {
+            return Constants.Global.Color.BLUE;
+        }
     }
     #endregion
 #endregion
@@ -210,7 +223,28 @@ public sealed class RiftController : MonoBehaviour {
 		i_nextEnemySpawnIndex = (i_nextEnemySpawnIndex+1)%go_skeletons.Length;
 	}
 
-	public void ActivateRune(Vector3 position) {
+    // Activate enemies for RiftBossController at a position
+    public void RiftBossActivateEnemy(Vector3 position, GameObject[] skeletons, int skeletonSpawnCount)
+    {
+        for (int i = 0; i < skeletonSpawnCount; i++) {
+            // move skeleton into position - must happen before Init() is called
+            go_skeletons[i].transform.position = position;
+
+            if (!(go_skeletons[i].activeSelf)) {
+
+                if (position.x < 0f) {
+                    go_skeletons[i].GetComponent<SkeletonController>().Init(Constants.Global.Side.LEFT);
+                }
+                else {
+                    go_skeletons[i].GetComponent<SkeletonController>().Init(Constants.Global.Side.RIGHT);
+                }
+
+                go_skeletons[i].SetActive(true);
+            }
+        }
+    }
+
+    public void ActivateRune(Vector3 position) {
 	    for (int i = 0; i < go_runes.Length; i++) {
 			if (!(go_runes[i].activeSelf)) {
 
@@ -242,6 +276,22 @@ public sealed class RiftController : MonoBehaviour {
         }
     }
 
+    // Spawns all of the RiftBossController's enemies at a singular random position
+    public void RiftBossSpawnEnemies(Constants.Global.Side side, GameObject[] skeletons, int skeletonSpawnCount)
+    {
+        int randLeft = UnityEngine.Random.Range(0, go_leftEnemySpawners.Length);
+        int randRight = UnityEngine.Random.Range(0, go_rightEnemySpawners.Length);
+
+        if (side == Constants.Global.Side.LEFT) {
+            Vector3 pos = go_leftEnemySpawners[randLeft].transform.position;
+            RiftBossCircularEnemySpawn(pos, side, skeletons, skeletonSpawnCount);
+        }
+        else {
+            Vector3 pos = go_rightEnemySpawners[randRight].transform.position;
+            RiftBossCircularEnemySpawn(pos, side, skeletons, skeletonSpawnCount);
+        }
+    }
+
     // Spawns an enemy at a specified position
     public void SpawnEnemy(Vector3 position, Constants.Global.Side side) {
         // only spawn if below enemy side cap TODO: is this expected behavior?
@@ -262,6 +312,22 @@ public sealed class RiftController : MonoBehaviour {
         }
         else {
             SpawnEnemy(spawnPos, side);
+        }
+    }
+
+    // Spawns an enemy for RiftBossController within a radius when a valid position is selected
+    public void RiftBossCircularEnemySpawn(Vector3 center, Constants.Global.Side side, GameObject[] skeletons, int skeletonSpawnCount)
+    {
+        Vector3 spawnPos = RandomCircle(center, side, Constants.EnemyStats.C_SpawnRadius);
+
+        // Checks to see if the spawn position is already occupied by anything with a collider
+        // If it is, find a new spawn position for the enemy
+        var hitColliders = Physics.OverlapSphere(spawnPos, 0.0005f);
+        if (hitColliders.Length > 0) {
+            RiftBossCircularEnemySpawn(center, side, skeletons, skeletonSpawnCount);
+        }
+        else {
+            RiftBossActivateEnemy(spawnPos, skeletons, skeletonSpawnCount);
         }
     }
 

@@ -11,6 +11,8 @@ public class RiftBossController : SpellTarget {
     [SerializeField] private RiftBossObjective rbo_owner;  // identifies objective rift boss is a part of
     [SerializeField] private GameObject go_ForceField;
     [SerializeField] private GameObject[] go_runes;
+    [SerializeField]
+    private GameObject[] go_skeletons;
 #endregion
 
 #region RiftBossController Methods
@@ -40,13 +42,28 @@ public class RiftBossController : SpellTarget {
 
     private void FireDeathBolts() {
         riftController.FireDeathBolts(e_color);
-        go_ForceField.SetActive(false);
+        //go_ForceField.SetActive(false);
         Invoke("TurnOnForceField", Constants.ObjectiveStats.C_ForceFieldCooldown);
         anim.SetTrigger("deathboltTrigger");
     }
 
     private void TurnOnForceField() {
         go_ForceField.SetActive(true);
+
+        if (e_color == Constants.Global.Color.RED) {
+            int skeletonSpawnCount = 3;
+            if (RiftController.Instance.GetRiftBossWinningTeamColor() == Constants.Global.Color.BLUE) {
+                skeletonSpawnCount = 2;
+            }
+            RiftController.Instance.RiftBossSpawnEnemies(Constants.Global.Side.LEFT, go_skeletons, skeletonSpawnCount);
+            }
+        else {
+            int skeletonSpawnCount = 3;
+            if (RiftController.Instance.GetRiftBossWinningTeamColor() == Constants.Global.Color.RED) {
+                skeletonSpawnCount = 2;
+            }
+            RiftController.Instance.RiftBossSpawnEnemies(Constants.Global.Side.RIGHT, go_skeletons, skeletonSpawnCount);
+        }
     }
 #endregion
 
@@ -64,6 +81,26 @@ public class RiftBossController : SpellTarget {
 
         InvokeRepeating("FireDeathBolts", Constants.ObjectiveStats.C_DeathBoltCooldown, Constants.ObjectiveStats.C_DeathBoltCooldown + Constants.ObjectiveStats.C_ForceFieldCooldown);
         InvokeRepeating("SpawnRunes", Constants.ObjectiveStats.C_RuneSpawnInterval, Constants.ObjectiveStats.C_RuneSpawnInterval);
+    }
+
+    private void Update() {
+        if ( ((f_health <= (Constants.ObjectiveStats.C_RiftBossMaxHealth * 0.6667)) || (f_health <= (Constants.ObjectiveStats.C_RiftBossMaxHealth * 0.3334))) ) {
+            TurnOnForceField();
+        }
+
+        if (go_ForceField.activeSelf) {
+            int inactiveSkeletonCount = 0;
+
+            for (int i = 0; i < 3; i++) {
+                if (!go_skeletons[i].activeSelf) {
+                    inactiveSkeletonCount++;
+                }
+            }
+
+            if (inactiveSkeletonCount == 3) {
+                go_ForceField.SetActive(false);
+            }
+        }
     }
     #endregion
 }
