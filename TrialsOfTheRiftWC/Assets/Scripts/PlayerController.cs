@@ -147,6 +147,10 @@ public class PlayerController : SpellTarget {
 
 		//anim.SetFloat ("runSpeed", v3_moveDir.magnitude);
 		//anim.SetFloat ("lookDirection", v3_aimDir.magnitude);
+		anim.SetFloat ("runSpeedX", f_inputX);
+		anim.SetFloat ("runSpeedZ", f_inputZ);
+		anim.SetFloat ("aimDirectionX", f_aimInputX);
+		anim.SetFloat ("aimDirectionZ", f_aimInputZ);
 
 		if (v3_aimDir.magnitude > 0) {
 			transform.rotation = Quaternion.LookRotation(v3_aimDir);
@@ -468,11 +472,5 @@ public class PlayerController : SpellTarget {
 		}
        
     }
-	
-	[ContextMenu("DIE")]
-	public void TEST_playerDie()
-	{
-		DissolvePlayer();
-	}
 #endregion
 }
