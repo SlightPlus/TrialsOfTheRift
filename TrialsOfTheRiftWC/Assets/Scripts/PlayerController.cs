@@ -220,7 +220,7 @@ public class PlayerController : SpellTarget {
 	}
 
 	private IEnumerator DoDissolvePlayer(){
-		dissolve.ParamIncrease(5f, false, "_DisintegrateAmount");
+		dissolve.ParamIncrease(2f, false, "_DisintegrateAmount");
 		yield return new WaitUntil(() => dissolve.isFinished);
 		dissolve.isFinished = false;
 		go_playerCapsule.SetActive(false);
@@ -238,8 +238,8 @@ public class PlayerController : SpellTarget {
     }
 	
 	private void ReconstructPlayer(){
-		StartCoroutine(DoWispFadeOut());
 		StartCoroutine(DoConstructPlayer());
+		StartCoroutine(DoWispFadeOut());
 	}
 	
     private IEnumerator DoWispFadeOut(){
