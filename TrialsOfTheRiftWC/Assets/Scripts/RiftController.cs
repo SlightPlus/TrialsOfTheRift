@@ -13,10 +13,6 @@ public sealed class RiftController : MonoBehaviour {
     [SerializeField] private GameObject go_riftDeathBolt;
     public GameObject[] go_playerReferences;    // TODO: write a getter for this
     [SerializeField] private GameObject[] go_deathOrbs;
-    [SerializeField]
-    private GameObject go_blueRiftBossHead;
-    [SerializeField]
-    private GameObject go_redRiftBossHead;
 
     // enemies
 	[SerializeField] private GameObject[] go_skeletons;
@@ -117,7 +113,7 @@ public sealed class RiftController : MonoBehaviour {
             anim.SetInteger("volatility", 2);
             EnterNewVolatilityLevel();
             Constants.Global.Color colorToAttack = DetermineWinningTeam();
-            FireDeathBolts(colorToAttack);
+            FireDeathBolts(gameObject.transform ,colorToAttack);
         }
         else if (f_volatility >= 5.0f && e_currentVolatilityLevel != Constants.RiftStats.Volatility.FIVE) {
             e_currentVolatilityLevel = Constants.RiftStats.Volatility.FIVE;
@@ -311,34 +307,16 @@ public sealed class RiftController : MonoBehaviour {
 
         return pos;
     }
-
+    
     // @Joe get this working
     // Joe: NO BITCH, I DO WHAT I WANT! >:(
-    public void FireDeathBolts(Constants.Global.Color c) {
-     // Only shoot at players of Color c, and don't collide with anything EXCEPT players (layer matrix, probably)
+    public void FireDeathBolts(Transform firePosition, Constants.Global.Color c) {
+        // Only shoot at players of Color c, and don't collide with anything EXCEPT players (layer matrix, probably)
 
-        float f_projectileSize = Constants.SpellStats.C_PlayerProjectileSize;
-        
-        var array = new int[] { 0, 1, 2, 3 };
-        new System.Random().Shuffle(array);
-
-        for (int i = 0; i < 4; i++) {
-            if (go_playerReferences[array[i]].GetComponent<PlayerController>().Color == c) {
-                GameObject go_spell = Instantiate(go_riftDeathBolt, gameObject.transform.position, gameObject.transform.rotation);
-                go_spell.transform.localScale = new Vector3(f_projectileSize, f_projectileSize, f_projectileSize);
-                go_spell.GetComponent<Rigidbody>().velocity = go_playerReferences[array[i]].transform.position.normalized * Constants.RiftStats.C_VolatilityDeathboltSpeed;
-                break;
-            }
-        }
-    }
-
-    public void FireDeathBolts(Constants.RiftStats.DeathboltSpawnPosition initialFirePosition, Constants.Global.Color c) {
         float f_projectileSize = Constants.SpellStats.C_PlayerProjectileSize;
 
         var array = new int[] { 0, 1, 2, 3 };
         new System.Random().Shuffle(array);
-
-        Transform firePosition = DetermineFiringPosition(initialFirePosition, c);
 
         for (int i = 0; i < 4; i++) {
             if (go_playerReferences[array[i]].GetComponent<PlayerController>().Color == c) {
@@ -358,23 +336,6 @@ public sealed class RiftController : MonoBehaviour {
         }
         else if (e_colorIn == Constants.Global.Color.RED) {
             i_redObjectivesComplete++;
-        }
-    }
-
-    private Transform DetermineFiringPosition(Constants.RiftStats.DeathboltSpawnPosition initialFirePosition, Constants.Global.Color c) {
-        if (initialFirePosition == Constants.RiftStats.DeathboltSpawnPosition.RIFT) {
-            return gameObject.transform;
-        }
-        else {
-            if (c == Constants.Global.Color.BLUE) {
-                return go_blueRiftBossHead.transform;
-            }
-            else if (c == Constants.Global.Color.RED) {
-                return go_redRiftBossHead.transform;
-            }
-            else {
-                return gameObject.transform;
-            }
         }
     }
 

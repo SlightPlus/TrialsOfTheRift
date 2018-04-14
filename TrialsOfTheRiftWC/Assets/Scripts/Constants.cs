@@ -213,8 +213,6 @@ public static class Constants {
         public static float C_VolatilityMultiplier_L4 = 1.0f;
 
         public enum Volatility { ZERO, FIVE, TWENTYFIVE, THIRTYFIVE, FIFTY, SIXTYFIVE, SEVENTYFIVE, ONEHUNDRED };
-        
-        public enum DeathboltSpawnPosition {  RIFTBOSS, RIFT };
     }
 
     // Text descriptions for Objectives
