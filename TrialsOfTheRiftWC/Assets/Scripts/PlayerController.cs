@@ -489,4 +489,10 @@ public class PlayerController : SpellTarget {
     {
         dissolvePlayer();
     }
+
+    [ContextMenu("RESPAWN")]
+    public void Resp()
+    {
+        reconstructPlayer();
+    }
 }
