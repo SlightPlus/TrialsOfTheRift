@@ -113,7 +113,7 @@ public sealed class RiftController : MonoBehaviour {
             anim.SetInteger("volatility", 2);
             EnterNewVolatilityLevel();
             Constants.Global.Color colorToAttack = DetermineWinningTeam();
-            FireDeathBolts(colorToAttack);
+            FireDeathBolts(gameObject.transform, colorToAttack);
         }
         else if (f_volatility >= 5.0f && e_currentVolatilityLevel != Constants.RiftStats.Volatility.FIVE) {
             e_currentVolatilityLevel = Constants.RiftStats.Volatility.FIVE;
@@ -310,7 +310,7 @@ public sealed class RiftController : MonoBehaviour {
 
     // @Joe get this working
     // Joe: NO BITCH, I DO WHAT I WANT! >:(
-    public void FireDeathBolts(Constants.Global.Color c) {
+    public void FireDeathBolts(Transform firePosition, Constants.Global.Color c) {
      // Only shoot at players of Color c, and don't collide with anything EXCEPT players (layer matrix, probably)
 
         float f_projectileSize = Constants.SpellStats.C_PlayerProjectileSize;
@@ -320,7 +320,7 @@ public sealed class RiftController : MonoBehaviour {
 
         for (int i = 0; i < 4; i++) {
             if (go_playerReferences[array[i]].GetComponent<PlayerController>().Color == c) {
-                GameObject go_spell = Instantiate(go_riftDeathBolt, gameObject.transform.position, gameObject.transform.rotation);
+                GameObject go_spell = Instantiate(go_riftDeathBolt, firePosition.position, firePosition.rotation);
                 go_spell.transform.localScale = new Vector3(f_projectileSize, f_projectileSize, f_projectileSize);
                 go_spell.GetComponent<Rigidbody>().velocity = go_playerReferences[array[i]].transform.position.normalized * Constants.RiftStats.C_VolatilityDeathboltSpeed;
                 break;
