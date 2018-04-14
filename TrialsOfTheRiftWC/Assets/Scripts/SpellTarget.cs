@@ -61,7 +61,7 @@ public abstract class SpellTarget : MonoBehaviour {
 		float startTime = Time.time;
 		float elapsedTime = 0;
 		while(elapsedTime < .99f){
-			elapsedTime = (Time.time - startTime)/C_WindPushTime;
+			elapsedTime = (Time.time - startTime)/Constants.SpellStats.C_WindPushTime;
 			target.AddForce(direction * Mathf.Lerp(Constants.SpellStats.C_WindForce,0f,elapsedTime));
 			yield return 0;
 		}

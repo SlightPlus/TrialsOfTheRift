@@ -350,10 +350,14 @@ public class PlayerController : SpellTarget {
             }                
 	    }
         // Wind Parry Spell
-        if (p_player.GetButtonDown("WindSpell")) {
-            go_parryShield.SetActive(true);
-            Invoke("TurnOffParryShield", 0.25f);
-        }
+		if(f_nextWind > Constants.SpellStats.C_WindCooldown){
+			if (p_player.GetButtonDown("WindSpell")) {
+				f_nextWind = 0;
+				maestro.PlayWindShoot();
+				go_parryShield.SetActive(true);
+				Invoke("TurnOffParryShield", 0.75f);
+			}
+		}
         // Ice Spell
         if (f_nextIce > Constants.SpellStats.C_IceCooldown && f_nextCast > Constants.SpellStats.C_NextSpellDelay) {
             if (p_player.GetButtonDown("IceSpell")) {

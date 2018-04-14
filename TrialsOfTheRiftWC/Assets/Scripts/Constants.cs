@@ -69,7 +69,7 @@ public static class Constants {
         public static float C_WindLiveTime = 0.2f;
         public static float C_WindSpeed = 15.0f;
         public static float C_WindDamage = 50.0f;
-        public static float C_WindCooldown = 3.0f;
+        public static float C_WindCooldown = 1.0f;
         public static float C_WindChargeTime = C_SpellChargeTime;
         public static float C_WindRiftDamageMultiplier = C_RiftDamageMultiplier;
         public static float C_WindForce = 1500.0f; // 5m worth of distance - we need to do our own
