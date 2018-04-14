@@ -31,7 +31,6 @@ sysinfo.txt
 
 # Builds
 *.apk
-*.unitypackage
 
 # FIXED IGNORE LIST
 .vs
@@ -59,4 +58,3 @@ ExportedObj
 .pdb
 .pidb.meta
 .apk
-.unitypackage
