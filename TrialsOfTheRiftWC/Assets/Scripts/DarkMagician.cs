@@ -15,6 +15,7 @@ public sealed class DarkMagician : MonoBehaviour {
     [SerializeField] private Text txt_winMsg;
     [SerializeField] private Button butt_winSelect;
     private Objective objv_currentRedObjective, objv_currentBlueObjective;
+	private Maestro maestro;                  // reference to audio controller singleton
     private bool b_gameOver;
 #endregion
 
@@ -40,7 +41,7 @@ public sealed class DarkMagician : MonoBehaviour {
 			return;
 		}
         objectiveNumber++;
-        
+        maestro.PlayObjectiveStart();
         objv_currentRedObjective.Complete();
         objv_currentRedObjective = objv_redObjectiveList[objectiveNumber-1].Activate(objectiveNumber);	// objectiveNumber starts with 1 but array is 0-based
         objv_currentBlueObjective.Complete();
@@ -53,7 +54,7 @@ public sealed class DarkMagician : MonoBehaviour {
         txt_winMsg.enabled = false;
         b_gameOver = false;
         ShuffleObjectives();
-
+		maestro = Maestro.Instance;
         objv_currentRedObjective = objv_redObjectiveList[0].Activate(1);
         objv_currentBlueObjective = objv_blueObjectiveList[0].Activate(1);
     }

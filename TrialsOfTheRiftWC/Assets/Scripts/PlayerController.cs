@@ -84,7 +84,7 @@ public class PlayerController : SpellTarget {
         switch(spell) {
             case Constants.SpellStats.SpellType.WIND:
                 DropFlag();
-				StartCoroutine(WindPush(rb,direction));
+				StartCoroutine(WindPush(Constants.PlayerStats.C_PlayerWindPushMultiplier,direction));
                 TakeDamage(damage, Constants.Global.DamageType.WIND);
                 anim.SetTrigger("windTrigger");
                 break;

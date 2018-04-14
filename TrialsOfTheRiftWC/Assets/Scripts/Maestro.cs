@@ -42,6 +42,8 @@ public sealed class Maestro : MonoBehaviour {
 	[SerializeField] private AudioClip ac_playerDie;
 	
 	[SerializeField] private AudioClip ac_portal;
+	[SerializeField] private AudioClip ac_score;
+	[SerializeField] private AudioClip ac_objective_start;
 	
 	[SerializeField] private AudioClip[] ac_bgm;
 
@@ -210,6 +212,12 @@ public sealed class Maestro : MonoBehaviour {
 	}
 	public void PlayPortal(){
 		PlaySingle(as_sfxHi,ac_portal);
+	}
+	public void PlayScore(){
+		PlaySingle(as_sfxHi,ac_score);
+	}
+	public void PlayObjectiveStart(){
+		PlaySingle(as_sfxHi,ac_objective_start);
 	}
 	public void PlayPlayerFootstep(){
 		//PlayRandom(as_sfxMe,ac_player_footstep);

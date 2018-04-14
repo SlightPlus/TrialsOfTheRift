@@ -19,7 +19,7 @@ public class HockeyPuckController : SpellTarget {
 
         switch (spell) {
             case Constants.SpellStats.SpellType.WIND:
-                StartCoroutine(WindPush(rb,direction));
+                StartCoroutine(WindPush(Constants.ObjectiveStats.C_PuckWindPushMultiplier,direction));
                 f_speed += Constants.ObjectiveStats.C_PuckSpeedHitIncrease;
                 transform.Rotate(direction);
                 break;

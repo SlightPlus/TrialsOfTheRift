@@ -17,6 +17,7 @@ public class DefeatNecromancersObjective : Objective {
     // Update UI and check for completion
     public void UpdateNecroScore() {
         i_score++;
+		maestro.PlayScore();
         calligrapher.UpdateScoreUI(e_color, i_score);
         if (i_score >= Constants.ObjectiveStats.C_NecromancersMaxScore) {
             b_isComplete = true;

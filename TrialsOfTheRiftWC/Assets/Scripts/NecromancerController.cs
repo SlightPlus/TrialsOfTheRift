@@ -23,6 +23,21 @@ public class NecromancerController : EnemyController {
 		InvokeRepeating("Summon", 16.0f, Constants.EnemyStats.C_SummonTimer);
 		maestro.PlayNecromancerSpawn();
 	}
+	
+	override public void ApplySpellEffect(Constants.SpellStats.SpellType spell, Constants.Global.Color color, float damage, Vector3 direction) {
+        switch(spell) {
+            case Constants.SpellStats.SpellType.WIND:
+                StartCoroutine(WindPush(Constants.EnemyStats.C_NecromancerWindPushMultiplier,direction));
+                break;
+            case Constants.SpellStats.SpellType.ICE:
+                Freeze();
+                break;
+            case Constants.SpellStats.SpellType.ELECTRICITYAOE:
+                Slow();
+                break;
+        }
+        TakeDamage(damage, color);
+    }
 
 	protected override void Update() {
 		base.Update();

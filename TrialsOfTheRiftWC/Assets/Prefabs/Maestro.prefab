@@ -586,6 +586,8 @@ MonoBehaviour:
   ac_playerSpawn: {fileID: 8300000, guid: 3d956fdcdab006042acb7e159490c8e2, type: 3}
   ac_playerDie: {fileID: 8300000, guid: 8f2a2c08a9e048049af5eb939b4bc8d9, type: 3}
   ac_portal: {fileID: 8300000, guid: e4cfda1777a13de43acc553349f19172, type: 3}
+  ac_score: {fileID: 8300000, guid: f32246b577423d5458338c106c560911, type: 3}
+  ac_objective_start: {fileID: 8300000, guid: a1456b959101102428e9e82431e1c152, type: 3}
   ac_bgm:
   - {fileID: 8300000, guid: 47e186769e328864eb374d5205e1e732, type: 3}
   - {fileID: 8300000, guid: a519ba7522ac5ed45ae2228bce33ea1a, type: 3}
