@@ -3,8 +3,11 @@
  *  Desc:   Facilitates Capture The Flag Objective
  * 
  */
+ using UnityEngine;
 
 public class CaptureTheFlagObjective : Objective {
+    [SerializeField] private GoalController gc_owned;
+
 #region CaptureTheFlagObjective Methods
     override protected void SetUI() {
         calligrapher.CTFInit(e_color);
@@ -19,10 +22,13 @@ public class CaptureTheFlagObjective : Objective {
         i_score++;
 		maestro.PlayScore();
         calligrapher.UpdateScoreUI(e_color, i_score);
+        gc_owned.FlashOn();
         if (i_score >= Constants.ObjectiveStats.C_CTFMaxScore) {
             b_isComplete = true;
         }
     }
+
+
 #endregion
 
 #region Unity Overrides	

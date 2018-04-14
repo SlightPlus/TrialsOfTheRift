@@ -16,6 +16,7 @@ public static class Constants {
         public enum Color { RED, BLUE, NULL };
         public enum Side { LEFT = -1, RIGHT = 1 };
 		public enum DamageType { WIND, ICE, ELECTRICITY, MAGICMISSILE, ENEMY, RIFT, DEATHBOLT, RUNE, PUCK };
+        public static string C_BuildNumber = "3.20";
     }
 
     // Team Stats
@@ -31,6 +32,7 @@ public static class Constants {
         public static float C_RespawnTimer = 5.0f;
         public static float C_MaxHealth = 300.0f;
         public static float C_StepSoundDelay = 0.4f;
+        public static float C_InvulnTime = 2.0f;
         public static float C_PlayerWindPushMultiplier = 1f;
 
         public static Global.Color C_p1Color = Global.Color.RED;

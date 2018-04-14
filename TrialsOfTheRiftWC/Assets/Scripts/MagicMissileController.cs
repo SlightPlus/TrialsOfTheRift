@@ -13,8 +13,7 @@ public class MagicMissileController : SpellController {
 
 #region Magic Missile Methods
     override protected void Charge(float f_chargeTime) {
-        //This shouldn't be called
-        Debug.Log("You fucked up somewhere: Magic Missile.");
+        f_damage = Constants.SpellStats.C_MagicMissileDamage;
     }
 
     override protected void BuffSpell() {

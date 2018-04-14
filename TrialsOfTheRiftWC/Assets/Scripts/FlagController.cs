@@ -13,7 +13,7 @@ public class FlagController : MonoBehaviour {
     [SerializeField] private GameObject go_buttonPrompt;            // indicator to pickup
 #endregion
 
-    #region FlagController Methods
+#region FlagController Methods
     public void DropFlag() {
         transform.SetParent(ctfo_owner.gameObject.transform);   // resets flag parent so Objective can be deactivated correctly
         transform.localPosition = new Vector3(transform.localPosition.x, Constants.ObjectiveStats.C_RedFlagSpawn.y, transform.localPosition.z);
