@@ -21,7 +21,13 @@ public class PlayerController : SpellTarget {
     [SerializeField] private GameObject go_interactCollider;  // activated with button-press to interact with objectives
     [SerializeField] private GameObject go_parryShield;       // activated with right stick click
     [SerializeField] private PauseController pauc_pause;        // for pausing
-    [SerializeField] private GameObject go_playerBody;        // for invuln flicker
+
+    [SerializeField] private SkinnedMeshRenderer smr_playerBody; 
+    [SerializeField] private SkinnedMeshRenderer smr_playerOutfit;
+    [SerializeField] private Material mat_bodyNormal;
+    [SerializeField] private Material mat_bodyFlash;
+    [SerializeField] private Material mat_outfitNormal;
+    [SerializeField] private Material mat_outfitFlash;
 
     private int i_playerNumber;             // designates player's number for controller mappings
     private Player p_player;                // rewired player for input control
@@ -237,15 +243,22 @@ public class PlayerController : SpellTarget {
 
     private void EndInvuln() {
         isInvuln = false;
-        go_playerBody.SetActive(true);
+        smr_playerBody.material = mat_bodyNormal;
+        smr_playerOutfit.material = mat_outfitNormal;
         CancelInvoke("InvulnFlicker");
     }
 
     private void InvulnFlicker() {
-        if (go_playerBody.activeSelf == true) {
-            go_playerBody.SetActive(false);
+        if (smr_playerBody.material.name.Contains("MAT_")) {
+            smr_playerBody.material = mat_bodyFlash;
         } else {
-            go_playerBody.SetActive(true);
+            smr_playerBody.material = mat_bodyNormal;
+        }
+
+        if (smr_playerOutfit.material.name.Contains("Outfit")) {
+            smr_playerOutfit.material = mat_outfitFlash;
+        } else {
+            smr_playerOutfit.material = mat_outfitNormal;
         }
     }
     #endregion

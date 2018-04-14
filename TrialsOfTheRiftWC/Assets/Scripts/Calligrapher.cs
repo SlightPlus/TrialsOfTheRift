@@ -29,11 +29,10 @@ public sealed class Calligrapher : MonoBehaviour {
     [SerializeField] private Image img_redFlashBacking, img_blueFlashBacking;
     [SerializeField] private Text  txt_redRoomCounter, txt_blueRoomCounter;
 
-    private Light lgt_redGoal, lgt_blueGoal;
+    private GameObject go_redGoal, go_blueGoal;     //Goal feedback
 
     private float f_redStartTime, f_blueStartTime;  // controls UI pop-up fading
     private float f_redFlashTime, f_blueFlashTime;  // separate timers for flash to avoid overwriting, since both animations play at roughly the same time.
-    private Timer timer_redFlashInterval, timer_blueFlashInterval;    // for timeScale independant flashing.
     private float f_redGoalFlashTime, f_blueGoalFlashTime;
 
 
@@ -202,15 +201,17 @@ public sealed class Calligrapher : MonoBehaviour {
         }
     }
 
-    public void GoalFlashInit(Constants.Global.Color colorIn, Light lightIn) {
+    public void GoalFlashInit(Constants.Global.Color colorIn, GameObject go_in) {
         if (colorIn == Constants.Global.Color.RED) {
-            lgt_redGoal = lightIn;
             f_redGoalFlashTime = Time.time;
-            InvokeRepeating("RedGoalFlash", 0f, 0.075f);
+            go_redGoal = go_in;
+            go_redGoal.SetActive(true);
+            Invoke("RedGoalFlash", 1.0f);
         } else {
-            lgt_blueGoal = lightIn;
             f_blueGoalFlashTime = Time.time;
-            InvokeRepeating("BlueGoalFlash", 0f, 0.075f);
+            go_blueGoal = go_in;
+            go_blueGoal.SetActive(true);
+            Invoke("BlueGoalFlash", 1.0f);
         }    
     }
     #endregion
@@ -312,32 +313,15 @@ public sealed class Calligrapher : MonoBehaviour {
     }
 
     private void BlueGoalFlash() {
-        float timer = (Time.time - f_blueGoalFlashTime);
-        float fracJourney = timer / 0.25f;
-        if (lgt_blueGoal != null) {
-            lgt_blueGoal.range = Mathf.Lerp(lgt_blueGoal.range, 8f, fracJourney);
+        if (go_blueGoal != null) {
+            go_blueGoal.SetActive(false);
         }
         
-        if (timer > 0.25f) {
-            if (lgt_blueGoal != null) {
-                lgt_blueGoal.range = 0;
-            }
-            CancelInvoke("BlueGoalFlash");
-        }
     }
 
     private void RedGoalFlash() {
-        float timer = (Time.time - f_redGoalFlashTime);
-        float fracJourney = timer / 0.25f;
-        if (lgt_redGoal != null) {
-            lgt_redGoal.range = Mathf.Lerp(lgt_redGoal.range, 8f, fracJourney);
-        }
-        
-        if (timer > 0.25f) {
-            if (lgt_redGoal != null) {
-                lgt_redGoal.range = 0;
-            }
-            CancelInvoke("RedGoalFlash");
+        if (go_redGoal != null) {
+            go_redGoal.SetActive(false);
         }
     }
 

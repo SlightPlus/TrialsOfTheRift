@@ -15,9 +15,10 @@ public class CaptureTheFlagObjective : Objective {
     }
 
     // Update UI and check for completion
-    public void UpdateFlagScore() {
+    public void UpdateFlagScore(UnityEngine.GameObject go_in) {
         i_score++;
         calligrapher.UpdateScoreUI(e_color, i_score);
+        calligrapher.GoalFlashInit(e_color, go_in);
         if (i_score >= Constants.ObjectiveStats.C_CTFMaxScore) {
             b_isComplete = true;
         }

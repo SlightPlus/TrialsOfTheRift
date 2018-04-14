@@ -11,6 +11,7 @@ public class FlagController : MonoBehaviour {
     [SerializeField] private CaptureTheFlagObjective ctfo_owner;    // identifies Objective flag is a part of
     [SerializeField] private Constants.Global.Color e_color;        // identifies owning team
     [SerializeField] private GameObject go_buttonPrompt;            // indicator to pickup
+    [SerializeField] private GameObject go_goalGlow;                // Goal feedback.
 #endregion
 
     #region FlagController Methods
@@ -46,7 +47,7 @@ public class FlagController : MonoBehaviour {
         // Player scoring with flag
 		if (other.CompareTag("Goal")) {
 			if (other.GetComponent<GoalController>().Color != e_color) {        // check for correct color of flag/goal
-                ctfo_owner.UpdateFlagScore();                                   // increase score and update UI      
+                ctfo_owner.UpdateFlagScore(go_goalGlow);                        // increase score and update UI      
 				transform.parent.parent.GetComponent<PlayerController>().DropFlag();     // make carrying player drop flag (sets player's flag reference to null and calls FlagController.DropFlag)
                 ResetFlagPosition();   // reset flag to original spawn position
             }

@@ -23,8 +23,8 @@ public class IceHockeyObjective : Objective {
         }
     }
 
-    public void GoalFlash(UnityEngine.Light light_in) {
-        calligrapher.GoalFlashInit(e_color, light_in);
+    public void GoalFlash(UnityEngine.GameObject go_in) {
+        calligrapher.GoalFlashInit(e_color, go_in);
     }
 #endregion
 
