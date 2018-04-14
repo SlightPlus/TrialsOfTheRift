@@ -7,6 +7,8 @@
 using UnityEngine;
 using Rewired;
 using UnityEngine.SceneManagement;
+using System;
+using System.Collections;
 
 public class PlayerController : SpellTarget {
 #region Variables and Declarations
@@ -196,8 +198,7 @@ public class PlayerController : SpellTarget {
             riftController.IncreaseVolatility(Constants.RiftStats.C_VolatilityIncrease_PlayerDeath);
         } 
 		maestro.PlayPlayerDie();
-        go_playerCapsule.SetActive(false);
-		go_playerWisp.SetActive(true);
+        DissolvePlayer();
         f_nextMagicMissile = 0;
         f_nextWind = 0;
         f_nextIce = 0;
@@ -205,6 +206,26 @@ public class PlayerController : SpellTarget {
         f_nextCast = 0;
         Invoke("PlayerRespawn", Constants.PlayerStats.C_RespawnTimer);
     }
+	
+	private void DissolvePlayer(){
+		StartCoroutine(DoWispFadeIn());
+		StartCoroutine(DoDissolvePlayer());
+
+	}
+
+	private IEnumerator DoWispFadeIn(){
+		go_playerWisp.SetActive(true);
+		yield return new WaitUntil(() => dissolve.currentParamValue >= .6f);
+		fader.ParamIncrease(3f, false, "_Brightness");
+	}
+
+	private IEnumerator DoDissolvePlayer(){
+		dissolve.ParamIncrease(5f, false, "_DisintegrateAmount");
+		yield return new WaitUntil(() => dissolve.isFinished);
+		dissolve.isFinished = false;
+		go_playerCapsule.SetActive(false);
+	}
+ 
 
     private void PlayerRespawn() {
 		isWisp = false;
@@ -212,10 +233,27 @@ public class PlayerController : SpellTarget {
         Invoke("EndInvuln", Constants.PlayerStats.C_InvulnTime);
         InvokeRepeating("InvulnFlicker", 0f, 0.25f);
 		maestro.PlayPlayerSpawn();
-        go_playerCapsule.SetActive(true);
-        go_playerWisp.SetActive(false);
+        ReconstructPlayer();
         f_health = Constants.PlayerStats.C_MaxHealth;
     }
+	
+	private void ReconstructPlayer(){
+		StartCoroutine(DoWispFadeOut());
+		StartCoroutine(DoConstructPlayer());
+	}
+	
+    private IEnumerator DoWispFadeOut(){
+        fader.ParamDecrease(5f, false, "_Brightness");
+        yield return new WaitUntil(() => fader.isFinished);
+        fader.isFinished = false;
+        go_playerWisp.SetActive(false);
+    }
+	
+	private IEnumerator DoConstructPlayer(){
+		yield return new WaitUntil(() => fader.currentParamValue <= .7f);
+		go_playerCapsule.SetActive(true);
+		dissolve.ParamDecrease(3f, false, "_DisintegrateAmount");
+	}
 
 	public void TakeDamage(float damage, Constants.Global.DamageType d) {
 		if (!isWisp && !isInvuln) {
@@ -430,5 +468,11 @@ public class PlayerController : SpellTarget {
 		}
        
     }
+	
+	[ContextMenu("DIE")]
+	public void TEST_playerDie()
+	{
+		DissolvePlayer();
+	}
 #endregion
 }
