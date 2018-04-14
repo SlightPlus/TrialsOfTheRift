@@ -10,7 +10,7 @@ public class IceHockeyObjective : Objective {
     [SerializeField] private GoalController gc_owned;
 #endregion
 
-    #region IceHockeyObjective Methods
+#region IceHockeyObjective Methods
     override protected void SetUI() {
         calligrapher.IceHockeyInit(e_color);
     }
@@ -28,7 +28,6 @@ public class IceHockeyObjective : Objective {
             b_isComplete = true;
         }
     }
-
 #endregion
 
 #region Unity Overrides
