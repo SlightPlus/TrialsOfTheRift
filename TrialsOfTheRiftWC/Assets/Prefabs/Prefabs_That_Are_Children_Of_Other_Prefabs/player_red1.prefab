@@ -3876,6 +3876,8 @@ MonoBehaviour:
   e_startSide: 0
   rb: {fileID: 54300993094272908}
   anim: {fileID: 95595520305175288}
+  dissolve: {fileID: 114955139259303364}
+  fader: {fileID: 114996417307585898}
   go_playerCapsule: {fileID: 1926898415218082}
   go_playerWisp: {fileID: 1658023384692944}
   go_magicMissileShot: {fileID: 0}
@@ -4146,8 +4148,9 @@ MonoBehaviour:
   EffectSource: {fileID: 0}
   EffectSound: {fileID: 0}
   SourceRenderer: {fileID: 137230318809463416}
-  EffectMaterials: []
   EffectLength: 0
+  isFinished: 0
+  currentParamValue: 0
 --- !u!114 &114982016105960252
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4216,8 +4219,9 @@ MonoBehaviour:
   EffectSource: {fileID: 0}
   EffectSound: {fileID: 0}
   SourceRenderer: {fileID: 23375034317121080}
-  EffectMaterials: []
   EffectLength: 0
+  isFinished: 0
+  currentParamValue: 0
 --- !u!136 &136237133599627620
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -483,4 +483,10 @@ public class PlayerController : SpellTarget {
         }
     }
 #endregion
+
+    [ContextMenu("DEATH")]
+    public void Die()
+    {
+        dissolvePlayer();
+    }
 }

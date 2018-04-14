@@ -872,8 +872,9 @@ MonoBehaviour:
   EffectSource: {fileID: 0}
   EffectSound: {fileID: 0}
   SourceRenderer: {fileID: 28719825}
-  EffectMaterials: []
   EffectLength: 0
+  isFinished: 0
+  currentParamValue: 0
 --- !u!137 &28719825
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -1858,8 +1859,8 @@ MonoBehaviour:
   e_startSide: 0
   rb: {fileID: 852020389}
   anim: {fileID: 1614805561}
-  dissolve: {fileID: 0}
-  fader: {fileID: 0}
+  dissolve: {fileID: 28719824}
+  fader: {fileID: 1588139047}
   go_playerCapsule: {fileID: 1614805559}
   go_playerWisp: {fileID: 1588139046}
   go_magicMissileShot: {fileID: 0}
@@ -22533,8 +22534,9 @@ MonoBehaviour:
   EffectSource: {fileID: 0}
   EffectSound: {fileID: 0}
   SourceRenderer: {fileID: 1121762647}
-  EffectMaterials: []
   EffectLength: 0
+  isFinished: 0
+  currentParamValue: 0
 --- !u!137 &1121762647
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -27185,8 +27187,8 @@ MonoBehaviour:
   e_startSide: 0
   rb: {fileID: 1610283904}
   anim: {fileID: 351995274}
-  dissolve: {fileID: 0}
-  fader: {fileID: 0}
+  dissolve: {fileID: 1592619646}
+  fader: {fileID: 1386411221}
   go_playerCapsule: {fileID: 351995272}
   go_playerWisp: {fileID: 1386411220}
   go_magicMissileShot: {fileID: 0}
@@ -29485,8 +29487,9 @@ MonoBehaviour:
   EffectSource: {fileID: 0}
   EffectSound: {fileID: 0}
   SourceRenderer: {fileID: 1386411222}
-  EffectMaterials: []
   EffectLength: 0
+  isFinished: 0
+  currentParamValue: 0
 --- !u!23 &1386411222
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -31790,8 +31793,8 @@ MonoBehaviour:
   e_startSide: 0
   rb: {fileID: 1321318066}
   anim: {fileID: 954109070}
-  dissolve: {fileID: 0}
-  fader: {fileID: 0}
+  dissolve: {fileID: 1773834173}
+  fader: {fileID: 1845552718}
   go_playerCapsule: {fileID: 954109068}
   go_playerWisp: {fileID: 1845552717}
   go_magicMissileShot: {fileID: 0}
@@ -32866,8 +32869,9 @@ MonoBehaviour:
   EffectSource: {fileID: 0}
   EffectSound: {fileID: 0}
   SourceRenderer: {fileID: 1588139048}
-  EffectMaterials: []
   EffectLength: 0
+  isFinished: 0
+  currentParamValue: 0
 --- !u!23 &1588139048
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -32970,8 +32974,9 @@ MonoBehaviour:
   EffectSource: {fileID: 0}
   EffectSound: {fileID: 0}
   SourceRenderer: {fileID: 1592619647}
-  EffectMaterials: []
   EffectLength: 0
+  isFinished: 0
+  currentParamValue: 0
 --- !u!137 &1592619647
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -36506,8 +36511,9 @@ MonoBehaviour:
   EffectSource: {fileID: 0}
   EffectSound: {fileID: 0}
   SourceRenderer: {fileID: 1773834174}
-  EffectMaterials: []
   EffectLength: 0
+  isFinished: 0
+  currentParamValue: 0
 --- !u!137 &1773834174
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -37995,8 +38001,9 @@ MonoBehaviour:
   EffectSource: {fileID: 0}
   EffectSound: {fileID: 0}
   SourceRenderer: {fileID: 1845552719}
-  EffectMaterials: []
   EffectLength: 0
+  isFinished: 0
+  currentParamValue: 0
 --- !u!23 &1845552719
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -40156,8 +40163,8 @@ MonoBehaviour:
   e_startSide: 0
   rb: {fileID: 396588044}
   anim: {fileID: 672807859}
-  dissolve: {fileID: 0}
-  fader: {fileID: 0}
+  dissolve: {fileID: 1121762646}
+  fader: {fileID: 2142415939}
   go_playerCapsule: {fileID: 672807857}
   go_playerWisp: {fileID: 2142415938}
   go_magicMissileShot: {fileID: 0}
@@ -43014,8 +43021,9 @@ MonoBehaviour:
   EffectSource: {fileID: 0}
   EffectSound: {fileID: 0}
   SourceRenderer: {fileID: 2142415940}
-  EffectMaterials: []
   EffectLength: 0
+  isFinished: 0
+  currentParamValue: 0
 --- !u!23 &2142415940
 MeshRenderer:
   m_ObjectHideFlags: 0

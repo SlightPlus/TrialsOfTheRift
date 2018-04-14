@@ -12,7 +12,7 @@ public class ShaderEffect : MonoBehaviour {
 	private Material[] EffectMaterials;	
 	public float EffectLength = 0.0f;
 
-    public bool isFinished;
+    public bool isFinished = false;
     public float currentParamValue;
 	
 	
@@ -27,7 +27,7 @@ public class ShaderEffect : MonoBehaviour {
 		foreach(Material m in EffectMaterials)
 		{
             m.SetFloat(paramName, amount);
-            currentParamValue = amount;
+            //currentParamValue = amount;
 			//m.SetFloat("_DisintegrateAmount",amount);
 		}	
 	}
@@ -44,7 +44,7 @@ public class ShaderEffect : MonoBehaviour {
 
 		currentParamValue = EffectLength;
 		
-		while(currentParamValue > 0.0f)
+		while(currentParamValue >= 0.0f)
     	{
 			float pos = 1.0f - (currentParamValue / EffectLength);
 			SetMaterialParms(paramName,pos);
@@ -71,7 +71,7 @@ public class ShaderEffect : MonoBehaviour {
 
 		currentParamValue = EffectLength;
 				
-		while(currentParamValue > 0.0f)
+		while(currentParamValue >= 0.0f)
     	{
 			float pos =  (currentParamValue / EffectLength);
 			SetMaterialParms(paramName,pos);
@@ -101,12 +101,14 @@ public class ShaderEffect : MonoBehaviour {
 	public void paramIncrease(float Length, bool doDestroy, string paramName)
 	{
 		EffectLength = Length;
+        isFinished = false;
         paramIncrease(doDestroy, paramName);
 	}
 	
 	public void paramDecrease(float Length, bool doDestroy, string paramName)
 	{
 		EffectLength = Length;
+        isFinished = false;
 		paramDecrease(doDestroy, paramName);
 	}	
 	
@@ -117,7 +119,10 @@ public class ShaderEffect : MonoBehaviour {
 			Destroy (m);
 		}
 	}
+
+
 }
+
 
 /*
 public class example : MonoBehaviour {

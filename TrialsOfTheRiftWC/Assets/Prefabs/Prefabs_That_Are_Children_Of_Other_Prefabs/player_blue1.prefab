@@ -3873,6 +3873,8 @@ MonoBehaviour:
   e_startSide: 0
   rb: {fileID: 54856234939354602}
   anim: {fileID: 95501530416164560}
+  dissolve: {fileID: 114353277141148064}
+  fader: {fileID: 114108904516352796}
   go_playerCapsule: {fileID: 1204098368484264}
   go_playerWisp: {fileID: 1959526875299128}
   go_magicMissileShot: {fileID: 0}
@@ -3914,8 +3916,9 @@ MonoBehaviour:
   EffectSource: {fileID: 0}
   EffectSound: {fileID: 0}
   SourceRenderer: {fileID: 23330316889276162}
-  EffectMaterials: []
   EffectLength: 0
+  isFinished: 0
+  currentParamValue: 0
 --- !u!114 &114145950528841872
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3999,8 +4002,9 @@ MonoBehaviour:
   EffectSource: {fileID: 0}
   EffectSound: {fileID: 0}
   SourceRenderer: {fileID: 137462288785229124}
-  EffectMaterials: []
   EffectLength: 0
+  isFinished: 0
+  currentParamValue: 0
 --- !u!114 &114561086288472644
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4117,12 +4121,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e75da56c068a8943831cd068d78f443, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playc_trackedPlayer: {fileID: 0}
-  img_healthbar: {fileID: 0}
-  img_windbar: {fileID: 0}
-  img_icebar: {fileID: 0}
-  img_electricbar: {fileID: 0}
-  rt_hpBar: {fileID: 0}
+  playc_trackedPlayer: {fileID: 114070834417397376}
+  img_healthbar: {fileID: 114044081356953962}
+  img_windbar: {fileID: 114673811379051070}
+  img_icebar: {fileID: 114561478412381456}
+  img_electricbar: {fileID: 114945753544231932}
+  rt_hpBar: {fileID: 224928347328595092}
 --- !u!114 &114877921469740020
 MonoBehaviour:
   m_ObjectHideFlags: 1
