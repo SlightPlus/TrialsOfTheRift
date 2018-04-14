@@ -13,6 +13,9 @@ public abstract class SpellTarget : MonoBehaviour {
     [SerializeField] protected Constants.Global.Side e_startSide;
     [SerializeField] protected Rigidbody rb;
     [SerializeField] protected Animator anim;
+    [SerializeField] protected ShaderEffect dissolve;
+    [SerializeField] protected ShaderEffect fader;
+
     protected float f_health;
     protected float f_speed;
     protected Coroutine cor_AOECoroutine;
