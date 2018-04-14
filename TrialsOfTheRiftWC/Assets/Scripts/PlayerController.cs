@@ -218,7 +218,7 @@ public class PlayerController : SpellTarget {
     }
 
 	public void TakeDamage(float damage, Constants.Global.DamageType d) {
-		if (!isWisp || !isInvuln) {
+		if (!isWisp && !isInvuln) {
 			maestro.PlayAnnouncmentPlayerHit(i_playerNumber,d);
 			maestro.PlayPlayerHit();
 			f_health -= damage;

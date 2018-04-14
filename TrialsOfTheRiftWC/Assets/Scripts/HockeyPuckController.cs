@@ -107,7 +107,6 @@ public class HockeyPuckController : SpellTarget {
                 iho_owner.UpdatePuckScore();
                 iho_owner.StopCoroutine("Notify");
                 iho_owner.StartCoroutine("Notify");
-                iho_owner.GoalFlash(go_goalGlow);
             }
         }
         else if (other.CompareTag("Enemy") || other.CompareTag("Player")) {

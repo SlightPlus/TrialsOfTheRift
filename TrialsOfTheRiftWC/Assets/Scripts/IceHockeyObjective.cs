@@ -3,9 +3,14 @@
  *  Desc:   Facilitates Ice Hockey Objective
  * 
  */
+ using UnityEngine;
 
 public class IceHockeyObjective : Objective {
-#region IceHockeyObjective Methods
+#region Variables and Declarations
+    [SerializeField] private GoalController gc_owned;
+#endregion
+
+    #region IceHockeyObjective Methods
     override protected void SetUI() {
         calligrapher.IceHockeyInit(e_color);
     }
@@ -18,14 +23,12 @@ public class IceHockeyObjective : Objective {
     public void UpdatePuckScore() {
         i_score++;
         calligrapher.UpdateScoreUI(e_color, i_score);
+        gc_owned.FlashOn();
         if (i_score >= Constants.ObjectiveStats.C_HockeyMaxScore) {
             b_isComplete = true;
         }
     }
 
-    public void GoalFlash(UnityEngine.GameObject go_in) {
-        calligrapher.GoalFlashInit(e_color, go_in);
-    }
 #endregion
 
 #region Unity Overrides

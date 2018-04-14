@@ -29,8 +29,6 @@ public sealed class Calligrapher : MonoBehaviour {
     [SerializeField] private Image img_redFlashBacking, img_blueFlashBacking;
     [SerializeField] private Text  txt_redRoomCounter, txt_blueRoomCounter;
 
-    private GameObject go_redGoal, go_blueGoal;     //Goal feedback
-
     private float f_redStartTime, f_blueStartTime;  // controls UI pop-up fading
     private float f_redFlashTime, f_blueFlashTime;  // separate timers for flash to avoid overwriting, since both animations play at roughly the same time.
     private float f_redGoalFlashTime, f_blueGoalFlashTime;
@@ -200,20 +198,6 @@ public sealed class Calligrapher : MonoBehaviour {
             img_blueBossIcon.gameObject.SetActive(false);
         }
     }
-
-    public void GoalFlashInit(Constants.Global.Color colorIn, GameObject go_in) {
-        if (colorIn == Constants.Global.Color.RED) {
-            f_redGoalFlashTime = Time.time;
-            go_redGoal = go_in;
-            go_redGoal.SetActive(true);
-            Invoke("RedGoalFlash", 1.0f);
-        } else {
-            f_blueGoalFlashTime = Time.time;
-            go_blueGoal = go_in;
-            go_blueGoal.SetActive(true);
-            Invoke("BlueGoalFlash", 1.0f);
-        }    
-    }
     #endregion
 
     #region UI Fade In/Out Methods
@@ -311,20 +295,6 @@ public sealed class Calligrapher : MonoBehaviour {
         yield return new WaitForSecondsRealtime(0.075f);
         StartCoroutine(RedFlash());
     }
-
-    private void BlueGoalFlash() {
-        if (go_blueGoal != null) {
-            go_blueGoal.SetActive(false);
-        }
-        
-    }
-
-    private void RedGoalFlash() {
-        if (go_redGoal != null) {
-            go_redGoal.SetActive(false);
-        }
-    }
-
     #endregion
 
     /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
