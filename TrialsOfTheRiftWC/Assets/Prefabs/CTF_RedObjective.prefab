@@ -726,6 +726,7 @@ MonoBehaviour:
   go_objectIndicator: {fileID: 1565081607546806}
   go_goalIndicator: {fileID: 1179722883262634}
   gc_owned: {fileID: 114926868657018088}
+  fc_owned: {fileID: 114257386682752634}
 --- !u!222 &222037028226563036
 CanvasRenderer:
   m_ObjectHideFlags: 1

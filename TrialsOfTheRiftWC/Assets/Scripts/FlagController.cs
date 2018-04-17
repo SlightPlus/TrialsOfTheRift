@@ -17,7 +17,8 @@ public class FlagController : MonoBehaviour {
     public void DropFlag() {
         transform.SetParent(ctfo_owner.gameObject.transform);   // resets flag parent so Objective can be deactivated correctly
         transform.localPosition = new Vector3(transform.localPosition.x, Constants.ObjectiveStats.C_RedFlagSpawn.y, transform.localPosition.z);
-        ctfo_owner.StartCoroutine("Notify");
+        if(ctfo_owner.gameObject.activeSelf)    // needed for safety of auto flag drop at Objective's end
+            ctfo_owner.StartCoroutine("Notify");
     }
 
     public void ResetFlagPosition() {
@@ -29,7 +30,7 @@ public class FlagController : MonoBehaviour {
         }
     }
 
-    private bool IsPickedUp() {
+    public bool IsPickedUp() {
         return transform.parent.parent.gameObject.CompareTag("Player");
     }
 #endregion

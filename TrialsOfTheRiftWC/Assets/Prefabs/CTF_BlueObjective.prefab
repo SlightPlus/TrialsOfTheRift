@@ -669,6 +669,7 @@ MonoBehaviour:
   go_objectIndicator: {fileID: 1175594989128078}
   go_goalIndicator: {fileID: 1798194852644314}
   gc_owned: {fileID: 114199119782786214}
+  fc_owned: {fileID: 114800098388604672}
 --- !u!114 &114800098388604672
 MonoBehaviour:
   m_ObjectHideFlags: 1
