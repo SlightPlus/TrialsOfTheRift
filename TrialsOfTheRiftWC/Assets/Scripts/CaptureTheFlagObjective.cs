@@ -21,10 +21,9 @@ public class CaptureTheFlagObjective : Objective {
     // Update UI and check for completion
     public void UpdateFlagScore() {
         i_score++;
-		maestro.PlayScore();
+        maestro.PlayScore();
         calligrapher.UpdateScoreUI(e_color, i_score);
         gc_owned.FlashOn();
-        Debug.Log(i_score);
         if (i_score >= Constants.ObjectiveStats.C_CTFMaxScore) {
             b_isComplete = true;
         }
