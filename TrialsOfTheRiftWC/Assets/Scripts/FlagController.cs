@@ -11,9 +11,10 @@ public class FlagController : MonoBehaviour {
     [SerializeField] private CaptureTheFlagObjective ctfo_owner;    // identifies Objective flag is a part of
     [SerializeField] private Constants.Global.Color e_color;        // identifies owning team
     [SerializeField] private GameObject go_buttonPrompt;            // indicator to pickup
-#endregion
+    [SerializeField] private GameObject go_scoreParticle;
+    #endregion
 
-#region FlagController Methods
+    #region FlagController Methods
     public void DropFlag() {
         transform.SetParent(ctfo_owner.gameObject.transform);   // resets flag parent so Objective can be deactivated correctly
         transform.localPosition = new Vector3(transform.localPosition.x, Constants.ObjectiveStats.C_RedFlagSpawn.y, transform.localPosition.z);
@@ -33,9 +34,18 @@ public class FlagController : MonoBehaviour {
     public bool IsPickedUp() {
         return transform.parent.parent.gameObject.CompareTag("Player");
     }
-#endregion
 
-#region Unity Overrides
+    private void DisableParticle() {
+        go_scoreParticle.SetActive(false);
+    }
+    #endregion
+
+    #region Unity Overrides
+    private void OnDestroy()
+    {
+        CancelInvoke();
+    }
+
     void OnTriggerEnter(Collider other) {
         // Player trying to pick up flag (and flag not already picked up)
         if (other.CompareTag("InteractCollider") && !IsPickedUp()) {
@@ -47,6 +57,11 @@ public class FlagController : MonoBehaviour {
         // Player scoring with flag
 		if (other.CompareTag("Goal")) {
 			if (other.GetComponent<GoalController>().Color != e_color) {        // check for correct color of flag/goal
+                Vector3 pos = transform.position;
+                go_scoreParticle.transform.position = pos;
+                go_scoreParticle.SetActive(true);
+                Invoke("DisableParticle", 1.0f);
+
                 ctfo_owner.UpdateFlagScore();                                   // increase score and update UI      
 				transform.parent.parent.GetComponent<PlayerController>().DropFlag();     // make carrying player drop flag (sets player's flag reference to null and calls FlagController.DropFlag)
                 ResetFlagPosition();   // reset flag to original spawn position

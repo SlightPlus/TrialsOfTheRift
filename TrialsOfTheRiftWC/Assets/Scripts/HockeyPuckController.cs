@@ -9,9 +9,10 @@ using UnityEngine;
 public class HockeyPuckController : SpellTarget {
 #region Variables and Declarations
     [SerializeField] private IceHockeyObjective iho_owner;    // identifies objective puck is a part of
-#endregion
+    [SerializeField] private GameObject go_scoreParticle;
+    #endregion
 
-#region HockeyPuckController Methods
+    #region HockeyPuckController Methods
     override public void ApplySpellEffect(Constants.SpellStats.SpellType spell, Constants.Global.Color color, float damage, Vector3 direction) {
 
         CancelInvoke();     // reset slowdown invoke
@@ -52,6 +53,11 @@ public class HockeyPuckController : SpellTarget {
         f_speed -= Constants.ObjectiveStats.C_PuckSpeedDecreaseAmount;
     }
 
+    private void DisableParticle()
+    {
+        go_scoreParticle.SetActive(false);
+    }
+
     ////if the puck gets stuck in the portal, move it over from it and reset its speed
     //private void PuckIsStuckInPortal() {
 
@@ -67,11 +73,16 @@ public class HockeyPuckController : SpellTarget {
     //    isPuckStuck = false;
     //}
 
-#endregion
+    #endregion
 
-#region Unity Overrides
+    #region Unity Overrides
     void Start() {
         f_speed = Constants.ObjectiveStats.C_PuckBaseSpeed;     // cannot read from Constants.cs in initialization at top
+    }
+
+    private void OnDestroy()
+    {
+        CancelInvoke();
     }
 
     void Update() {
@@ -102,6 +113,11 @@ public class HockeyPuckController : SpellTarget {
     void OnTriggerEnter(Collider other) {
         if (other.CompareTag("HockeyGoal")) {   // player scoring with puck
             if (other.GetComponent<GoalController>().Color != e_color) {
+                Vector3 pos = transform.position;
+                go_scoreParticle.transform.position = pos;
+                go_scoreParticle.SetActive(true);
+                Invoke("DisableParticle", 1.0f);
+
                 ResetPuckPosition();
                 iho_owner.UpdatePuckScore();
                 iho_owner.StopCoroutine("Notify");
