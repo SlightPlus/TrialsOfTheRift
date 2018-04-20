@@ -377,10 +377,10 @@ public sealed class Maestro : MonoBehaviour {
 			PlayAnnouncementTutorial();
 		/* if(SceneManager.GetActiveScene().name == "BuildSetUp")
 			PlayAnnouncementIntro(); */
-        am_masterMix.SetFloat("VolumeMaster",Constants.VolOptions.C_MasterVolume);
-        am_masterMix.SetFloat("VolumeVOI",Constants.VolOptions.C_VOIVolume);
-        am_masterMix.SetFloat("VolumeBGM",Constants.VolOptions.C_BGMVolume);
-        am_masterMix.SetFloat("VolumeSFX",Constants.VolOptions.C_SFXVolume);
+        // am_masterMix.SetFloat("VolumeMaster",Constants.VolOptions.C_MasterVolume);
+        // am_masterMix.SetFloat("VolumeVOI",Constants.VolOptions.C_VOIVolume);
+        // am_masterMix.SetFloat("VolumeBGM",Constants.VolOptions.C_BGMVolume);
+        // am_masterMix.SetFloat("VolumeSFX",Constants.VolOptions.C_SFXVolume);
 	}
 	
 	// Takes volatility level as a parameter.
