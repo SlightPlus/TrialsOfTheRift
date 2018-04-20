@@ -15,7 +15,7 @@ public class HockeyPuckController : SpellTarget {
     #region HockeyPuckController Methods
     override public void ApplySpellEffect(Constants.SpellStats.SpellType spell, Constants.Global.Color color, float damage, Vector3 direction) {
 
-        CancelInvoke();     // reset slowdown invoke
+        CancelInvoke("DecreaseSpeed");     // reset slowdown invoke
         InvokeRepeating("DecreaseSpeed", Constants.ObjectiveStats.C_PuckSpeedDecayDelay, Constants.ObjectiveStats.C_PuckSpeedDecayRate);
 
         switch (spell) {
@@ -116,7 +116,7 @@ public class HockeyPuckController : SpellTarget {
                 Vector3 pos = transform.position;
                 go_scoreParticle.transform.position = pos;
                 go_scoreParticle.SetActive(true);
-                Invoke("DisableParticle", 1.0f);
+                Invoke("DisableParticle", Constants.ObjectiveStats.C_ScoringParticleLiveTime);
 
                 ResetPuckPosition();
                 iho_owner.UpdatePuckScore();

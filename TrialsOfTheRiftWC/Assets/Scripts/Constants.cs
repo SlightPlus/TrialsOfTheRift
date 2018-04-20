@@ -110,6 +110,7 @@ public static class Constants {
         //public static Vector3 C_GenericRedObjectiveGoalSpawn = new Vector3(-4.5f, .01f, 0f);
         //public static Vector3 C_GenericBlueObjectiveGoalSpawn = new Vector3(4.5f, .01f, 0f);
         public static float C_NotificationTimer = 10.0f;
+        public static float C_ScoringParticleLiveTime = 1.0f;
 
         // Potato Stats
         //public static Vector3 C_RedPotatoSpawn = new Vector3(-7.5f, 0.5f, 0f);

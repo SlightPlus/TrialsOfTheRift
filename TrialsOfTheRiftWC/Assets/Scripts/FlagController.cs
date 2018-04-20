@@ -60,7 +60,7 @@ public class FlagController : MonoBehaviour {
                 Vector3 pos = transform.position;
                 go_scoreParticle.transform.position = pos;
                 go_scoreParticle.SetActive(true);
-                Invoke("DisableParticle", 1.0f);
+                Invoke("DisableParticle", Constants.ObjectiveStats.C_ScoringParticleLiveTime);
 
                 ctfo_owner.UpdateFlagScore();                                   // increase score and update UI      
 				transform.parent.parent.GetComponent<PlayerController>().DropFlag();     // make carrying player drop flag (sets player's flag reference to null and calls FlagController.DropFlag)
