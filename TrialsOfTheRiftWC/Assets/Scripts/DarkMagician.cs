@@ -77,9 +77,11 @@ public sealed class DarkMagician : MonoBehaviour {
 		}
 		else {
 			if (objv_currentRedObjective.IsComplete) {
+                Constants.TeamStats.C_RedTeamScore++;
                 GetNextObjective(objv_currentRedObjective.Color, objv_currentRedObjective.NumberInList);
 			}
 			if(objv_currentBlueObjective.IsComplete) {
+                Constants.TeamStats.C_BlueTeamScore++;
                 GetNextObjective(objv_currentBlueObjective.Color, objv_currentBlueObjective.NumberInList);
             }
 		}
