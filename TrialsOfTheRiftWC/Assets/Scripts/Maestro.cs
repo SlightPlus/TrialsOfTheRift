@@ -24,6 +24,7 @@ public sealed class Maestro : MonoBehaviour {
 	
 	[Header("Audio Clips")]
 	[SerializeField] private AudioClip ac_windShoot;
+	[SerializeField] private AudioClip ac_windHit;
 	[SerializeField] private AudioClip ac_iceShoot;
 	[SerializeField] private AudioClip ac_electricShoot;
 	[SerializeField] private AudioClip[] ac_magicMissileShoot;
@@ -163,6 +164,9 @@ public sealed class Maestro : MonoBehaviour {
 	
 	public void PlayWindShoot(){
 		PlaySingle(as_sfxHi,ac_windShoot);
+	}
+	public void PlayWindHit(){
+		PlaySingle(as_sfxHi,ac_windHit);
 	}
 	public void PlayIceShoot(){
 		PlaySingle(as_sfxHi,ac_iceShoot);

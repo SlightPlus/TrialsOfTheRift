@@ -64,6 +64,7 @@ public abstract class SpellTarget : MonoBehaviour {
     }
 	
 	public IEnumerator WindPush(float multiplier, Vector3 direction){
+		maestro.PlayWindHit();
 		float startTime = Time.time;
 		float elapsedTime = 0;
 		while(elapsedTime < .99f){
@@ -75,6 +76,10 @@ public abstract class SpellTarget : MonoBehaviour {
 #endregion
 
 #region Unity Overrides
+	void Start(){
+		maestro = Maestro.Instance;
+	}
+	
     void OnEnable() {
         if (go_indicator) {
             InvokeRepeating("Notify", 0, Constants.ObjectiveStats.C_NotificationTimer);
