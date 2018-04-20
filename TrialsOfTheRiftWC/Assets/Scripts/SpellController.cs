@@ -54,41 +54,43 @@ public abstract class SpellController : MonoBehaviour {
     protected virtual void OnCollisionEnter(Collision collision)
     {
         SpellTarget target;
-
-            if (target = collision.gameObject.GetComponent<SpellTarget>()) {
-                target.ApplySpellEffect(e_spellType, e_color, f_damage, transform.forward.normalized);
-
-                if (collision.gameObject.CompareTag("Spell")) { 
-                    Constants.Global.Color spellColor = collision.gameObject.GetComponent<SpellController>().e_color;
-                    if (spellColor != e_color) {    // opposing spells destroy each other
-                        Destroy(gameObject);
-                    } else {              // ignore collisions between spells of the same color
-                        Physics.IgnoreCollision(GetComponent<Collider>(), collision.gameObject.GetComponent<Collider>());
-                    }
-                } else {  // destroy spell on collision with anything else (including specific spell target objects above, once the effect has happened) (Rift and portal interactions are controlled by OnTriggerEnter, below)
-                    Destroy(gameObject);
-                }
-            }
+        if (target = collision.gameObject.GetComponent<SpellTarget>()) {
+            target.ApplySpellEffect(e_spellType, e_color, f_damage, transform.forward.normalized);
+        }
+        if (collision.gameObject.CompareTag("Spell")) { 
+            Constants.Global.Color spellColor = collision.gameObject.GetComponent<SpellController>().e_color;
+            //if (spellColor != e_color) {    // opposing spells destroy each other
+                Destroy(gameObject);
+            //} else {              // ignore collisions between spells of the same color -THIS DOES NOT WORK!
+            //    Physics.IgnoreCollision(GetComponent<Collider>(), collision.gameObject.GetComponent<Collider>());
+            //}
+        } else {  // destroy spell on collision with anything else (including specific spell target objects above, once the effect has happened) (Rift and portal interactions are controlled by OnTriggerEnter, below)
+            Destroy(gameObject);
+        }
 	}
 
 	protected virtual void OnTriggerEnter(Collider other) {
-		if (other.CompareTag("Rift")) {	    // Rift reacts to spells by trigger rather than collision
+        if (other.CompareTag("Rift")) {	    // Rift reacts to spells by trigger rather than collision
 			CancelInvoke();     // cancels and restarts spell's live timer
 			BuffSpell();
 			Invoke("InvokeDestroy", Constants.SpellStats.C_SpellLiveTime);
         }
 
         if (other.CompareTag("ParryShield")) {
+
             CancelInvoke();     // cancels and restarts spell's live timer
             Invoke("InvokeDestroy", Constants.SpellStats.C_SpellLiveTime);
 
-            // deflect spell in player's facing direction
-            Vector3 v3_direction = other.gameObject.transform.forward.normalized;
-            transform.Rotate(v3_direction);
+            // deflect spell back from whence it came
+            Vector3 v3_direction = -transform.forward.normalized;
+            transform.forward = v3_direction;
             rb.velocity = v3_direction * rb.velocity.magnitude;
-            Physics.IgnoreCollision(GetComponent<Collider>(), pc_owner.Capsule.GetComponent<Collider>(), false);
-            Physics.IgnoreCollision(GetComponent<Collider>(), other.gameObject.GetComponent<SpellController>().PC_Owner.Capsule.GetComponent<Collider>());
-            pc_owner = other.gameObject.GetComponent<SpellController>().PC_Owner;
+            // deflect spell in player's facing direction
+            //Vector3 v3_direction = other.gameObject.transform.forward.normalized;
+            //transform.Rotate(v3_direction);
+            //rb.velocity = v3_direction * rb.velocity.magnitude;
+            pc_owner = other.gameObject.transform.parent.gameObject.GetComponent<PlayerController>();
+            e_color = other.gameObject.transform.parent.gameObject.GetComponent<PlayerController>().Color;
         }
     }
     #endregion
