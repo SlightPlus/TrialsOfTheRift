@@ -35,8 +35,10 @@ public class PauseController : MonoBehaviour {
         if (pc_owner == null) {
             pc_owner = pc_in;
             txt_pauseIndicator.text = "P" + (pc_owner.Num + 1) + " Pause.";
-            txt_redScoreLabel.text = "Total Score: " + Constants.TeamStats.C_RedTeamScore;
-            txt_blueScoreLabel.text = "Total Score: " + Constants.TeamStats.C_BlueTeamScore;
+            if(txt_redScoreLabel != null) {
+                txt_redScoreLabel.text = "Total Score: " + Constants.TeamStats.C_RedTeamScore;
+                txt_blueScoreLabel.text = "Total Score: " + Constants.TeamStats.C_BlueTeamScore;
+            }
             img_pauseBacking.SetActive(true);
 
             rsim.RewiredPlayerIds = new int[] { pc_owner.Num };
