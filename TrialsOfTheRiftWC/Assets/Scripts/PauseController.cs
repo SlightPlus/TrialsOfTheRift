@@ -21,6 +21,8 @@ public class PauseController : MonoBehaviour {
     [SerializeField] GameObject go_pause;
 
     [SerializeField]Text txt_buildLabel;
+    [SerializeField]Text txt_redScoreLabel;
+    [SerializeField]Text txt_blueScoreLabel;
     [SerializeField]Button butt_select;
     [SerializeField]Button butt_optSelect;
     //private Player p_player;
@@ -33,13 +35,15 @@ public class PauseController : MonoBehaviour {
         if (pc_owner == null) {
             pc_owner = pc_in;
             txt_pauseIndicator.text = "P" + (pc_owner.Num + 1) + " Pause.";
+            txt_redScoreLabel.text = "Total Score: " + Constants.TeamStats.C_RedTeamScore;
+            txt_blueScoreLabel.text = "Total Score: " + Constants.TeamStats.C_BlueTeamScore;
             img_pauseBacking.SetActive(true);
 
             rsim.RewiredPlayerIds = new int[] { pc_owner.Num };
 
             //Properly highlight the button.
             butt_select.Select();
-            butt_select.OnSelect(null);
+            //butt_select.OnSelect(null);
 
             Time.timeScale = 0;
             

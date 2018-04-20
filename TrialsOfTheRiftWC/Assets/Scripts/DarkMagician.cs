@@ -19,7 +19,7 @@ public sealed class DarkMagician : MonoBehaviour {
     private bool b_gameOver;
 #endregion
 
-#region Dark Magigician Methods
+#region Dark Magician Methods
     // Shuffles the order of both red and blue objective lists in parallel
     private void ShuffleObjectives() {
         for (int i = 0; i < objv_redObjectiveList.Length - 1; i++) {
