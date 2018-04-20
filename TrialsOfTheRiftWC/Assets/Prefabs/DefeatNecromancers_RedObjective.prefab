@@ -52976,7 +52976,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1551014011912918}
   serializedVersion: 2
-  m_Mass: 10
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -54432,6 +54432,8 @@ MonoBehaviour:
   go_indicator: {fileID: 1045142912800796}
   rb: {fileID: 54636239666616884}
   anim: {fileID: 95215698830868368}
+  dissolve: {fileID: 0}
+  fader: {fileID: 0}
   nma_agent: {fileID: 195019251239017494}
 --- !u!114 &114001923654348528
 MonoBehaviour:
@@ -54449,6 +54451,8 @@ MonoBehaviour:
   go_indicator: {fileID: 1119215945564504}
   rb: {fileID: 54133747851420894}
   anim: {fileID: 95212598782817072}
+  dissolve: {fileID: 0}
+  fader: {fileID: 0}
   nma_agent: {fileID: 195384701996625538}
 --- !u!114 &114012827626677394
 MonoBehaviour:
@@ -54463,6 +54467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam_Camera: {fileID: 0}
   go_trackedObject: {fileID: 1551014011912918}
+  b_persistent: 0
   v3_offset: {x: 0, y: 3, z: 1}
 --- !u!114 &114013950514392384
 MonoBehaviour:
@@ -54524,7 +54529,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam_Camera: {fileID: 0}
   go_trackedObject: {fileID: 1953712650629422}
-  v3_offset: {x: 0, y: 0.3, z: 1.3}
+  b_persistent: 0
+  v3_offset: {x: 0, y: 3, z: 1}
 --- !u!114 &114057968339623958
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -54541,6 +54547,8 @@ MonoBehaviour:
   go_indicator: {fileID: 1920049934517878}
   rb: {fileID: 54319240056610838}
   anim: {fileID: 95949459071153940}
+  dissolve: {fileID: 0}
+  fader: {fileID: 0}
   nma_agent: {fileID: 195277139211978334}
 --- !u!114 &114075603517557316
 MonoBehaviour:
@@ -54568,7 +54576,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam_Camera: {fileID: 0}
   go_trackedObject: {fileID: 1278112748878026}
-  v3_offset: {x: 0, y: 0.3, z: 1.3}
+  b_persistent: 0
+  v3_offset: {x: 0, y: 3, z: 1}
 --- !u!114 &114095122747031022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -54651,7 +54660,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam_Camera: {fileID: 0}
   go_trackedObject: {fileID: 1398036452700676}
-  v3_offset: {x: 0, y: 0.3, z: 1.3}
+  b_persistent: 0
+  v3_offset: {x: 0, y: 3, z: 1}
 --- !u!114 &114141386317236002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -54695,6 +54705,8 @@ MonoBehaviour:
   go_indicator: {fileID: 1945320281907668}
   rb: {fileID: 54880544407537196}
   anim: {fileID: 95428619837400320}
+  dissolve: {fileID: 0}
+  fader: {fileID: 0}
   nma_agent: {fileID: 195430516812225352}
 --- !u!114 &114151130928978620
 MonoBehaviour:
@@ -54791,7 +54803,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam_Camera: {fileID: 0}
   go_trackedObject: {fileID: 1659396956837836}
-  v3_offset: {x: 0, y: 0.3, z: 1.3}
+  b_persistent: 0
+  v3_offset: {x: 0, y: 3, z: 1}
 --- !u!114 &114194988351839456
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -54834,7 +54847,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam_Camera: {fileID: 0}
   go_trackedObject: {fileID: 1854767151339208}
-  v3_offset: {x: 0, y: 0.3, z: 1.3}
+  b_persistent: 0
+  v3_offset: {x: 0, y: 3, z: 1}
 --- !u!114 &114222430840636784
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -54958,6 +54972,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  go_objectIndicator: {fileID: 0}
+  go_goalIndicator: {fileID: 0}
 --- !u!114 &114247176871735022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -54974,6 +54990,8 @@ MonoBehaviour:
   go_indicator: {fileID: 1816456622850734}
   rb: {fileID: 54204377407920404}
   anim: {fileID: 95059837086790138}
+  dissolve: {fileID: 0}
+  fader: {fileID: 0}
   nma_agent: {fileID: 195852322012363736}
 --- !u!114 &114249891205089112
 MonoBehaviour:
@@ -54988,7 +55006,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam_Camera: {fileID: 0}
   go_trackedObject: {fileID: 1955216953732106}
-  v3_offset: {x: 0, y: 0.3, z: 1.3}
+  b_persistent: 0
+  v3_offset: {x: 0, y: 3, z: 1}
 --- !u!114 &114250803043712568
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -55036,7 +55055,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam_Camera: {fileID: 0}
   go_trackedObject: {fileID: 1561532390190702}
-  v3_offset: {x: 0, y: 0.3, z: 1.3}
+  b_persistent: 0
+  v3_offset: {x: 0, y: 3, z: 1}
 --- !u!114 &114263127999396622
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -55105,7 +55125,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam_Camera: {fileID: 0}
   go_trackedObject: {fileID: 1492869400259354}
-  v3_offset: {x: 0, y: 0.3, z: 1.3}
+  b_persistent: 0
+  v3_offset: {x: 0, y: 3, z: 1}
 --- !u!114 &114293644579444234
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -55170,6 +55191,8 @@ MonoBehaviour:
   go_indicator: {fileID: 1609039205994566}
   rb: {fileID: 54356750512296318}
   anim: {fileID: 95279905248890322}
+  dissolve: {fileID: 0}
+  fader: {fileID: 0}
   nma_agent: {fileID: 195100129979998752}
 --- !u!114 &114327554543203798
 MonoBehaviour:
@@ -55255,6 +55278,8 @@ MonoBehaviour:
   go_indicator: {fileID: 1939956711779946}
   rb: {fileID: 54977665041110876}
   anim: {fileID: 95276057370627222}
+  dissolve: {fileID: 0}
+  fader: {fileID: 0}
   nma_agent: {fileID: 195747930799792172}
 --- !u!114 &114370035227386230
 MonoBehaviour:
@@ -55354,7 +55379,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam_Camera: {fileID: 0}
   go_trackedObject: {fileID: 1985029169564162}
-  v3_offset: {x: 0, y: 0.3, z: 1.3}
+  b_persistent: 0
+  v3_offset: {x: 0, y: 3, z: 1}
 --- !u!114 &114425493969793750
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -55381,7 +55407,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam_Camera: {fileID: 0}
   go_trackedObject: {fileID: 1240547547398394}
-  v3_offset: {x: 0, y: 0.3, z: 1.3}
+  b_persistent: 0
+  v3_offset: {x: 0, y: 3, z: 1}
 --- !u!114 &114445673750195516
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -55398,6 +55425,8 @@ MonoBehaviour:
   go_indicator: {fileID: 1018952223468398}
   rb: {fileID: 54276613808907208}
   anim: {fileID: 95263581073122532}
+  dissolve: {fileID: 0}
+  fader: {fileID: 0}
   nma_agent: {fileID: 195913658795228172}
 --- !u!114 &114455090947609034
 MonoBehaviour:
@@ -55412,7 +55441,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam_Camera: {fileID: 0}
   go_trackedObject: {fileID: 1748050358382610}
-  v3_offset: {x: 0, y: 0.3, z: 1.3}
+  b_persistent: 0
+  v3_offset: {x: 0, y: 3, z: 1}
 --- !u!114 &114461671096314058
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -55453,6 +55483,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam_Camera: {fileID: 0}
   go_trackedObject: {fileID: 1228990903814142}
+  b_persistent: 0
   v3_offset: {x: 0, y: 3, z: 1}
 --- !u!114 &114475661466088696
 MonoBehaviour:
@@ -55560,6 +55591,8 @@ MonoBehaviour:
   go_indicator: {fileID: 1525652067075840}
   rb: {fileID: 54010248689198192}
   anim: {fileID: 95341754799280748}
+  dissolve: {fileID: 0}
+  fader: {fileID: 0}
   nma_agent: {fileID: 195831839246657742}
 --- !u!114 &114502428546190168
 MonoBehaviour:
@@ -55574,7 +55607,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam_Camera: {fileID: 0}
   go_trackedObject: {fileID: 1212808130283382}
-  v3_offset: {x: 0, y: 0.3, z: 1.3}
+  b_persistent: 0
+  v3_offset: {x: 0, y: 3, z: 1}
 --- !u!114 &114522076542598266
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -55618,6 +55652,8 @@ MonoBehaviour:
   go_indicator: {fileID: 1364829361077244}
   rb: {fileID: 54641629923891266}
   anim: {fileID: 95820858728016608}
+  dissolve: {fileID: 0}
+  fader: {fileID: 0}
   nma_agent: {fileID: 195010547881806530}
 --- !u!114 &114524330670617062
 MonoBehaviour:
@@ -55669,6 +55705,8 @@ MonoBehaviour:
   go_indicator: {fileID: 1647235223600222}
   rb: {fileID: 54446975694080478}
   anim: {fileID: 95065405825305364}
+  dissolve: {fileID: 0}
+  fader: {fileID: 0}
   nma_agent: {fileID: 195340801823417158}
 --- !u!114 &114537665129695002
 MonoBehaviour:
@@ -55713,6 +55751,8 @@ MonoBehaviour:
   go_indicator: {fileID: 1008036089990400}
   rb: {fileID: 54167451533976980}
   anim: {fileID: 95183423130502222}
+  dissolve: {fileID: 0}
+  fader: {fileID: 0}
   nma_agent: {fileID: 195677966831858318}
   dno_owner: {fileID: 114247102603062988}
 --- !u!114 &114548177084451556
@@ -55773,6 +55813,8 @@ MonoBehaviour:
   go_indicator: {fileID: 1309385127049794}
   rb: {fileID: 54552326366751392}
   anim: {fileID: 95336191670718622}
+  dissolve: {fileID: 0}
+  fader: {fileID: 0}
   nma_agent: {fileID: 195973036623372686}
 --- !u!114 &114567257871406174
 MonoBehaviour:
@@ -55929,7 +55971,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam_Camera: {fileID: 0}
   go_trackedObject: {fileID: 1791036873636488}
-  v3_offset: {x: 0, y: 0.3, z: 1.3}
+  b_persistent: 0
+  v3_offset: {x: 0, y: 3, z: 1}
 --- !u!114 &114613209438270560
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -55980,6 +56023,8 @@ MonoBehaviour:
   go_indicator: {fileID: 1706018752030994}
   rb: {fileID: 54961103584066502}
   anim: {fileID: 95507133305277228}
+  dissolve: {fileID: 0}
+  fader: {fileID: 0}
   nma_agent: {fileID: 195725411803268818}
 --- !u!114 &114650120719141466
 MonoBehaviour:
@@ -56021,7 +56066,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam_Camera: {fileID: 0}
   go_trackedObject: {fileID: 1606503786543360}
-  v3_offset: {x: 0, y: 0.3, z: 1.3}
+  b_persistent: 0
+  v3_offset: {x: 0, y: 3, z: 1}
 --- !u!114 &114664768357826690
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -56072,7 +56118,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam_Camera: {fileID: 0}
   go_trackedObject: {fileID: 1156545748191324}
-  v3_offset: {x: 0, y: 0.3, z: 1.3}
+  b_persistent: 0
+  v3_offset: {x: 0, y: 3, z: 1}
 --- !u!114 &114675953229800834
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -56116,6 +56163,8 @@ MonoBehaviour:
   go_indicator: {fileID: 1828612038639172}
   rb: {fileID: 54090564263715902}
   anim: {fileID: 95882999939844872}
+  dissolve: {fileID: 0}
+  fader: {fileID: 0}
   nma_agent: {fileID: 195022667172517346}
 --- !u!114 &114690594527161824
 MonoBehaviour:
@@ -56239,6 +56288,8 @@ MonoBehaviour:
   go_indicator: {fileID: 1256584434483100}
   rb: {fileID: 54206771342545816}
   anim: {fileID: 95512126695952766}
+  dissolve: {fileID: 0}
+  fader: {fileID: 0}
   nma_agent: {fileID: 195966882349562844}
 --- !u!114 &114743388631588738
 MonoBehaviour:
@@ -56346,6 +56397,8 @@ MonoBehaviour:
   go_indicator: {fileID: 1512682723467206}
   rb: {fileID: 54547652546049174}
   anim: {fileID: 95345656919572406}
+  dissolve: {fileID: 0}
+  fader: {fileID: 0}
   nma_agent: {fileID: 195124145302229180}
 --- !u!114 &114777336491216878
 MonoBehaviour:
@@ -56411,6 +56464,8 @@ MonoBehaviour:
   go_indicator: {fileID: 1251424582022814}
   rb: {fileID: 54270040569465986}
   anim: {fileID: 95999149869174098}
+  dissolve: {fileID: 0}
+  fader: {fileID: 0}
   nma_agent: {fileID: 195475292639708178}
 --- !u!114 &114812363493231458
 MonoBehaviour:
@@ -56540,7 +56595,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam_Camera: {fileID: 0}
   go_trackedObject: {fileID: 1619373099022686}
-  v3_offset: {x: 0, y: 0.3, z: 1.3}
+  b_persistent: 0
+  v3_offset: {x: 0, y: 3, z: 1}
 --- !u!114 &114851960060970832
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -56557,6 +56613,8 @@ MonoBehaviour:
   go_indicator: {fileID: 1666398197975710}
   rb: {fileID: 54178669084125916}
   anim: {fileID: 95945456811033306}
+  dissolve: {fileID: 0}
+  fader: {fileID: 0}
   nma_agent: {fileID: 195236070772271360}
 --- !u!114 &114854307904997008
 MonoBehaviour:
@@ -56587,7 +56645,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam_Camera: {fileID: 0}
   go_trackedObject: {fileID: 1208164954471282}
-  v3_offset: {x: 0, y: 0.3, z: 1.3}
+  b_persistent: 0
+  v3_offset: {x: 0, y: 3, z: 1}
 --- !u!114 &114871237873722936
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -56741,7 +56800,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam_Camera: {fileID: 0}
   go_trackedObject: {fileID: 1461957535052422}
-  v3_offset: {x: 0, y: 0.3, z: 1.3}
+  b_persistent: 0
+  v3_offset: {x: 0, y: 3, z: 1}
 --- !u!114 &114937279329097126
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -56771,6 +56831,8 @@ MonoBehaviour:
   go_indicator: {fileID: 1756139616964554}
   rb: {fileID: 54315044216579096}
   anim: {fileID: 95429028202859660}
+  dissolve: {fileID: 0}
+  fader: {fileID: 0}
   nma_agent: {fileID: 195155132984119168}
 --- !u!114 &114953407323145260
 MonoBehaviour:
@@ -56880,7 +56942,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam_Camera: {fileID: 0}
   go_trackedObject: {fileID: 1812301572259710}
-  v3_offset: {x: 0, y: 0.3, z: 1.3}
+  b_persistent: 0
+  v3_offset: {x: 0, y: 3, z: 1}
 --- !u!114 &114982727502715612
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -56897,6 +56960,8 @@ MonoBehaviour:
   go_indicator: {fileID: 1993532960159232}
   rb: {fileID: 54504876345543692}
   anim: {fileID: 95880851022420992}
+  dissolve: {fileID: 0}
+  fader: {fileID: 0}
   nma_agent: {fileID: 195400842203683946}
 --- !u!114 &114991677119417112
 MonoBehaviour:

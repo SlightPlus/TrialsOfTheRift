@@ -33,7 +33,7 @@ public static class Constants {
         public static float C_MaxHealth = 300.0f;
         public static float C_StepSoundDelay = 0.4f;
         public static float C_InvulnTime = 2.0f;
-        public static float C_PlayerWindPushMultiplier = 1f;
+        public static float C_PlayerWindPushMultiplier = 0.5f;
 
         public static Global.Color C_p1Color = Global.Color.RED;
         public static Global.Color C_p2Color = Global.Color.RED;
@@ -194,8 +194,8 @@ public static class Constants {
         public static float C_MapBoundryXAxis = 14.5f;
         public static float C_MapBoundryZAxis = 9.5f;
 		
-		public static float C_SkeletonWindPushMultiplier = .5f;
-		public static float C_NecromancerWindPushMultiplier = .2f;
+		public static float C_SkeletonWindPushMultiplier = 0.5f;
+		public static float C_NecromancerWindPushMultiplier = 0.5f;
     }
 
     // Rift Stats
