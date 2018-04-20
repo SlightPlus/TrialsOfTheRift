@@ -6490,37 +6490,7 @@ Prefab:
       propertyPath: cam_Camera
       value: 
       objectReference: {fileID: 1859528229}
-    - target: {fileID: 114261862067470030, guid: 7e0373141a7de8e4fb83638891c59bde,
-        type: 2}
-      propertyPath: cam_Camera
-      value: 
-      objectReference: {fileID: 1859528229}
-    - target: {fileID: 114051256605634224, guid: 7e0373141a7de8e4fb83638891c59bde,
-        type: 2}
-      propertyPath: cam_Camera
-      value: 
-      objectReference: {fileID: 1859528229}
-    - target: {fileID: 114477434120535036, guid: 7e0373141a7de8e4fb83638891c59bde,
-        type: 2}
-      propertyPath: cam_Camera
-      value: 
-      objectReference: {fileID: 1859528229}
     - target: {fileID: 114949084401633366, guid: 7e0373141a7de8e4fb83638891c59bde,
-        type: 2}
-      propertyPath: cam_Camera
-      value: 
-      objectReference: {fileID: 1859528229}
-    - target: {fileID: 114687766341080648, guid: 7e0373141a7de8e4fb83638891c59bde,
-        type: 2}
-      propertyPath: cam_Camera
-      value: 
-      objectReference: {fileID: 1859528229}
-    - target: {fileID: 114151703144560484, guid: 7e0373141a7de8e4fb83638891c59bde,
-        type: 2}
-      propertyPath: cam_Camera
-      value: 
-      objectReference: {fileID: 1859528229}
-    - target: {fileID: 114604214340489284, guid: 7e0373141a7de8e4fb83638891c59bde,
         type: 2}
       propertyPath: cam_Camera
       value: 
@@ -6530,21 +6500,63 @@ Prefab:
       propertyPath: pauc_pause
       value: 
       objectReference: {fileID: 1802629838}
-    - target: {fileID: 114278817969382078, guid: 7e0373141a7de8e4fb83638891c59bde,
+    - target: {fileID: 114687766341080648, guid: 7e0373141a7de8e4fb83638891c59bde,
         type: 2}
-      propertyPath: pauc_pause
+      propertyPath: cam_Camera
       value: 
-      objectReference: {fileID: 1802629838}
-    - target: {fileID: 114057636586604300, guid: 7e0373141a7de8e4fb83638891c59bde,
+      objectReference: {fileID: 1859528229}
+    - target: {fileID: 114604214340489284, guid: 7e0373141a7de8e4fb83638891c59bde,
         type: 2}
-      propertyPath: pauc_pause
+      propertyPath: cam_Camera
       value: 
-      objectReference: {fileID: 1802629838}
+      objectReference: {fileID: 1859528229}
     - target: {fileID: 114550989150642976, guid: 7e0373141a7de8e4fb83638891c59bde,
         type: 2}
       propertyPath: pauc_pause
       value: 
       objectReference: {fileID: 1802629838}
+    - target: {fileID: 114477434120535036, guid: 7e0373141a7de8e4fb83638891c59bde,
+        type: 2}
+      propertyPath: cam_Camera
+      value: 
+      objectReference: {fileID: 1859528229}
+    - target: {fileID: 114278817969382078, guid: 7e0373141a7de8e4fb83638891c59bde,
+        type: 2}
+      propertyPath: pauc_pause
+      value: 
+      objectReference: {fileID: 1802629838}
+    - target: {fileID: 114261862067470030, guid: 7e0373141a7de8e4fb83638891c59bde,
+        type: 2}
+      propertyPath: cam_Camera
+      value: 
+      objectReference: {fileID: 1859528229}
+    - target: {fileID: 114151703144560484, guid: 7e0373141a7de8e4fb83638891c59bde,
+        type: 2}
+      propertyPath: cam_Camera
+      value: 
+      objectReference: {fileID: 1859528229}
+    - target: {fileID: 114057636586604300, guid: 7e0373141a7de8e4fb83638891c59bde,
+        type: 2}
+      propertyPath: pauc_pause
+      value: 
+      objectReference: {fileID: 1802629838}
+    - target: {fileID: 114051256605634224, guid: 7e0373141a7de8e4fb83638891c59bde,
+        type: 2}
+      propertyPath: cam_Camera
+      value: 
+      objectReference: {fileID: 1859528229}
+    - target: {fileID: 4798259383895752, guid: 7e0373141a7de8e4fb83638891c59bde, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4916733499116952, guid: 7e0373141a7de8e4fb83638891c59bde, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4771415148228434, guid: 7e0373141a7de8e4fb83638891c59bde, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7e0373141a7de8e4fb83638891c59bde, type: 2}
   m_IsPrefabParent: 0
@@ -11653,97 +11665,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 114473858687993354, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: cam_Camera
-      value: 
-      objectReference: {fileID: 1859528229}
-    - target: {fileID: 114866793092755674, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: cam_Camera
-      value: 
-      objectReference: {fileID: 1859528229}
-    - target: {fileID: 114412953614339940, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: cam_Camera
-      value: 
-      objectReference: {fileID: 1859528229}
-    - target: {fileID: 114262644521765502, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: cam_Camera
-      value: 
-      objectReference: {fileID: 1859528229}
-    - target: {fileID: 114673369492266202, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: cam_Camera
-      value: 
-      objectReference: {fileID: 1859528229}
-    - target: {fileID: 114441686049778116, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: cam_Camera
-      value: 
-      objectReference: {fileID: 1859528229}
-    - target: {fileID: 114658208711948432, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: cam_Camera
-      value: 
-      objectReference: {fileID: 1859528229}
-    - target: {fileID: 114138941508096494, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: cam_Camera
-      value: 
-      objectReference: {fileID: 1859528229}
-    - target: {fileID: 114608009975482746, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: cam_Camera
-      value: 
-      objectReference: {fileID: 1859528229}
-    - target: {fileID: 114851165687473898, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: cam_Camera
-      value: 
-      objectReference: {fileID: 1859528229}
-    - target: {fileID: 114180644588002742, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: cam_Camera
-      value: 
-      objectReference: {fileID: 1859528229}
-    - target: {fileID: 114934569714383050, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: cam_Camera
-      value: 
-      objectReference: {fileID: 1859528229}
-    - target: {fileID: 114976124353282454, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: cam_Camera
-      value: 
-      objectReference: {fileID: 1859528229}
-    - target: {fileID: 114249891205089112, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: cam_Camera
-      value: 
-      objectReference: {fileID: 1859528229}
-    - target: {fileID: 114455090947609034, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: cam_Camera
-      value: 
-      objectReference: {fileID: 1859528229}
-    - target: {fileID: 114092310217904280, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: cam_Camera
-      value: 
-      objectReference: {fileID: 1859528229}
-    - target: {fileID: 114039437163268118, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: cam_Camera
-      value: 
-      objectReference: {fileID: 1859528229}
-    - target: {fileID: 114502428546190168, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: cam_Camera
-      value: 
-      objectReference: {fileID: 1859528229}
-    - target: {fileID: 114211303991577732, guid: 9de8c005069aeca4fac05ee8f9619fe4,
+    - target: {fileID: 114291562577045704, guid: 9de8c005069aeca4fac05ee8f9619fe4,
         type: 2}
       propertyPath: cam_Camera
       value: 
@@ -11753,7 +11675,97 @@ Prefab:
       propertyPath: cam_Camera
       value: 
       objectReference: {fileID: 1859528229}
-    - target: {fileID: 114291562577045704, guid: 9de8c005069aeca4fac05ee8f9619fe4,
+    - target: {fileID: 114211303991577732, guid: 9de8c005069aeca4fac05ee8f9619fe4,
+        type: 2}
+      propertyPath: cam_Camera
+      value: 
+      objectReference: {fileID: 1859528229}
+    - target: {fileID: 114502428546190168, guid: 9de8c005069aeca4fac05ee8f9619fe4,
+        type: 2}
+      propertyPath: cam_Camera
+      value: 
+      objectReference: {fileID: 1859528229}
+    - target: {fileID: 114039437163268118, guid: 9de8c005069aeca4fac05ee8f9619fe4,
+        type: 2}
+      propertyPath: cam_Camera
+      value: 
+      objectReference: {fileID: 1859528229}
+    - target: {fileID: 114092310217904280, guid: 9de8c005069aeca4fac05ee8f9619fe4,
+        type: 2}
+      propertyPath: cam_Camera
+      value: 
+      objectReference: {fileID: 1859528229}
+    - target: {fileID: 114455090947609034, guid: 9de8c005069aeca4fac05ee8f9619fe4,
+        type: 2}
+      propertyPath: cam_Camera
+      value: 
+      objectReference: {fileID: 1859528229}
+    - target: {fileID: 114249891205089112, guid: 9de8c005069aeca4fac05ee8f9619fe4,
+        type: 2}
+      propertyPath: cam_Camera
+      value: 
+      objectReference: {fileID: 1859528229}
+    - target: {fileID: 114976124353282454, guid: 9de8c005069aeca4fac05ee8f9619fe4,
+        type: 2}
+      propertyPath: cam_Camera
+      value: 
+      objectReference: {fileID: 1859528229}
+    - target: {fileID: 114934569714383050, guid: 9de8c005069aeca4fac05ee8f9619fe4,
+        type: 2}
+      propertyPath: cam_Camera
+      value: 
+      objectReference: {fileID: 1859528229}
+    - target: {fileID: 114180644588002742, guid: 9de8c005069aeca4fac05ee8f9619fe4,
+        type: 2}
+      propertyPath: cam_Camera
+      value: 
+      objectReference: {fileID: 1859528229}
+    - target: {fileID: 114851165687473898, guid: 9de8c005069aeca4fac05ee8f9619fe4,
+        type: 2}
+      propertyPath: cam_Camera
+      value: 
+      objectReference: {fileID: 1859528229}
+    - target: {fileID: 114608009975482746, guid: 9de8c005069aeca4fac05ee8f9619fe4,
+        type: 2}
+      propertyPath: cam_Camera
+      value: 
+      objectReference: {fileID: 1859528229}
+    - target: {fileID: 114138941508096494, guid: 9de8c005069aeca4fac05ee8f9619fe4,
+        type: 2}
+      propertyPath: cam_Camera
+      value: 
+      objectReference: {fileID: 1859528229}
+    - target: {fileID: 114658208711948432, guid: 9de8c005069aeca4fac05ee8f9619fe4,
+        type: 2}
+      propertyPath: cam_Camera
+      value: 
+      objectReference: {fileID: 1859528229}
+    - target: {fileID: 114441686049778116, guid: 9de8c005069aeca4fac05ee8f9619fe4,
+        type: 2}
+      propertyPath: cam_Camera
+      value: 
+      objectReference: {fileID: 1859528229}
+    - target: {fileID: 114673369492266202, guid: 9de8c005069aeca4fac05ee8f9619fe4,
+        type: 2}
+      propertyPath: cam_Camera
+      value: 
+      objectReference: {fileID: 1859528229}
+    - target: {fileID: 114262644521765502, guid: 9de8c005069aeca4fac05ee8f9619fe4,
+        type: 2}
+      propertyPath: cam_Camera
+      value: 
+      objectReference: {fileID: 1859528229}
+    - target: {fileID: 114412953614339940, guid: 9de8c005069aeca4fac05ee8f9619fe4,
+        type: 2}
+      propertyPath: cam_Camera
+      value: 
+      objectReference: {fileID: 1859528229}
+    - target: {fileID: 114866793092755674, guid: 9de8c005069aeca4fac05ee8f9619fe4,
+        type: 2}
+      propertyPath: cam_Camera
+      value: 
+      objectReference: {fileID: 1859528229}
+    - target: {fileID: 114473858687993354, guid: 9de8c005069aeca4fac05ee8f9619fe4,
         type: 2}
       propertyPath: cam_Camera
       value: 
@@ -11773,196 +11785,6 @@ Prefab:
       propertyPath: go_roomPool.Array.data[2]
       value: 
       objectReference: {fileID: 2099098997}
-    - target: {fileID: 114673369492266202, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: v3_offset.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114976124353282454, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: v3_offset.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114866793092755674, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: v3_offset.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114262644521765502, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: v3_offset.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114455090947609034, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: v3_offset.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114608009975482746, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: v3_offset.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114138941508096494, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: v3_offset.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114211303991577732, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: v3_offset.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114039437163268118, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: v3_offset.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114412953614339940, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: v3_offset.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114502428546190168, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: v3_offset.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114249891205089112, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: v3_offset.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114441686049778116, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: v3_offset.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114291562577045704, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: v3_offset.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114180644588002742, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: v3_offset.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114934569714383050, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: v3_offset.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114851165687473898, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: v3_offset.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114658208711948432, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: v3_offset.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114092310217904280, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: v3_offset.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114673369492266202, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: v3_offset.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114976124353282454, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: v3_offset.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114866793092755674, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: v3_offset.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114262644521765502, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: v3_offset.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114455090947609034, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: v3_offset.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114608009975482746, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: v3_offset.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114138941508096494, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: v3_offset.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114211303991577732, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: v3_offset.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114039437163268118, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: v3_offset.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114412953614339940, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: v3_offset.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114249891205089112, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: v3_offset.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114441686049778116, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: v3_offset.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114502428546190168, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: v3_offset.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114291562577045704, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: v3_offset.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114180644588002742, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: v3_offset.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114934569714383050, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: v3_offset.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114851165687473898, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: v3_offset.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114658208711948432, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: v3_offset.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114092310217904280, guid: 9de8c005069aeca4fac05ee8f9619fe4,
-        type: 2}
-      propertyPath: v3_offset.z
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9de8c005069aeca4fac05ee8f9619fe4, type: 2}
   m_IsPrefabParent: 0

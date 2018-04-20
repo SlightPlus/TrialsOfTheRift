@@ -86,6 +86,10 @@ public class PlayerController : SpellTarget {
     public float NextElectric {
         get { return f_nextElectric; }
     }
+
+    public GameObject Capsule {
+        get { return go_playerCapsule; }
+    }
     #endregion
 #endregion
 
@@ -417,6 +421,7 @@ public class PlayerController : SpellTarget {
 				anim.SetTrigger ("attackTrigger");
                 f_nextMagicMissile = 0;
 				GameObject go_spell = Instantiate(go_magicMissileShot, t_spellSpawn.position, t_spellSpawn.rotation);
+                Physics.IgnoreCollision(GetComponent<Collider>(), go_spell.GetComponent<Collider>());
                 go_spell.transform.localScale = new Vector3(f_projectileSize, f_projectileSize, f_projectileSize);
                 go_spell.GetComponent<Rigidbody>().velocity = transform.forward * Constants.SpellStats.C_MagicMissileSpeed;
                 SpellController sc_firing = go_spell.GetComponent<SpellController>();
@@ -441,6 +446,7 @@ public class PlayerController : SpellTarget {
                 f_nextIce = 0;
                 f_nextCast = 0;
                 GameObject go_spell = Instantiate(go_iceShot, t_spellSpawn.position, t_spellSpawn.rotation);
+                Physics.IgnoreCollision(GetComponent<Collider>(), go_spell.GetComponent<Collider>());
                 go_spell.transform.localScale = new Vector3(f_projectileSize, f_projectileSize, f_projectileSize);
                 go_spell.GetComponent<Rigidbody>().velocity = transform.forward * Constants.SpellStats.C_IceSpeed;
                 go_icebolt = go_spell;
@@ -462,7 +468,8 @@ public class PlayerController : SpellTarget {
                 f_nextElectric = 0;
 			    f_nextCast = 0;
 			    GameObject go_spell = Instantiate(go_electricShot, t_spellSpawn.position, t_spellSpawn.rotation);
-			    go_spell.transform.localScale = new Vector3(f_projectileSize, f_projectileSize, f_projectileSize);
+                Physics.IgnoreCollision(GetComponent<Collider>(), go_spell.GetComponent<Collider>());
+                go_spell.transform.localScale = new Vector3(f_projectileSize, f_projectileSize, f_projectileSize);
                 go_spell.GetComponent<Rigidbody>().velocity = transform.forward * Constants.SpellStats.C_ElectricSpeed;
                 SpellController sc_firing = go_spell.GetComponent<SpellController>();
                 sc_firing.Init(this, e_color, f_electricCharge);
