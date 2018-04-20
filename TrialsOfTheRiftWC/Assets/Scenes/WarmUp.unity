@@ -7183,6 +7183,26 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1342396676}
     m_Modifications:
+    - target: {fileID: 114021869970042284, guid: 2649406267963a0478df979fb3e06ff4,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114166577160162966, guid: 2649406267963a0478df979fb3e06ff4,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114380760117014980, guid: 2649406267963a0478df979fb3e06ff4,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114045084894325774, guid: 2649406267963a0478df979fb3e06ff4,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 224942128095773462, guid: 2649406267963a0478df979fb3e06ff4,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -7430,22 +7450,122 @@ Prefab:
     - target: {fileID: 114021869970042284, guid: 2649406267963a0478df979fb3e06ff4,
         type: 2}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114166577160162966, guid: 2649406267963a0478df979fb3e06ff4,
         type: 2}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114380760117014980, guid: 2649406267963a0478df979fb3e06ff4,
         type: 2}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114045084894325774, guid: 2649406267963a0478df979fb3e06ff4,
         type: 2}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 4
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114021869970042284, guid: 2649406267963a0478df979fb3e06ff4,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114021869970042284, guid: 2649406267963a0478df979fb3e06ff4,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114021869970042284, guid: 2649406267963a0478df979fb3e06ff4,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1936911208}
+    - target: {fileID: 114021869970042284, guid: 2649406267963a0478df979fb3e06ff4,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: AdjustMasterVolume
+      objectReference: {fileID: 0}
+    - target: {fileID: 114021869970042284, guid: 2649406267963a0478df979fb3e06ff4,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114166577160162966, guid: 2649406267963a0478df979fb3e06ff4,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114166577160162966, guid: 2649406267963a0478df979fb3e06ff4,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114166577160162966, guid: 2649406267963a0478df979fb3e06ff4,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1936911208}
+    - target: {fileID: 114166577160162966, guid: 2649406267963a0478df979fb3e06ff4,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: AdjustBGMVolume
+      objectReference: {fileID: 0}
+    - target: {fileID: 114166577160162966, guid: 2649406267963a0478df979fb3e06ff4,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114380760117014980, guid: 2649406267963a0478df979fb3e06ff4,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114380760117014980, guid: 2649406267963a0478df979fb3e06ff4,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114380760117014980, guid: 2649406267963a0478df979fb3e06ff4,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1936911208}
+    - target: {fileID: 114380760117014980, guid: 2649406267963a0478df979fb3e06ff4,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: AdjustSFXVolume
+      objectReference: {fileID: 0}
+    - target: {fileID: 114380760117014980, guid: 2649406267963a0478df979fb3e06ff4,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114045084894325774, guid: 2649406267963a0478df979fb3e06ff4,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114045084894325774, guid: 2649406267963a0478df979fb3e06ff4,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114045084894325774, guid: 2649406267963a0478df979fb3e06ff4,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1936911208}
+    - target: {fileID: 114045084894325774, guid: 2649406267963a0478df979fb3e06ff4,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: AdjustVOIVolume
+      objectReference: {fileID: 0}
+    - target: {fileID: 114045084894325774, guid: 2649406267963a0478df979fb3e06ff4,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2649406267963a0478df979fb3e06ff4, type: 2}
