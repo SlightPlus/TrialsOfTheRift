@@ -11,6 +11,7 @@ using UnityEngine;
 public sealed class RiftController : MonoBehaviour {
 #region Variables and Declarations
     [SerializeField] private GameObject go_riftDeathBolt;
+    [SerializeField] private GameObject go_boardClear;
     public GameObject[] go_playerReferences;    // TODO: write a getter for this
     [SerializeField] private GameObject[] go_deathOrbs;
     [SerializeField]
@@ -180,6 +181,8 @@ public sealed class RiftController : MonoBehaviour {
     #region Rift Volatility Attacks and Effects
     private void BoardClear() {
 		maestro.PlayAnnouncementBoardClear();
+        Invoke("TurnOffBoardClear", 2f);
+        go_boardClear.SetActive(true);
         foreach (GameObject player in go_playerReferences) {
             player.GetComponent<PlayerController>().TakeDamage(Constants.PlayerStats.C_MaxHealth,Constants.Global.DamageType.RIFT);
         }
@@ -201,6 +204,11 @@ public sealed class RiftController : MonoBehaviour {
 					go_runes[i].SetActive(false);
 			}
 		}
+    }
+
+    private void TurnOffBoardClear()
+    {
+        go_boardClear.SetActive(false);
     }
 
 	public void ActivateEnemy(Vector3 position) {
