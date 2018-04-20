@@ -167,15 +167,25 @@ public sealed class Calligrapher : MonoBehaviour {
         Time.timeScale = 0;
         if (colorIn == Constants.Global.Color.RED) {
             img_redFlashBacking.color = Color.white;
+            txt_redTotalScore.color = Color.red;
+            yield return new WaitForSecondsRealtime(0.5f);
+            txt_redTotalScore.color = Color.yellow;
             txt_redTotalScore.text = Constants.TeamStats.C_RedTeamScore + "";
-            yield return new WaitForSecondsRealtime(3f);
+            yield return new WaitForSecondsRealtime(0.5f);
+            txt_redTotalScore.color = Color.red;
+            yield return new WaitForSecondsRealtime(2f);
             f_redStartTime = Time.realtimeSinceStartup;
             StartCoroutine(RedFlash());
             StartCoroutine(FadeInRed());
         } else {
             img_blueFlashBacking.color = Color.white;
+            txt_blueTotalScore.color = Color.blue;
+            yield return new WaitForSecondsRealtime(0.5f);
+            txt_blueTotalScore.color = Color.yellow;
             txt_blueTotalScore.text = Constants.TeamStats.C_BlueTeamScore + "";
-            yield return new WaitForSecondsRealtime(3f);
+            yield return new WaitForSecondsRealtime(0.5f);
+            txt_blueTotalScore.color = Color.blue;
+            yield return new WaitForSecondsRealtime(2f);
             f_blueStartTime = Time.realtimeSinceStartup;
             StartCoroutine(BlueFlash());
             StartCoroutine(FadeInBlue());
@@ -224,17 +234,9 @@ public sealed class Calligrapher : MonoBehaviour {
     private IEnumerator FadeInRed() {
         float timer = (Time.realtimeSinceStartup - f_redStartTime);
         float fracJourney = timer / 1f;
-        img_redPopupBacking.color = Color.Lerp(img_redPopupBacking.color, new Color(0,0,0,0.2f), fracJourney);
+        img_redPopupBacking.color = Color.Lerp(img_redPopupBacking.color, new Color(0,0,0,1), fracJourney);
         txt_redObjvTitle.color = Color.Lerp(txt_redObjvTitle.color, new Color(1,1,1,1), fracJourney);
         txt_redObjvDescription.color = Color.Lerp(txt_redObjvDescription.color, new Color(1,1,1,1), fracJourney);
-        if (timer < 2f) {
-            txt_redTotalScore.color = Color.Lerp(txt_redTotalScore.color, new Color(1,0,0,1), fracJourney);
-        } else if (timer > 3f && timer < 3.5f) {
-            txt_redTotalScore.color = Color.yellow;
-        } else {
-            txt_redTotalScore.color = Color.red;
-        }
-        
         go_redActiveGif.GetComponent<Image>().color = Color.Lerp(go_redActiveGif.GetComponent<Image>().color, new Color(1, 1, 1, 1), fracJourney);
         if (timer > 5f) {
             StopCoroutine(FadeInRed());
@@ -248,16 +250,9 @@ public sealed class Calligrapher : MonoBehaviour {
     private IEnumerator FadeInBlue() {
         float timer = (Time.realtimeSinceStartup - f_blueStartTime);
         float fracJourney = timer / 1f;
-        img_bluePopupBacking.color = Color.Lerp(img_bluePopupBacking.color, new Color(0,0,0,0.2f), fracJourney);
+        img_bluePopupBacking.color = Color.Lerp(img_bluePopupBacking.color, new Color(0,0,0,1), fracJourney);
         txt_blueObjvTitle.color = Color.Lerp(txt_blueObjvTitle.color, new Color(1,1,1,1), fracJourney);
         txt_blueObjvDescription.color = Color.Lerp(txt_blueObjvDescription.color, new Color(1,1,1,1), fracJourney);
-        if (timer < 2f) {
-            txt_blueTotalScore.color = Color.Lerp(txt_blueTotalScore.color, new Color(0,0,1,1), fracJourney);
-        } else if (timer > 3f && timer < 3.5f) {
-            txt_blueTotalScore.color = Color.yellow;
-        } else {
-            txt_blueTotalScore.color = Color.blue;
-        }
         go_blueActiveGif.GetComponent<Image>().color = Color.Lerp(go_blueActiveGif.GetComponent<Image>().color, new Color(1, 1, 1, 1), fracJourney);
         if (timer > 5f) {
             StopCoroutine(FadeInBlue());
@@ -271,13 +266,13 @@ public sealed class Calligrapher : MonoBehaviour {
 
     private IEnumerator FadeOutRed() {
         float timer = (Time.realtimeSinceStartup - f_redStartTime);
-        float fracJourney = timer / 1f;
+        float fracJourney = timer / 8f;
         img_redPopupBacking.color = Color.Lerp(img_redPopupBacking.color, new Color(0,0,0,0), fracJourney);
         txt_redObjvTitle.color = Color.Lerp(txt_redObjvTitle.color, new Color(1,1,1,0), fracJourney);
         txt_redObjvDescription.color = Color.Lerp(txt_redObjvDescription.color, new Color(1,1,1,0), fracJourney);
         txt_redTotalScore.color = Color.Lerp(txt_redTotalScore.color, new Color(1,0,0,0), fracJourney);
         go_redActiveGif.GetComponent<Image>().color = Color.Lerp(go_redActiveGif.GetComponent<Image>().color, new Color(1, 1, 1, 0), fracJourney);
-        if (timer > 5f) {
+        if (timer > 5.5f) {
             Time.timeScale = 1;
             StopCoroutine(FadeOutRed());
             yield break;
@@ -288,13 +283,13 @@ public sealed class Calligrapher : MonoBehaviour {
 
     private IEnumerator FadeOutBlue() {
         float timer = (Time.realtimeSinceStartup - f_blueStartTime);
-        float fracJourney = timer / 1f;
+        float fracJourney = timer / 8f;
         img_bluePopupBacking.color = Color.Lerp(img_bluePopupBacking.color, new Color(0,0,0,0), fracJourney);
         txt_blueObjvTitle.color = Color.Lerp(txt_blueObjvTitle.color, new Color(1,1,1,0), fracJourney);
         txt_blueObjvDescription.color = Color.Lerp(txt_blueObjvDescription.color, new Color(1,1,1,0), fracJourney);
         txt_blueTotalScore.color = Color.Lerp(txt_blueTotalScore.color, new Color(0,0,1,0), fracJourney);
         go_blueActiveGif.GetComponent<Image>().color = Color.Lerp(go_blueActiveGif.GetComponent<Image>().color, new Color(1, 1, 1, 0), fracJourney);
-        if (timer > 5f) {
+        if (timer > 5.5f) {
             Time.timeScale = 1;
             StopCoroutine(FadeOutBlue());
             yield break;
