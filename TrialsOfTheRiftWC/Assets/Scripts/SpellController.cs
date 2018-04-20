@@ -18,15 +18,18 @@ public abstract class SpellController : MonoBehaviour {
     protected float f_charge = 1;         // charging multiplier
     protected PlayerController pc_owner;      // owner of the spell
     protected RiftController riftController;    // reference to Rift singleton
-
+#endregion
     #region Getters and Setters
     public Constants.Global.Color Color{
         get { return e_color; }
     }
-    #endregion
-#endregion
 
-#region SpellController Shared Methods
+    public PlayerController PC_Owner {
+        get { return pc_owner; }
+    }
+    #endregion
+
+    #region SpellController Shared Methods
     protected abstract void Charge(float f_chargeTime);
     protected abstract void BuffSpell();
 
@@ -44,27 +47,28 @@ public abstract class SpellController : MonoBehaviour {
 #region Unity Overrides
     protected virtual void Start() {
         riftController = RiftController.Instance;
-		Invoke("InvokeDestroy", Constants.SpellStats.C_SpellLiveTime);
+        //Physics.IgnoreCollision(GetComponent<Collider>(), pc_owner.Capsule.GetComponent<Collider>());
+        Invoke("InvokeDestroy", Constants.SpellStats.C_SpellLiveTime);
 	}
 
-	protected virtual void OnCollisionEnter(Collision collision) {
+    protected virtual void OnCollisionEnter(Collision collision)
+    {
         SpellTarget target;
-        if(target = collision.gameObject.GetComponent<SpellTarget>()) {
-            target.ApplySpellEffect(e_spellType, e_color, f_damage, transform.forward.normalized);
-        }
 
-        if (collision.gameObject.CompareTag("Spell")) {
-            Constants.Global.Color spellColor = collision.gameObject.GetComponent<SpellController>().e_color;
-            if (spellColor != e_color) {    // opposing spells destroy each other
-                Destroy(gameObject);
+            if (target = collision.gameObject.GetComponent<SpellTarget>()) {
+                target.ApplySpellEffect(e_spellType, e_color, f_damage, transform.forward.normalized);
+
+                if (collision.gameObject.CompareTag("Spell")) { 
+                    Constants.Global.Color spellColor = collision.gameObject.GetComponent<SpellController>().e_color;
+                    if (spellColor != e_color) {    // opposing spells destroy each other
+                        Destroy(gameObject);
+                    } else {              // ignore collisions between spells of the same color
+                        Physics.IgnoreCollision(GetComponent<Collider>(), collision.gameObject.GetComponent<Collider>());
+                    }
+                } else {  // destroy spell on collision with anything else (including specific spell target objects above, once the effect has happened) (Rift and portal interactions are controlled by OnTriggerEnter, below)
+                    Destroy(gameObject);
+                }
             }
-            else {              // ignore collisions between spells of the same color
-                Physics.IgnoreCollision(GetComponent<Collider>(), collision.gameObject.GetComponent<Collider>());
-            }
-        } 
-        else {  // destroy spell on collision with anything else (including specific spell target objects above, once the effect has happened) (Rift and portal interactions are controlled by OnTriggerEnter, below)
-            Destroy(gameObject);
-        }        
 	}
 
 	protected virtual void OnTriggerEnter(Collider other) {
@@ -82,7 +86,11 @@ public abstract class SpellController : MonoBehaviour {
             Vector3 v3_direction = other.gameObject.transform.forward.normalized;
             transform.Rotate(v3_direction);
             rb.velocity = v3_direction * rb.velocity.magnitude;
+            Physics.IgnoreCollision(GetComponent<Collider>(), pc_owner.Capsule.GetComponent<Collider>(), false);
+            Physics.IgnoreCollision(GetComponent<Collider>(), other.gameObject.GetComponent<SpellController>().PC_Owner.Capsule.GetComponent<Collider>());
+            pc_owner = other.gameObject.GetComponent<SpellController>().PC_Owner;
         }
     }
-#endregion
+    #endregion
 }
+
