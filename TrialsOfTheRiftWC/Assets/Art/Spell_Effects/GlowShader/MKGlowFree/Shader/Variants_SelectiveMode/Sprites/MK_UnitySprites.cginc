@@ -1,6 +1,4 @@
-﻿// Upgrade NOTE: upgraded instancing buffer 'PerDrawSprite' to new syntax.
-
-// Unity built-in shader source. Copyright (c) 2016 Unity Technologies. MIT license (see license.txt)
+﻿// Unity built-in shader source. Copyright (c) 2016 Unity Technologies. MIT license (see license.txt)
 
 #ifndef UNITY_SPRITES_INCLUDED
 #define UNITY_SPRITES_INCLUDED
