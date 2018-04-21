@@ -234,7 +234,7 @@ public abstract class EnemyController : SpellTarget {
 		e_startSide = side;
 	}
 
-	void Start() {
+    protected override void Start() {
 		f_damage = Constants.EnemyStats.C_EnemyDamage;
 
 		//nma_agent.speed = Constants.EnemyStats.C_EnemyBaseSpeed;

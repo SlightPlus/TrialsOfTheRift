@@ -64,7 +64,7 @@ public abstract class SpellTarget : MonoBehaviour {
     }
 	
 	public IEnumerator WindPush(float multiplier, Vector3 direction, bool velocityReset){
-		//maestro.PlayWindHit();
+		maestro.PlayWindHit();
 		float startTime = Time.time;
 		float elapsedTime = 0;
 		while(elapsedTime < .99f){
@@ -79,7 +79,7 @@ public abstract class SpellTarget : MonoBehaviour {
 #endregion
 
 #region Unity Overrides
-	void Start(){
+	protected virtual void Start(){
 		maestro = Maestro.Instance;
 	}
 	

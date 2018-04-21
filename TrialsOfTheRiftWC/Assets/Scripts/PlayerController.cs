@@ -330,7 +330,7 @@ public class PlayerController : SpellTarget {
 	private void StepDelay(){
 		b_stepOk = true;
 	}
-    
+
     //public void DamageVisualOn() {
     //    go_playerCapsule.GetComponent<MeshRenderer>().material.color = Color.yellow;
     //    //Call screenshake here.
@@ -350,10 +350,10 @@ public class PlayerController : SpellTarget {
     //public void HealVisualOff() {
     //    go_playerCapsule.GetComponent<MeshRenderer>().material.color = col_originalColor;
     //}
-#endregion
+    #endregion
 
 #region Unity Overrides
-    void Start() {
+    protected override void Start() {
         maestro = Maestro.Instance;
         riftController = RiftController.Instance;
         p_player = ReInput.players.GetPlayer(i_playerNumber);

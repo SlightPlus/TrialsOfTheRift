@@ -257,7 +257,7 @@ public class NecromancerController : EnemyController {
 	}
 
 #region Unity Overrides	
-    void Start() {
+    protected override void Start() {
         if (e_color == Constants.Global.Color.RED)
             Init(Constants.Global.Side.LEFT);
         else
