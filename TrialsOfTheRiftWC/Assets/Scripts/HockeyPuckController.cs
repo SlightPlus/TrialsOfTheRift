@@ -76,7 +76,8 @@ public class HockeyPuckController : SpellTarget {
     #endregion
 
     #region Unity Overrides
-    void Start() {
+    protected override void Start() {
+		base.Start();
         f_speed = Constants.ObjectiveStats.C_PuckBaseSpeed;     // cannot read from Constants.cs in initialization at top
     }
 
