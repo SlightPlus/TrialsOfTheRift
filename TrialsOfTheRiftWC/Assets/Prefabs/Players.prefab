@@ -1041,7 +1041,7 @@ GameObject:
   - component: {fileID: 135054955640101974}
   - component: {fileID: 23215349581084970}
   - component: {fileID: 114256895718006994}
-  m_Layer: 20
+  m_Layer: 9
   m_Name: Wind
   m_TagString: ParryShield
   m_Icon: {fileID: 0}
@@ -1196,7 +1196,7 @@ GameObject:
   - component: {fileID: 135741904834647488}
   - component: {fileID: 23390468842735020}
   - component: {fileID: 114426651949118308}
-  m_Layer: 20
+  m_Layer: 9
   m_Name: Wind
   m_TagString: ParryShield
   m_Icon: {fileID: 0}
@@ -2740,7 +2740,7 @@ GameObject:
   - component: {fileID: 135012866531615484}
   - component: {fileID: 23881586255467572}
   - component: {fileID: 114512738867582460}
-  m_Layer: 21
+  m_Layer: 9
   m_Name: Wind
   m_TagString: ParryShield
   m_Icon: {fileID: 0}
@@ -6964,7 +6964,7 @@ GameObject:
   - component: {fileID: 135126424930631910}
   - component: {fileID: 23486746118451210}
   - component: {fileID: 114231099993875514}
-  m_Layer: 21
+  m_Layer: 9
   m_Name: Wind
   m_TagString: ParryShield
   m_Icon: {fileID: 0}

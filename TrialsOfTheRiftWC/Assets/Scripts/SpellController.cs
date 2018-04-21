@@ -37,6 +37,13 @@ public abstract class SpellController : MonoBehaviour {
         pc_owner = owner;
         e_color = color;
         Charge(chargeTime);
+        if(e_color == Constants.Global.Color.RED) {
+            gameObject.layer = LayerMask.NameToLayer("RedShot");
+        }
+        else {
+            gameObject.layer = LayerMask.NameToLayer("BlueShot");
+        }
+
     }
 
     void InvokeDestroy() {
@@ -47,7 +54,6 @@ public abstract class SpellController : MonoBehaviour {
 #region Unity Overrides
     protected virtual void Start() {
         riftController = RiftController.Instance;
-        //Physics.IgnoreCollision(GetComponent<Collider>(), pc_owner.Capsule.GetComponent<Collider>());
         Invoke("InvokeDestroy", Constants.SpellStats.C_SpellLiveTime);
 	}
 
@@ -57,16 +63,7 @@ public abstract class SpellController : MonoBehaviour {
         if (target = collision.gameObject.GetComponent<SpellTarget>()) {
             target.ApplySpellEffect(e_spellType, e_color, f_damage, transform.forward.normalized);
         }
-        if (collision.gameObject.CompareTag("Spell")) { 
-            Constants.Global.Color spellColor = collision.gameObject.GetComponent<SpellController>().e_color;
-            //if (spellColor != e_color) {    // opposing spells destroy each other
-                Destroy(gameObject);
-            //} else {              // ignore collisions between spells of the same color -THIS DOES NOT WORK!
-            //    Physics.IgnoreCollision(GetComponent<Collider>(), collision.gameObject.GetComponent<Collider>());
-            //}
-        } else {  // destroy spell on collision with anything else (including specific spell target objects above, once the effect has happened) (Rift and portal interactions are controlled by OnTriggerEnter, below)
-            Destroy(gameObject);
-        }
+        Destroy(gameObject);
 	}
 
 	protected virtual void OnTriggerEnter(Collider other) {
