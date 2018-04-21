@@ -63,7 +63,7 @@ public abstract class SpellTarget : MonoBehaviour {
         go_indicator.SetActive(true);
     }
 	
-	public IEnumerator WindPush(float multiplier, Vector3 direction){
+	public IEnumerator WindPush(float multiplier, Vector3 direction, bool velocityReset){
 		//maestro.PlayWindHit();
 		float startTime = Time.time;
 		float elapsedTime = 0;
