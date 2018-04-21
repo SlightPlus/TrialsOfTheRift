@@ -19,8 +19,8 @@ public class NecromancerController : EnemyController {
 		nma_agent.speed = Constants.EnemyStats.C_NecromancerBaseSpeed;
 		f_health = Constants.EnemyStats.C_NecromancerHealth;
         b_teleported = false;
-		//InvokeRepeating("DropRune", 10.0f, Constants.EnemyStats.C_RuneTimer);
-		//InvokeRepeating("Summon", 16.0f, Constants.EnemyStats.C_SummonTimer);
+		InvokeRepeating("DropRune", 10.0f, Constants.EnemyStats.C_RuneTimer);
+		InvokeRepeating("Summon", 16.0f, Constants.EnemyStats.C_SummonTimer);
 		maestro.PlayNecromancerSpawn();
 	}
 	
