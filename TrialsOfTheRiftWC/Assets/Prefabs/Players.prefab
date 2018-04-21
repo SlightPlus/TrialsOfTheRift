@@ -15026,8 +15026,8 @@ MonoBehaviour:
   go_indicator: {fileID: 0}
   rb: {fileID: 54541032025485842}
   anim: {fileID: 95597660100240548}
-  dissolve: {fileID: 114928400173775040}
-  fader: {fileID: 114730375751518268}
+  se_dissolve: {fileID: 114928400173775040}
+  se_fader: {fileID: 114730375751518268}
   go_playerCapsule: {fileID: 1158233791249846}
   go_playerWisp: {fileID: 1761868033299032}
   go_magicMissileShot: {fileID: 1169542914423560, guid: 00247cb350ec7a848b7c7ce622e7cb56,
@@ -15048,6 +15048,8 @@ MonoBehaviour:
   mat_bodyFlash: {fileID: 2100000, guid: 626cb7919bca0d24b9deec2d8c86759e, type: 2}
   mat_outfitNormal: {fileID: 2100000, guid: 1ac2e75c88b6f674ca7288fbb711b330, type: 2}
   mat_outfitFlash: {fileID: 2100000, guid: 626cb7919bca0d24b9deec2d8c86759e, type: 2}
+  mat_freeze: {fileID: 2100000, guid: 30298c0d263084f2eaf266fc9322cce2, type: 2}
+  mat_freezeExtend: {fileID: 2100000, guid: f4b085fe44390f445ab3fef4d40ef14a, type: 2}
 --- !u!114 &114071397385997462
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -15341,8 +15343,8 @@ MonoBehaviour:
   go_indicator: {fileID: 0}
   rb: {fileID: 54155329791976608}
   anim: {fileID: 95629151370858986}
-  dissolve: {fileID: 114563930265161984}
-  fader: {fileID: 114207797251331494}
+  se_dissolve: {fileID: 114563930265161984}
+  se_fader: {fileID: 114207797251331494}
   go_playerCapsule: {fileID: 1596629139432532}
   go_playerWisp: {fileID: 1351653699739700}
   go_magicMissileShot: {fileID: 1169542914423560, guid: 00247cb350ec7a848b7c7ce622e7cb56,
@@ -15363,6 +15365,8 @@ MonoBehaviour:
   mat_bodyFlash: {fileID: 2100000, guid: 2ad0699142ca2cf488c67f348b61feb1, type: 2}
   mat_outfitNormal: {fileID: 2100000, guid: 64bc64766f4d74d528e258045dab1361, type: 2}
   mat_outfitFlash: {fileID: 2100000, guid: 2ad0699142ca2cf488c67f348b61feb1, type: 2}
+  mat_freeze: {fileID: 2100000, guid: 30298c0d263084f2eaf266fc9322cce2, type: 2}
+  mat_freezeExtend: {fileID: 2100000, guid: f4b085fe44390f445ab3fef4d40ef14a, type: 2}
 --- !u!114 &114284601337949634
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -15905,8 +15909,8 @@ MonoBehaviour:
   go_indicator: {fileID: 0}
   rb: {fileID: 54181581919302652}
   anim: {fileID: 95682342582678100}
-  dissolve: {fileID: 114157025017702970}
-  fader: {fileID: 114306289498157922}
+  se_dissolve: {fileID: 114157025017702970}
+  se_fader: {fileID: 114306289498157922}
   go_playerCapsule: {fileID: 1013279725047502}
   go_playerWisp: {fileID: 1322051036288660}
   go_magicMissileShot: {fileID: 1169542914423560, guid: 00247cb350ec7a848b7c7ce622e7cb56,
@@ -15927,6 +15931,8 @@ MonoBehaviour:
   mat_bodyFlash: {fileID: 2100000, guid: 626cb7919bca0d24b9deec2d8c86759e, type: 2}
   mat_outfitNormal: {fileID: 2100000, guid: 1ac2e75c88b6f674ca7288fbb711b330, type: 2}
   mat_outfitFlash: {fileID: 2100000, guid: 626cb7919bca0d24b9deec2d8c86759e, type: 2}
+  mat_freeze: {fileID: 2100000, guid: 30298c0d263084f2eaf266fc9322cce2, type: 2}
+  mat_freezeExtend: {fileID: 2100000, guid: f4b085fe44390f445ab3fef4d40ef14a, type: 2}
 --- !u!114 &114552481737315232
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16310,8 +16316,8 @@ MonoBehaviour:
   go_indicator: {fileID: 0}
   rb: {fileID: 54107930626215568}
   anim: {fileID: 95951857345941550}
-  dissolve: {fileID: 114711534369902378}
-  fader: {fileID: 114659323018186960}
+  se_dissolve: {fileID: 114711534369902378}
+  se_fader: {fileID: 114659323018186960}
   go_playerCapsule: {fileID: 1007310673532262}
   go_playerWisp: {fileID: 1224145807097126}
   go_magicMissileShot: {fileID: 1169542914423560, guid: 00247cb350ec7a848b7c7ce622e7cb56,
@@ -16332,6 +16338,8 @@ MonoBehaviour:
   mat_bodyFlash: {fileID: 2100000, guid: 2ad0699142ca2cf488c67f348b61feb1, type: 2}
   mat_outfitNormal: {fileID: 2100000, guid: 64bc64766f4d74d528e258045dab1361, type: 2}
   mat_outfitFlash: {fileID: 2100000, guid: 2ad0699142ca2cf488c67f348b61feb1, type: 2}
+  mat_freeze: {fileID: 2100000, guid: 30298c0d263084f2eaf266fc9322cce2, type: 2}
+  mat_freezeExtend: {fileID: 2100000, guid: f4b085fe44390f445ab3fef4d40ef14a, type: 2}
 --- !u!114 &114813199882028540
 MonoBehaviour:
   m_ObjectHideFlags: 1

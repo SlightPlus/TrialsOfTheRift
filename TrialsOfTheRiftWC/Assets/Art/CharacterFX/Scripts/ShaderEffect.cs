@@ -109,6 +109,10 @@ public class ShaderEffect : MonoBehaviour {
 		EffectLength = Length;
 		ParamDecrease(doDestroy, paramName);
 	}	
+
+    public void ResetMaterials() {
+        EffectMaterials = SourceRenderer.materials;
+    }
 	
 	public void OnDestroy()
 	{

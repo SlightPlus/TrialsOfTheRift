@@ -7,13 +7,16 @@ using UnityEngine.EventSystems;
 public class HoverState : MonoBehaviour, ISelectHandler, IDeselectHandler  {
 
     [SerializeField] private GameObject img_backing;
+    [SerializeField] private Text txt_button;
 
     public void OnSelect(BaseEventData eventData) {
         img_backing.SetActive(true);
+        txt_button.color = new Color(255,231,0);
     }
     
     public void OnDeselect(BaseEventData eventData) {
         img_backing.SetActive(false);
+        txt_button.color = Color.black;
     }
 
 }

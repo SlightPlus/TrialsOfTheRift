@@ -24,12 +24,14 @@ public class PlayerController : SpellTarget {
     [SerializeField] private GameObject go_parryShield;       // activated with right stick click
     [SerializeField] private PauseController pauc_pause;        // for pausing
 
-    [SerializeField] private SkinnedMeshRenderer smr_playerBody; 
+    [SerializeField] private SkinnedMeshRenderer smr_playerBody;            //This section's for invuln stuff.
     [SerializeField] private SkinnedMeshRenderer smr_playerOutfit;
     [SerializeField] private Material mat_bodyNormal;
     [SerializeField] private Material mat_bodyFlash;
     [SerializeField] private Material mat_outfitNormal;
     [SerializeField] private Material mat_outfitFlash;
+    [SerializeField] private Material mat_freeze;
+    [SerializeField] private Material mat_freezeExtend;
 
     private int i_playerNumber;             // designates player's number for controller mappings
     private Player p_player;                // rewired player for input control
@@ -108,6 +110,8 @@ public class PlayerController : SpellTarget {
                 TakeDamage(damage, Constants.Global.DamageType.ICE);
                 anim.SetTrigger("freezeTrigger");
                 anim.SetBool("freezeBool", true);
+                smr_playerBody.materials =  new Material[] { mat_freeze, mat_freezeExtend };
+                smr_playerOutfit.materials = new Material[] { mat_freeze, mat_freezeExtend };
                 Invoke("Unfreeze", Constants.SpellStats.C_IceFreezeTime);
                 break;
             case Constants.SpellStats.SpellType.ELECTRICITYAOE:
@@ -192,6 +196,8 @@ public class PlayerController : SpellTarget {
 
     private void Unfreeze() {
 		f_canMove = 1;
+        smr_playerBody.materials = new Material[] { mat_bodyNormal };
+        smr_playerOutfit.materials = new Material[] { mat_outfitNormal };
 		anim.SetBool ("freezeBool", false);
     }
     #endregion
@@ -223,14 +229,14 @@ public class PlayerController : SpellTarget {
 
 	private IEnumerator DoWispFadeIn(){
 		go_playerWisp.SetActive(true);
-		yield return new WaitUntil(() => dissolve.currentParamValue >= .6f);
-		fader.ParamIncrease(3f, false, "_Brightness");
+		yield return new WaitUntil(() => se_dissolve.currentParamValue >= .6f);
+		se_fader.ParamIncrease(3f, false, "_Brightness");
 	}
 
 	private IEnumerator DoDissolvePlayer(){
-		dissolve.ParamIncrease(2f, false, "_DisintegrateAmount");
-		yield return new WaitUntil(() => dissolve.isFinished);
-		dissolve.isFinished = false;
+		se_dissolve.ParamIncrease(2f, false, "_DisintegrateAmount");
+		yield return new WaitUntil(() => se_dissolve.isFinished);
+		se_dissolve.isFinished = false;
 		go_playerCapsule.SetActive(false);
 	}
  
@@ -251,16 +257,16 @@ public class PlayerController : SpellTarget {
 	}
 	
     private IEnumerator DoWispFadeOut(){
-        fader.ParamDecrease(5f, false, "_Brightness");
-        yield return new WaitUntil(() => fader.isFinished);
-        fader.isFinished = false;
+        se_fader.ParamDecrease(5f, false, "_Brightness");
+        yield return new WaitUntil(() => se_fader.isFinished);
+        se_fader.isFinished = false;
         go_playerWisp.SetActive(false);
     }
 	
 	private IEnumerator DoConstructPlayer(){
-		yield return new WaitUntil(() => fader.currentParamValue <= .7f);
+		yield return new WaitUntil(() => se_fader.currentParamValue <= .7f);
 		go_playerCapsule.SetActive(true);
-		dissolve.ParamDecrease(3f, false, "_DisintegrateAmount");
+		se_dissolve.ParamDecrease(3f, false, "_DisintegrateAmount");
 	}
 
 	public void TakeDamage(float damage, Constants.Global.DamageType d) {
@@ -291,6 +297,8 @@ public class PlayerController : SpellTarget {
         isInvuln = false;
         smr_playerBody.material = mat_bodyNormal;
         smr_playerOutfit.material = mat_outfitNormal;
+        se_dissolve.ResetMaterials();
+        se_fader.ResetMaterials();
         CancelInvoke("InvulnFlicker");
     }
 
