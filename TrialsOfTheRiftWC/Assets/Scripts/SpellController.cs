@@ -82,13 +82,16 @@ public abstract class SpellController : MonoBehaviour {
             Invoke("InvokeDestroy", Constants.SpellStats.C_SpellLiveTime);
 
             // deflect spell back from whence it came
-            Vector3 v3_direction = -transform.forward.normalized;
+            // this sends it backwards from where it came, not to where the player was directing it toward
+            //Vector3 v3_direction = -transform.forward.normalized;
+            //transform.forward = v3_direction;
+            //rb.velocity = v3_direction * rb.velocity.magnitude;
+
+
+            // deflect spell in player's facing direction
+            Vector3 v3_direction = other.gameObject.transform.forward.normalized;
             transform.forward = v3_direction;
             rb.velocity = v3_direction * rb.velocity.magnitude;
-            // deflect spell in player's facing direction
-            //Vector3 v3_direction = other.gameObject.transform.forward.normalized;
-            //transform.Rotate(v3_direction);
-            //rb.velocity = v3_direction * rb.velocity.magnitude;
             pc_owner = other.gameObject.transform.parent.gameObject.GetComponent<PlayerController>();
             e_color = other.gameObject.transform.parent.gameObject.GetComponent<PlayerController>().Color;
         }

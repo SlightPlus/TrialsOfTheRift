@@ -98,7 +98,7 @@ public class PlayerController : SpellTarget {
         switch(spell) {
             case Constants.SpellStats.SpellType.WIND:
                 DropFlag();
-				StartCoroutine(WindPush(Constants.PlayerStats.C_PlayerWindPushMultiplier,direction));
+				StartCoroutine(WindPush(Constants.PlayerStats.C_PlayerWindPushMultiplier,direction,false));
                 TakeDamage(damage, Constants.Global.DamageType.WIND);
                 anim.SetTrigger("windTrigger");
                 break;
@@ -421,6 +421,13 @@ public class PlayerController : SpellTarget {
 				anim.SetTrigger ("attackTrigger");
                 f_nextMagicMissile = 0;
 				GameObject go_spell = Instantiate(go_magicMissileShot, t_spellSpawn.position, t_spellSpawn.rotation);
+
+                if (e_color == Constants.Global.Color.BLUE) {
+                    go_spell.layer = LayerMask.NameToLayer("BlueMM");
+                } else {
+                    go_spell.layer = LayerMask.NameToLayer("RedMM");
+                }
+
                 Physics.IgnoreCollision(GetComponent<Collider>(), go_spell.GetComponent<Collider>());
                 go_spell.transform.localScale = new Vector3(f_projectileSize, f_projectileSize, f_projectileSize);
                 go_spell.GetComponent<Rigidbody>().velocity = transform.forward * Constants.SpellStats.C_MagicMissileSpeed;
@@ -446,6 +453,13 @@ public class PlayerController : SpellTarget {
                 f_nextIce = 0;
                 f_nextCast = 0;
                 GameObject go_spell = Instantiate(go_iceShot, t_spellSpawn.position, t_spellSpawn.rotation);
+
+                if (e_color == Constants.Global.Color.BLUE) {
+                    go_spell.layer = LayerMask.NameToLayer("BlueShot");
+                } else {
+                    go_spell.layer = LayerMask.NameToLayer("RedShot");
+                }
+
                 Physics.IgnoreCollision(GetComponent<Collider>(), go_spell.GetComponent<Collider>());
                 go_spell.transform.localScale = new Vector3(f_projectileSize, f_projectileSize, f_projectileSize);
                 go_spell.GetComponent<Rigidbody>().velocity = transform.forward * Constants.SpellStats.C_IceSpeed;
@@ -468,6 +482,13 @@ public class PlayerController : SpellTarget {
                 f_nextElectric = 0;
 			    f_nextCast = 0;
 			    GameObject go_spell = Instantiate(go_electricShot, t_spellSpawn.position, t_spellSpawn.rotation);
+
+                if (e_color == Constants.Global.Color.BLUE) {
+                    go_spell.layer = LayerMask.NameToLayer("BlueShot");
+                } else {
+                    go_spell.layer = LayerMask.NameToLayer("RedShot");
+                }
+
                 Physics.IgnoreCollision(GetComponent<Collider>(), go_spell.GetComponent<Collider>());
                 go_spell.transform.localScale = new Vector3(f_projectileSize, f_projectileSize, f_projectileSize);
                 go_spell.GetComponent<Rigidbody>().velocity = transform.forward * Constants.SpellStats.C_ElectricSpeed;

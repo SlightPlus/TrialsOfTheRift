@@ -27,7 +27,7 @@ public class NecromancerController : EnemyController {
 	override public void ApplySpellEffect(Constants.SpellStats.SpellType spell, Constants.Global.Color color, float damage, Vector3 direction) {
         switch(spell) {
             case Constants.SpellStats.SpellType.WIND:
-                StartCoroutine(WindPush(Constants.EnemyStats.C_NecromancerWindPushMultiplier,direction));
+                StartCoroutine(WindPush(Constants.EnemyStats.C_NecromancerWindPushMultiplier,direction,true));
                 break;
             case Constants.SpellStats.SpellType.ICE:
                 Freeze();
