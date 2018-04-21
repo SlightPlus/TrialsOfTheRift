@@ -195,7 +195,7 @@ public static class Constants {
         public static float C_MapBoundryZAxis = 9.5f;
 		
 		public static float C_SkeletonWindPushMultiplier = 0.5f;
-		public static float C_NecromancerWindPushMultiplier = 0.5f;
+		public static float C_NecromancerWindPushMultiplier = 25.0f;
     }
 
     // Rift Stats
