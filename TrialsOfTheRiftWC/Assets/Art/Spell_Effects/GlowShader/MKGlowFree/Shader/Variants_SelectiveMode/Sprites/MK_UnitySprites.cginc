@@ -9,12 +9,12 @@
 
 #ifdef UNITY_INSTANCING_ENABLED
 
-    UNITY_INSTANCING_BUFFER_START(PerDrawSprite)
+    UNITY_INSTANCING_CBUFFER_START(PerDrawSprite)
         // SpriteRenderer.Color while Non-Batched/Instanced.
         fixed4 unity_SpriteRendererColorArray[UNITY_INSTANCED_ARRAY_SIZE];
         // this could be smaller but that's how bit each entry is regardless of type
         float4 unity_SpriteFlipArray[UNITY_INSTANCED_ARRAY_SIZE];
-    UNITY_INSTANCING_BUFFER_END(PerDrawSprite)
+    UNITY_INSTANCING_CBUFFER_END
 
     #define _RendererColor unity_SpriteRendererColorArray[unity_InstanceID]
     #define _Flip unity_SpriteFlipArray[unity_InstanceID]
