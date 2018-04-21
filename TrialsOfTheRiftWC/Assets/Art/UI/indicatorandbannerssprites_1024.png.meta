@@ -1,17 +1,17 @@
 fileFormatVersion: 2
 guid: 51bfd5901961e474ca94fc2959942b54
-timeCreated: 1524198472
+timeCreated: 1524278258
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: indicatorandbannerssprites_1024_0
-    21300002: indicatorandbannerssprites_1024_1
-    21300004: indicatorandbannerssprites_1024_2
-    21300006: indicatorandbannerssprites_1024_3
-    21300008: indicatorandbannerssprites_1024_4
-    21300010: indicatorandbannerssprites_1024_5
-    21300012: indicatorandbannerssprites_1024_6
-    21300014: indicatorandbannerssprites_1024_7
+    21300000: redFullFlag
+    21300002: blueFullFlag
+    21300004: purpleFullFlag
+    21300006: redBanner
+    21300008: blueBanner
+    21300010: redNub
+    21300012: blueNub
+    21300014: purpleNub
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -91,13 +91,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: indicatorandbannerssprites_1024_0
+      name: redFullFlag
       rect:
         serializedVersion: 2
         x: 0
-        y: 39
+        y: 0
         width: 111
-        height: 252
+        height: 291
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -105,13 +105,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: indicatorandbannerssprites_1024_1
+      name: blueFullFlag
       rect:
         serializedVersion: 2
         x: 119
-        y: 39
+        y: 0
         width: 112
-        height: 252
+        height: 291
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,13 +119,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: indicatorandbannerssprites_1024_2
+      name: purpleFullFlag
       rect:
         serializedVersion: 2
         x: 244
-        y: 39
+        y: 0
         width: 112
-        height: 252
+        height: 291
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -133,7 +133,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: indicatorandbannerssprites_1024_3
+      name: redBanner
       rect:
         serializedVersion: 2
         x: 387
@@ -147,7 +147,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: indicatorandbannerssprites_1024_4
+      name: blueBanner
       rect:
         serializedVersion: 2
         x: 387
@@ -161,7 +161,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: indicatorandbannerssprites_1024_5
+      name: redNub
       rect:
         serializedVersion: 2
         x: 27
@@ -175,7 +175,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: indicatorandbannerssprites_1024_6
+      name: blueNub
       rect:
         serializedVersion: 2
         x: 142
@@ -189,7 +189,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: indicatorandbannerssprites_1024_7
+      name: purpleNub
       rect:
         serializedVersion: 2
         x: 272
