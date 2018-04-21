@@ -98,7 +98,7 @@ public class PlayerController : SpellTarget {
         switch(spell) {
             case Constants.SpellStats.SpellType.WIND:
                 DropFlag();
-				StartCoroutine(WindPush(Constants.PlayerStats.C_PlayerWindPushMultiplier,direction));
+				StartCoroutine(WindPush(Constants.PlayerStats.C_PlayerWindPushMultiplier,direction,false));
                 TakeDamage(damage, Constants.Global.DamageType.WIND);
                 anim.SetTrigger("windTrigger");
                 break;
@@ -330,7 +330,7 @@ public class PlayerController : SpellTarget {
 	private void StepDelay(){
 		b_stepOk = true;
 	}
-    
+
     //public void DamageVisualOn() {
     //    go_playerCapsule.GetComponent<MeshRenderer>().material.color = Color.yellow;
     //    //Call screenshake here.
@@ -350,10 +350,10 @@ public class PlayerController : SpellTarget {
     //public void HealVisualOff() {
     //    go_playerCapsule.GetComponent<MeshRenderer>().material.color = col_originalColor;
     //}
-#endregion
+    #endregion
 
 #region Unity Overrides
-    void Start() {
+    protected override void Start() {
         maestro = Maestro.Instance;
         riftController = RiftController.Instance;
         p_player = ReInput.players.GetPlayer(i_playerNumber);
@@ -421,11 +421,18 @@ public class PlayerController : SpellTarget {
 				anim.SetTrigger ("attackTrigger");
                 f_nextMagicMissile = 0;
 				GameObject go_spell = Instantiate(go_magicMissileShot, t_spellSpawn.position, t_spellSpawn.rotation);
+
                 Physics.IgnoreCollision(GetComponent<Collider>(), go_spell.GetComponent<Collider>());
                 go_spell.transform.localScale = new Vector3(f_projectileSize, f_projectileSize, f_projectileSize);
                 go_spell.GetComponent<Rigidbody>().velocity = transform.forward * Constants.SpellStats.C_MagicMissileSpeed;
                 SpellController sc_firing = go_spell.GetComponent<SpellController>();
                 sc_firing.Init(this, e_color, 0);
+                if (e_color == Constants.Global.Color.BLUE) {
+                    go_spell.layer = LayerMask.NameToLayer("BlueMM");
+                }
+                else {
+                    go_spell.layer = LayerMask.NameToLayer("RedMM");
+                }
             }                
 	    }
         // Wind Parry Spell
@@ -446,6 +453,7 @@ public class PlayerController : SpellTarget {
                 f_nextIce = 0;
                 f_nextCast = 0;
                 GameObject go_spell = Instantiate(go_iceShot, t_spellSpawn.position, t_spellSpawn.rotation);
+
                 Physics.IgnoreCollision(GetComponent<Collider>(), go_spell.GetComponent<Collider>());
                 go_spell.transform.localScale = new Vector3(f_projectileSize, f_projectileSize, f_projectileSize);
                 go_spell.GetComponent<Rigidbody>().velocity = transform.forward * Constants.SpellStats.C_IceSpeed;
@@ -468,6 +476,7 @@ public class PlayerController : SpellTarget {
                 f_nextElectric = 0;
 			    f_nextCast = 0;
 			    GameObject go_spell = Instantiate(go_electricShot, t_spellSpawn.position, t_spellSpawn.rotation);
+
                 Physics.IgnoreCollision(GetComponent<Collider>(), go_spell.GetComponent<Collider>());
                 go_spell.transform.localScale = new Vector3(f_projectileSize, f_projectileSize, f_projectileSize);
                 go_spell.GetComponent<Rigidbody>().velocity = transform.forward * Constants.SpellStats.C_ElectricSpeed;
