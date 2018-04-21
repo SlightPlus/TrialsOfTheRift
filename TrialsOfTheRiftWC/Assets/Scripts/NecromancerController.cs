@@ -101,11 +101,28 @@ public class NecromancerController : EnemyController {
  
         return navHit.position;
     }
-	
-	protected override void UpdateFlee() {
 
-		base.UpdateFlee();
+	protected override void EnterStateBreakout() {
+		base.EnterStateBreakout();
+		float z = Random.Range(-1.0f*(Constants.EnemyStats.C_MapBoundryZAxis-3.0f), (Constants.EnemyStats.C_MapBoundryZAxis-3.0f));
+		float x = Random.Range(3.0f, (Constants.EnemyStats.C_MapBoundryXAxis-3.0f));
+		if (transform.position.x < 0) {
+			x = -1 * x;
+		}
+		v3_destination = new Vector3(x,0,z);
+		nma_agent.SetDestination(v3_destination);
+	}
 
+	protected override void UpdateBreakout() {
+		f_timer += Time.deltaTime;
+
+		if (f_timer >= f_timeLimit || Vector3.Distance(transform.position, v3_destination) <= 2.0f ) {
+			f_timer = 0;
+			EnterStateWander();
+		}
+	}
+
+	private void FindFleeDestination() {
 		int count = 0;
 
 		float angle = 0.0f;
@@ -115,9 +132,7 @@ public class NecromancerController : EnemyController {
 
 
 		for(int i = 0; i < riftController.go_playerReferences.Length; i++){
-
 			if(riftController.go_playerReferences[i].GetComponent<PlayerController>().Side == e_startSide && riftController.go_playerReferences[i].GetComponent<PlayerController>().Wisp == false) {
-
 				if (Vector3.Distance(riftController.go_playerReferences[i].transform.position, transform.position) < Constants.EnemyStats.C_NecromancerAvoidDistance) {
 
 					count = count + 1;
@@ -136,22 +151,30 @@ public class NecromancerController : EnemyController {
 		}
 
 		if (count > 0) {
-
 			angle = sumAngle/count;
-
 			float deltaZ = Mathf.Sin((angle * Mathf.PI)/180)*Constants.EnemyStats.C_NecromancerAvoidDistance;
 			float deltaX = Mathf.Cos((angle * Mathf.PI)/180)*Constants.EnemyStats.C_NecromancerAvoidDistance;
-
 			v3_destination = new Vector3(transform.position.x + deltaX, 0, transform.position.z + deltaZ);
-
-			
 			CheckOutOfBounds();
-
 			nma_agent.SetDestination(v3_destination);
 		}
 		else {
 			f_timer = f_timeLimit;
 			EnterStateWander();
+		}
+	}
+
+	protected override void UpdateFlee() {
+
+		base.UpdateFlee();
+
+		if (IsCornered() == true) {
+			f_timer = 0;
+			EnterStateBreakout();
+		}
+		
+		else {
+			FindFleeDestination();
 		}
 
 	}
@@ -212,6 +235,26 @@ public class NecromancerController : EnemyController {
         gameObject.SetActive(true);
         Init(e_startSide);
     }
+
+	private bool IsCornered() {
+		if (transform.position.x <= 2.0 || transform.position.x <= -1*Constants.EnemyStats.C_MapBoundryXAxis+2.0) {
+			if ((transform.position.z >= Constants.EnemyStats.C_MapBoundryZAxis-2.0)) {
+				return true;
+			}
+			else if ((transform.position.z <= -1*Constants.EnemyStats.C_MapBoundryZAxis+2.0)) {
+				return true;
+			}
+		}
+		else if (transform.position.x >= -2.0 || transform.position.x >= Constants.EnemyStats.C_MapBoundryXAxis-2.0) {
+			if ((transform.position.z >= Constants.EnemyStats.C_MapBoundryZAxis-2.0)) {
+				return true;
+			}
+			else if ((transform.position.z <= -1*Constants.EnemyStats.C_MapBoundryZAxis+2.0)) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 #region Unity Overrides	
     void Start() {
