@@ -63,12 +63,14 @@ public abstract class SpellTarget : MonoBehaviour {
         go_indicator.SetActive(true);
     }
 	
-	public IEnumerator WindPush(float multiplier, Vector3 direction){
-		//maestro.PlayWindHit();
+	public IEnumerator WindPush(float multiplier, Vector3 direction, bool velocityReset){
+		maestro.PlayWindHit();
 		float startTime = Time.time;
 		float elapsedTime = 0;
 		while(elapsedTime < .99f){
-            rb.velocity = Vector3.zero;
+            if (velocityReset) {
+                rb.velocity = Vector3.zero;
+            }
 			elapsedTime = (Time.time - startTime)/Constants.SpellStats.C_WindPushTime;
 			rb.AddForce(direction * Mathf.Lerp(Constants.SpellStats.C_WindForce*multiplier,0f,elapsedTime));
 			yield return 0;
@@ -77,7 +79,7 @@ public abstract class SpellTarget : MonoBehaviour {
 #endregion
 
 #region Unity Overrides
-	void Start(){
+	protected virtual void Start(){
 		maestro = Maestro.Instance;
 	}
 	
