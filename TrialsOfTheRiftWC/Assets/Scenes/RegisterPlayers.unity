@@ -7893,7 +7893,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2125461006}
-        m_MethodName: ChangeRiftBossHealth
+        m_MethodName: ChangeNecroMaxScore
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
