@@ -388,6 +388,13 @@ public sealed class RiftController : MonoBehaviour {
 		Invoke("PlayNoise", r_random.Next(5,10));
 	}
 
+    public void ResetPlayers() {
+        go_playerReferences[0].transform.localPosition = Constants.PlayerStats.C_r1Start;
+        go_playerReferences[1].transform.localPosition = Constants.PlayerStats.C_r2Start;
+        go_playerReferences[2].transform.localPosition = Constants.PlayerStats.C_b1Start;
+        go_playerReferences[3].transform.localPosition = Constants.PlayerStats.C_b2Start;
+    }
+
     IEnumerator TurnOffDeathOrb(GameObject go_deathOrb, GameObject go_player) {
         yield return new WaitForSeconds(Constants.RiftStats.C_RiftTeleportDelay);
         go_player.transform.position = go_player.transform.position + (int)go_player.GetComponent<PlayerController>().Side * Constants.RiftStats.C_RiftTeleportOffset;
@@ -408,7 +415,7 @@ public sealed class RiftController : MonoBehaviour {
     }
 
     void OnTriggerEnter(Collider other) {
-        if (other.CompareTag("Player")) {
+        if (other.CompareTag("Player") && !other.GetComponent<PlayerController>().Wisp) {
             other.GetComponent<PlayerController>().TakeDamage(Constants.PlayerStats.C_MaxHealth, Constants.Global.DamageType.RIFT);
             //while (!isWisp)
             //{

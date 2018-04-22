@@ -40,6 +40,11 @@ public static class Constants {
         public static Global.Color C_p3Color = Global.Color.BLUE;
         public static Global.Color C_p4Color = Global.Color.BLUE;
 
+        public static Vector3 C_r1Start = new Vector3(-7.62f, 0.0f, -3.87f);
+        public static Vector3 C_r2Start = new Vector3(-7.62f, 0.0f, 2.45f);
+        public static Vector3 C_b1Start = new Vector3(7.62f, 0.0f, 2.45f);
+        public static Vector3 C_b2Start = new Vector3(7.62f, 0.0f, -3.87f);
+
         public static int C_p1Hat = 0;
         public static int C_p2Hat = 1;
         public static int C_p3Hat = 2;

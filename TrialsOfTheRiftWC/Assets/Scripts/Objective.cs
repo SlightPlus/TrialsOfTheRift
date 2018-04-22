@@ -53,6 +53,7 @@ public abstract class Objective : MonoBehaviour {
         go_activeRoom = SelectRoom();               // set room
         go_activeRoom.SetActive(true);
         gameObject.SetActive(true);                 // finally, turn on objective
+        riftController.ResetPlayers();
         StartCoroutine("Notify");
         return this;
     }
