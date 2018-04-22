@@ -62,13 +62,13 @@ public class PlayerController : SpellTarget {
         get { return isWisp; }
     }
 
+    public bool Invulnerable {
+        get { return isInvuln; }
+    }
+
     public int Num {
         get { return i_playerNumber; }
         set { i_playerNumber = value; }
-    }
-
-    public float Health {
-        get { return f_health; }
     }
 
     public bool IceBoltMode {

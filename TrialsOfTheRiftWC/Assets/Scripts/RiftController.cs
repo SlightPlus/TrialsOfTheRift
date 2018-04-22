@@ -414,8 +414,8 @@ public sealed class RiftController : MonoBehaviour {
 		Invoke("PlayNoise", r_random.Next(0,10));
     }
 
-    void OnTriggerEnter(Collider other) {
-        if (other.CompareTag("Player") && !other.GetComponent<PlayerController>().Wisp) {
+    void OnTriggerStay(Collider other) {
+        if (other.CompareTag("Player") && !other.GetComponent<PlayerController>().Wisp && !other.GetComponent<PlayerController>().Invulnerable) {
             other.GetComponent<PlayerController>().TakeDamage(Constants.PlayerStats.C_MaxHealth, Constants.Global.DamageType.RIFT);
             //while (!isWisp)
             //{
