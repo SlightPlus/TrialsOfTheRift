@@ -12,32 +12,49 @@ using UnityEngine;
 
 public sealed class Calligrapher : MonoBehaviour {
 
-    [SerializeField] private Text txt_redScoreText, txt_blueScoreText;
-    [SerializeField] private Image img_redCTFIcon, img_blueCTFIcon;
-    [SerializeField] private Image img_redHockeyIcon, img_blueHockeyIcon;
-    [SerializeField] private Image img_redNecroIcon, img_blueNecroIcon;
+    [SerializeField] private Text txt_redScoreText;
+    [SerializeField] private Text txt_blueScoreText;
+    [SerializeField] private Image img_redCTFIcon;
+    [SerializeField] private Image img_blueCTFIcon;
+    [SerializeField] private Image img_redHockeyIcon;
+    [SerializeField] private Image img_blueHockeyIcon;
+    [SerializeField] private Image img_redNecroIcon;
+    [SerializeField] private Image img_blueNecroIcon;
 
-    [SerializeField] private Text txt_redRiftBossHealthText, txt_blueRiftBossHealthText;
-    [SerializeField] private Image img_redBossIcon, img_blueBossIcon;
+    [SerializeField] private Text txt_redRiftBossHealthText;
+    [SerializeField] private Text txt_blueRiftBossHealthText;
+    [SerializeField] private Image img_redBossIcon;
+    [SerializeField] private Image img_blueBossIcon;
 
-    [SerializeField] private Text txt_redObjvTitle, txt_blueObjvTitle;
-    [SerializeField] private Text txt_redObjvDescription, txt_blueObjvDescription;
-    [SerializeField] private Text txt_redPauseObjvTitle, txt_bluePauseObjvTitle;
-    [SerializeField] private Text txt_redPauseObjvDescription, txt_bluePauseObjvDescription;
-    [SerializeField] private Text txt_redTotalScore, txt_blueTotalScore;
- 
-    [SerializeField] private Image img_redPopupBacking, img_bluePopupBacking;
-    [SerializeField] private GameObject go_redCTFGif, go_blueCTFGif;
-    [SerializeField] private GameObject go_redHockeyGif, go_blueHockeyGif;
-    [SerializeField] private GameObject go_redNecroGif, go_blueNecroGif;
-    [SerializeField] private GameObject go_redBossGif, go_blueBossGif;
+    [SerializeField] private Text txt_redObjvTitle;
+    [SerializeField] private Text txt_blueObjvTitle;
+    [SerializeField] private Text txt_redObjvDescription;
+    [SerializeField] private Text txt_blueObjvDescription;
+    [SerializeField] private Text txt_redPauseObjvTitle;
+    [SerializeField] private Text txt_bluePauseObjvTitle;
+    [SerializeField] private Text txt_redPauseObjvDescription;
+    [SerializeField] private Text txt_bluePauseObjvDescription;
+    [SerializeField] private Text txt_redTotalScore;
+    [SerializeField] private Text txt_blueTotalScore;
+
+    [SerializeField] private Image img_redPopupBacking;
+    [SerializeField] private Image img_bluePopupBacking;
+    [SerializeField] private GameObject go_redCTFGif;
+    [SerializeField] private GameObject go_blueCTFGif;
+    [SerializeField] private GameObject go_redHockeyGif;
+    [SerializeField] private GameObject go_blueHockeyGif;
+    [SerializeField] private GameObject go_redNecroGif;
+    [SerializeField] private GameObject go_blueNecroGif;
+    [SerializeField] private GameObject go_redBossGif;
+    [SerializeField] private GameObject go_blueBossGif;
     private GameObject go_redActiveGif, go_blueActiveGif;
-    [SerializeField] private Image img_redFlashBacking, img_blueFlashBacking;
-    [SerializeField] private Text  txt_redRoomCounter, txt_blueRoomCounter;
+    [SerializeField] private Image img_redFlashBacking;
+    [SerializeField] private Image img_blueFlashBacking;
+    [SerializeField] private Text txt_redRoomCounter;
+    [SerializeField] private Text txt_blueRoomCounter;
 
     private float f_redStartTime, f_blueStartTime;  // controls UI pop-up fading
-    //private float f_redFlashTime, f_blueFlashTime;  // separate timers for flash to avoid overwriting, since both animations play at roughly the same time.
-
+    
 
     #region Singletons
     // Singleton
@@ -84,6 +101,7 @@ public sealed class Calligrapher : MonoBehaviour {
             txt_redObjvTitle.text = txt_redPauseObjvTitle.text = Constants.ObjectiveText.C_CTFTitle;
             txt_redObjvDescription.text = txt_redPauseObjvDescription.text = Constants.ObjectiveText.C_CTFDescription;
             go_redActiveGif = go_redCTFGif;
+            go_redActiveGif.SetActive(true);
         }
         else {
             txt_blueScoreText.transform.parent.gameObject.SetActive(true);
@@ -92,6 +110,7 @@ public sealed class Calligrapher : MonoBehaviour {
             txt_blueObjvTitle.text = txt_bluePauseObjvTitle.text = Constants.ObjectiveText.C_CTFTitle;
             txt_blueObjvDescription.text = txt_bluePauseObjvDescription.text = Constants.ObjectiveText.C_CTFDescription;
             go_blueActiveGif = go_blueCTFGif;
+            go_blueActiveGif.SetActive(true);
         }
         UpdateGoalScoreUI(colorIn, 0);
         StartCoroutine("Flash", colorIn);
@@ -105,6 +124,7 @@ public sealed class Calligrapher : MonoBehaviour {
             txt_redObjvTitle.text = txt_redPauseObjvTitle.text = Constants.ObjectiveText.C_HockeyTitle;
             txt_redObjvDescription.text = txt_redPauseObjvDescription.text = Constants.ObjectiveText.C_HockeyDescription;
             go_redActiveGif = go_redHockeyGif;
+            go_redActiveGif.SetActive(true);
         }
         else {
             txt_blueScoreText.transform.parent.gameObject.SetActive(true);
@@ -113,6 +133,7 @@ public sealed class Calligrapher : MonoBehaviour {
             txt_blueObjvTitle.text = txt_bluePauseObjvTitle.text = Constants.ObjectiveText.C_HockeyTitle;
             txt_blueObjvDescription.text = txt_bluePauseObjvDescription.text = Constants.ObjectiveText.C_HockeyDescription;
             go_blueActiveGif = go_blueHockeyGif;
+            go_blueActiveGif.SetActive(true);
         }
         UpdateGoalScoreUI(colorIn, 0);
         StartCoroutine("Flash", colorIn);
@@ -126,6 +147,7 @@ public sealed class Calligrapher : MonoBehaviour {
             txt_redObjvTitle.text = txt_redPauseObjvTitle.text = Constants.ObjectiveText.C_DefeatNecromancersTitle;
             txt_redObjvDescription.text = txt_redPauseObjvDescription.text = Constants.ObjectiveText.C_DefeatNecromancersDescription;
             go_redActiveGif = go_redNecroGif;
+            go_redActiveGif.SetActive(true);
         }
         else {
             txt_blueScoreText.transform.parent.gameObject.SetActive(true);
@@ -134,6 +156,7 @@ public sealed class Calligrapher : MonoBehaviour {
             txt_blueObjvTitle.text = txt_bluePauseObjvTitle.text = Constants.ObjectiveText.C_DefeatNecromancersTitle;
             txt_blueObjvDescription.text = txt_bluePauseObjvDescription.text = Constants.ObjectiveText.C_DefeatNecromancersDescription;
             go_blueActiveGif = go_blueNecroGif;
+            go_blueActiveGif.SetActive(true);
         }
         UpdateGoalScoreUI(colorIn, 0);
         StartCoroutine("Flash", colorIn);
@@ -147,6 +170,7 @@ public sealed class Calligrapher : MonoBehaviour {
             txt_redObjvTitle.text = txt_redPauseObjvTitle.text = Constants.ObjectiveText.C_BossTitle;
             txt_redObjvDescription.text = txt_redPauseObjvDescription.text = Constants.ObjectiveText.C_BossDescription;
             go_redActiveGif = go_redBossGif;
+            go_redActiveGif.SetActive(true);
         }
         else {
             txt_blueRiftBossHealthText.transform.parent.gameObject.SetActive(true);
@@ -155,6 +179,7 @@ public sealed class Calligrapher : MonoBehaviour {
             txt_blueObjvTitle.text = txt_bluePauseObjvTitle.text = Constants.ObjectiveText.C_BossTitle;
             txt_blueObjvDescription.text = txt_bluePauseObjvDescription.text = Constants.ObjectiveText.C_BossDescription;
             go_blueActiveGif = go_blueBossGif;
+            go_blueActiveGif.SetActive(true);
         }
         UpdateRiftBossHealthUI(colorIn, Constants.ObjectiveStats.C_RiftBossMaxHealth);
         StartCoroutine("Flash", colorIn);
@@ -273,6 +298,7 @@ public sealed class Calligrapher : MonoBehaviour {
         txt_redTotalScore.color = Color.Lerp(txt_redTotalScore.color, new Color(1,0,0,0), fracJourney);
         go_redActiveGif.GetComponent<Image>().color = Color.Lerp(go_redActiveGif.GetComponent<Image>().color, new Color(1, 1, 1, 0), fracJourney);
         if (timer > 5.5f) {
+            go_redActiveGif.SetActive(false);
             Time.timeScale = 1;
             StopCoroutine(FadeOutRed());
             yield break;
@@ -290,6 +316,7 @@ public sealed class Calligrapher : MonoBehaviour {
         txt_blueTotalScore.color = Color.Lerp(txt_blueTotalScore.color, new Color(0,0,1,0), fracJourney);
         go_blueActiveGif.GetComponent<Image>().color = Color.Lerp(go_blueActiveGif.GetComponent<Image>().color, new Color(1, 1, 1, 0), fracJourney);
         if (timer > 5.5f) {
+            go_blueActiveGif.SetActive(false);
             Time.timeScale = 1;
             StopCoroutine(FadeOutBlue());
             yield break;
