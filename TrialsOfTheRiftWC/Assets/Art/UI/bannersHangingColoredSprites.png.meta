@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: d6612745cdcb8834ebea989fd57e1baa
-timeCreated: 1520695120
+guid: feb1c1aaa019de74da8770cfc6f01e86
+timeCreated: 1524481875
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: redBannerv2
+    21300002: blueBannerv2
+    21300004: blueHangv2
+    21300006: redHangv2
+    21300008: purpHangv2
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -39,7 +44,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -81,7 +86,77 @@ TextureImporter:
     overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: redBannerv2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1357
+        width: 1905
+        height: 245
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: blueBannerv2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 955
+        width: 1905
+        height: 245
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: blueHangv2
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 0
+        width: 415
+        height: 837
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: redHangv2
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 0
+        width: 415
+        height: 837
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: purpHangv2
+      rect:
+        serializedVersion: 2
+        x: 1267
+        y: 0
+        width: 415
+        height: 837
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
     outline: []
     physicsShape: []
   spritePackingTag: 

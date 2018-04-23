@@ -34,7 +34,7 @@ public class PauseController : MonoBehaviour {
     public void Pause(PlayerController pc_in) {
         if (pc_owner == null) {
             pc_owner = pc_in;
-            txt_pauseIndicator.text = "P" + (pc_owner.Num + 1) + " Pause.";
+            txt_pauseIndicator.text = "P" + (pc_owner.Num + 1) + " Pause";
             if(txt_redScoreLabel != null) {
                 txt_redScoreLabel.text = "Total Score: " + Constants.TeamStats.C_RedTeamScore;
                 txt_blueScoreLabel.text = "Total Score: " + Constants.TeamStats.C_BlueTeamScore;
