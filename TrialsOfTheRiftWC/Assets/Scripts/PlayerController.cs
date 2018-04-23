@@ -263,7 +263,8 @@ public class PlayerController : SpellTarget {
         } else {
             go_playerWisp.SetActive(false);
             go_playerCapsule.SetActive(true);
-        }
+            se_dissolve.ResetMaterials();
+        } 
         f_health = Constants.PlayerStats.C_MaxHealth;
     }
 	
