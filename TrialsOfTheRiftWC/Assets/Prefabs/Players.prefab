@@ -484,6 +484,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4284767483454008}
   - component: {fileID: 137354534092751462}
+  - component: {fileID: 114044664923763860}
   m_Layer: 0
   m_Name: Outfit_02
   m_TagString: Untagged
@@ -1617,6 +1618,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4368055864141634}
   - component: {fileID: 137201091001107700}
+  - component: {fileID: 114976197351719696}
   m_Layer: 0
   m_Name: Outfit_02
   m_TagString: Untagged
@@ -2579,6 +2581,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4253817155296974}
   - component: {fileID: 137255787296409518}
+  - component: {fileID: 114923793483860748}
   m_Layer: 0
   m_Name: Outfit_02
   m_TagString: Untagged
@@ -6667,6 +6670,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4789216287893842}
   - component: {fileID: 137061112948161334}
+  - component: {fileID: 114518969178864712}
   m_Layer: 0
   m_Name: Outfit_02
   m_TagString: Untagged
@@ -14995,6 +14999,23 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114044664923763860
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1066202766949606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb4697cde648bfe45a92b11a0169c27e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EffectSource: {fileID: 0}
+  EffectSound: {fileID: 0}
+  SourceRenderer: {fileID: 137354534092751462}
+  EffectLength: 0
+  isFinished: 0
+  currentParamValue: 0
 --- !u!114 &114051256605634224
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -15028,6 +15049,7 @@ MonoBehaviour:
   anim: {fileID: 95597660100240548}
   se_dissolve: {fileID: 114928400173775040}
   se_fader: {fileID: 114730375751518268}
+  se_clothesDissolve: {fileID: 114976197351719696}
   go_playerCapsule: {fileID: 1158233791249846}
   go_playerWisp: {fileID: 1761868033299032}
   go_magicMissileShot: {fileID: 1169542914423560, guid: 00247cb350ec7a848b7c7ce622e7cb56,
@@ -15044,10 +15066,12 @@ MonoBehaviour:
   pauc_pause: {fileID: 0}
   smr_playerBody: {fileID: 137834987270052522}
   smr_playerOutfit: {fileID: 137201091001107700}
+  txtr_bodyNormal: {fileID: 2800000, guid: 616bd5a0d8eae475085ce296160ebdd8, type: 3}
+  txtr_bodyFlash: {fileID: 2800000, guid: 5cb3cb5f746f2c6409605aa441ce5f28, type: 3}
+  col_outfitNormal: {r: 1, g: 0.26896554, b: 0, a: 1}
+  col_outfitFlash: {r: 1, g: 0, b: 0, a: 0}
   mat_bodyNormal: {fileID: 2100000, guid: 92bea2936a25b6c45a971d16ecf5f7bd, type: 2}
-  mat_bodyFlash: {fileID: 2100000, guid: 626cb7919bca0d24b9deec2d8c86759e, type: 2}
   mat_outfitNormal: {fileID: 2100000, guid: 1ac2e75c88b6f674ca7288fbb711b330, type: 2}
-  mat_outfitFlash: {fileID: 2100000, guid: 626cb7919bca0d24b9deec2d8c86759e, type: 2}
   mat_freeze: {fileID: 2100000, guid: 30298c0d263084f2eaf266fc9322cce2, type: 2}
   mat_freezeExtend: {fileID: 2100000, guid: f4b085fe44390f445ab3fef4d40ef14a, type: 2}
 --- !u!114 &114071397385997462
@@ -15345,6 +15369,7 @@ MonoBehaviour:
   anim: {fileID: 95629151370858986}
   se_dissolve: {fileID: 114563930265161984}
   se_fader: {fileID: 114207797251331494}
+  se_clothesDissolve: {fileID: 114923793483860748}
   go_playerCapsule: {fileID: 1596629139432532}
   go_playerWisp: {fileID: 1351653699739700}
   go_magicMissileShot: {fileID: 1169542914423560, guid: 00247cb350ec7a848b7c7ce622e7cb56,
@@ -15361,10 +15386,12 @@ MonoBehaviour:
   pauc_pause: {fileID: 0}
   smr_playerBody: {fileID: 137379571376787848}
   smr_playerOutfit: {fileID: 137255787296409518}
+  txtr_bodyNormal: {fileID: 2800000, guid: 616bd5a0d8eae475085ce296160ebdd8, type: 3}
+  txtr_bodyFlash: {fileID: 2800000, guid: 9ee3034f7aa49c44e9fa287903c8f234, type: 3}
+  col_outfitNormal: {r: 0, g: 1, b: 0.95862055, a: 1}
+  col_outfitFlash: {r: 0.07586241, g: 0, b: 1, a: 0}
   mat_bodyNormal: {fileID: 2100000, guid: 92bea2936a25b6c45a971d16ecf5f7bd, type: 2}
-  mat_bodyFlash: {fileID: 2100000, guid: 2ad0699142ca2cf488c67f348b61feb1, type: 2}
   mat_outfitNormal: {fileID: 2100000, guid: 64bc64766f4d74d528e258045dab1361, type: 2}
-  mat_outfitFlash: {fileID: 2100000, guid: 2ad0699142ca2cf488c67f348b61feb1, type: 2}
   mat_freeze: {fileID: 2100000, guid: 30298c0d263084f2eaf266fc9322cce2, type: 2}
   mat_freezeExtend: {fileID: 2100000, guid: f4b085fe44390f445ab3fef4d40ef14a, type: 2}
 --- !u!114 &114284601337949634
@@ -15808,6 +15835,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   e_color: 1
+--- !u!114 &114518969178864712
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1869703899780346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb4697cde648bfe45a92b11a0169c27e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EffectSource: {fileID: 0}
+  EffectSound: {fileID: 0}
+  SourceRenderer: {fileID: 137061112948161334}
+  EffectLength: 0
+  isFinished: 0
+  currentParamValue: 0
 --- !u!114 &114522186463289606
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -15911,6 +15955,7 @@ MonoBehaviour:
   anim: {fileID: 95682342582678100}
   se_dissolve: {fileID: 114157025017702970}
   se_fader: {fileID: 114306289498157922}
+  se_clothesDissolve: {fileID: 114044664923763860}
   go_playerCapsule: {fileID: 1013279725047502}
   go_playerWisp: {fileID: 1322051036288660}
   go_magicMissileShot: {fileID: 1169542914423560, guid: 00247cb350ec7a848b7c7ce622e7cb56,
@@ -15927,10 +15972,12 @@ MonoBehaviour:
   pauc_pause: {fileID: 0}
   smr_playerBody: {fileID: 137107588371625910}
   smr_playerOutfit: {fileID: 137354534092751462}
+  txtr_bodyNormal: {fileID: 2800000, guid: 616bd5a0d8eae475085ce296160ebdd8, type: 3}
+  txtr_bodyFlash: {fileID: 2800000, guid: 5cb3cb5f746f2c6409605aa441ce5f28, type: 3}
+  col_outfitNormal: {r: 1, g: 0.26896554, b: 0, a: 1}
+  col_outfitFlash: {r: 1, g: 0, b: 0, a: 0}
   mat_bodyNormal: {fileID: 2100000, guid: 92bea2936a25b6c45a971d16ecf5f7bd, type: 2}
-  mat_bodyFlash: {fileID: 2100000, guid: 626cb7919bca0d24b9deec2d8c86759e, type: 2}
   mat_outfitNormal: {fileID: 2100000, guid: 1ac2e75c88b6f674ca7288fbb711b330, type: 2}
-  mat_outfitFlash: {fileID: 2100000, guid: 626cb7919bca0d24b9deec2d8c86759e, type: 2}
   mat_freeze: {fileID: 2100000, guid: 30298c0d263084f2eaf266fc9322cce2, type: 2}
   mat_freezeExtend: {fileID: 2100000, guid: f4b085fe44390f445ab3fef4d40ef14a, type: 2}
 --- !u!114 &114552481737315232
@@ -16318,6 +16365,7 @@ MonoBehaviour:
   anim: {fileID: 95951857345941550}
   se_dissolve: {fileID: 114711534369902378}
   se_fader: {fileID: 114659323018186960}
+  se_clothesDissolve: {fileID: 114518969178864712}
   go_playerCapsule: {fileID: 1007310673532262}
   go_playerWisp: {fileID: 1224145807097126}
   go_magicMissileShot: {fileID: 1169542914423560, guid: 00247cb350ec7a848b7c7ce622e7cb56,
@@ -16334,10 +16382,12 @@ MonoBehaviour:
   pauc_pause: {fileID: 0}
   smr_playerBody: {fileID: 137482408672469480}
   smr_playerOutfit: {fileID: 137061112948161334}
+  txtr_bodyNormal: {fileID: 2800000, guid: 616bd5a0d8eae475085ce296160ebdd8, type: 3}
+  txtr_bodyFlash: {fileID: 2800000, guid: 9ee3034f7aa49c44e9fa287903c8f234, type: 3}
+  col_outfitNormal: {r: 0, g: 1, b: 0.95862055, a: 1}
+  col_outfitFlash: {r: 0, g: 0, b: 1, a: 0}
   mat_bodyNormal: {fileID: 2100000, guid: 92bea2936a25b6c45a971d16ecf5f7bd, type: 2}
-  mat_bodyFlash: {fileID: 2100000, guid: 2ad0699142ca2cf488c67f348b61feb1, type: 2}
   mat_outfitNormal: {fileID: 2100000, guid: 64bc64766f4d74d528e258045dab1361, type: 2}
-  mat_outfitFlash: {fileID: 2100000, guid: 2ad0699142ca2cf488c67f348b61feb1, type: 2}
   mat_freeze: {fileID: 2100000, guid: 30298c0d263084f2eaf266fc9322cce2, type: 2}
   mat_freezeExtend: {fileID: 2100000, guid: f4b085fe44390f445ab3fef4d40ef14a, type: 2}
 --- !u!114 &114813199882028540
@@ -16505,6 +16555,23 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114923793483860748
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1325575338320688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb4697cde648bfe45a92b11a0169c27e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EffectSource: {fileID: 0}
+  EffectSound: {fileID: 0}
+  SourceRenderer: {fileID: 137255787296409518}
+  EffectLength: 0
+  isFinished: 0
+  currentParamValue: 0
 --- !u!114 &114928400173775040
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16666,6 +16733,23 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114976197351719696
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1224329131238230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb4697cde648bfe45a92b11a0169c27e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EffectSource: {fileID: 0}
+  EffectSound: {fileID: 0}
+  SourceRenderer: {fileID: 137201091001107700}
+  EffectLength: 0
+  isFinished: 0
+  currentParamValue: 0
 --- !u!135 &135012866531615484
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -24,12 +24,16 @@ public class PlayerController : SpellTarget {
     [SerializeField] private GameObject go_parryShield;       // activated with right stick click
     [SerializeField] private PauseController pauc_pause;        // for pausing
 
-    [SerializeField] private SkinnedMeshRenderer smr_playerBody;            //This section's for invuln stuff.
+    [SerializeField] private SkinnedMeshRenderer smr_playerBody;            //These are for visual cue on the player model
     [SerializeField] private SkinnedMeshRenderer smr_playerOutfit;
-    [SerializeField] private Material mat_bodyNormal;
-    [SerializeField] private Material mat_bodyFlash;
+
+    [SerializeField] private Texture txtr_bodyNormal;                       //These are for invulnerability.
+    [SerializeField] private Texture txtr_bodyFlash;
+    [SerializeField] private Color col_outfitNormal;
+    [SerializeField] private Color col_outfitFlash;
+
+    [SerializeField] private Material mat_bodyNormal;                       //These are for freezing.
     [SerializeField] private Material mat_outfitNormal;
-    [SerializeField] private Material mat_outfitFlash;
     [SerializeField] private Material mat_freeze;
     [SerializeField] private Material mat_freezeExtend;
 
@@ -43,6 +47,7 @@ public class PlayerController : SpellTarget {
     private GameObject go_icebolt;          // the icebolt the player is controlling
     private GameObject go_flagObj;          // flag game object; if not null, player is carrying flag
     private bool b_stepOk = true;           // time to play next footstep noise has elapsed
+    private bool b_deathAnimOK = false;     // used to determine if death animation should play or not.
 
     // Spells
     private float f_nextWind = 0;				    // time next wind spell can be cast
@@ -203,7 +208,7 @@ public class PlayerController : SpellTarget {
     #endregion
 
     #region Health and Damage
-    private void PlayerDeath() {
+    private void PlayerDeath(bool riftDeath) {
 		maestro.PlayAnnouncementWispGeneric();
         DropFlag();
         TurnOffInteractCollider();
@@ -212,7 +217,12 @@ public class PlayerController : SpellTarget {
             riftController.IncreaseVolatility(Constants.RiftStats.C_VolatilityIncrease_PlayerDeath);
         } 
 		maestro.PlayPlayerDie();
-        DissolvePlayer();
+        if (!riftDeath) {
+            DissolvePlayer();
+        } else {
+            go_playerWisp.SetActive(true);
+            go_playerCapsule.SetActive(false);
+        }
         f_nextMagicMissile = 0;
         f_nextWind = 0;
         f_nextIce = 0;
@@ -222,9 +232,9 @@ public class PlayerController : SpellTarget {
     }
 	
 	private void DissolvePlayer(){
+        b_deathAnimOK = true;
 		StartCoroutine(DoWispFadeIn());
 		StartCoroutine(DoDissolvePlayer());
-
 	}
 
 	private IEnumerator DoWispFadeIn(){
@@ -247,7 +257,13 @@ public class PlayerController : SpellTarget {
         Invoke("EndInvuln", Constants.PlayerStats.C_InvulnTime);
         InvokeRepeating("InvulnFlicker", 0f, 0.25f);
 		maestro.PlayPlayerSpawn();
-        ReconstructPlayer();
+        if (b_deathAnimOK) {
+            ReconstructPlayer();
+            b_deathAnimOK = false;
+        } else {
+            go_playerWisp.SetActive(false);
+            go_playerCapsule.SetActive(true);
+        }
         f_health = Constants.PlayerStats.C_MaxHealth;
     }
 	
@@ -276,7 +292,7 @@ public class PlayerController : SpellTarget {
 			f_health -= damage;
             //DamageVisualOn();
 			if (f_health <= 0.0f) {
-                PlayerDeath();
+                PlayerDeath(d == Constants.Global.DamageType.RIFT);
 			}
 		}
 	}
@@ -295,24 +311,24 @@ public class PlayerController : SpellTarget {
 
     private void EndInvuln() {
         isInvuln = false;
-        smr_playerBody.material = mat_bodyNormal;
-        smr_playerOutfit.material = mat_outfitNormal;
+        smr_playerBody.material.mainTexture = txtr_bodyNormal;
+        smr_playerOutfit.material.color = col_outfitNormal;
         se_dissolve.ResetMaterials();
         se_fader.ResetMaterials();
         CancelInvoke("InvulnFlicker");
     }
 
     private void InvulnFlicker() {
-        if (smr_playerBody.material.name.Contains("MAT_")) {
-            smr_playerBody.material = mat_bodyFlash;
+        if (smr_playerBody.material.mainTexture == txtr_bodyNormal) {
+            smr_playerBody.material.mainTexture = txtr_bodyFlash;
         } else {
-            smr_playerBody.material = mat_bodyNormal;
+            smr_playerBody.material.mainTexture = txtr_bodyNormal;
         }
 
-        if (smr_playerOutfit.material.name.Contains("Outfit")) {
-            smr_playerOutfit.material = mat_outfitFlash;
+        if (smr_playerOutfit.material.color == col_outfitNormal) {
+            smr_playerOutfit.material.color = col_outfitFlash;
         } else {
-            smr_playerOutfit.material = mat_outfitNormal;
+            smr_playerOutfit.material.color = col_outfitNormal;
         }
     }
     #endregion

@@ -16,6 +16,7 @@ public abstract class SpellTarget : MonoBehaviour {
     [SerializeField] protected Animator anim;
 	[SerializeField] protected ShaderEffect se_dissolve;
     [SerializeField] protected ShaderEffect se_fader;
+    [SerializeField] protected ShaderEffect se_clothesDissolve;
     protected float f_health;
     protected float f_speed;
     protected Coroutine cor_AOECoroutine;
