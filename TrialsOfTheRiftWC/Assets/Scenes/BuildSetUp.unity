@@ -14534,6 +14534,7 @@ MonoBehaviour:
   txt_blueScoreLabel: {fileID: 668766687}
   butt_select: {fileID: 1772853271}
   butt_optSelect: {fileID: 28564355}
+  butt_options: {fileID: 25786624}
   rsim: {fileID: 673789552}
   es_master: {fileID: 673789553}
 --- !u!114 &1802629840
