@@ -18,6 +18,7 @@ public class PlayerController : SpellTarget {
     [SerializeField] private GameObject go_windShot;            // wind spell object
     [SerializeField] private GameObject go_iceShot;             // ice spell object
     [SerializeField] private GameObject go_electricShot;        // electric spell object
+    [SerializeField] private GameObject[] go_hats;              // The potential hats on this player.
     [SerializeField] private Transform t_spellSpawn;    // location spells are instantiated
     [SerializeField] private Transform t_flagPos;       // location on character model of flag
     [SerializeField] private GameObject go_interactCollider;  // activated with button-press to interact with objectives
@@ -29,6 +30,7 @@ public class PlayerController : SpellTarget {
 
     [SerializeField] private Texture txtr_bodyNormal;                       //These are for invulnerability.
     [SerializeField] private Texture txtr_bodyFlash;
+    [SerializeField] private Material mat_hatFlash;
     [SerializeField] private Color col_outfitNormal;
     [SerializeField] private Color col_outfitFlash;
 
@@ -48,6 +50,10 @@ public class PlayerController : SpellTarget {
     private GameObject go_flagObj;          // flag game object; if not null, player is carrying flag
     private bool b_stepOk = true;           // time to play next footstep noise has elapsed
     private bool b_deathAnimOK = false;     // used to determine if death animation should play or not.
+    private GameObject go_activeHat;        // the hat that's visible on the player.
+    private Material mat_hatNormal;         // This is for freezing/invuln visuals.
+    private MeshRenderer mr_hat;    
+    
 
     // Spells
     private float f_nextWind = 0;				    // time next wind spell can be cast
@@ -117,6 +123,7 @@ public class PlayerController : SpellTarget {
                 anim.SetBool("freezeBool", true);
                 smr_playerBody.materials =  new Material[] { mat_freeze, mat_freezeExtend };
                 smr_playerOutfit.materials = new Material[] { mat_freeze, mat_freezeExtend };
+                mr_hat.materials = new Material[] { mat_freeze, mat_freezeExtend };
                 Invoke("Unfreeze", Constants.SpellStats.C_IceFreezeTime);
                 break;
             case Constants.SpellStats.SpellType.ELECTRICITYAOE:
@@ -201,9 +208,14 @@ public class PlayerController : SpellTarget {
 
     private void Unfreeze() {
 		f_canMove = 1;
+		anim.SetBool ("freezeBool", false);
+        Invoke("UnfreezeSync", 0.35f);
+    }
+
+    private void UnfreezeSync() {
         smr_playerBody.materials = new Material[] { mat_bodyNormal };
         smr_playerOutfit.materials = new Material[] { mat_outfitNormal };
-		anim.SetBool ("freezeBool", false);
+        mr_hat.materials = new Material[] { mat_hatNormal };
     }
     #endregion
 
@@ -314,6 +326,7 @@ public class PlayerController : SpellTarget {
         isInvuln = false;
         smr_playerBody.material.mainTexture = txtr_bodyNormal;
         smr_playerOutfit.material.color = col_outfitNormal;
+        mr_hat.material = mat_hatNormal;
         se_dissolve.ResetMaterials();
         se_fader.ResetMaterials();
         CancelInvoke("InvulnFlicker");
@@ -330,6 +343,12 @@ public class PlayerController : SpellTarget {
             smr_playerOutfit.material.color = col_outfitFlash;
         } else {
             smr_playerOutfit.material.color = col_outfitNormal;
+        }
+
+        if (mr_hat.material.name.Contains("Hat")) {
+            mr_hat.material = mat_hatFlash;
+        } else {
+            mr_hat.material = mat_hatNormal;
         }
     }
     #endregion
@@ -384,6 +403,15 @@ public class PlayerController : SpellTarget {
         p_player = ReInput.players.GetPlayer(i_playerNumber);
         f_health = Constants.PlayerStats.C_MaxHealth;
         f_projectileSize = Constants.SpellStats.C_PlayerProjectileSize;
+
+        //Get the active hat from the array and set the material and mesh renderer accordingly.
+        foreach(GameObject go in go_hats) {
+            if (go.activeSelf && go_activeHat == null) {
+                go_activeHat = go;
+            }
+        }
+        mr_hat = go_activeHat.GetComponent<MeshRenderer>();
+        mat_hatNormal = mr_hat.materials[0];
 		
 		if (transform.position.x > 0)
 			e_side = Constants.Global.Side.RIGHT;
@@ -391,6 +419,7 @@ public class PlayerController : SpellTarget {
 			e_side = Constants.Global.Side.LEFT;
 
         InvokeRepeating("StepDelay", Constants.PlayerStats.C_StepSoundDelay, Constants.PlayerStats.C_StepSoundDelay);
+
     }
 
 	void FixedUpdate() {

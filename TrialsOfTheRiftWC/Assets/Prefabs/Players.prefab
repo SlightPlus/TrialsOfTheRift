@@ -15059,6 +15059,11 @@ MonoBehaviour:
   go_iceShot: {fileID: 1457177119730324, guid: 8290d2fdc293f02499be170cbb2eaf80, type: 2}
   go_electricShot: {fileID: 1399049070116990, guid: a6ec5ad0254870244b463e157e59b407,
     type: 2}
+  go_hats:
+  - {fileID: 1213307871032654}
+  - {fileID: 1615841826981620}
+  - {fileID: 1169889422516548}
+  - {fileID: 1640526704661492}
   t_spellSpawn: {fileID: 4798259383895752}
   t_flagPos: {fileID: 4116932570394824}
   go_interactCollider: {fileID: 1059748687912170}
@@ -15068,6 +15073,7 @@ MonoBehaviour:
   smr_playerOutfit: {fileID: 137201091001107700}
   txtr_bodyNormal: {fileID: 2800000, guid: 616bd5a0d8eae475085ce296160ebdd8, type: 3}
   txtr_bodyFlash: {fileID: 2800000, guid: 5cb3cb5f746f2c6409605aa441ce5f28, type: 3}
+  mat_hatFlash: {fileID: 2100000, guid: 626cb7919bca0d24b9deec2d8c86759e, type: 2}
   col_outfitNormal: {r: 1, g: 0.26896554, b: 0, a: 1}
   col_outfitFlash: {r: 1, g: 0, b: 0, a: 0}
   mat_bodyNormal: {fileID: 2100000, guid: 92bea2936a25b6c45a971d16ecf5f7bd, type: 2}
@@ -15379,6 +15385,11 @@ MonoBehaviour:
   go_iceShot: {fileID: 1457177119730324, guid: 8290d2fdc293f02499be170cbb2eaf80, type: 2}
   go_electricShot: {fileID: 1399049070116990, guid: a6ec5ad0254870244b463e157e59b407,
     type: 2}
+  go_hats:
+  - {fileID: 1665113005826792}
+  - {fileID: 1862334921644290}
+  - {fileID: 1222482403475422}
+  - {fileID: 1325109676699440}
   t_spellSpawn: {fileID: 4916733499116952}
   t_flagPos: {fileID: 4547598815175062}
   go_interactCollider: {fileID: 1315272423512706}
@@ -15388,6 +15399,7 @@ MonoBehaviour:
   smr_playerOutfit: {fileID: 137255787296409518}
   txtr_bodyNormal: {fileID: 2800000, guid: 616bd5a0d8eae475085ce296160ebdd8, type: 3}
   txtr_bodyFlash: {fileID: 2800000, guid: 9ee3034f7aa49c44e9fa287903c8f234, type: 3}
+  mat_hatFlash: {fileID: 2100000, guid: 2ad0699142ca2cf488c67f348b61feb1, type: 2}
   col_outfitNormal: {r: 0, g: 1, b: 0.95862055, a: 1}
   col_outfitFlash: {r: 0.07586241, g: 0, b: 1, a: 0}
   mat_bodyNormal: {fileID: 2100000, guid: 92bea2936a25b6c45a971d16ecf5f7bd, type: 2}
@@ -15965,6 +15977,11 @@ MonoBehaviour:
   go_iceShot: {fileID: 1457177119730324, guid: 8290d2fdc293f02499be170cbb2eaf80, type: 2}
   go_electricShot: {fileID: 1399049070116990, guid: a6ec5ad0254870244b463e157e59b407,
     type: 2}
+  go_hats:
+  - {fileID: 1319060666873070}
+  - {fileID: 1352747195176262}
+  - {fileID: 1581995577895512}
+  - {fileID: 1493940651238280}
   t_spellSpawn: {fileID: 4041132889605164}
   t_flagPos: {fileID: 4509351657440956}
   go_interactCollider: {fileID: 1939960635231632}
@@ -15974,6 +15991,7 @@ MonoBehaviour:
   smr_playerOutfit: {fileID: 137354534092751462}
   txtr_bodyNormal: {fileID: 2800000, guid: 616bd5a0d8eae475085ce296160ebdd8, type: 3}
   txtr_bodyFlash: {fileID: 2800000, guid: 5cb3cb5f746f2c6409605aa441ce5f28, type: 3}
+  mat_hatFlash: {fileID: 2100000, guid: 626cb7919bca0d24b9deec2d8c86759e, type: 2}
   col_outfitNormal: {r: 1, g: 0.26896554, b: 0, a: 1}
   col_outfitFlash: {r: 1, g: 0, b: 0, a: 0}
   mat_bodyNormal: {fileID: 2100000, guid: 92bea2936a25b6c45a971d16ecf5f7bd, type: 2}
@@ -16375,6 +16393,11 @@ MonoBehaviour:
   go_iceShot: {fileID: 1457177119730324, guid: 8290d2fdc293f02499be170cbb2eaf80, type: 2}
   go_electricShot: {fileID: 1399049070116990, guid: a6ec5ad0254870244b463e157e59b407,
     type: 2}
+  go_hats:
+  - {fileID: 1763307410041746}
+  - {fileID: 1033657605396298}
+  - {fileID: 1749496183110374}
+  - {fileID: 1530756903354148}
   t_spellSpawn: {fileID: 4771415148228434}
   t_flagPos: {fileID: 4299913123107778}
   go_interactCollider: {fileID: 1091249569307088}
@@ -16384,6 +16407,7 @@ MonoBehaviour:
   smr_playerOutfit: {fileID: 137061112948161334}
   txtr_bodyNormal: {fileID: 2800000, guid: 616bd5a0d8eae475085ce296160ebdd8, type: 3}
   txtr_bodyFlash: {fileID: 2800000, guid: 9ee3034f7aa49c44e9fa287903c8f234, type: 3}
+  mat_hatFlash: {fileID: 2100000, guid: 2ad0699142ca2cf488c67f348b61feb1, type: 2}
   col_outfitNormal: {r: 0, g: 1, b: 0.95862055, a: 1}
   col_outfitFlash: {r: 0, g: 0, b: 1, a: 0}
   mat_bodyNormal: {fileID: 2100000, guid: 92bea2936a25b6c45a971d16ecf5f7bd, type: 2}
