@@ -207,12 +207,12 @@ public class PlayerController : SpellTarget {
     }
 
     private void Unfreeze() {
-		f_canMove = 1;
 		anim.SetBool ("freezeBool", false);
-        Invoke("UnfreezeSync", 0.35f);
+        Invoke("UnfreezeSync", 1.85f);
     }
 
     private void UnfreezeSync() {
+        f_canMove = 1;
         smr_playerBody.materials = new Material[] { mat_bodyNormal };
         smr_playerOutfit.materials = new Material[] { mat_outfitNormal };
         mr_hat.materials = new Material[] { mat_hatNormal };
