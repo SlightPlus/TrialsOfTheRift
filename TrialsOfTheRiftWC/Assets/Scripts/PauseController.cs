@@ -25,6 +25,7 @@ public class PauseController : MonoBehaviour {
     [SerializeField]Text txt_blueScoreLabel;
     [SerializeField]Button butt_select;
     [SerializeField]Button butt_optSelect;
+    [SerializeField]Button butt_options;
     //private Player p_player;
     private float f_unPause;
     [SerializeField] Rewired.Integration.UnityUI.RewiredStandaloneInputModule rsim;
@@ -34,7 +35,7 @@ public class PauseController : MonoBehaviour {
     public void Pause(PlayerController pc_in) {
         if (pc_owner == null) {
             pc_owner = pc_in;
-            txt_pauseIndicator.text = "P" + (pc_owner.Num + 1) + " Pause.";
+            txt_pauseIndicator.text = "P" + (pc_owner.Num + 1) + " Pause";
             if(txt_redScoreLabel != null) {
                 txt_redScoreLabel.text = "Total Score: " + Constants.TeamStats.C_RedTeamScore;
                 txt_blueScoreLabel.text = "Total Score: " + Constants.TeamStats.C_BlueTeamScore;
@@ -45,7 +46,6 @@ public class PauseController : MonoBehaviour {
 
             //Properly highlight the button.
             butt_select.Select();
-            //butt_select.OnSelect(null);
 
             Time.timeScale = 0;
             
@@ -68,8 +68,7 @@ public class PauseController : MonoBehaviour {
     public void CloseOptions() {
         go_options.SetActive(false);
         go_pause.SetActive(true);
-        butt_select.Select();
-        butt_select.OnSelect(null);
+        butt_options.Select();
     }
 
     public void GameReset() {

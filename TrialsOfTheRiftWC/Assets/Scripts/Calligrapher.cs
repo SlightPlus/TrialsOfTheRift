@@ -33,7 +33,6 @@ public sealed class Calligrapher : MonoBehaviour {
     [SerializeField] private GameObject go_redBossGif, go_blueBossGif;
     private GameObject go_redActiveGif, go_blueActiveGif;
     [SerializeField] private Image img_redFlashBacking, img_blueFlashBacking;
-    [SerializeField] private Text  txt_redRoomCounter, txt_blueRoomCounter;
 
     private float f_redStartTime, f_blueStartTime;  // controls UI pop-up fading
     //private float f_redFlashTime, f_blueFlashTime;  // separate timers for flash to avoid overwriting, since both animations play at roughly the same time.
@@ -190,15 +189,6 @@ public sealed class Calligrapher : MonoBehaviour {
             StartCoroutine(BlueFlash());
             StartCoroutine(FadeInBlue());
         }
-    }
-
-    public void RoomScoreUpdate(Constants.Global.Color colorIn) {
-        if (colorIn == Constants.Global.Color.RED) {
-            txt_redRoomCounter.text = "Total\nPts : " + Constants.TeamStats.C_RedTeamScore;
-        } else {
-            txt_blueRoomCounter.text = "Total\nPts : " + Constants.TeamStats.C_BlueTeamScore;
-        }
-
     }
 
     //----------------------------
