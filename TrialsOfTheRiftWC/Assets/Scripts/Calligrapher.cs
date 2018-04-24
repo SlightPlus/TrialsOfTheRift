@@ -188,7 +188,7 @@ public sealed class Calligrapher : MonoBehaviour {
             yield return new WaitForSecondsRealtime(2f);
             f_blueStartTime = Time.realtimeSinceStartup;
             StartCoroutine(BlueFlash());
-            StartCoroutine(FadeInBlue());
+            //StartCoroutine(FadeInBlue());
         }
     }
 
@@ -262,6 +262,7 @@ public sealed class Calligrapher : MonoBehaviour {
         txt_redObjvTitle.color = Color.Lerp(txt_redObjvTitle.color, new Color(1,1,1,0), fracJourney);
         txt_redObjvDescription.color = Color.Lerp(txt_redObjvDescription.color, new Color(1,1,1,0), fracJourney);
         txt_redTotalScore.color = Color.Lerp(txt_redTotalScore.color, new Color(1,0,0,0), fracJourney);
+        txt_blueTotalScore.color = Color.Lerp(txt_blueTotalScore.color, new Color(0, 0, 1, 0), fracJourney);
         go_redActiveGif.GetComponent<Image>().color = Color.Lerp(go_redActiveGif.GetComponent<Image>().color, new Color(1, 1, 1, 0), fracJourney);
         if (timer > 5.5f) {
             Time.timeScale = 1;
