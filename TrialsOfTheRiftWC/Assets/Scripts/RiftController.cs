@@ -211,7 +211,7 @@ public sealed class RiftController : MonoBehaviour {
         go_boardClear.SetActive(false);
     }
 
-	public void ActivateEnemy(Vector3 position) {
+    public void ActivateEnemy(Vector3 position) {
         // move skeleton into position - must happen before Init() is called
         go_skeletons[i_nextEnemySpawnIndex].transform.position = position;
 
@@ -336,7 +336,7 @@ public sealed class RiftController : MonoBehaviour {
 
         float f_projectileSize = Constants.SpellStats.C_PlayerProjectileSize;
         firePosition.position = new Vector3(firePosition.position.x, 1.0f, firePosition.position.z);
-        
+
         var array = new int[] { 0, 1, 2, 3 };
         new System.Random().Shuffle(array);
 
@@ -412,10 +412,11 @@ public sealed class RiftController : MonoBehaviour {
 		maestro = Maestro.Instance;
         ResetVolatility();
 		Invoke("PlayNoise", r_random.Next(0,10));
+		//anim = GetComponentInChildren <Animator>();
     }
 
-    void OnTriggerStay(Collider other) {
-        if (other.CompareTag("Player") && !other.GetComponent<PlayerController>().Wisp && !other.GetComponent<PlayerController>().Invulnerable) {
+    void OnTriggerEnter(Collider other) {
+        if (other.CompareTag("Player")) {
             other.GetComponent<PlayerController>().TakeDamage(Constants.PlayerStats.C_MaxHealth, Constants.Global.DamageType.RIFT);
             //while (!isWisp)
             //{

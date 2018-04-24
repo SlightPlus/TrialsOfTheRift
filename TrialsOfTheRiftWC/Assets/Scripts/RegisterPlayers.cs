@@ -12,11 +12,21 @@ using Rewired;
 
 public class RegisterPlayers : SceneLoader {
 
-    [SerializeField] private Image go_backing1, go_backing2, go_backing3, go_backing4;
-    [SerializeField] private Image go_hat1, go_hat2, go_hat3, go_hat4;
-    [SerializeField] private Sprite img_red, img_blue;
+    [SerializeField] private Image go_backing1;
+    [SerializeField] private Image go_backing2;
+    [SerializeField] private Image go_backing3;
+    [SerializeField] private Image go_backing4;
+    [SerializeField] private Image go_hat1;
+    [SerializeField] private Image go_hat2;
+    [SerializeField] private Image go_hat3;
+    [SerializeField] private Image go_hat4;
+    [SerializeField] private Sprite img_red;
+    [SerializeField] private Sprite img_blue;
     [SerializeField] private Sprite[] img_hats;
-    [SerializeField] private Text txt_p1Message, txt_p2Message, txt_p3Message, txt_p4Message;
+    [SerializeField] private Text txt_p1Message;
+    [SerializeField] private Text txt_p2Message;
+    [SerializeField] private Text txt_p3Message;
+    [SerializeField] private Text txt_p4Message;
     [SerializeField] private GameObject go_go;
 
 
