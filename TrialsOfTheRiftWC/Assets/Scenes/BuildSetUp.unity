@@ -107,7 +107,7 @@ NavMeshSettings:
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 1
-  m_NavMeshData: {fileID: 23800000, guid: 9f91dc7fe36cfdd468a8e74485f21163, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 3db04069fc0a2eb419c252e686201896, type: 2}
 --- !u!1 &1517922
 GameObject:
   m_ObjectHideFlags: 0
@@ -1407,11 +1407,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 232009036}
     m_Modifications:
-    - target: {fileID: 114024320104815360, guid: 000c45f295755ae43998e7c16448741a,
-        type: 2}
-      propertyPath: go_enemySpawnPool.Array.size
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4006492725657782, guid: 000c45f295755ae43998e7c16448741a, type: 2}
       propertyPath: m_LocalPosition.x
       value: 7.56
@@ -1444,29 +1439,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114380502694553722, guid: 000c45f295755ae43998e7c16448741a,
+        type: 2}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: 42fdb73ddca77ca4999768d188c1612e,
+        type: 2}
     - target: {fileID: 1742099262541850, guid: 000c45f295755ae43998e7c16448741a, type: 2}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114024320104815360, guid: 000c45f295755ae43998e7c16448741a,
-        type: 2}
-      propertyPath: go_enemySpawnPool.Array.data[0]
-      value: 
-      objectReference: {fileID: 216278971}
-    - target: {fileID: 114024320104815360, guid: 000c45f295755ae43998e7c16448741a,
-        type: 2}
-      propertyPath: go_enemySpawnPool.Array.data[1]
-      value: 
-      objectReference: {fileID: 216278970}
-    - target: {fileID: 114024320104815360, guid: 000c45f295755ae43998e7c16448741a,
-        type: 2}
-      propertyPath: go_enemySpawnPool.Array.data[2]
-      value: 
-      objectReference: {fileID: 216278969}
-    - target: {fileID: 114024320104815360, guid: 000c45f295755ae43998e7c16448741a,
-        type: 2}
-      propertyPath: e_side
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 000c45f295755ae43998e7c16448741a, type: 2}
@@ -1474,21 +1455,6 @@ Prefab:
 --- !u!4 &216278968 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4006492725657782, guid: 000c45f295755ae43998e7c16448741a,
-    type: 2}
-  m_PrefabInternal: {fileID: 216278967}
---- !u!1 &216278969 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1019863868744418, guid: 000c45f295755ae43998e7c16448741a,
-    type: 2}
-  m_PrefabInternal: {fileID: 216278967}
---- !u!1 &216278970 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1403397611231964, guid: 000c45f295755ae43998e7c16448741a,
-    type: 2}
-  m_PrefabInternal: {fileID: 216278967}
---- !u!1 &216278971 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1473794523216920, guid: 000c45f295755ae43998e7c16448741a,
     type: 2}
   m_PrefabInternal: {fileID: 216278967}
 --- !u!1 &226864754 stripped
@@ -1977,11 +1943,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 232009036}
     m_Modifications:
-    - target: {fileID: 114377850117596536, guid: c421bb72df22d2f459aee8369505fc32,
-        type: 2}
-      propertyPath: go_enemySpawnPool.Array.size
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4830088548240664, guid: c421bb72df22d2f459aee8369505fc32, type: 2}
       propertyPath: m_LocalPosition.x
       value: 7.48
@@ -2014,29 +1975,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114006624935551144, guid: c421bb72df22d2f459aee8369505fc32,
+        type: 2}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: 00a1452f39f42254b8ea35275ad39112,
+        type: 2}
     - target: {fileID: 1995952338719304, guid: c421bb72df22d2f459aee8369505fc32, type: 2}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114377850117596536, guid: c421bb72df22d2f459aee8369505fc32,
-        type: 2}
-      propertyPath: go_enemySpawnPool.Array.data[0]
-      value: 
-      objectReference: {fileID: 261112508}
-    - target: {fileID: 114377850117596536, guid: c421bb72df22d2f459aee8369505fc32,
-        type: 2}
-      propertyPath: go_enemySpawnPool.Array.data[1]
-      value: 
-      objectReference: {fileID: 261112507}
-    - target: {fileID: 114377850117596536, guid: c421bb72df22d2f459aee8369505fc32,
-        type: 2}
-      propertyPath: go_enemySpawnPool.Array.data[2]
-      value: 
-      objectReference: {fileID: 261112506}
-    - target: {fileID: 114377850117596536, guid: c421bb72df22d2f459aee8369505fc32,
-        type: 2}
-      propertyPath: e_side
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c421bb72df22d2f459aee8369505fc32, type: 2}
@@ -2044,21 +1991,6 @@ Prefab:
 --- !u!4 &261112505 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4830088548240664, guid: c421bb72df22d2f459aee8369505fc32,
-    type: 2}
-  m_PrefabInternal: {fileID: 261112504}
---- !u!1 &261112506 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1067579766245060, guid: c421bb72df22d2f459aee8369505fc32,
-    type: 2}
-  m_PrefabInternal: {fileID: 261112504}
---- !u!1 &261112507 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1394174394737806, guid: c421bb72df22d2f459aee8369505fc32,
-    type: 2}
-  m_PrefabInternal: {fileID: 261112504}
---- !u!1 &261112508 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1269712142388562, guid: c421bb72df22d2f459aee8369505fc32,
     type: 2}
   m_PrefabInternal: {fileID: 261112504}
 --- !u!1 &265861626
@@ -2825,11 +2757,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 232009036}
     m_Modifications:
-    - target: {fileID: 114965852192774742, guid: fd2d15736fe51d540964560d9235c74a,
-        type: 2}
-      propertyPath: go_enemySpawnPool.Array.size
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4120373475300948, guid: fd2d15736fe51d540964560d9235c74a, type: 2}
       propertyPath: m_LocalPosition.x
       value: -7.5
@@ -2862,29 +2789,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114984330547151472, guid: fd2d15736fe51d540964560d9235c74a,
+        type: 2}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: 4ccfe306facddfb45b37c86acbdbdbf4,
+        type: 2}
     - target: {fileID: 1651239782622096, guid: fd2d15736fe51d540964560d9235c74a, type: 2}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114965852192774742, guid: fd2d15736fe51d540964560d9235c74a,
-        type: 2}
-      propertyPath: go_enemySpawnPool.Array.data[0]
-      value: 
-      objectReference: {fileID: 332110327}
-    - target: {fileID: 114965852192774742, guid: fd2d15736fe51d540964560d9235c74a,
-        type: 2}
-      propertyPath: go_enemySpawnPool.Array.data[1]
-      value: 
-      objectReference: {fileID: 332110326}
-    - target: {fileID: 114965852192774742, guid: fd2d15736fe51d540964560d9235c74a,
-        type: 2}
-      propertyPath: go_enemySpawnPool.Array.data[2]
-      value: 
-      objectReference: {fileID: 332110325}
-    - target: {fileID: 114965852192774742, guid: fd2d15736fe51d540964560d9235c74a,
-        type: 2}
-      propertyPath: e_side
-      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fd2d15736fe51d540964560d9235c74a, type: 2}
@@ -2892,21 +2805,6 @@ Prefab:
 --- !u!4 &332110324 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4120373475300948, guid: fd2d15736fe51d540964560d9235c74a,
-    type: 2}
-  m_PrefabInternal: {fileID: 332110323}
---- !u!1 &332110325 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1106236127650924, guid: fd2d15736fe51d540964560d9235c74a,
-    type: 2}
-  m_PrefabInternal: {fileID: 332110323}
---- !u!1 &332110326 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1657098206674330, guid: fd2d15736fe51d540964560d9235c74a,
-    type: 2}
-  m_PrefabInternal: {fileID: 332110323}
---- !u!1 &332110327 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1510352698364322, guid: fd2d15736fe51d540964560d9235c74a,
     type: 2}
   m_PrefabInternal: {fileID: 332110323}
 --- !u!1 &337174873
@@ -3909,11 +3807,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 232009036}
     m_Modifications:
-    - target: {fileID: 114826911500611238, guid: cb92aefe201330a46a53b5b909fbbdd8,
-        type: 2}
-      propertyPath: go_enemySpawnPool.Array.size
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4727236711755952, guid: cb92aefe201330a46a53b5b909fbbdd8, type: 2}
       propertyPath: m_LocalPosition.x
       value: -7.5
@@ -3946,29 +3839,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114602819991936562, guid: cb92aefe201330a46a53b5b909fbbdd8,
+        type: 2}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: 964588534d4c7a342a76f67c9c571619,
+        type: 2}
     - target: {fileID: 1702281483819380, guid: cb92aefe201330a46a53b5b909fbbdd8, type: 2}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114826911500611238, guid: cb92aefe201330a46a53b5b909fbbdd8,
-        type: 2}
-      propertyPath: go_enemySpawnPool.Array.data[0]
-      value: 
-      objectReference: {fileID: 516132117}
-    - target: {fileID: 114826911500611238, guid: cb92aefe201330a46a53b5b909fbbdd8,
-        type: 2}
-      propertyPath: go_enemySpawnPool.Array.data[1]
-      value: 
-      objectReference: {fileID: 516132116}
-    - target: {fileID: 114826911500611238, guid: cb92aefe201330a46a53b5b909fbbdd8,
-        type: 2}
-      propertyPath: go_enemySpawnPool.Array.data[2]
-      value: 
-      objectReference: {fileID: 516132115}
-    - target: {fileID: 114826911500611238, guid: cb92aefe201330a46a53b5b909fbbdd8,
-        type: 2}
-      propertyPath: e_side
-      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb92aefe201330a46a53b5b909fbbdd8, type: 2}
@@ -3976,21 +3855,6 @@ Prefab:
 --- !u!4 &516132114 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4727236711755952, guid: cb92aefe201330a46a53b5b909fbbdd8,
-    type: 2}
-  m_PrefabInternal: {fileID: 516132113}
---- !u!1 &516132115 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1928613477286554, guid: cb92aefe201330a46a53b5b909fbbdd8,
-    type: 2}
-  m_PrefabInternal: {fileID: 516132113}
---- !u!1 &516132116 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1557669943004722, guid: cb92aefe201330a46a53b5b909fbbdd8,
-    type: 2}
-  m_PrefabInternal: {fileID: 516132113}
---- !u!1 &516132117 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1810598571354028, guid: cb92aefe201330a46a53b5b909fbbdd8,
     type: 2}
   m_PrefabInternal: {fileID: 516132113}
 --- !u!1 &517755246
@@ -6905,11 +6769,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 232009036}
     m_Modifications:
-    - target: {fileID: 114003209057019814, guid: f401315d90208d6448f513b49704c148,
-        type: 2}
-      propertyPath: go_enemySpawnPool.Array.size
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4013524515049050, guid: f401315d90208d6448f513b49704c148, type: 2}
       propertyPath: m_LocalPosition.x
       value: -7.5
@@ -6942,29 +6801,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114052856430773252, guid: f401315d90208d6448f513b49704c148,
+        type: 2}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: 4ca992d495de564409092c270cd02e57,
+        type: 2}
     - target: {fileID: 1125138090417284, guid: f401315d90208d6448f513b49704c148, type: 2}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114003209057019814, guid: f401315d90208d6448f513b49704c148,
-        type: 2}
-      propertyPath: go_enemySpawnPool.Array.data[0]
-      value: 
-      objectReference: {fileID: 859299171}
-    - target: {fileID: 114003209057019814, guid: f401315d90208d6448f513b49704c148,
-        type: 2}
-      propertyPath: go_enemySpawnPool.Array.data[1]
-      value: 
-      objectReference: {fileID: 859299170}
-    - target: {fileID: 114003209057019814, guid: f401315d90208d6448f513b49704c148,
-        type: 2}
-      propertyPath: go_enemySpawnPool.Array.data[2]
-      value: 
-      objectReference: {fileID: 859299169}
-    - target: {fileID: 114003209057019814, guid: f401315d90208d6448f513b49704c148,
-        type: 2}
-      propertyPath: e_side
-      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f401315d90208d6448f513b49704c148, type: 2}
@@ -6972,21 +6817,6 @@ Prefab:
 --- !u!4 &859299168 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4013524515049050, guid: f401315d90208d6448f513b49704c148,
-    type: 2}
-  m_PrefabInternal: {fileID: 859299167}
---- !u!1 &859299169 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1950576819947904, guid: f401315d90208d6448f513b49704c148,
-    type: 2}
-  m_PrefabInternal: {fileID: 859299167}
---- !u!1 &859299170 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1509205524938974, guid: f401315d90208d6448f513b49704c148,
-    type: 2}
-  m_PrefabInternal: {fileID: 859299167}
---- !u!1 &859299171 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1981967017067160, guid: f401315d90208d6448f513b49704c148,
     type: 2}
   m_PrefabInternal: {fileID: 859299167}
 --- !u!1 &859362832
@@ -11166,12 +10996,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 114649143161829390, guid: 014d2cc6e090ae34a8e7bfe5ec453da7,
+    - target: {fileID: 114188669826689804, guid: 014d2cc6e090ae34a8e7bfe5ec453da7,
         type: 2}
       propertyPath: cam_Camera
       value: 
       objectReference: {fileID: 1859528229}
-    - target: {fileID: 114188669826689804, guid: 014d2cc6e090ae34a8e7bfe5ec453da7,
+    - target: {fileID: 114649143161829390, guid: 014d2cc6e090ae34a8e7bfe5ec453da7,
         type: 2}
       propertyPath: cam_Camera
       value: 
@@ -14073,11 +13903,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 232009036}
     m_Modifications:
-    - target: {fileID: 114130174839807160, guid: 5038ee532b5ee7e41a873c1e75813d90,
-        type: 2}
-      propertyPath: go_enemySpawnPool.Array.size
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4091282672749362, guid: 5038ee532b5ee7e41a873c1e75813d90, type: 2}
       propertyPath: m_LocalPosition.x
       value: 7.6
@@ -14110,29 +13935,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114550926373542638, guid: 5038ee532b5ee7e41a873c1e75813d90,
+        type: 2}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: 7176ecdf1456e154fb29d220a95e5d07,
+        type: 2}
     - target: {fileID: 1931529499818074, guid: 5038ee532b5ee7e41a873c1e75813d90, type: 2}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114130174839807160, guid: 5038ee532b5ee7e41a873c1e75813d90,
-        type: 2}
-      propertyPath: go_enemySpawnPool.Array.data[0]
-      value: 
-      objectReference: {fileID: 1733974262}
-    - target: {fileID: 114130174839807160, guid: 5038ee532b5ee7e41a873c1e75813d90,
-        type: 2}
-      propertyPath: go_enemySpawnPool.Array.data[1]
-      value: 
-      objectReference: {fileID: 1733974261}
-    - target: {fileID: 114130174839807160, guid: 5038ee532b5ee7e41a873c1e75813d90,
-        type: 2}
-      propertyPath: go_enemySpawnPool.Array.data[2]
-      value: 
-      objectReference: {fileID: 1733974260}
-    - target: {fileID: 114130174839807160, guid: 5038ee532b5ee7e41a873c1e75813d90,
-        type: 2}
-      propertyPath: e_side
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5038ee532b5ee7e41a873c1e75813d90, type: 2}
@@ -14140,21 +13951,6 @@ Prefab:
 --- !u!4 &1733974259 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4091282672749362, guid: 5038ee532b5ee7e41a873c1e75813d90,
-    type: 2}
-  m_PrefabInternal: {fileID: 1733974258}
---- !u!1 &1733974260 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1185726642716404, guid: 5038ee532b5ee7e41a873c1e75813d90,
-    type: 2}
-  m_PrefabInternal: {fileID: 1733974258}
---- !u!1 &1733974261 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1046695479686088, guid: 5038ee532b5ee7e41a873c1e75813d90,
-    type: 2}
-  m_PrefabInternal: {fileID: 1733974258}
---- !u!1 &1733974262 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1395660274609386, guid: 5038ee532b5ee7e41a873c1e75813d90,
     type: 2}
   m_PrefabInternal: {fileID: 1733974258}
 --- !u!1 &1743936395 stripped
@@ -14536,12 +14332,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114413630834012996, guid: b793c16ffe19c2846ab86127af7de009,
+    - target: {fileID: 114211251678215522, guid: b793c16ffe19c2846ab86127af7de009,
         type: 2}
       propertyPath: cam_Camera
       value: 
       objectReference: {fileID: 1859528229}
-    - target: {fileID: 114211251678215522, guid: b793c16ffe19c2846ab86127af7de009,
+    - target: {fileID: 114413630834012996, guid: b793c16ffe19c2846ab86127af7de009,
         type: 2}
       propertyPath: cam_Camera
       value: 
@@ -14561,6 +14357,10 @@ Prefab:
       propertyPath: go_roomPool.Array.data[2]
       value: 
       objectReference: {fileID: 2099098997}
+    - target: {fileID: 1827768655482312, guid: b793c16ffe19c2846ab86127af7de009, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b793c16ffe19c2846ab86127af7de009, type: 2}
   m_IsPrefabParent: 0
