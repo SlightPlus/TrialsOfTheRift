@@ -18,30 +18,49 @@ public class PlayerController : SpellTarget {
     [SerializeField] private GameObject go_windShot;            // wind spell object
     [SerializeField] private GameObject go_iceShot;             // ice spell object
     [SerializeField] private GameObject go_electricShot;        // electric spell object
+    [SerializeField] private GameObject[] go_hats;              // The potential hats on this player.
     [SerializeField] private Transform t_spellSpawn;    // location spells are instantiated
     [SerializeField] private Transform t_flagPos;       // location on character model of flag
     [SerializeField] private GameObject go_interactCollider;  // activated with button-press to interact with objectives
     [SerializeField] private GameObject go_parryShield;       // activated with right stick click
     [SerializeField] private PauseController pauc_pause;        // for pausing
 
+    [SerializeField] private SkinnedMeshRenderer smr_playerBody;            //These are for visual cue on the player model
+    [SerializeField] private SkinnedMeshRenderer smr_playerOutfit;
+
+    [SerializeField] private Texture txtr_bodyNormal;                       //These are for invulnerability.
+    [SerializeField] private Texture txtr_bodyFlash;
+    [SerializeField] private Material mat_hatFlash;
+    [SerializeField] private Color col_outfitNormal;
+    [SerializeField] private Color col_outfitFlash;
+
+    [SerializeField] private Material mat_bodyNormal;                       //These are for freezing.
+    [SerializeField] private Material mat_outfitNormal;
+    [SerializeField] private Material mat_freeze;
+    [SerializeField] private Material mat_freezeExtend;
+
     private int i_playerNumber;             // designates player's number for controller mappings
     private Player p_player;                // rewired player for input control
     private Constants.Global.Side e_side;   // identifies which side of the rift player is on
     private float f_canMove = 1;            // identifies if the player is frozen
     private bool isWisp = false;            // player has "died"
+    private bool isInvuln = false;          // player is invincible (after respawn)
     private bool b_iceboltMode = false;     // player is controlling an icebolt
     private GameObject go_icebolt;          // the icebolt the player is controlling
     private GameObject go_flagObj;          // flag game object; if not null, player is carrying flag
     private bool b_stepOk = true;           // time to play next footstep noise has elapsed
+    private bool b_deathAnimOK = false;     // used to determine if death animation should play or not.
+    private GameObject go_activeHat;        // the hat that's visible on the player.
+    private Material mat_hatNormal;         // This is for freezing/invuln visuals.
+    private MeshRenderer mr_hat;    
+    
 
     // Spells
     private float f_nextWind = 0;				    // time next wind spell can be cast
 	private float f_nextIce = 0;                    // time next ice spell can be cast
 	private float f_nextElectric = 0;               // time next electric spell can be cast
 	private float f_nextMagicMissile = 0;           // time next magic missile can be cast
-    private float f_nextChargedMagicMissile = 0;    // time next charged magic missile can be cast
     private float f_nextCast = 0;                   // time next spell in general can be cast (does not include magic missile)
-    private float f_mmCharge;               // current charge of magic missile
     private float f_iceCharge;              // current charge of ice spell
     private float f_windCharge;             // current charge of wind spell
     private float f_electricCharge;         // current charge of electric charge
@@ -56,13 +75,13 @@ public class PlayerController : SpellTarget {
         get { return isWisp; }
     }
 
+    public bool Invulnerable {
+        get { return isInvuln; }
+    }
+
     public int Num {
         get { return i_playerNumber; }
         set { i_playerNumber = value; }
-    }
-
-    public float Health {
-        get { return f_health; }
     }
 
     public bool IceBoltMode {
@@ -80,6 +99,10 @@ public class PlayerController : SpellTarget {
     public float NextElectric {
         get { return f_nextElectric; }
     }
+
+    public GameObject Capsule {
+        get { return go_playerCapsule; }
+    }
     #endregion
 #endregion
 
@@ -88,7 +111,7 @@ public class PlayerController : SpellTarget {
         switch(spell) {
             case Constants.SpellStats.SpellType.WIND:
                 DropFlag();
-                rb.AddForce(direction * Constants.SpellStats.C_WindForce);
+				StartCoroutine(WindPush(Constants.PlayerStats.C_PlayerWindPushMultiplier,direction,false));
                 TakeDamage(damage, Constants.Global.DamageType.WIND);
                 anim.SetTrigger("windTrigger");
                 break;
@@ -98,6 +121,9 @@ public class PlayerController : SpellTarget {
                 TakeDamage(damage, Constants.Global.DamageType.ICE);
                 anim.SetTrigger("freezeTrigger");
                 anim.SetBool("freezeBool", true);
+                smr_playerBody.materials =  new Material[] { mat_freeze, mat_freezeExtend };
+                smr_playerOutfit.materials = new Material[] { mat_freeze, mat_freezeExtend };
+                mr_hat.materials = new Material[] { mat_freeze, mat_freezeExtend };
                 Invoke("Unfreeze", Constants.SpellStats.C_IceFreezeTime);
                 break;
             case Constants.SpellStats.SpellType.ELECTRICITYAOE:
@@ -115,7 +141,7 @@ public class PlayerController : SpellTarget {
                     anim.SetTrigger("hitTrigger");
                 }
                 else {
-                    Heal(Constants.SpellStats.C_MagicMissileHeal);
+                    Heal(damage / 2.5f);
                 }
                 break;
         }
@@ -141,6 +167,10 @@ public class PlayerController : SpellTarget {
 
 		//anim.SetFloat ("runSpeed", v3_moveDir.magnitude);
 		//anim.SetFloat ("lookDirection", v3_aimDir.magnitude);
+		anim.SetFloat ("runSpeedX", f_inputX);
+		anim.SetFloat ("runSpeedZ", f_inputZ);
+		anim.SetFloat ("aimDirectionX", f_aimInputX);
+		anim.SetFloat ("aimDirectionZ", f_aimInputZ);
 
 		if (v3_aimDir.magnitude > 0) {
 			transform.rotation = Quaternion.LookRotation(v3_aimDir);
@@ -177,13 +207,20 @@ public class PlayerController : SpellTarget {
     }
 
     private void Unfreeze() {
-		f_canMove = 1;
 		anim.SetBool ("freezeBool", false);
+        Invoke("UnfreezeSync", 1.85f);
+    }
+
+    private void UnfreezeSync() {
+        f_canMove = 1;
+        smr_playerBody.materials = new Material[] { mat_bodyNormal };
+        smr_playerOutfit.materials = new Material[] { mat_outfitNormal };
+        mr_hat.materials = new Material[] { mat_hatNormal };
     }
     #endregion
 
     #region Health and Damage
-    private void PlayerDeath() {
+    private void PlayerDeath(bool riftDeath) {
 		maestro.PlayAnnouncementWispGeneric();
         DropFlag();
         TurnOffInteractCollider();
@@ -192,73 +229,83 @@ public class PlayerController : SpellTarget {
             riftController.IncreaseVolatility(Constants.RiftStats.C_VolatilityIncrease_PlayerDeath);
         } 
 		maestro.PlayPlayerDie();
-        dissolvePlayer();
+        if (!riftDeath) {
+            DissolvePlayer();
+        } else {
+            go_playerWisp.SetActive(true);
+            go_playerCapsule.SetActive(false);
+        }
         f_nextMagicMissile = 0;
         f_nextWind = 0;
         f_nextIce = 0;
         f_nextElectric = 0;
         f_nextCast = 0;
-        f_nextChargedMagicMissile = 0;
         Invoke("PlayerRespawn", Constants.PlayerStats.C_RespawnTimer);
     }
+	
+	private void DissolvePlayer(){
+        b_deathAnimOK = true;
+		StartCoroutine(DoWispFadeIn());
+		StartCoroutine(DoDissolvePlayer());
+	}
 
-    private void dissolvePlayer()
-    {
-        StartCoroutine(doDissolvePlayer());
-        StartCoroutine(doWispFadeIn());
-    }
+	private IEnumerator DoWispFadeIn(){
+		go_playerWisp.SetActive(true);
+		yield return new WaitUntil(() => se_dissolve.currentParamValue >= .6f);
+		se_fader.ParamIncrease(3f, false, "_Brightness");
+	}
 
-    private IEnumerator doWispFadeIn()
-    {
-        go_playerWisp.SetActive(true);
-        yield return new WaitUntil(() => dissolve.currentParamValue >= .6f);
-        fader.paramIncrease(3f, false, "_Brightness");
-    }
-
-    private IEnumerator doDissolvePlayer()
-    {
-        dissolve.paramIncrease(5f, false, "_DisintegrateAmount");
-        yield return new WaitUntil(() => dissolve.isFinished);
-        dissolve.isFinished = false;
-        go_playerCapsule.SetActive(false);
-    }
+	private IEnumerator DoDissolvePlayer(){
+		se_dissolve.ParamIncrease(2f, false, "_DisintegrateAmount");
+		yield return new WaitUntil(() => se_dissolve.isFinished);
+		se_dissolve.isFinished = false;
+		go_playerCapsule.SetActive(false);
+	}
+ 
 
     private void PlayerRespawn() {
 		isWisp = false;
+        isInvuln = true;
+        Invoke("EndInvuln", Constants.PlayerStats.C_InvulnTime);
+        InvokeRepeating("InvulnFlicker", 0f, 0.25f);
 		maestro.PlayPlayerSpawn();
-        reconstructPlayer();
+        if (b_deathAnimOK) {
+            ReconstructPlayer();
+            b_deathAnimOK = false;
+        } else {
+            go_playerWisp.SetActive(false);
+            go_playerCapsule.SetActive(true);
+            se_dissolve.ResetMaterials();
+        } 
         f_health = Constants.PlayerStats.C_MaxHealth;
     }
-
-    private void reconstructPlayer()
-    {
-        StartCoroutine(doWispFadeOut());
-        StartCoroutine(doConstructPlayer());
-    }
-
-    private IEnumerator doWispFadeOut()
-    {
-        fader.paramDecrease(5f, false, "_Brightness");
-        yield return new WaitUntil(() => fader.isFinished);
-        fader.isFinished = false;
+	
+	private void ReconstructPlayer(){
+		StartCoroutine(DoConstructPlayer());
+		StartCoroutine(DoWispFadeOut());
+	}
+	
+    private IEnumerator DoWispFadeOut(){
+        se_fader.ParamDecrease(5f, false, "_Brightness");
+        yield return new WaitUntil(() => se_fader.isFinished);
+        se_fader.isFinished = false;
         go_playerWisp.SetActive(false);
     }
+	
+	private IEnumerator DoConstructPlayer(){
+		yield return new WaitUntil(() => se_fader.currentParamValue <= .7f);
+		go_playerCapsule.SetActive(true);
+		se_dissolve.ParamDecrease(3f, false, "_DisintegrateAmount");
+	}
 
-    private IEnumerator doConstructPlayer()
-    {
-        yield return new WaitUntil(() => fader.currentParamValue <= .7f);
-        go_playerCapsule.SetActive(true);
-        dissolve.paramDecrease(3f, false, "_DisintegrateAmount");
-    }
-
-    public void TakeDamage(float damage, Constants.Global.DamageType d) {
-		if (!isWisp) {
+	public void TakeDamage(float damage, Constants.Global.DamageType d) {
+		if (!isWisp && !isInvuln) {
 			maestro.PlayAnnouncmentPlayerHit(i_playerNumber,d);
 			maestro.PlayPlayerHit();
 			f_health -= damage;
             //DamageVisualOn();
 			if (f_health <= 0.0f) {
-                PlayerDeath();
+                PlayerDeath(d == Constants.Global.DamageType.RIFT);
 			}
 		}
 	}
@@ -272,6 +319,36 @@ public class PlayerController : SpellTarget {
                 f_health = tempHp;
             }
             //HealVisualOn();
+        }
+    }
+
+    private void EndInvuln() {
+        isInvuln = false;
+        smr_playerBody.material.mainTexture = txtr_bodyNormal;
+        smr_playerOutfit.material.color = col_outfitNormal;
+        mr_hat.material = mat_hatNormal;
+        se_dissolve.ResetMaterials();
+        se_fader.ResetMaterials();
+        CancelInvoke("InvulnFlicker");
+    }
+
+    private void InvulnFlicker() {
+        if (smr_playerBody.material.mainTexture == txtr_bodyNormal) {
+            smr_playerBody.material.mainTexture = txtr_bodyFlash;
+        } else {
+            smr_playerBody.material.mainTexture = txtr_bodyNormal;
+        }
+
+        if (smr_playerOutfit.material.color == col_outfitNormal) {
+            smr_playerOutfit.material.color = col_outfitFlash;
+        } else {
+            smr_playerOutfit.material.color = col_outfitNormal;
+        }
+
+        if (mr_hat.material.name.Contains("Hat")) {
+            mr_hat.material = mat_hatFlash;
+        } else {
+            mr_hat.material = mat_hatNormal;
         }
     }
     #endregion
@@ -297,7 +374,7 @@ public class PlayerController : SpellTarget {
 	private void StepDelay(){
 		b_stepOk = true;
 	}
-    
+
     //public void DamageVisualOn() {
     //    go_playerCapsule.GetComponent<MeshRenderer>().material.color = Color.yellow;
     //    //Call screenshake here.
@@ -317,15 +394,24 @@ public class PlayerController : SpellTarget {
     //public void HealVisualOff() {
     //    go_playerCapsule.GetComponent<MeshRenderer>().material.color = col_originalColor;
     //}
-#endregion
+    #endregion
 
 #region Unity Overrides
-    void Start() {
+    protected override void Start() {
         maestro = Maestro.Instance;
         riftController = RiftController.Instance;
         p_player = ReInput.players.GetPlayer(i_playerNumber);
         f_health = Constants.PlayerStats.C_MaxHealth;
         f_projectileSize = Constants.SpellStats.C_PlayerProjectileSize;
+
+        //Get the active hat from the array and set the material and mesh renderer accordingly.
+        foreach(GameObject go in go_hats) {
+            if (go.activeSelf && go_activeHat == null) {
+                go_activeHat = go;
+            }
+        }
+        mr_hat = go_activeHat.GetComponent<MeshRenderer>();
+        mat_hatNormal = mr_hat.materials[0];
 		
 		if (transform.position.x > 0)
 			e_side = Constants.Global.Side.RIGHT;
@@ -333,6 +419,7 @@ public class PlayerController : SpellTarget {
 			e_side = Constants.Global.Side.LEFT;
 
         InvokeRepeating("StepDelay", Constants.PlayerStats.C_StepSoundDelay, Constants.PlayerStats.C_StepSoundDelay);
+
     }
 
 	void FixedUpdate() {
@@ -358,7 +445,6 @@ public class PlayerController : SpellTarget {
         f_nextIce += Time.deltaTime;
         f_nextElectric += Time.deltaTime;
 		f_nextCast += Time.deltaTime;
-        f_nextChargedMagicMissile += Time.deltaTime;
 
         // interact
         if (p_player.GetButtonDown("Interact")) {
@@ -384,58 +470,33 @@ public class PlayerController : SpellTarget {
 
         // Magic Missile (Auto-fire)
         if (f_nextMagicMissile > Constants.SpellStats.C_MagicMissileCooldown) {
-            if (p_player.GetButtonDown("MagicMissile"))
-				maestro.PlaySpellCharge();
-            if (p_player.GetButtonTimePressed("MagicMissile") != 0) {
-                f_mmCharge += p_player.GetButtonTimePressed("MagicMissile");
-            }
             if (p_player.GetButton("MagicMissile")) {
                 maestro.PlayMagicMissileShoot();
 				anim.SetTrigger ("attackTrigger");
                 f_nextMagicMissile = 0;
 				GameObject go_spell = Instantiate(go_magicMissileShot, t_spellSpawn.position, t_spellSpawn.rotation);
+
+                Physics.IgnoreCollision(GetComponent<Collider>(), go_spell.GetComponent<Collider>());
                 go_spell.transform.localScale = new Vector3(f_projectileSize, f_projectileSize, f_projectileSize);
                 go_spell.GetComponent<Rigidbody>().velocity = transform.forward * Constants.SpellStats.C_MagicMissileSpeed;
                 SpellController sc_firing = go_spell.GetComponent<SpellController>();
                 sc_firing.Init(this, e_color, 0);
+                if (e_color == Constants.Global.Color.BLUE) {
+                    go_spell.layer = LayerMask.NameToLayer("BlueMM");
+                }
+                else {
+                    go_spell.layer = LayerMask.NameToLayer("RedMM");
+                }
             }                
 	    }
-        // Charged Magic Missile (Release)
-        if (p_player.GetButtonUp("MagicMissile") && f_nextChargedMagicMissile > Constants.SpellStats.C_MagicMissileChargeCooldown) {
-			maestro.PlayMagicMissileShoot();
-            f_nextChargedMagicMissile = 0;
-			GameObject go_spell = Instantiate(go_magicMissileShot, t_spellSpawn.position, t_spellSpawn.rotation);
-            go_spell.transform.localScale = new Vector3(f_projectileSize, f_projectileSize, f_projectileSize);
-            go_spell.GetComponent<Rigidbody>().velocity = transform.forward * Constants.SpellStats.C_MagicMissileSpeed;
-            SpellController sc_firing = go_spell.GetComponent<SpellController>();
-            sc_firing.Init(this, e_color, f_mmCharge);
-            f_mmCharge = 0;
-        }
-        // Wind Spell
-        if (f_nextWind > Constants.SpellStats.C_WindCooldown && f_nextCast > Constants.SpellStats.C_NextSpellDelay) {
-		    if (p_player.GetButtonDown("WindSpell"))
-				maestro.PlaySpellCharge();
-            if (p_player.GetButtonTimePressed("WindSpell") != 0) {
-                f_windCharge += p_player.GetButtonTimePressed("WindSpell");
-			    //anim.SetTrigger ("windChargeTrigger");
-				//anim.SetFloat ("windCharge", f_windCharge);
-            }
-            if (p_player.GetButtonUp("WindSpell")) {
+        // Wind Parry Spell
+		if(f_nextWind > Constants.SpellStats.C_WindCooldown){
+			if (p_player.GetButtonDown("WindSpell")) {
+				f_nextWind = 0;
 				maestro.PlayWindShoot();
-				//anim.SetTrigger("windSpellTrigger");
-                f_nextWind = 0;
-			    f_nextCast = 0;
-                for (int i = -30; i <= 30; i += 30) {
-                    GameObject go_spell = Instantiate(go_windShot, t_spellSpawn.position, t_spellSpawn.rotation);
-                    go_spell.transform.eulerAngles = go_spell.transform.eulerAngles + new Vector3(0, i, 0);
-                    go_spell.transform.localScale = new Vector3(f_projectileSize, f_projectileSize, f_projectileSize);
-                    go_spell.GetComponent<Rigidbody>().velocity = go_spell.transform.forward * Constants.SpellStats.C_WindSpeed;
-                    SpellController sc_firing = go_spell.GetComponent<SpellController>();
-                    sc_firing.Init(this, e_color, f_windCharge);
-                }
-                //anim.SetFloat("windCharge", f_windCharge);
-                f_windCharge = 0;
-			} 
+				go_parryShield.SetActive(true);
+				Invoke("TurnOffParryShield", 0.75f);
+			}
 		}
         // Ice Spell
         if (f_nextIce > Constants.SpellStats.C_IceCooldown && f_nextCast > Constants.SpellStats.C_NextSpellDelay) {
@@ -446,6 +507,8 @@ public class PlayerController : SpellTarget {
                 f_nextIce = 0;
                 f_nextCast = 0;
                 GameObject go_spell = Instantiate(go_iceShot, t_spellSpawn.position, t_spellSpawn.rotation);
+
+                Physics.IgnoreCollision(GetComponent<Collider>(), go_spell.GetComponent<Collider>());
                 go_spell.transform.localScale = new Vector3(f_projectileSize, f_projectileSize, f_projectileSize);
                 go_spell.GetComponent<Rigidbody>().velocity = transform.forward * Constants.SpellStats.C_IceSpeed;
                 go_icebolt = go_spell;
@@ -467,7 +530,9 @@ public class PlayerController : SpellTarget {
                 f_nextElectric = 0;
 			    f_nextCast = 0;
 			    GameObject go_spell = Instantiate(go_electricShot, t_spellSpawn.position, t_spellSpawn.rotation);
-			    go_spell.transform.localScale = new Vector3(f_projectileSize, f_projectileSize, f_projectileSize);
+
+                Physics.IgnoreCollision(GetComponent<Collider>(), go_spell.GetComponent<Collider>());
+                go_spell.transform.localScale = new Vector3(f_projectileSize, f_projectileSize, f_projectileSize);
                 go_spell.GetComponent<Rigidbody>().velocity = transform.forward * Constants.SpellStats.C_ElectricSpeed;
                 SpellController sc_firing = go_spell.GetComponent<SpellController>();
                 sc_firing.Init(this, e_color, f_electricCharge);
@@ -475,24 +540,7 @@ public class PlayerController : SpellTarget {
                 f_electricCharge = 0;
             }        
 		}
-        
-        // parry
-        if (p_player.GetButtonDown("Parry")) {
-            go_parryShield.SetActive(true);
-            Invoke("TurnOffParryShield", 0.25f);
-        }
+       
     }
 #endregion
-
-    [ContextMenu("DEATH")]
-    public void Die()
-    {
-        dissolvePlayer();
-    }
-
-    [ContextMenu("RESPAWN")]
-    public void Resp()
-    {
-        reconstructPlayer();
-    }
 }

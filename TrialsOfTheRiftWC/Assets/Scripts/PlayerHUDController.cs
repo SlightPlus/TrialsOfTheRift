@@ -20,14 +20,14 @@ public class PlayerHUDController : MonoBehaviour {
     private void Start() {
         col_origElecColor = img_electricbar.color;
         col_origIceColor = img_icebar.color;
-        col_origWindColor = img_windbar.color;
+        //col_origWindColor = img_windbar.color;
         v2_origIceSize = img_icebar.rectTransform.sizeDelta;
         v2_origElecSize = img_electricbar.rectTransform.sizeDelta;
-        v2_origWindSize = img_windbar.rectTransform.sizeDelta;
+        //v2_origWindSize = img_windbar.rectTransform.sizeDelta;
     }
 
     void Update () {
-		img_windbar.fillAmount = playc_trackedPlayer.NextWind / Constants.SpellStats.C_WindCooldown;
+		//img_windbar.fillAmount = playc_trackedPlayer.NextWind / Constants.SpellStats.C_WindCooldown;
         img_icebar.fillAmount = playc_trackedPlayer.NextIce / Constants.SpellStats.C_IceCooldown;
 		img_electricbar.fillAmount = playc_trackedPlayer.NextElectric / Constants.SpellStats.C_ElectricCooldown;
 		img_healthbar.fillAmount = playc_trackedPlayer.Health / Constants.PlayerStats.C_MaxHealth;
@@ -50,12 +50,12 @@ public class PlayerHUDController : MonoBehaviour {
             img_electricbar.rectTransform.sizeDelta = v2_origElecSize;
         }
 
-        if (img_windbar.fillAmount == 1) {
+        /*if (img_windbar.fillAmount == 1) {
             img_windbar.color = Color.Lerp(col_origWindColor, new Color(1,1,1,0.756f), Mathf.PingPong(Time.time, 1));
             img_windbar.rectTransform.sizeDelta = Vector2.Lerp(v2_origWindSize, v2_origWindSize + new Vector2(10f,10f), Mathf.PingPong(Time.time, 1));
         } else {
             img_windbar.color = col_origWindColor;
             img_windbar.rectTransform.sizeDelta = v2_origWindSize;
-        }
+        }*/
 	}
 }

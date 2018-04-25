@@ -12,7 +12,7 @@ public class ShaderEffect : MonoBehaviour {
 	private Material[] EffectMaterials;	
 	public float EffectLength = 0.0f;
 
-    public bool isFinished = false;
+    public bool isFinished;
     public float currentParamValue;
 	
 	
@@ -32,7 +32,7 @@ public class ShaderEffect : MonoBehaviour {
 		}	
 	}
 	
-	private IEnumerator doParamIncrease(bool Destroy, string paramName)
+	private IEnumerator DoParamIncrease(bool Destroy, string paramName)
 	{
 				
 		// if we supply our own sound, use it.
@@ -60,7 +60,7 @@ public class ShaderEffect : MonoBehaviour {
 		}
 	}
 	
-	private IEnumerator doParamDecrease(bool destroy, string paramName)
+	private IEnumerator DoParamDecrease(bool destroy, string paramName)
 	{
 		// if we supply our own sound, use it.
 		if (EffectSource != null && EffectSound != null)
@@ -88,29 +88,31 @@ public class ShaderEffect : MonoBehaviour {
         }
     }	
 	
-	private void paramIncrease(bool doDestroy, string paramName)
+	private void ParamIncrease(bool doDestroy, string paramName)
 	{
-		StartCoroutine(doParamIncrease(doDestroy, paramName));
+		StartCoroutine(DoParamIncrease(doDestroy, paramName));
 	}
 	
-	private void paramDecrease(bool doDestroy, string paramName)
+	private void ParamDecrease(bool doDestroy, string paramName)
 	{
-		StartCoroutine(doParamDecrease(doDestroy, paramName));
+		StartCoroutine(DoParamDecrease(doDestroy, paramName));
 	}	
 
-	public void paramIncrease(float Length, bool doDestroy, string paramName)
+	public void ParamIncrease(float Length, bool doDestroy, string paramName)
 	{
 		EffectLength = Length;
-        isFinished = false;
-        paramIncrease(doDestroy, paramName);
+        ParamIncrease(doDestroy, paramName);
 	}
 	
-	public void paramDecrease(float Length, bool doDestroy, string paramName)
+	public void ParamDecrease(float Length, bool doDestroy, string paramName)
 	{
 		EffectLength = Length;
-        isFinished = false;
-		paramDecrease(doDestroy, paramName);
+		ParamDecrease(doDestroy, paramName);
 	}	
+
+    public void ResetMaterials() {
+        EffectMaterials = SourceRenderer.materials;
+    }
 	
 	public void OnDestroy()
 	{
@@ -119,10 +121,7 @@ public class ShaderEffect : MonoBehaviour {
 			Destroy (m);
 		}
 	}
-
-
 }
-
 
 /*
 public class example : MonoBehaviour {

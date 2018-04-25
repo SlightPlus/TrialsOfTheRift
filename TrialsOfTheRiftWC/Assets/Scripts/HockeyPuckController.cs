@@ -113,15 +113,10 @@ public class HockeyPuckController : SpellTarget {
 
     void OnTriggerEnter(Collider other) {
         if (other.CompareTag("HockeyGoal")) {   // player scoring with puck
-            Constants.Global.Color temp = other.GetComponent<GoalController>().Color;
-            if (temp != e_color) {
+            if (other.GetComponent<GoalController>().Color != e_color) {
                 Vector3 pos = transform.position;
-                if( go_scoreParticle != null )
-                {
-                    go_scoreParticle.transform.position = pos;
-                    go_scoreParticle.SetActive(true);
-                }
-                
+                go_scoreParticle.transform.position = pos;
+                go_scoreParticle.SetActive(true);
                 Invoke("DisableParticle", Constants.ObjectiveStats.C_ScoringParticleLiveTime);
 
                 ResetPuckPosition();

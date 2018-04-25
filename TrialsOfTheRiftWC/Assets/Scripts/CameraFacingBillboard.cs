@@ -10,21 +10,25 @@ public class CameraFacingBillboard : MonoBehaviour {
 #region Variables and Declarations
     [SerializeField] private Camera cam_Camera;
     [SerializeField] private GameObject go_trackedObject;
+    [SerializeField] private bool b_persistent;
     [SerializeField] private Vector3 v3_offset;
 #endregion
 
 #region Camera Facing Billboard Methods
-    public void Init(Camera cam, GameObject target)
-    {
-        cam_Camera = cam;
-        go_trackedObject = target;
+    //public void Init(Camera cam, GameObject target) {
+    //    cam_Camera = cam;
+    //    go_trackedObject = target;
+    //}
+
+    private void SetInactive() {
+        gameObject.SetActive(false);
     }
 #endregion
 
 #region Unity Overrides
-    void Start() {
-        if (go_trackedObject.GetComponent<PlayerController>() == null) {
-            Destroy(gameObject, 1.0f);  // enemy indicators do not persist after spawn
+    void OnEnable() {
+        if (!b_persistent) {
+            Invoke("SetInactive", 2.0f);  // non-player indicators do not persist after spawn
         }
     }
 

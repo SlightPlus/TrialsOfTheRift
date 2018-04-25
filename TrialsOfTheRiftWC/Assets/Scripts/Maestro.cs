@@ -24,6 +24,7 @@ public sealed class Maestro : MonoBehaviour {
 	
 	[Header("Audio Clips")]
 	[SerializeField] private AudioClip ac_windShoot;
+	[SerializeField] private AudioClip ac_windHit;
 	[SerializeField] private AudioClip ac_iceShoot;
 	[SerializeField] private AudioClip ac_electricShoot;
 	[SerializeField] private AudioClip[] ac_magicMissileShoot;
@@ -42,6 +43,8 @@ public sealed class Maestro : MonoBehaviour {
 	[SerializeField] private AudioClip ac_playerDie;
 	
 	[SerializeField] private AudioClip ac_portal;
+	[SerializeField] private AudioClip ac_score;
+	[SerializeField] private AudioClip ac_objective_start;
 	
 	[SerializeField] private AudioClip[] ac_bgm;
 
@@ -162,6 +165,9 @@ public sealed class Maestro : MonoBehaviour {
 	public void PlayWindShoot(){
 		PlaySingle(as_sfxHi,ac_windShoot);
 	}
+	public void PlayWindHit(){
+		PlaySingle(as_sfxHi,ac_windHit);
+	}
 	public void PlayIceShoot(){
 		PlaySingle(as_sfxHi,ac_iceShoot);
 	}
@@ -210,6 +216,12 @@ public sealed class Maestro : MonoBehaviour {
 	}
 	public void PlayPortal(){
 		PlaySingle(as_sfxHi,ac_portal);
+	}
+	public void PlayScore(){
+		PlaySingle(as_sfxHi,ac_score);
+	}
+	public void PlayObjectiveStart(){
+		PlaySingle(as_sfxHi,ac_objective_start);
 	}
 	public void PlayPlayerFootstep(){
 		//PlayRandom(as_sfxMe,ac_player_footstep);
@@ -365,10 +377,10 @@ public sealed class Maestro : MonoBehaviour {
 			PlayAnnouncementTutorial();
 		/* if(SceneManager.GetActiveScene().name == "BuildSetUp")
 			PlayAnnouncementIntro(); */
-        am_masterMix.SetFloat("VolumeMaster",Constants.VolOptions.C_MasterVolume);
-        am_masterMix.SetFloat("VolumeVOI",Constants.VolOptions.C_VOIVolume);
-        am_masterMix.SetFloat("VolumeBGM",Constants.VolOptions.C_BGMVolume);
-        am_masterMix.SetFloat("VolumeSFX",Constants.VolOptions.C_SFXVolume);
+        // am_masterMix.SetFloat("VolumeMaster",Constants.VolOptions.C_MasterVolume);
+        // am_masterMix.SetFloat("VolumeVOI",Constants.VolOptions.C_VOIVolume);
+        // am_masterMix.SetFloat("VolumeBGM",Constants.VolOptions.C_BGMVolume);
+        // am_masterMix.SetFloat("VolumeSFX",Constants.VolOptions.C_SFXVolume);
 	}
 	
 	// Takes volatility level as a parameter.

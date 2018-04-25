@@ -15,10 +15,11 @@ public sealed class DarkMagician : MonoBehaviour {
     [SerializeField] private Text txt_winMsg;
     [SerializeField] private Button butt_winSelect;
     private Objective objv_currentRedObjective, objv_currentBlueObjective;
+	private Maestro maestro;                  // reference to audio controller singleton
     private bool b_gameOver;
 #endregion
 
-#region Dark Magigician Methods
+#region Dark Magician Methods
     // Shuffles the order of both red and blue objective lists in parallel
     private void ShuffleObjectives() {
         for (int i = 0; i < objv_redObjectiveList.Length - 1; i++) {
@@ -40,15 +41,11 @@ public sealed class DarkMagician : MonoBehaviour {
 			return;
 		}
         objectiveNumber++;
-
-        if (c == Constants.Global.Color.RED) {
-            objv_currentRedObjective.Complete();
-            objv_currentRedObjective = objv_redObjectiveList[objectiveNumber-1].Activate(objectiveNumber);	// objectiveNumber starts with 1 but array is 0-based
-        }
-        else if (c == Constants.Global.Color.BLUE) {
-            objv_currentBlueObjective.Complete();
-            objv_currentBlueObjective = objv_blueObjectiveList[objectiveNumber - 1].Activate(objectiveNumber);  // objectiveNumber starts with 1 but array is 0-based
-        }
+        maestro.PlayObjectiveStart();
+        objv_currentRedObjective.Complete();
+        objv_currentRedObjective = objv_redObjectiveList[objectiveNumber-1].Activate(objectiveNumber);	// objectiveNumber starts with 1 but array is 0-based
+        objv_currentBlueObjective.Complete();
+        objv_currentBlueObjective = objv_blueObjectiveList[objectiveNumber - 1].Activate(objectiveNumber);  // objectiveNumber starts with 1 but array is 0-based
     }
 #endregion
 
@@ -57,7 +54,7 @@ public sealed class DarkMagician : MonoBehaviour {
         txt_winMsg.enabled = false;
         b_gameOver = false;
         ShuffleObjectives();
-
+		maestro = Maestro.Instance;
         objv_currentRedObjective = objv_redObjectiveList[0].Activate(1);
         objv_currentBlueObjective = objv_blueObjectiveList[0].Activate(1);
     }
@@ -80,9 +77,11 @@ public sealed class DarkMagician : MonoBehaviour {
 		}
 		else {
 			if (objv_currentRedObjective.IsComplete) {
+                Constants.TeamStats.C_RedTeamScore++;
                 GetNextObjective(objv_currentRedObjective.Color, objv_currentRedObjective.NumberInList);
 			}
 			if(objv_currentBlueObjective.IsComplete) {
+                Constants.TeamStats.C_BlueTeamScore++;
                 GetNextObjective(objv_currentBlueObjective.Color, objv_currentBlueObjective.NumberInList);
             }
 		}

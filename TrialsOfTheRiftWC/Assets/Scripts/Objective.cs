@@ -4,12 +4,16 @@
  * 
  */
 
+using System.Collections;
 using UnityEngine;
 
 public abstract class Objective : MonoBehaviour {
 #region Variables and Declarations
     [SerializeField] protected Constants.Global.Color e_color;  // identifies owning team
     [SerializeField] protected GameObject[] go_roomPool;        // rooms allowed for this objective to be played in
+
+    [SerializeField] protected GameObject go_objectIndicator;
+    [SerializeField] protected GameObject go_goalIndicator;
 
     protected GameObject go_activeRoom;     // active room specific to this objective instance 
     protected int i_numberInList;           // this is the i'th objective faced by this team (1-based)
@@ -45,17 +49,23 @@ public abstract class Objective : MonoBehaviour {
         b_isComplete = false;                       // initialize variables
         i_numberInList = i;
         SetUI();                                    // set UI
-        calligrapher.RoomUpdate(e_color, i_numberInList);
-        calligrapher.Flash(e_color);
         go_activeRoom = SelectRoom();               // set room
         go_activeRoom.SetActive(true);
         gameObject.SetActive(true);                 // finally, turn on objective
+        riftController.ResetPlayers();
+        StartCoroutine("Notify");
         return this;
     }
 
     // Destroy this objective once it is complete
     public void Complete() {
         maestro.PlayAnnouncementTrialTransition();
+        if (e_color == Constants.Global.Color.RED) {
+            Constants.TeamStats.C_RedTeamScore += i_score;
+        }
+        else if (e_color == Constants.Global.Color.BLUE) {
+            Constants.TeamStats.C_BlueTeamScore += i_score;
+        }
         riftController.IncrementObjectiveCount(e_color);
         riftController.IncreaseVolatility(Constants.RiftStats.C_VolatilityIncrease_RoomAdvance);
         ResetUI();                              // turn off UI
@@ -67,6 +77,21 @@ public abstract class Objective : MonoBehaviour {
     private GameObject SelectRoom() {
         int i = Random.Range(0, go_roomPool.Length);
         return go_roomPool[i];
+    }
+
+    public IEnumerator Notify() {
+        if (!go_objectIndicator)
+            yield break;
+
+        yield return new WaitForSeconds(Constants.ObjectiveStats.C_NotificationTimer);
+        go_objectIndicator.SetActive(true);
+        yield return new WaitForSeconds(2.0f);
+        go_goalIndicator.SetActive(true);
+        StartCoroutine("Notify");
+    }
+
+    public void DeNotify() {
+        StopCoroutine("Notify");
     }
 #endregion
 }

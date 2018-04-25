@@ -13,9 +13,16 @@ public static class Constants {
 
     // Global Constants
     public static class Global {
-        public enum Color { RED, BLUE };
+        public enum Color { RED, BLUE, NULL };
         public enum Side { LEFT = -1, RIGHT = 1 };
 		public enum DamageType { WIND, ICE, ELECTRICITY, MAGICMISSILE, ENEMY, RIFT, DEATHBOLT, RUNE, PUCK };
+        public static string C_BuildNumber = "3.31";
+    }
+
+    // Team Stats
+    public static class TeamStats {
+        public static int C_RedTeamScore = 0;
+        public static int C_BlueTeamScore = 0;
     }
 
     // Player Stats
@@ -25,11 +32,18 @@ public static class Constants {
         public static float C_RespawnTimer = 5.0f;
         public static float C_MaxHealth = 300.0f;
         public static float C_StepSoundDelay = 0.4f;
+        public static float C_InvulnTime = 2.0f;
+        public static float C_PlayerWindPushMultiplier = 0.5f;
 
         public static Global.Color C_p1Color = Global.Color.RED;
         public static Global.Color C_p2Color = Global.Color.RED;
         public static Global.Color C_p3Color = Global.Color.BLUE;
         public static Global.Color C_p4Color = Global.Color.BLUE;
+
+        public static Vector3 C_r1Start = new Vector3(-7.62f, 0.0f, -3.87f);
+        public static Vector3 C_r2Start = new Vector3(-7.62f, 0.0f, 2.45f);
+        public static Vector3 C_b1Start = new Vector3(7.62f, 0.0f, 2.45f);
+        public static Vector3 C_b2Start = new Vector3(7.62f, 0.0f, -3.87f);
 
         public static int C_p1Hat = 0;
         public static int C_p2Hat = 1;
@@ -51,7 +65,7 @@ public static class Constants {
         public static float C_SpellParticlesLiveTime = 2.0f;
 
         // Magic Missile Stats
-        public static float C_MagicMissileLiveTime = 0.35f;
+        public static float C_MagicMissileLiveTime = 0.35f; //2 sec in GDD
 		public static float C_MagicMissileSpeed = 10.0f;
         public static float C_MagicMissileDamage = 25.0f;
         public static float C_MagicMissileCooldown = 1.0f;
@@ -63,10 +77,11 @@ public static class Constants {
         public static float C_WindLiveTime = 0.2f;
         public static float C_WindSpeed = 15.0f;
         public static float C_WindDamage = 50.0f;
-        public static float C_WindCooldown = 3.0f;
+        public static float C_WindCooldown = 1.0f;
         public static float C_WindChargeTime = C_SpellChargeTime;
         public static float C_WindRiftDamageMultiplier = C_RiftDamageMultiplier;
-        public static float C_WindForce = 1000.0f; // 4m worth of distance - we need to do our own 
+        public static float C_WindForce = 1500.0f; // 5m worth of distance - we need to do our own
+        public static float C_WindPushTime = 0.3f;
 
         // Ice Stats
         // TODO: UHHHHH....? (live time vs. charge time... FIGHT)
@@ -81,7 +96,7 @@ public static class Constants {
 
         // it's ELECTRIC! (boogie woogie woogie) Stats
         // TODO: make charge time and Live time tied
-        //public static float C_ElectricLiveTime = 0.3f;
+        public static float C_ElectricLiveTime = 0.3f;
         public static float C_ElectricSpeed = 15.0f;
 		public static float C_ElectricDamage = 40.0f;
 		public static float C_ElectricCooldown = 8.0f;
@@ -99,6 +114,8 @@ public static class Constants {
         //public static Vector3 C_GenericBlueObjectiveTargetSpawn = new Vector3(-20.0f, 0.5f, 0f);
         //public static Vector3 C_GenericRedObjectiveGoalSpawn = new Vector3(-4.5f, .01f, 0f);
         //public static Vector3 C_GenericBlueObjectiveGoalSpawn = new Vector3(4.5f, .01f, 0f);
+        public static float C_NotificationTimer = 10.0f;
+        public static float C_ScoringParticleLiveTime = 1.0f;
 
         // Potato Stats
         //public static Vector3 C_RedPotatoSpawn = new Vector3(-7.5f, 0.5f, 0f);
@@ -137,39 +154,53 @@ public static class Constants {
         public static float C_PuckSpeedHitIncrease = 5.0f;      // speed increase every time puck is hit
         public static float C_PuckBaseSpeed = 10.0f;
         public static float C_PuckMaxSpeed = 15.0f;
+		public static float C_PuckWindPushMultiplier = 1f;
+
+        // Defeat Necromancers Stats
+        public static int C_NecromancersMaxScore = 3;
+        public static Vector3 C_RedNecromancerSpawn = new Vector3(-5.0f, 0.5f, 0f);
+        public static Vector3 C_BlueNecromancerSpawn = new Vector3(5.0f, 0.5f, 0f);
+        public static float C_NecromancerSpawnTime = 6.0f;
+        public static float C_NecromancerTeleportHealthThreshold = 0.25f;
 
         // Rift Boss Stats
         //public static Vector3 C_RedRiftBossSpawn = new Vector3(-5.0f, 0.5f, 0f);
         //public static Vector3 C_BlueRiftBossSpawn = new Vector3(5.0f, 0.5f, 0f);
-        public static float C_RiftBossMaxHealth = 3000f;
+        public static float C_RiftBossMaxHealth = 4000f;
+        public static int C_RiftBossHealthReductionMultiplier = 200;
         public static float C_RuneSpawnInterval = 8.0f;
         public static float C_DeathBoltCooldown = 6.0f;
         public static float C_ForceFieldCooldown = 7.0f;
-        public static float C_RuneDamage = 750.0f;
+        public static float C_RuneDamage = 75.0f;
+		public static int C_RiftBossEnemies = 3;
     }
        
     // Enemy Stats
     public static class EnemyStats {
 
         public static float C_NecromancerBaseSpeed = 1.5f;
-        public static float C_NecromancerHealth = 150.0f;
-		public static float C_NecromancerAvoidDistance = 5.0f;
-		public static int C_NecromancerSpawnCapPerSide = 2;
+        public static float C_NecromancerHealth = 1800.0f;
+		public static float C_NecromancerAvoidDistance = 3.0f;
+		public static int C_NecromancerSpawnCapPerSide = 1;
 		public static float C_WanderingRadius = 10.0f;
 		public static float C_RuneExplosionCountDownTime = 5.0f;
         public static float C_RuneExplosionLiveTime = 1.5f;
-        public static float C_RuneTimer = 2.0f;
+        public static float C_RuneTimer = 4.0f;
 		public static float C_SummonTimer = 8.0f;
+        public static float C_RuneDamage = 75.0f;
 
-        public static int C_EnemySpawnCapPerSide = 7;
-        public static float C_EnemyBaseSpeed = 1.5f;
+        public static int C_EnemySpawnCapPerSide = 4;
+        public static float C_EnemyBaseSpeed = 1.2f;
 		public static float C_EnemyAttackRange = 1.5f;
-        public static float C_EnemyHealth = 75.0f;
-        public static float C_EnemyDamage = 15.0f;
-		public static float C_RuneDamage = 75.0f;
+        public static float C_EnemyHealth = 125.0f;
+        public static float C_EnemyDamage = 25.0f;
         public static float C_SpawnRadius = 2.5f;
+        //public static float C_EnemySpawnDelayDuration = 2.0f;
         public static float C_MapBoundryXAxis = 14.5f;
         public static float C_MapBoundryZAxis = 9.5f;
+		
+		public static float C_SkeletonWindPushMultiplier = 0.5f;
+		public static float C_NecromancerWindPushMultiplier = 25.0f;
     }
 
     // Rift Stats
@@ -209,6 +240,8 @@ public static class Constants {
         public static string C_HockeyDescription = "Shoot and parry your puck into the enemy's goal! Careful, you can't score from behind!";
         public static string C_PotatoTitle = "Keep Away";
         public static string C_PotatoDescription = "Shove your object onto the opponent's side and keep it there. Be careful! If you leave yours on your side for too long, bad things will happen!";
+        public static string C_DefeatNecromancersTitle = "Defeat Necromancers";
+        public static string C_DefeatNecromancersDescription = "Defeat Necromancers of your team's color!  They teleport across The Rift when they get low on health!";
         public static string C_BossTitle = "The Final Trial";
         public static string C_BossDescription = "Use all your prowess and spells to defeat the Rift!";
     }

@@ -15,7 +15,7 @@ public abstract class EnemyController : SpellTarget {
     [SerializeField] protected UnityEngine.AI.NavMeshAgent nma_agent;
 
     //Added WANDER and FLEE states
-    protected enum State {CHASE, ATTACK, FROZEN, SLOWED, DIE, WANDER, FLEE, SUMMONING, DROPPING};
+    protected enum State {CHASE, ATTACK, FROZEN, SLOWED, DIE, WANDER, FLEE, SUMMONING, DROPPING, BREAKOUT};
 	protected float f_damage;
 	protected State e_state;
 	protected State e_previousState; //Used for returning to the state previous to entering the AttackState.
@@ -38,7 +38,7 @@ public abstract class EnemyController : SpellTarget {
     override public void ApplySpellEffect(Constants.SpellStats.SpellType spell, Constants.Global.Color color, float damage, Vector3 direction) {
         switch(spell) {
             case Constants.SpellStats.SpellType.WIND:
-                rb.AddForce(direction * Constants.SpellStats.C_WindForce);
+                StartCoroutine(WindPush(Constants.EnemyStats.C_SkeletonWindPushMultiplier,direction, false));
                 break;
             case Constants.SpellStats.SpellType.ICE:
                 Freeze();
@@ -47,11 +47,11 @@ public abstract class EnemyController : SpellTarget {
                 Slow();
                 break;
         }
-        TakeDamage(damage);
+        TakeDamage(damage, color);
     }
 
     override public void NegateSpellEffect(Constants.SpellStats.SpellType spell) {
-        if (spell == Constants.SpellStats.SpellType.ELECTRICITYAOE) {
+        if (spell == Constants.SpellStats.SpellType.ELECTRICITYAOE && cor_AOECoroutine != null) {
             StopCoroutine(cor_AOECoroutine);
             Unslow();
         }
@@ -114,7 +114,7 @@ public abstract class EnemyController : SpellTarget {
 		}
     }
 
-    protected virtual void EnterStateDie() {
+    protected virtual void EnterStateDie(Constants.Global.Color color) {
 		e_state = State.DIE;
 		this.enabled = false;
 		gameObject.SetActive(false);							  
@@ -126,7 +126,7 @@ public abstract class EnemyController : SpellTarget {
 		//gameObject.SetActive(false);
     }
 	
-	public void TakeDamage(float damage){
+	public virtual void TakeDamage(float damage, Constants.Global.Color color){
 		//If for some reason this enemy is dead but it's still taking damage
 		//This if statement will prevent it
 		if (gameObject.activeSelf) {
@@ -135,7 +135,7 @@ public abstract class EnemyController : SpellTarget {
 			//Debug.Log(i_health);
 			if(f_health <= 0f){
 				Debug.Log("death");
-				EnterStateDie();
+				EnterStateDie(color);
 			}
 		}
 	}
@@ -176,54 +176,65 @@ public abstract class EnemyController : SpellTarget {
 	}
 
 	public void Unslow(){
-		f_canMove = 1f;
+        f_canMove = 1f;
 		UpdateSpeed();
 		EnterStateChase();
 	}
 	
 	private void UpdateSpeed(){
-		nma_agent.speed = riftController.EnemySpeed * f_canMove;
+        nma_agent.speed = riftController.EnemySpeed * f_canMove;
 		//nma_agent.speed = riftController.f_enemySpeed * f_canMove;
 		//nma_agent.acceleration = nma_agent.acceleration* (Constants.EnviroStats.C_EnemySpeed / 3.5f) * f_canMove;
 	}
+
+	protected virtual void EnterStateBreakout() {
+		e_state = State.BREAKOUT;
+    }
+
+    protected virtual void UpdateBreakout() {}
 
 	//If the bot tries to move to a destination that's out of bounds
 	//This will reset the destination with in bounds
 	protected void CheckOutOfBounds() {
 		if (e_startSide == Constants.Global.Side.LEFT) {
-			if (v3_destination.x < -1*Constants.EnemyStats.C_MapBoundryXAxis+1) {
-				v3_destination.x = -1*Constants.EnemyStats.C_MapBoundryXAxis+1;
+			if (v3_destination.x < -1*Constants.EnemyStats.C_MapBoundryXAxis+1.5) {
+				v3_destination.x = -1*Constants.EnemyStats.C_MapBoundryXAxis+1.5f;
 			}
-			else if (v3_destination.x > -1.0f) {
-				v3_destination.x = -1.0f;
+			else if (v3_destination.x > -1.5f) {
+				v3_destination.x = -1.5f;
 			}
 		}
 		else {
-			if (v3_destination.x > Constants.EnemyStats.C_MapBoundryXAxis-1) {
-				v3_destination.x = Constants.EnemyStats.C_MapBoundryXAxis-1;
+			if (v3_destination.x > Constants.EnemyStats.C_MapBoundryXAxis-1.5) {
+				v3_destination.x = Constants.EnemyStats.C_MapBoundryXAxis-1.5f;
 			}
-			else if (v3_destination.x < 1.0f) {
-				v3_destination.x = 1.0f;
+			else if (v3_destination.x < 1.5f) {
+				v3_destination.x = 1.5f;
 			}
 		}
 
-		if (v3_destination.z > Constants.EnemyStats.C_MapBoundryZAxis-1) {
-			v3_destination.z = Constants.EnemyStats.C_MapBoundryZAxis-1;
+		if (v3_destination.z > Constants.EnemyStats.C_MapBoundryZAxis-1.5) {
+			v3_destination.z = Constants.EnemyStats.C_MapBoundryZAxis-1.5f;
 		}
-		else if (v3_destination.z < -1*Constants.EnemyStats.C_MapBoundryZAxis+1) {
-			v3_destination.z = -1*Constants.EnemyStats.C_MapBoundryZAxis+1;
+		else if (v3_destination.z < -1*Constants.EnemyStats.C_MapBoundryZAxis+1.5) {
+			v3_destination.z = -1*Constants.EnemyStats.C_MapBoundryZAxis+1.5f;
 		}
 	}
 
 	public virtual void Init(Constants.Global.Side side) {
-		this.enabled = true;
+        //GameObject enemyIndi = Instantiate(go_enemyIndiPrefab, transform.position, Quaternion.identity);
+        //CameraFacingBillboard cfb_this = enemyIndi.GetComponent<CameraFacingBillboard>();
+        //cfb_this.Init(cam_camera, gameObject);
+
+        //go_enemyIndiPrefab.ena
+        this.enabled = true;
         riftController = RiftController.Instance;   // Init() is called before Start(), these must be set here (repeatedly...)
         maestro = Maestro.Instance;
         EnterStateWander();
 		e_startSide = side;
 	}
 
-	void Start() {
+    protected override void Start() {
 		f_damage = Constants.EnemyStats.C_EnemyDamage;
 
 		//nma_agent.speed = Constants.EnemyStats.C_EnemyBaseSpeed;
@@ -237,11 +248,12 @@ public abstract class EnemyController : SpellTarget {
 		EnterStateWander ();
     }
 
-	void OnDisable() {
-		if (this.enabled) {
-			Debug.Log("OnDisable");
-			EnterStateDie();
-		}
+    void OnDisable() {
+        // @Jeff, this is no longer necessary because of new necro behavior, right?
+		//if (this.enabled) {
+		//	Debug.Log("OnDisable");
+		//	EnterStateDie(Constants.Global.Color.Null);
+		//}
 	}				 
 	// Update is called once per frame
 	protected virtual void Update () {
@@ -279,6 +291,9 @@ public abstract class EnemyController : SpellTarget {
 			break;
 		case State.DIE:
 			UpdateDie ();
+			break;
+		case State.BREAKOUT:
+			UpdateBreakout();
 			break;
 		}
     }

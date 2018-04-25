@@ -11,11 +11,12 @@ public abstract class SpellTarget : MonoBehaviour {
 #region Variables and Declarations
     [SerializeField] protected Constants.Global.Color e_color;  // identifies owning team
     [SerializeField] protected Constants.Global.Side e_startSide;
+    [SerializeField] protected GameObject go_indicator;
     [SerializeField] protected Rigidbody rb;
     [SerializeField] protected Animator anim;
-    [SerializeField] protected ShaderEffect dissolve;
-    [SerializeField] protected ShaderEffect fader;
-
+	[SerializeField] protected ShaderEffect se_dissolve;
+    [SerializeField] protected ShaderEffect se_fader;
+    [SerializeField] protected ShaderEffect se_clothesDissolve;
     protected float f_health;
     protected float f_speed;
     protected Coroutine cor_AOECoroutine;
@@ -30,6 +31,10 @@ public abstract class SpellTarget : MonoBehaviour {
     public Coroutine AOECoroutine {
         set { cor_AOECoroutine = value; }
     }
+	
+	public float Health{
+		get { return f_health; }
+	}
     #endregion
 #endregion
 
@@ -37,7 +42,7 @@ public abstract class SpellTarget : MonoBehaviour {
     public abstract void ApplySpellEffect(Constants.SpellStats.SpellType spell, Constants.Global.Color color, float damage, Vector3 direction);
 
     public virtual void NegateSpellEffect(Constants.SpellStats.SpellType spell) {
-        if (spell == Constants.SpellStats.SpellType.ELECTRICITYAOE) {
+        if (spell == Constants.SpellStats.SpellType.ELECTRICITYAOE && cor_AOECoroutine != null) {
             StopCoroutine(cor_AOECoroutine);
         }
     }
@@ -46,7 +51,7 @@ public abstract class SpellTarget : MonoBehaviour {
 		if (gameObject && gameObject.activeSelf) {
             ApplySpellEffect(Constants.SpellStats.SpellType.ELECTRICITYAOE, color, damage, Vector3.zero);
             yield return new WaitForSeconds(Constants.SpellStats.C_ElectricAOEDamageRate);
-            if (gameObject.activeSelf) {
+            if (gameObject && gameObject.activeSelf) {
                 cor_AOECoroutine = StartCoroutine(ApplyAOE(color, damage));
             }
         }
@@ -54,5 +59,35 @@ public abstract class SpellTarget : MonoBehaviour {
             NegateSpellEffect(Constants.SpellStats.SpellType.ELECTRICITYAOE);
         }
 	}
+
+    public virtual void Notify() {
+        go_indicator.SetActive(true);
+    }
+	
+	public IEnumerator WindPush(float multiplier, Vector3 direction, bool velocityReset){
+		maestro.PlayWindHit();
+		float startTime = Time.time;
+		float elapsedTime = 0;
+		while(elapsedTime < .99f){
+            if (velocityReset) {
+                rb.velocity = Vector3.zero;
+            }
+			elapsedTime = (Time.time - startTime)/Constants.SpellStats.C_WindPushTime;
+			rb.AddForce(direction * Mathf.Lerp(Constants.SpellStats.C_WindForce*multiplier,0f,elapsedTime));
+			yield return 0;
+		}
+	}
+#endregion
+
+#region Unity Overrides
+	protected virtual void Start(){
+		maestro = Maestro.Instance;
+	}
+	
+    void OnEnable() {
+        if (go_indicator) {
+            InvokeRepeating("Notify", 0, Constants.ObjectiveStats.C_NotificationTimer);
+        }
+    }
 #endregion
 }
