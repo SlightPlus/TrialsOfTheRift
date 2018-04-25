@@ -9,18 +9,19 @@ using UnityEngine;
 public class HockeyPuckController : SpellTarget {
 #region Variables and Declarations
     [SerializeField] private IceHockeyObjective iho_owner;    // identifies objective puck is a part of
-#endregion
+    [SerializeField] private GameObject go_scoreParticle;
+    #endregion
 
-#region HockeyPuckController Methods
+    #region HockeyPuckController Methods
     override public void ApplySpellEffect(Constants.SpellStats.SpellType spell, Constants.Global.Color color, float damage, Vector3 direction) {
 
-        CancelInvoke();     // reset slowdown invoke
+        CancelInvoke("DecreaseSpeed");     // reset slowdown invoke
         InvokeRepeating("DecreaseSpeed", Constants.ObjectiveStats.C_PuckSpeedDecayDelay, Constants.ObjectiveStats.C_PuckSpeedDecayRate);
 
         switch (spell) {
             case Constants.SpellStats.SpellType.WIND:
-                rb.AddForce(direction * Constants.SpellStats.C_WindForce);
                 f_speed += Constants.ObjectiveStats.C_PuckSpeedHitIncrease;
+                StartCoroutine(WindPush(Constants.ObjectiveStats.C_PuckWindPushMultiplier,direction, false));
                 transform.Rotate(direction);
                 break;
             case Constants.SpellStats.SpellType.ICE:
@@ -52,6 +53,11 @@ public class HockeyPuckController : SpellTarget {
         f_speed -= Constants.ObjectiveStats.C_PuckSpeedDecreaseAmount;
     }
 
+    private void DisableParticle()
+    {
+        go_scoreParticle.SetActive(false);
+    }
+
     ////if the puck gets stuck in the portal, move it over from it and reset its speed
     //private void PuckIsStuckInPortal() {
 
@@ -67,11 +73,17 @@ public class HockeyPuckController : SpellTarget {
     //    isPuckStuck = false;
     //}
 
-#endregion
+    #endregion
 
-#region Unity Overrides
-    void Start() {
+    #region Unity Overrides
+    protected override void Start() {
+		base.Start();
         f_speed = Constants.ObjectiveStats.C_PuckBaseSpeed;     // cannot read from Constants.cs in initialization at top
+    }
+
+    private void OnDestroy()
+    {
+        CancelInvoke();
     }
 
     void Update() {
@@ -100,23 +112,26 @@ public class HockeyPuckController : SpellTarget {
     }
 
     void OnTriggerEnter(Collider other) {
-        if (other.CompareTag("HockeyGoal")) {   // player scoring with puck TODO: look at layers and tags
-            if (other.GetComponent<GoalController>().Color != e_color) {
-                iho_owner.UpdatePuckScore();
+        if (other.CompareTag("HockeyGoal")) {   // player scoring with puck
+            Constants.Global.Color temp = other.GetComponent<GoalController>().Color;
+            if (temp != e_color) {
+                Vector3 pos = transform.position;
+                if( go_scoreParticle != null )
+                {
+                    go_scoreParticle.transform.position = pos;
+                    go_scoreParticle.SetActive(true);
+                }
+                
+                Invoke("DisableParticle", Constants.ObjectiveStats.C_ScoringParticleLiveTime);
+
                 ResetPuckPosition();
+                iho_owner.UpdatePuckScore();
+                iho_owner.StopCoroutine("Notify");
+                iho_owner.StartCoroutine("Notify");
             }
         }
         else if (other.CompareTag("Enemy") || other.CompareTag("Player")) {
             StartCoroutine("ApplyDamage", other.gameObject);
-        }
-        else if (other.CompareTag("ParryShield")) {
-            // Reset slowdown invoke
-            CancelInvoke();
-            InvokeRepeating("DecreaseSpeed", Constants.ObjectiveStats.C_PuckSpeedDecayDelay, Constants.ObjectiveStats.C_PuckSpeedDecayRate);
-
-            Vector3 facingDirection = other.gameObject.transform.forward.normalized;
-            transform.Rotate(facingDirection);
-            rb.velocity = facingDirection * f_speed;
         }
     }
 
@@ -127,8 +142,8 @@ public class HockeyPuckController : SpellTarget {
     public IEnumerator ApplyDamage(GameObject go_target) {
         if (go_target.GetComponent<PlayerController>()) {
             go_target.GetComponent<PlayerController>().TakeDamage(Constants.ObjectiveStats.C_PuckDamage, Constants.Global.DamageType.PUCK);
-        } else if (go_target.GetComponent<EnemyController>()) {
-            go_target.GetComponent<EnemyController>().TakeDamage(Constants.ObjectiveStats.C_PuckDamage);
+        } else if (go_target.GetComponent<EnemyController>()) { //TODO: this can never happen now, right?  right?
+            go_target.GetComponent<EnemyController>().TakeDamage(Constants.ObjectiveStats.C_PuckDamage, e_color);
         }
 
         yield return new WaitForSeconds(1);
