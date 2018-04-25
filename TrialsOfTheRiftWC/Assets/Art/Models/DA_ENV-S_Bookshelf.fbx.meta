@@ -1,71 +1,71 @@
 fileFormatVersion: 2
 guid: 5ed261bc1660d5145996488966756224
-timeCreated: 1512412117
+timeCreated: 1524687092
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: stone_base1
-    100004: stone_base2
-    100006: stone_bases
-    100008: wood_plank1
-    100010: wood_plank2
-    100012: wood_plank3
-    100014: wood_planks
-    100016: wood_shelf
-    100018: Bookshelf
-    100020: Bookshelf1
-    100022: stone_base1 1
-    100024: stone_base2 1
-    100026: stone_bases 1
-    100028: wood_plank1 1
-    100030: wood_plank2 1
-    100032: wood_plank3 1
-    100034: wood_planks 1
+    100000: Bookshelf
+    100002: Bookshelf1
+    100004: //RootNode
+    100006: stone_base1
+    100008: stone_base1 1
+    100010: stone_base2
+    100012: stone_base2 1
+    100014: stone_bases
+    100016: stone_bases 1
+    100018: wood_plank1
+    100020: wood_plank1 1
+    100022: wood_plank2
+    100024: wood_plank2 1
+    100026: wood_plank3
+    100028: wood_plank3 1
+    100030: wood_planks
+    100032: wood_planks 1
+    100034: wood_shelf
     100036: wood_shelf 1
-    400000: //RootNode
-    400002: stone_base1
-    400004: stone_base2
-    400006: stone_bases
-    400008: wood_plank1
-    400010: wood_plank2
-    400012: wood_plank3
-    400014: wood_planks
-    400016: wood_shelf
-    400018: Bookshelf
-    400020: Bookshelf1
-    400022: stone_base1 1
-    400024: stone_base2 1
-    400026: stone_bases 1
-    400028: wood_plank1 1
-    400030: wood_plank2 1
-    400032: wood_plank3 1
-    400034: wood_planks 1
+    400000: Bookshelf
+    400002: Bookshelf1
+    400004: //RootNode
+    400006: stone_base1
+    400008: stone_base1 1
+    400010: stone_base2
+    400012: stone_base2 1
+    400014: stone_bases
+    400016: stone_bases 1
+    400018: wood_plank1
+    400020: wood_plank1 1
+    400022: wood_plank2
+    400024: wood_plank2 1
+    400026: wood_plank3
+    400028: wood_plank3 1
+    400030: wood_planks
+    400032: wood_planks 1
+    400034: wood_shelf
     400036: wood_shelf 1
     2300000: stone_base1
-    2300002: stone_base2
-    2300004: wood_plank1
-    2300006: wood_plank2
-    2300008: wood_plank3
-    2300010: wood_shelf
-    2300012: stone_base1 1
-    2300014: stone_base2 1
-    2300016: wood_plank1 1
-    2300018: wood_plank2 1
-    2300020: wood_plank3 1
+    2300002: stone_base1 1
+    2300004: stone_base2
+    2300006: stone_base2 1
+    2300008: wood_plank1
+    2300010: wood_plank1 1
+    2300012: wood_plank2
+    2300014: wood_plank2 1
+    2300016: wood_plank3
+    2300018: wood_plank3 1
+    2300020: wood_shelf
     2300022: wood_shelf 1
     3300000: stone_base1
-    3300002: stone_base2
-    3300004: wood_plank1
-    3300006: wood_plank2
-    3300008: wood_plank3
-    3300010: wood_shelf
-    3300012: stone_base1 1
-    3300014: stone_base2 1
-    3300016: wood_plank1 1
-    3300018: wood_plank2 1
-    3300020: wood_plank3 1
+    3300002: stone_base1 1
+    3300004: stone_base2
+    3300006: stone_base2 1
+    3300008: wood_plank1
+    3300010: wood_plank1 1
+    3300012: wood_plank2
+    3300014: wood_plank2 1
+    3300016: wood_plank3
+    3300018: wood_plank3 1
+    3300020: wood_shelf
     3300022: wood_shelf 1
     4300000: wood_shelf
     4300002: wood_plank1
@@ -114,7 +114,7 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
