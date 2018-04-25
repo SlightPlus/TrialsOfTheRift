@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Flooring
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: 9c6ece3d5ef8bb84db19471daaf6c788, type: 3}
   m_ShaderKeywords: _NORMALMAP _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -72,7 +72,7 @@ Material:
     - _MKEditorShowReflectionBehavior: 0
     - _MKEditorShowRenderBehavior: 0
     - _MKEditorShowRimBehavior: 1
-    - _MKEditorShowShadowBehavior: 1
+    - _MKEditorShowShadowBehavior: 0
     - _MKEditorShowSketchBehavior: 0
     - _MKEditorShowSpecularBehavior: 1
     - _MKEditorShowTranslucentBehavior: 0
@@ -82,13 +82,13 @@ Material:
     - _OutlineSize: 0
     - _Parallax: 0.02
     - _RimIntensity: 0
-    - _RimSize: 3
-    - _RimSmoothness: 0
+    - _RimSize: 1.5
+    - _RimSmoothness: 0.5
     - _ShadowIntensity: 1
     - _Shininess: 0.01
     - _SmoothnessTextureChannel: 1
     - _SpecularHighlights: 1
-    - _SpecularIntensity: 0.18
+    - _SpecularIntensity: 0.13
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
