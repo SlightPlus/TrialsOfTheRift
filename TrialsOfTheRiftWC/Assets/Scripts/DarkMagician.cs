@@ -17,7 +17,7 @@ public sealed class DarkMagician : MonoBehaviour {
     private Objective objv_currentRedObjective, objv_currentBlueObjective;
 	private Maestro maestro;                  // reference to audio controller singleton
     private bool b_gameOver;
-    private RiftController r_riftController;
+    private RiftController riftController;
 #endregion
 
 #region Dark Magician Methods
@@ -47,7 +47,7 @@ public sealed class DarkMagician : MonoBehaviour {
         objv_currentRedObjective = objv_redObjectiveList[objectiveNumber-1].Activate(objectiveNumber);  // objectiveNumber starts with 1 but array is 0-based
         objv_currentBlueObjective.Complete();
         objv_currentBlueObjective = objv_blueObjectiveList[objectiveNumber - 1].Activate(objectiveNumber);  // objectiveNumber starts with 1 but array is 0-based
-        r_riftController.ActivateLights(objectiveNumber - 1);
+        riftController.ActivateLights(objectiveNumber - 1);
     }
 #endregion
 
@@ -59,7 +59,7 @@ public sealed class DarkMagician : MonoBehaviour {
 		maestro = Maestro.Instance;
         objv_currentRedObjective = objv_redObjectiveList[0].Activate(1);
         objv_currentBlueObjective = objv_blueObjectiveList[0].Activate(1);
-        r_riftController = RiftController.Instance;
+        riftController = RiftController.Instance;
     }
 
     void Update() {

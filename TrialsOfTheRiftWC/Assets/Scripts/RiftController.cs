@@ -385,14 +385,14 @@ public sealed class RiftController : MonoBehaviour {
     }
     #endregion
 
-    public void ActivateLights(int light) {
+    public void ActivateLights(int level) {
         for (int i = 0; i < go_lightsLeft.Length; i++) { 
             go_lightsLeft[i].SetActive(false);
             go_lightsRight[i].SetActive(false);
         }
 
-        go_lightsLeft[light].SetActive(true);
-        go_lightsRight[light].SetActive(true);
+        go_lightsLeft[level].SetActive(true);
+        go_lightsRight[level].SetActive(true);
     }
 
     void PlayNoise() {
