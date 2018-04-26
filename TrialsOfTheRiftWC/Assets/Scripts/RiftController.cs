@@ -18,6 +18,8 @@ public sealed class RiftController : MonoBehaviour {
     private RiftBossController rbc_redRiftBossController;
     [SerializeField]
     private RiftBossController rbc_blueRiftBossController;
+    [SerializeField] private GameObject[] go_lightsRight;
+    [SerializeField] private GameObject[] go_lightsLeft;
 
     // enemies
 	[SerializeField] private GameObject[] go_skeletons;
@@ -382,6 +384,16 @@ public sealed class RiftController : MonoBehaviour {
         }
     }
     #endregion
+
+    public void ActivateLights(int light) {
+        for (int i = 0; i < go_lightsLeft.Length; i++) { 
+            go_lightsLeft[i].SetActive(false);
+            go_lightsRight[i].SetActive(false);
+        }
+
+        go_lightsLeft[light].SetActive(true);
+        go_lightsRight[light].SetActive(true);
+    }
 
     void PlayNoise() {
 		maestro.PlayVolatilityNoise(i_volatilityLevel);

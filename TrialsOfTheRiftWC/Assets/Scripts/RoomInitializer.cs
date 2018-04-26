@@ -10,6 +10,7 @@ public class RoomInitializer : MonoBehaviour {
 #region Variables and Declarations
     [SerializeField] private Constants.Global.Side e_side;
     [SerializeField] private GameObject[] go_enemySpawnPool;// rooms allowed for this objective to be played in
+    [SerializeField] private GameObject[] lights;
 #endregion
 
 #region Unity Overrides
