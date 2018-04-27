@@ -219,7 +219,7 @@ public class NecromancerController : EnemyController {
 	}
 
 	private void Summon() {
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < 2; i++) {
 			riftController.CircularEnemySpawn(transform.position, e_startSide);
 		}
 	}
