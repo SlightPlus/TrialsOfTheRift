@@ -68,7 +68,9 @@ public abstract class SpellController : MonoBehaviour {
 
 	protected virtual void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Rift")) {	    // Rift reacts to spells by trigger rather than collision
-			CancelInvoke();     // cancels and restarts spell's live timer
+
+			if (e_spellType != Constants.SpellStats.SpellType.ICE) // Don't cancel invoke if ice
+				CancelInvoke();     // cancels and restarts spell's live timer
 			BuffSpell();
 			Invoke("InvokeDestroy", Constants.SpellStats.C_SpellLiveTime);
         }

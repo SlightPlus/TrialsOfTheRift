@@ -39,7 +39,9 @@ public class IceSpellController : SpellController {
     }
 
     override protected void OnCollisionEnter(Collision collision) {
-        pc_owner.IceBoltMode = false;
+		if (!(collision.gameObject.CompareTag("Rift"))) {
+			pc_owner.IceBoltMode = false;
+		}
         base.OnCollisionEnter(collision);
 	}
 
