@@ -352,7 +352,7 @@ public class RegisterPlayers : SceneLoader {
         if (b_p1Ready && b_p2Ready && b_p3Ready && b_p4Ready)
         {
             go_go.SetActive(true);
-            if (p_player1.GetButtonDown("MenuUISubmit"))
+            if (p_player1.GetButtonDown("MenuStart"))
             {
                 // set constants color, hat for all 4 players
                 Constants.PlayerStats.C_p1Color = e_p1Color;
