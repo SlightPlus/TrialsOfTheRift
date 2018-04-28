@@ -1532,7 +1532,7 @@ GameObject:
   - component: {fileID: 228241331}
   m_Layer: 8
   m_Name: Rift
-  m_TagString: Rift
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
