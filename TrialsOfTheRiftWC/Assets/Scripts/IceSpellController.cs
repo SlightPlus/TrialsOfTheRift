@@ -45,6 +45,32 @@ public class IceSpellController : SpellController {
         base.OnCollisionEnter(collision);
 	}
 
+	override protected void OnTriggerEnter(Collider other) {
+        if (other.CompareTag("Rift")) {	    // Rift reacts to spells by trigger rather than collision
+			BuffSpell();
+			Invoke("InvokeDestroy", Constants.SpellStats.C_SpellLiveTime);
+        }
+
+        if (other.CompareTag("ParryShield")) {
+			pc_owner.IceBoltMode = false;
+            Invoke("InvokeDestroy", Constants.SpellStats.C_SpellLiveTime);
+
+            // deflect spell back from whence it came
+            // this sends it backwards from where it came, not to where the player was directing it toward
+            //Vector3 v3_direction = -transform.forward.normalized;
+            //transform.forward = v3_direction;
+            //rb.velocity = v3_direction * rb.velocity.magnitude;
+
+
+            // deflect spell in player's facing direction
+            Vector3 v3_direction = other.gameObject.transform.forward.normalized;
+            transform.forward = v3_direction;
+            rb.velocity = v3_direction * rb.velocity.magnitude;
+            pc_owner = other.gameObject.transform.parent.gameObject.GetComponent<PlayerController>();
+            e_color = other.gameObject.transform.parent.gameObject.GetComponent<PlayerController>().Color;
+        }
+	}
+
     void FixedUpdate() {
         if (p_player == null) p_player = ReInput.players.GetPlayer(pc_owner.Num);
         float f_inputX = p_player.GetAxis("AimHorizontal");
