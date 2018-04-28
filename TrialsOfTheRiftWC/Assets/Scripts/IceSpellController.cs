@@ -72,12 +72,15 @@ public class IceSpellController : SpellController {
 	}
 
     void FixedUpdate() {
-        if (p_player == null) p_player = ReInput.players.GetPlayer(pc_owner.Num);
-        float f_inputX = p_player.GetAxis("AimHorizontal");
-        float f_inputZ = p_player.GetAxis("AimVertical");
-        Vector3 v3_dir = new Vector3(f_inputX, 0, f_inputZ).normalized;
-        if (!(v3_dir.Equals(Vector3.zero))) {
-            transform.rotation = Quaternion.LookRotation(v3_dir);
+        if (pc_owner.IceBoltMode) {
+            if (p_player == null) p_player = ReInput.players.GetPlayer(pc_owner.Num);
+            float f_inputX = p_player.GetAxis("AimHorizontal");
+            float f_inputZ = p_player.GetAxis("AimVertical");
+            Vector3 v3_dir = new Vector3(f_inputX, 0, f_inputZ).normalized;
+            if (!(v3_dir.Equals(Vector3.zero)))
+            {
+                transform.rotation = Quaternion.LookRotation(v3_dir);
+            }
         }
         rb.velocity = transform.forward * Constants.SpellStats.C_IceSpeed;
     }
