@@ -229,7 +229,7 @@ public class DebugParametersController : MonoBehaviour {
 
     public void ChangeNecromancerHealth(float f_neckHealthIn)
     {
-        float value = f_neckHealthIn * 25.0f;
+        float value = f_neckHealthIn * 50.0f;
         txt_necromancerHealth.text = value.ToString();
         Constants.EnemyStats.C_NecromancerHealth = (int)value;
     }
@@ -454,7 +454,7 @@ public class DebugParametersController : MonoBehaviour {
 
         // Necromancer Health
         txt_necromancerHealth.text = Constants.EnemyStats.C_NecromancerHealth.ToString();
-        slider_necromancerHealth.value = Constants.EnemyStats.C_NecromancerHealth / 25;
+        slider_necromancerHealth.value = Constants.EnemyStats.C_NecromancerHealth / 50;
 
         // Enemy Damage
         txt_enemyDamage.text = Constants.EnemyStats.C_EnemyDamage.ToString();
