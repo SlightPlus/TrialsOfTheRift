@@ -150,8 +150,10 @@ public class DebugParametersController : MonoBehaviour {
     }
 
     public void ChangeMagicMissileFireRate(float f__magicMissileRate) {
-        txt_magicMissileFireRate.text = slider_magicMissileFireRate.value.ToString();
-        Constants.SpellStats.C_MagicMissileCooldown = (int)f__magicMissileRate;
+        float value = f__magicMissileRate / 10.0f;
+        Debug.Log(value);
+        txt_magicMissileFireRate.text = value.ToString();
+        Constants.SpellStats.C_MagicMissileCooldown = value;
     }
 
     public void ChangeWindSpeed(float f_windSpeedIn) {
@@ -501,7 +503,7 @@ public class DebugParametersController : MonoBehaviour {
 
         // Magic Missile Fire Rate
         txt_magicMissileFireRate.text = Constants.SpellStats.C_MagicMissileCooldown.ToString();
-        slider_magicMissileFireRate.value = Constants.SpellStats.C_MagicMissileCooldown;
+        slider_magicMissileFireRate.value = Constants.SpellStats.C_MagicMissileCooldown * 10;
 
         // Projectile Size 
         txt_projSize.text = Constants.SpellStats.C_PlayerProjectileSize.ToString();
