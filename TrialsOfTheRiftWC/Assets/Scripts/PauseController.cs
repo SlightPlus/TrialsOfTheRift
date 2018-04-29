@@ -48,12 +48,8 @@ public class PauseController : MonoBehaviour {
             butt_select.Select();
 
             Time.timeScale = 0;
-            PauseDelayOn();
+            Constants.Global.C_CanPause = false;
         }  
-    }
-
-    private void PauseDelayOn() {
-        Constants.Global.C_CanPause = false;
     }
 
     private IEnumerator PauseDelayOff() {
