@@ -20,8 +20,8 @@ public class PlayerController : SpellTarget {
     [SerializeField] private GameObject go_electricShot;        // electric spell object
     [SerializeField] private GameObject[] go_hats;              // The potential hats on this player.
     [SerializeField] private Transform t_spellSpawn;    // location spells are instantiated
-    [SerializeField] private Transform t_flagPos;       // location on character model of flag
-    [SerializeField] private GameObject go_interactCollider;  // activated with button-press to interact with objectives
+    [SerializeField] protected Transform t_flagPos;       // location on character model of flag
+    [SerializeField] protected GameObject go_interactCollider;  // activated with button-press to interact with objectives
     [SerializeField] private GameObject go_parryShield;       // activated with right stick click
     [SerializeField] private PauseController pauc_pause;        // for pausing
 
@@ -43,11 +43,11 @@ public class PlayerController : SpellTarget {
     private Player p_player;                // rewired player for input control
     private Constants.Global.Side e_side;   // identifies which side of the rift player is on
     private float f_canMove = 1;            // identifies if the player is frozen
-    private bool isWisp = false;            // player has "died"
+    protected bool isWisp = false;            // player has "died"
     private bool isInvuln = false;          // player is invincible (after respawn)
     private bool b_iceboltMode = false;     // player is controlling an icebolt
     private GameObject go_icebolt;          // the icebolt the player is controlling
-    private GameObject go_flagObj;          // flag game object; if not null, player is carrying flag
+    protected GameObject go_flagObj;          // flag game object; if not null, player is carrying flag
     private bool b_stepOk = true;           // time to play next footstep noise has elapsed
     private bool b_deathAnimOK = false;     // used to determine if death animation should play or not.
     private GameObject go_activeHat;        // the hat that's visible on the player.
@@ -423,7 +423,7 @@ public class PlayerController : SpellTarget {
 
     }
 
-	void FixedUpdate() {
+	protected virtual void FixedUpdate() {
         // position
         if (transform.position.x > 0)
             e_side = Constants.Global.Side.RIGHT;

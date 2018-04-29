@@ -32,7 +32,7 @@ public class FlagController : MonoBehaviour {
     }
 
     public bool IsPickedUp() {
-        return transform.parent.parent.gameObject.CompareTag("Player");
+        return !transform.parent.parent ? false : transform.parent.parent.gameObject.CompareTag("Player");
     }
 
     private void DisableParticle() {
