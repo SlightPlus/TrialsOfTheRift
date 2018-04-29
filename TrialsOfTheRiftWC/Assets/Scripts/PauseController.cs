@@ -28,13 +28,12 @@ public class PauseController : MonoBehaviour {
     [SerializeField]Button butt_options;
     //private Player p_player;
     private float f_unPause;
-    private bool b_pauseDelay = false;
     [SerializeField] Rewired.Integration.UnityUI.RewiredStandaloneInputModule rsim;
     [SerializeField] EventSystem es_master;
 
 
     public void Pause(PlayerController pc_in) {
-        if (pc_owner == null && !b_pauseDelay) {
+        if (pc_owner == null && Constants.Global.C_CanPause) {
             pc_owner = pc_in;
             txt_pauseIndicator.text = "P" + (pc_owner.Num + 1) + " Pause";
             if(txt_redScoreLabel != null) {
@@ -49,18 +48,17 @@ public class PauseController : MonoBehaviour {
             butt_select.Select();
 
             Time.timeScale = 0;
-            StartCoroutine(PauseDelayOn());
+            PauseDelayOn();
         }  
     }
 
-    private IEnumerator PauseDelayOn() {
-        b_pauseDelay = true;
-        yield return null;
+    private void PauseDelayOn() {
+        Constants.Global.C_CanPause = false;
     }
 
     private IEnumerator PauseDelayOff() {
-        yield return new WaitForSecondsRealtime(2f);
-        b_pauseDelay = false;
+        yield return new WaitForSecondsRealtime(1f);
+        Constants.Global.C_CanPause = true;
     }
 
     public void Unpause() {

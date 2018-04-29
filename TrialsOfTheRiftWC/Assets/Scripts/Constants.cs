@@ -17,6 +17,7 @@ public static class Constants {
         public enum Side { LEFT = -1, RIGHT = 1 };
 		public enum DamageType { WIND, ICE, ELECTRICITY, MAGICMISSILE, ENEMY, RIFT, DEATHBOLT, RUNE, PUCK };
         public static string C_BuildNumber = "3.40";
+        public static bool C_CanPause = true;
     }
 
     // Team Stats
