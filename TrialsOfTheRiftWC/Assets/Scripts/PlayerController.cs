@@ -433,6 +433,7 @@ public class PlayerController : SpellTarget {
 
         // pause
         if (p_player.GetButtonDown("Menu") && Time.timeScale == 1) {
+            Debug.Log("Check");
             pauc_pause.Pause(this);
         }
 
