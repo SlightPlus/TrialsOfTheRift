@@ -85,6 +85,7 @@ public class PlayerController : SpellTarget {
     }
 
     public bool IceBoltMode {
+        get { return b_iceboltMode; }
         set { b_iceboltMode = value; }
     }
 

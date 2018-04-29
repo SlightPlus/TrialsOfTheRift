@@ -16,7 +16,7 @@ public static class Constants {
         public enum Color { RED, BLUE, NULL };
         public enum Side { LEFT = -1, RIGHT = 1 };
 		public enum DamageType { WIND, ICE, ELECTRICITY, MAGICMISSILE, ENEMY, RIFT, DEATHBOLT, RUNE, PUCK };
-        public static string C_BuildNumber = "3.31";
+        public static string C_BuildNumber = "3.40";
     }
 
     // Team Stats
@@ -68,10 +68,10 @@ public static class Constants {
         public static float C_MagicMissileLiveTime = 0.35f; //2 sec in GDD
 		public static float C_MagicMissileSpeed = 10.0f;
         public static float C_MagicMissileDamage = 25.0f;
-        public static float C_MagicMissileCooldown = 1.0f;
+        public static float C_MagicMissileCooldown = 0.75f;
         public static float C_MagicMissileChargeTime = C_SpellChargeTime;
         public static float C_MagicMissileChargeCooldown = 0.5f;
-        public static float C_MagicMissileHeal = 10.0f;
+        public static float C_MagicMissileHeal = 25.0f;
 
         // Wind Stats
         public static float C_WindLiveTime = 0.2f;
@@ -96,7 +96,7 @@ public static class Constants {
 
         // it's ELECTRIC! (boogie woogie woogie) Stats
         // TODO: make charge time and Live time tied
-        public static float C_ElectricLiveTime = 0.3f;
+        public static float C_ElectricLiveTime = 0.1f;
         public static float C_ElectricSpeed = 15.0f;
 		public static float C_ElectricDamage = 40.0f;
 		public static float C_ElectricCooldown = 8.0f;
@@ -179,8 +179,8 @@ public static class Constants {
     public static class EnemyStats {
 
         public static float C_NecromancerBaseSpeed = 1.5f;
-        public static float C_NecromancerHealth = 1800.0f;
-		public static float C_NecromancerAvoidDistance = 3.0f;
+        public static float C_NecromancerHealth = 400.0f;
+		public static float C_NecromancerAvoidDistance = 2.0f;
 		public static int C_NecromancerSpawnCapPerSide = 1;
 		public static float C_WanderingRadius = 10.0f;
 		public static float C_RuneExplosionCountDownTime = 5.0f;
@@ -189,7 +189,7 @@ public static class Constants {
 		public static float C_SummonTimer = 8.0f;
         public static float C_RuneDamage = 75.0f;
 
-        public static int C_EnemySpawnCapPerSide = 4;
+        public static int C_EnemySpawnCapPerSide = 6;
         public static float C_EnemyBaseSpeed = 1.2f;
 		public static float C_EnemyAttackRange = 1.5f;
         public static float C_EnemyHealth = 125.0f;
