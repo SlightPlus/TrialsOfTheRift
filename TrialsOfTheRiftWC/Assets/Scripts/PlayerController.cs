@@ -20,8 +20,8 @@ public class PlayerController : SpellTarget {
     [SerializeField] private GameObject go_electricShot;        // electric spell object
     [SerializeField] private GameObject[] go_hats;              // The potential hats on this player.
     [SerializeField] private Transform t_spellSpawn;    // location spells are instantiated
-    [SerializeField] protected Transform t_flagPos;       // location on character model of flag
-    [SerializeField] protected GameObject go_interactCollider;  // activated with button-press to interact with objectives
+    [SerializeField] private Transform t_flagPos;       // location on character model of flag
+    [SerializeField] private GameObject go_interactCollider;  // activated with button-press to interact with objectives
     [SerializeField] private GameObject go_parryShield;       // activated with right stick click
     [SerializeField] private PauseController pauc_pause;        // for pausing
 
@@ -43,11 +43,11 @@ public class PlayerController : SpellTarget {
     private Player p_player;                // rewired player for input control
     private Constants.Global.Side e_side;   // identifies which side of the rift player is on
     private float f_canMove = 1;            // identifies if the player is frozen
-    protected bool isWisp = false;            // player has "died"
+    private bool isWisp = false;            // player has "died"
     private bool isInvuln = false;          // player is invincible (after respawn)
     private bool b_iceboltMode = false;     // player is controlling an icebolt
     private GameObject go_icebolt;          // the icebolt the player is controlling
-    protected GameObject go_flagObj;          // flag game object; if not null, player is carrying flag
+    private GameObject go_flagObj;          // flag game object; if not null, player is carrying flag
     private bool b_stepOk = true;           // time to play next footstep noise has elapsed
     private bool b_deathAnimOK = false;     // used to determine if death animation should play or not.
     private GameObject go_activeHat;        // the hat that's visible on the player.
@@ -77,6 +77,10 @@ public class PlayerController : SpellTarget {
 
     public bool Invulnerable {
         get { return isInvuln; }
+    }
+
+    public bool HasFlag {
+        get { return go_flagObj != null; }
     }
 
     public int Num {
@@ -370,6 +374,16 @@ public class PlayerController : SpellTarget {
 			go_flagObj = null;
 		}
 	}
+
+    public void Interact() {
+        if (go_flagObj) {
+            DropFlag();
+        }
+        else {
+            go_interactCollider.SetActive(true);
+        }
+        Invoke("TurnOffInteractCollider", 0.05f);
+    }
     #endregion
 
 	private void StepDelay(){
@@ -399,6 +413,11 @@ public class PlayerController : SpellTarget {
 
 #region Unity Overrides
     protected override void Start() {
+        if (Constants.UnitTests.C_RunningCTFTests)
+            return;
+
+
+
         maestro = Maestro.Instance;
         riftController = RiftController.Instance;
         p_player = ReInput.players.GetPlayer(i_playerNumber);
@@ -424,6 +443,10 @@ public class PlayerController : SpellTarget {
     }
 
 	protected virtual void FixedUpdate() {
+        if (Constants.UnitTests.C_RunningCTFTests)
+            return;
+
+
         // position
         if (transform.position.x > 0)
             e_side = Constants.Global.Side.RIGHT;
@@ -450,16 +473,12 @@ public class PlayerController : SpellTarget {
 
         // interact
         if (p_player.GetButtonDown("Interact")) {
-            if (go_flagObj) {
-                DropFlag();
-            }
-            else {
-                go_interactCollider.SetActive(true);
-            }
+            Interact();
         }
-        if (p_player.GetButtonUp("Interact")) {
-            TurnOffInteractCollider();
-        }
+        //button up no longer needed because hot potato is out
+        //if (p_player.GetButtonUp("Interact")) {
+        //    TurnOffInteractCollider();
+        //}
 
         // spells
         if (p_player.GetButtonUp("IceSpell")) {

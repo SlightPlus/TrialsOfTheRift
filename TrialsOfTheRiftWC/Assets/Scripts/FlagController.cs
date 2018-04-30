@@ -56,7 +56,9 @@ public class FlagController : MonoBehaviour {
         }
         // Player scoring with flag
 		if (other.CompareTag("Goal")) {
-			if (other.GetComponent<GoalController>().Color != e_color) {        // check for correct color of flag/goal
+			if (IsPickedUp() &&
+                transform.parent.parent.GetComponent<PlayerController>().Color == other.GetComponent<GoalController>().Color &&
+                other.GetComponent<GoalController>().Color != e_color) {        // check for correct color of player/flag/goal
                 Vector3 pos = transform.position;
                 go_scoreParticle.transform.position = pos;
                 go_scoreParticle.SetActive(true);

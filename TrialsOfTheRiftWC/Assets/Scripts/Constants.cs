@@ -255,7 +255,13 @@ public static class Constants {
         public static float C_VOIVolume = 1f;
     }
 
-	//public static GameObject[] C_Players = GameObject.FindGameObjectsWithTag("Player");
+
+    public static class UnitTests {
+        public static bool C_RunningCTFTests = false;
+
+        public static float C_WaitTime = 1.0f;
+    }
+    
 }
 
 static class RandomExtensions

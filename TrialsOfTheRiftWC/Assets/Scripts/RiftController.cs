@@ -401,12 +401,13 @@ public sealed class RiftController : MonoBehaviour {
 	}
 
     public void ResetPlayers() {
-        if (go_playerReferences != null && go_playerReferences.Length != 0) {
-            go_playerReferences[0].transform.localPosition = Constants.PlayerStats.C_r1Start;
-            go_playerReferences[1].transform.localPosition = Constants.PlayerStats.C_r2Start;
-            go_playerReferences[2].transform.localPosition = Constants.PlayerStats.C_b1Start;
-            go_playerReferences[3].transform.localPosition = Constants.PlayerStats.C_b2Start;
-        }
+        if (Constants.UnitTests.C_RunningCTFTests)
+            return;
+
+        go_playerReferences[0].transform.localPosition = Constants.PlayerStats.C_r1Start;
+        go_playerReferences[1].transform.localPosition = Constants.PlayerStats.C_r2Start;
+        go_playerReferences[2].transform.localPosition = Constants.PlayerStats.C_b1Start;
+        go_playerReferences[3].transform.localPosition = Constants.PlayerStats.C_b2Start;
     }
 
     IEnumerator TurnOffDeathOrb(GameObject go_deathOrb, GameObject go_player) {
