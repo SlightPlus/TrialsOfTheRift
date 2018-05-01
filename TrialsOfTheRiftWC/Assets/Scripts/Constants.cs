@@ -162,7 +162,7 @@ public static class Constants {
         public static Vector3 C_RedNecromancerSpawn = new Vector3(-5.0f, 0.5f, 0f);
         public static Vector3 C_BlueNecromancerSpawn = new Vector3(5.0f, 0.5f, 0f);
         public static float C_NecromancerSpawnTime = 6.0f;
-        public static float C_NecromancerTeleportHealthThreshold = 0.25f;
+        public static float C_NecromancerTeleportHealthThreshold = 0.5f;
 
         // Rift Boss Stats
         //public static Vector3 C_RedRiftBossSpawn = new Vector3(-5.0f, 0.5f, 0f);
@@ -184,7 +184,7 @@ public static class Constants {
 		public static float C_NecromancerAvoidDistance = 2.0f;
 		public static int C_NecromancerSpawnCapPerSide = 1;
 		public static float C_WanderingRadius = 10.0f;
-		public static float C_RuneExplosionCountDownTime = 5.0f;
+		public static float C_RuneExplosionCountDownTime = 0.5f;
         public static float C_RuneExplosionLiveTime = 1.5f;
         public static float C_RuneTimer = 4.0f;
 		public static float C_SummonTimer = 8.0f;

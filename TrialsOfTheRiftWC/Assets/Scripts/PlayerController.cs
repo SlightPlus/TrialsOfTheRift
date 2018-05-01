@@ -116,12 +116,20 @@ public class PlayerController : SpellTarget {
         switch(spell) {
             case Constants.SpellStats.SpellType.WIND:
                 DropFlag();
-				StartCoroutine(WindPush(Constants.PlayerStats.C_PlayerWindPushMultiplier,direction,false));
+
+                if (Constants.UnitTests.C_RunningCTFTests)
+                    return;
+
+                StartCoroutine(WindPush(Constants.PlayerStats.C_PlayerWindPushMultiplier,direction,false));
                 TakeDamage(damage, Constants.Global.DamageType.WIND);
                 anim.SetTrigger("windTrigger");
                 break;
             case Constants.SpellStats.SpellType.ICE:
                 DropFlag();
+
+                if (Constants.UnitTests.C_RunningCTFTests)
+                    return;
+
                 f_canMove = 0;
                 TakeDamage(damage, Constants.Global.DamageType.ICE);
                 anim.SetTrigger("freezeTrigger");
@@ -134,6 +142,10 @@ public class PlayerController : SpellTarget {
             case Constants.SpellStats.SpellType.ELECTRICITYAOE:
                 if(e_color != color) {
                     DropFlag();
+
+                    if (Constants.UnitTests.C_RunningCTFTests)
+                        return;
+
                     f_canMove = Constants.SpellStats.C_ElectricAOESlowDownMultiplier;
                     TakeDamage(damage, Constants.Global.DamageType.ELECTRICITY);
                     anim.SetTrigger("gooTrigger");
@@ -142,6 +154,10 @@ public class PlayerController : SpellTarget {
             case Constants.SpellStats.SpellType.MAGICMISSILE:
                 if (e_color != color) {
                     DropFlag();
+
+                    if (Constants.UnitTests.C_RunningCTFTests)
+                        return;
+
                     TakeDamage(damage, Constants.Global.DamageType.MAGICMISSILE);
                     anim.SetTrigger("hitTrigger");
                 }
@@ -230,7 +246,9 @@ public class PlayerController : SpellTarget {
         DropFlag();
         TurnOffInteractCollider();
         isWisp = true;
-        if(SceneManager.GetActiveScene().name != "WarmUp") {
+        if (Constants.UnitTests.C_RunningCTFTests)
+            return;
+        if (SceneManager.GetActiveScene().name != "WarmUp") {
             riftController.IncreaseVolatility(Constants.RiftStats.C_VolatilityIncrease_PlayerDeath);
         } 
 		maestro.PlayPlayerDie();
@@ -413,13 +431,13 @@ public class PlayerController : SpellTarget {
 
 #region Unity Overrides
     protected override void Start() {
+        maestro = Maestro.Instance;
+        riftController = RiftController.Instance;
+
         if (Constants.UnitTests.C_RunningCTFTests)
             return;
 
 
-
-        maestro = Maestro.Instance;
-        riftController = RiftController.Instance;
         p_player = ReInput.players.GetPlayer(i_playerNumber);
         f_health = Constants.PlayerStats.C_MaxHealth;
         f_projectileSize = Constants.SpellStats.C_PlayerProjectileSize;

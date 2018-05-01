@@ -48,7 +48,7 @@ public class FlagController : MonoBehaviour {
 
     void OnTriggerEnter(Collider other) {
         // Player trying to pick up flag (and flag not already picked up)
-        if (other.CompareTag("InteractCollider") && !IsPickedUp()) {
+        if (other.CompareTag("InteractCollider") && !IsPickedUp() && other.GetComponentInParent<PlayerController>().Color != e_color) {
 			other.GetComponentInParent<PlayerController>().Pickup(gameObject);
 			other.gameObject.SetActive(false);
             ctfo_owner.StopCoroutine("Notify");
@@ -72,7 +72,7 @@ public class FlagController : MonoBehaviour {
 	}
 
     void OnTriggerStay(Collider other) {
-        if (other.CompareTag("Player") && !IsPickedUp()) {
+        if (other.CompareTag("Player") && !IsPickedUp() && other.GetComponent<PlayerController>().Color != e_color) {
             go_buttonPrompt.SetActive(true);
         }
     }
