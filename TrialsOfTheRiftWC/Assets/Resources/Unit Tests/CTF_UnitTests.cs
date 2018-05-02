@@ -234,6 +234,7 @@ public class CTF_UnitTests {
     //indicators
     //spells don't affect flag
     //spells don't affect goal
+    //keep other team's score correct
 
 
     [UnityTest]
