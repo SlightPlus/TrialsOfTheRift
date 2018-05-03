@@ -18,6 +18,7 @@ public static class Constants {
 		public enum DamageType { WIND, ICE, ELECTRICITY, MAGICMISSILE, ENEMY, RIFT, DEATHBOLT, RUNE, PUCK };
         public static string C_BuildNumber = "3.40";
         public static bool C_CanPause = true;
+        public static Global.Color C_WinningTeam = Global.Color.RED;
     }
 
     // Team Stats
