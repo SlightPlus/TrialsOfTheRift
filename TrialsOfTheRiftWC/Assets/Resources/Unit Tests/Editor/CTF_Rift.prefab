@@ -53,6 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   go_riftDeathBolt: {fileID: 0}
   go_boardClear: {fileID: 0}
+  go_screenshake: {fileID: 0}
   go_playerReferences: []
   go_deathOrbs: []
   rbc_redRiftBossController: {fileID: 0}
