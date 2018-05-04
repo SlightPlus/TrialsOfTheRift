@@ -185,7 +185,7 @@ public static class Constants {
 		public static int C_NecromancerSpawnCapPerSide = 1;
 		public static float C_WanderingRadius = 10.0f;
 		public static float C_RuneExplosionCountDownTime = 0.5f;
-        public static float C_RuneExplosionLiveTime = 1.5f;
+        public static float C_RuneExplosionLiveTime = 4f;
         public static float C_RuneTimer = 4.0f;
 		public static float C_SummonTimer = 8.0f;
         public static float C_RuneDamage = 75.0f;
