@@ -31,7 +31,6 @@ sysinfo.txt
 
 # Builds
 *.apk
-*.unitypackage
 
 # FIXED IGNORE LIST
 .vs
@@ -59,6 +58,5 @@ ExportedObj
 .pdb
 .pidb.meta
 .apk
-.unitypackage
 /TrialsOfTheRiftWC/Assets/Editor
 /TrialsOfTheRiftWC/Assets/Editor.meta
