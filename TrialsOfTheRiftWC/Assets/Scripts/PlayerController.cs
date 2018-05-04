@@ -184,14 +184,19 @@ public class PlayerController : SpellTarget {
 
         Vector3 v3_moveDir = new Vector3(f_inputX, 0, f_inputZ).normalized;
 		Vector3 v3_aimDir = new Vector3(f_aimInputX, 0, f_aimInputZ).normalized;
-		//f_lookDirection = f_inputX + f_aimInputX;
 
-		//anim.SetFloat ("runSpeed", v3_moveDir.magnitude);
-		//anim.SetFloat ("lookDirection", v3_aimDir.magnitude);
-		anim.SetFloat ("runSpeedX", f_inputX);
-		anim.SetFloat ("runSpeedZ", f_inputZ);
-		anim.SetFloat ("aimDirectionX", f_aimInputX);
-		anim.SetFloat ("aimDirectionZ", f_aimInputZ);
+
+        if (go_playerCapsule.activeSelf)    // only set anim triggers if player model is on
+        {
+            //f_lookDirection = f_inputX + f_aimInputX;
+
+            //anim.SetFloat ("runSpeed", v3_moveDir.magnitude);
+            //anim.SetFloat ("lookDirection", v3_aimDir.magnitude);
+            anim.SetFloat("runSpeedX", f_inputX);
+            anim.SetFloat("runSpeedZ", f_inputZ);
+            anim.SetFloat("aimDirectionX", f_aimInputX);
+            anim.SetFloat("aimDirectionZ", f_aimInputZ);
+        }
 
 		if (v3_aimDir.magnitude > 0) {
 			transform.rotation = Quaternion.LookRotation(v3_aimDir);
@@ -464,6 +469,8 @@ public class PlayerController : SpellTarget {
         if (Constants.UnitTests.C_RunningCTFTests)
             return;
 
+        if (go_playerCapsule.activeSelf)    // only set anim triggers if player model is on
+            anim.SetBool("iceSpellBool", b_iceboltMode);
 
         // position
         if (transform.position.x > 0)
@@ -533,7 +540,8 @@ public class PlayerController : SpellTarget {
 			if (p_player.GetButtonDown("WindSpell")) {
 				f_nextWind = 0;
 				maestro.PlayWindShoot();
-				go_parryShield.SetActive(true);
+                anim.SetTrigger("windspellTrigger");
+                go_parryShield.SetActive(true);
 				Invoke("TurnOffParryShield", 0.75f);
 			}
 		}
@@ -575,8 +583,8 @@ public class PlayerController : SpellTarget {
                 go_spell.GetComponent<Rigidbody>().velocity = transform.forward * Constants.SpellStats.C_ElectricSpeed;
                 SpellController sc_firing = go_spell.GetComponent<SpellController>();
                 sc_firing.Init(this, e_color, f_electricCharge);
-                anim.SetFloat("gooCharge", f_electricCharge);
                 f_electricCharge = 0;
+                anim.SetFloat("gooCharge", f_electricCharge);
             }        
 		}
        
