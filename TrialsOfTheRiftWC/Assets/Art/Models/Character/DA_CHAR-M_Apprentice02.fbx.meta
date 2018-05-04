@@ -1,0 +1,252 @@
+fileFormatVersion: 2
+guid: 8190eb0b56e9a4d118207b46153edfb9
+timeCreated: 1525444953
+licenseType: Free
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: Apprentice
+    100002: Apprentice_Apprentice_Apprentice_DA_CHAR_M_ApprenticeBase_Hip_jB
+    100004: Apprentice_Head_jB
+    100006: Apprentice_L_Ankle_jB
+    100008: Apprentice_L_Elbow_jB
+    100010: Apprentice_L_Foot_jB
+    100012: Apprentice_L_Forearm_jB
+    100014: Apprentice_L_Index_jB_1
+    100016: Apprentice_L_Index_jB_2
+    100018: Apprentice_L_Index_jB_3
+    100020: Apprentice_L_Index_jB_4
+    100022: Apprentice_L_Knee_jB
+    100024: Apprentice_L_Middle_jB_1
+    100026: Apprentice_L_Middle_jB_2
+    100028: Apprentice_L_Middle_jB_3
+    100030: Apprentice_L_Middle_jB_4
+    100032: Apprentice_L_Pec_jB
+    100034: Apprentice_L_Pinky_jB_1
+    100036: Apprentice_L_Pinky_jB_2
+    100038: Apprentice_L_Pinky_jB_3
+    100040: Apprentice_L_Pinky_jB_4
+    100042: Apprentice_L_Ring_jB_1
+    100044: Apprentice_L_Ring_jB_2
+    100046: Apprentice_L_Ring_jB_3
+    100048: Apprentice_L_Ring_jB_4
+    100050: Apprentice_L_Shoulder_jB
+    100052: Apprentice_L_Thigh_jB
+    100054: Apprentice_L_Thumb_jB_1
+    100056: Apprentice_L_Thumb_jB_2
+    100058: Apprentice_L_Thumb_jB_3
+    100060: Apprentice_L_Toe_jB
+    100062: Apprentice_L_Wrist_jB
+    100064: Apprentice_Neck_jB_1
+    100066: Apprentice_Neck_jB_2
+    100068: Apprentice_R_Ankle_jB
+    100070: Apprentice_R_Elbow_jB
+    100072: Apprentice_R_Foot_jB
+    100074: Apprentice_R_Forearm_jB
+    100076: Apprentice_R_Index_jB_1
+    100078: Apprentice_R_Index_jB_2
+    100080: Apprentice_R_Index_jB_3
+    100082: Apprentice_R_Index_jB_4
+    100084: Apprentice_R_Knee_jB
+    100086: Apprentice_R_Middle_jB_1
+    100088: Apprentice_R_Middle_jB_2
+    100090: Apprentice_R_Middle_jB_3
+    100092: Apprentice_R_Middle_jB_4
+    100094: Apprentice_R_Pec_jB
+    100096: Apprentice_R_Pinky_jB_1
+    100098: Apprentice_R_Pinky_jB_2
+    100100: Apprentice_R_Pinky_jB_3
+    100102: Apprentice_R_Pinky_jB_4
+    100104: Apprentice_R_Ring_jB_1
+    100106: Apprentice_R_Ring_jB_2
+    100108: Apprentice_R_Ring_jB_3
+    100110: Apprentice_R_Ring_jB_4
+    100112: Apprentice_R_Shoulder_jB
+    100114: Apprentice_R_Thigh_jB
+    100116: Apprentice_R_Thumb_jB_1
+    100118: Apprentice_R_Thumb_jB_2
+    100120: Apprentice_R_Thumb_jB_3
+    100122: Apprentice_R_Toe_jB
+    100124: Apprentice_R_Wrist_jB
+    100126: Apprentice_Rig
+    100128: Apprentice_Spine_jB_1
+    100130: Apprentice_Spine_jB_2
+    100132: Apprentice_Spine_jB_3
+    100134: Apprentice_Spine_jB_4
+    100136: //RootNode
+    100138: joint1
+    100140: joint10
+    100142: joint2
+    100144: joint3
+    100146: joint4
+    100148: joint5
+    100150: joint6
+    100152: joint7
+    100154: joint8
+    100156: joint9
+    100158: Outfit_2
+    100160: Wand
+    400000: Apprentice
+    400002: Apprentice_Apprentice_Apprentice_DA_CHAR_M_ApprenticeBase_Hip_jB
+    400004: Apprentice_Head_jB
+    400006: Apprentice_L_Ankle_jB
+    400008: Apprentice_L_Elbow_jB
+    400010: Apprentice_L_Foot_jB
+    400012: Apprentice_L_Forearm_jB
+    400014: Apprentice_L_Index_jB_1
+    400016: Apprentice_L_Index_jB_2
+    400018: Apprentice_L_Index_jB_3
+    400020: Apprentice_L_Index_jB_4
+    400022: Apprentice_L_Knee_jB
+    400024: Apprentice_L_Middle_jB_1
+    400026: Apprentice_L_Middle_jB_2
+    400028: Apprentice_L_Middle_jB_3
+    400030: Apprentice_L_Middle_jB_4
+    400032: Apprentice_L_Pec_jB
+    400034: Apprentice_L_Pinky_jB_1
+    400036: Apprentice_L_Pinky_jB_2
+    400038: Apprentice_L_Pinky_jB_3
+    400040: Apprentice_L_Pinky_jB_4
+    400042: Apprentice_L_Ring_jB_1
+    400044: Apprentice_L_Ring_jB_2
+    400046: Apprentice_L_Ring_jB_3
+    400048: Apprentice_L_Ring_jB_4
+    400050: Apprentice_L_Shoulder_jB
+    400052: Apprentice_L_Thigh_jB
+    400054: Apprentice_L_Thumb_jB_1
+    400056: Apprentice_L_Thumb_jB_2
+    400058: Apprentice_L_Thumb_jB_3
+    400060: Apprentice_L_Toe_jB
+    400062: Apprentice_L_Wrist_jB
+    400064: Apprentice_Neck_jB_1
+    400066: Apprentice_Neck_jB_2
+    400068: Apprentice_R_Ankle_jB
+    400070: Apprentice_R_Elbow_jB
+    400072: Apprentice_R_Foot_jB
+    400074: Apprentice_R_Forearm_jB
+    400076: Apprentice_R_Index_jB_1
+    400078: Apprentice_R_Index_jB_2
+    400080: Apprentice_R_Index_jB_3
+    400082: Apprentice_R_Index_jB_4
+    400084: Apprentice_R_Knee_jB
+    400086: Apprentice_R_Middle_jB_1
+    400088: Apprentice_R_Middle_jB_2
+    400090: Apprentice_R_Middle_jB_3
+    400092: Apprentice_R_Middle_jB_4
+    400094: Apprentice_R_Pec_jB
+    400096: Apprentice_R_Pinky_jB_1
+    400098: Apprentice_R_Pinky_jB_2
+    400100: Apprentice_R_Pinky_jB_3
+    400102: Apprentice_R_Pinky_jB_4
+    400104: Apprentice_R_Ring_jB_1
+    400106: Apprentice_R_Ring_jB_2
+    400108: Apprentice_R_Ring_jB_3
+    400110: Apprentice_R_Ring_jB_4
+    400112: Apprentice_R_Shoulder_jB
+    400114: Apprentice_R_Thigh_jB
+    400116: Apprentice_R_Thumb_jB_1
+    400118: Apprentice_R_Thumb_jB_2
+    400120: Apprentice_R_Thumb_jB_3
+    400122: Apprentice_R_Toe_jB
+    400124: Apprentice_R_Wrist_jB
+    400126: Apprentice_Rig
+    400128: Apprentice_Spine_jB_1
+    400130: Apprentice_Spine_jB_2
+    400132: Apprentice_Spine_jB_3
+    400134: Apprentice_Spine_jB_4
+    400136: //RootNode
+    400138: joint1
+    400140: joint10
+    400142: joint2
+    400144: joint3
+    400146: joint4
+    400148: joint5
+    400150: joint6
+    400152: joint7
+    400154: joint8
+    400156: joint9
+    400158: Outfit_2
+    400160: Wand
+    4300000: Outfit_2
+    4300002: Apprentice
+    4300004: Wand
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: Apprentice
+    13700002: Outfit_2
+    13700004: Wand
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
