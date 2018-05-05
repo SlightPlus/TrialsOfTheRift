@@ -87,10 +87,10 @@ public abstract class Objective : MonoBehaviour {
             yield break;
 
         go_objectIndicator.SetActive(true);
-        yield return new WaitForSeconds(Constants.ObjectiveStats.C_NotificationTimer);
-        go_goalIndicator.SetActive(true);
         yield return new WaitForSeconds(2.0f);
-        
+        go_goalIndicator.SetActive(true);
+        yield return new WaitForSeconds(Constants.ObjectiveStats.C_NotificationTimer);
+
         StartCoroutine("Notify");
     }
 
