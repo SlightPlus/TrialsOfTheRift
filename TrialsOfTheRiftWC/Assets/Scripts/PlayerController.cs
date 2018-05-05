@@ -79,6 +79,10 @@ public class PlayerController : SpellTarget {
         get { return isInvuln; }
     }
 
+    public bool HasFlag {
+        get { return go_flagObj != null; }
+    }
+
     public int Num {
         get { return i_playerNumber; }
         set { i_playerNumber = value; }
@@ -112,12 +116,20 @@ public class PlayerController : SpellTarget {
         switch(spell) {
             case Constants.SpellStats.SpellType.WIND:
                 DropFlag();
-				StartCoroutine(WindPush(Constants.PlayerStats.C_PlayerWindPushMultiplier,direction,false));
+
+                if (Constants.UnitTests.C_RunningCTFTests)
+                    return;
+
+                StartCoroutine(WindPush(Constants.PlayerStats.C_PlayerWindPushMultiplier,direction,false));
                 TakeDamage(damage, Constants.Global.DamageType.WIND);
                 anim.SetTrigger("windTrigger");
                 break;
             case Constants.SpellStats.SpellType.ICE:
                 DropFlag();
+
+                if (Constants.UnitTests.C_RunningCTFTests)
+                    return;
+
                 f_canMove = 0;
                 TakeDamage(damage, Constants.Global.DamageType.ICE);
                 anim.SetTrigger("freezeTrigger");
@@ -130,6 +142,10 @@ public class PlayerController : SpellTarget {
             case Constants.SpellStats.SpellType.ELECTRICITYAOE:
                 if(e_color != color) {
                     DropFlag();
+
+                    if (Constants.UnitTests.C_RunningCTFTests)
+                        return;
+
                     f_canMove = Constants.SpellStats.C_ElectricAOESlowDownMultiplier;
                     TakeDamage(damage, Constants.Global.DamageType.ELECTRICITY);
                     anim.SetTrigger("gooTrigger");
@@ -138,6 +154,10 @@ public class PlayerController : SpellTarget {
             case Constants.SpellStats.SpellType.MAGICMISSILE:
                 if (e_color != color) {
                     DropFlag();
+
+                    if (Constants.UnitTests.C_RunningCTFTests)
+                        return;
+
                     TakeDamage(damage, Constants.Global.DamageType.MAGICMISSILE);
                     anim.SetTrigger("hitTrigger");
                 }
@@ -164,14 +184,19 @@ public class PlayerController : SpellTarget {
 
         Vector3 v3_moveDir = new Vector3(f_inputX, 0, f_inputZ).normalized;
 		Vector3 v3_aimDir = new Vector3(f_aimInputX, 0, f_aimInputZ).normalized;
-		//f_lookDirection = f_inputX + f_aimInputX;
 
-		//anim.SetFloat ("runSpeed", v3_moveDir.magnitude);
-		//anim.SetFloat ("lookDirection", v3_aimDir.magnitude);
-		anim.SetFloat ("runSpeedX", f_inputX);
-		anim.SetFloat ("runSpeedZ", f_inputZ);
-		anim.SetFloat ("aimDirectionX", f_aimInputX);
-		anim.SetFloat ("aimDirectionZ", f_aimInputZ);
+
+        if (go_playerCapsule.activeSelf)    // only set anim triggers if player model is on
+        {
+            //f_lookDirection = f_inputX + f_aimInputX;
+
+            //anim.SetFloat ("runSpeed", v3_moveDir.magnitude);
+            //anim.SetFloat ("lookDirection", v3_aimDir.magnitude);
+            anim.SetFloat("runSpeedX", f_inputX);
+            anim.SetFloat("runSpeedZ", f_inputZ);
+            anim.SetFloat("aimDirectionX", f_aimInputX);
+            anim.SetFloat("aimDirectionZ", f_aimInputZ);
+        }
 
 		if (v3_aimDir.magnitude > 0) {
 			transform.rotation = Quaternion.LookRotation(v3_aimDir);
@@ -226,7 +251,9 @@ public class PlayerController : SpellTarget {
         DropFlag();
         TurnOffInteractCollider();
         isWisp = true;
-        if(SceneManager.GetActiveScene().name != "WarmUp") {
+        if (Constants.UnitTests.C_RunningCTFTests)
+            return;
+        if (SceneManager.GetActiveScene().name != "WarmUp") {
             riftController.IncreaseVolatility(Constants.RiftStats.C_VolatilityIncrease_PlayerDeath);
         } 
 		maestro.PlayPlayerDie();
@@ -370,6 +397,16 @@ public class PlayerController : SpellTarget {
 			go_flagObj = null;
 		}
 	}
+
+    public void Interact() {
+        if (go_flagObj) {
+            DropFlag();
+        }
+        else {
+            go_interactCollider.SetActive(true);
+        }
+        Invoke("TurnOffInteractCollider", 0.05f);
+    }
     #endregion
 
 	private void StepDelay(){
@@ -401,6 +438,11 @@ public class PlayerController : SpellTarget {
     protected override void Start() {
         maestro = Maestro.Instance;
         riftController = RiftController.Instance;
+
+        if (Constants.UnitTests.C_RunningCTFTests)
+            return;
+
+
         p_player = ReInput.players.GetPlayer(i_playerNumber);
         f_health = Constants.PlayerStats.C_MaxHealth;
         f_projectileSize = Constants.SpellStats.C_PlayerProjectileSize;
@@ -423,7 +465,13 @@ public class PlayerController : SpellTarget {
 
     }
 
-	void FixedUpdate() {
+	protected virtual void FixedUpdate() {
+        if (Constants.UnitTests.C_RunningCTFTests)
+            return;
+
+        if (go_playerCapsule.activeSelf)    // only set anim triggers if player model is on
+            anim.SetBool("iceSpellBool", b_iceboltMode);
+
         // position
         if (transform.position.x > 0)
             e_side = Constants.Global.Side.RIGHT;
@@ -450,16 +498,12 @@ public class PlayerController : SpellTarget {
 
         // interact
         if (p_player.GetButtonDown("Interact")) {
-            if (go_flagObj) {
-                DropFlag();
-            }
-            else {
-                go_interactCollider.SetActive(true);
-            }
+            Interact();
         }
-        if (p_player.GetButtonUp("Interact")) {
-            TurnOffInteractCollider();
-        }
+        //button up no longer needed because hot potato is out
+        //if (p_player.GetButtonUp("Interact")) {
+        //    TurnOffInteractCollider();
+        //}
 
         // spells
         if (p_player.GetButtonUp("IceSpell")) {
@@ -496,7 +540,8 @@ public class PlayerController : SpellTarget {
 			if (p_player.GetButtonDown("WindSpell")) {
 				f_nextWind = 0;
 				maestro.PlayWindShoot();
-				go_parryShield.SetActive(true);
+                anim.SetTrigger("windspellTrigger");
+                go_parryShield.SetActive(true);
 				Invoke("TurnOffParryShield", 0.75f);
 			}
 		}
@@ -538,8 +583,8 @@ public class PlayerController : SpellTarget {
                 go_spell.GetComponent<Rigidbody>().velocity = transform.forward * Constants.SpellStats.C_ElectricSpeed;
                 SpellController sc_firing = go_spell.GetComponent<SpellController>();
                 sc_firing.Init(this, e_color, f_electricCharge);
-                anim.SetFloat("gooCharge", f_electricCharge);
                 f_electricCharge = 0;
+                anim.SetFloat("gooCharge", f_electricCharge);
             }        
 		}
        

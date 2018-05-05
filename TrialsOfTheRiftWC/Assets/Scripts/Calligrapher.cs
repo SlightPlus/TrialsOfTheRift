@@ -95,6 +95,10 @@ public sealed class Calligrapher : MonoBehaviour {
     //----------------------------
     // Initialization of different objectives
     public void CTFInit(Constants.Global.Color colorIn) {
+        if (Constants.UnitTests.C_RunningCTFTests)
+            return;
+
+
         if (colorIn == Constants.Global.Color.RED) {
             txt_redScoreText.transform.parent.gameObject.SetActive(true);
             img_redCTFIcon.gameObject.SetActive(true);

@@ -16,7 +16,7 @@ public static class Constants {
         public enum Color { RED, BLUE, NULL };
         public enum Side { LEFT = -1, RIGHT = 1 };
 		public enum DamageType { WIND, ICE, ELECTRICITY, MAGICMISSILE, ENEMY, RIFT, DEATHBOLT, RUNE, PUCK };
-        public static string C_BuildNumber = "3.40";
+        public static string C_BuildNumber = "3.49";
         public static bool C_CanPause = true;
         public static Global.Color C_WinningTeam = Global.Color.BLUE;
     }
@@ -163,7 +163,7 @@ public static class Constants {
         public static Vector3 C_RedNecromancerSpawn = new Vector3(-5.0f, 0.5f, 0f);
         public static Vector3 C_BlueNecromancerSpawn = new Vector3(5.0f, 0.5f, 0f);
         public static float C_NecromancerSpawnTime = 6.0f;
-        public static float C_NecromancerTeleportHealthThreshold = 0.25f;
+        public static float C_NecromancerTeleportHealthThreshold = 0.5f;
 
         // Rift Boss Stats
         //public static Vector3 C_RedRiftBossSpawn = new Vector3(-5.0f, 0.5f, 0f);
@@ -185,8 +185,8 @@ public static class Constants {
 		public static float C_NecromancerAvoidDistance = 2.0f;
 		public static int C_NecromancerSpawnCapPerSide = 1;
 		public static float C_WanderingRadius = 10.0f;
-		public static float C_RuneExplosionCountDownTime = 5.0f;
-        public static float C_RuneExplosionLiveTime = 1.5f;
+		public static float C_RuneExplosionCountDownTime = 0.5f;
+        public static float C_RuneExplosionLiveTime = 4f;
         public static float C_RuneTimer = 4.0f;
 		public static float C_SummonTimer = 8.0f;
         public static float C_RuneDamage = 75.0f;
@@ -256,7 +256,13 @@ public static class Constants {
         public static float C_VOIVolume = 1f;
     }
 
-	//public static GameObject[] C_Players = GameObject.FindGameObjectsWithTag("Player");
+
+    public static class UnitTests {
+        public static bool C_RunningCTFTests = false;
+
+        public static float C_WaitTime = 1.0f;
+    }
+    
 }
 
 static class RandomExtensions

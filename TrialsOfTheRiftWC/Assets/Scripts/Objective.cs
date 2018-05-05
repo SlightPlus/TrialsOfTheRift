@@ -28,6 +28,9 @@ public abstract class Objective : MonoBehaviour {
     public Constants.Global.Color Color {
         get { return e_color; }
     }
+    public int Score {
+        get { return i_score; }
+    }
     public int NumberInList {
         get { return i_numberInList; }
     }

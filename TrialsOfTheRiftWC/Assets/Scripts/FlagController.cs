@@ -32,7 +32,7 @@ public class FlagController : MonoBehaviour {
     }
 
     public bool IsPickedUp() {
-        return transform.parent.parent.gameObject.CompareTag("Player");
+        return !transform.parent.parent ? false : transform.parent.parent.gameObject.CompareTag("Player");
     }
 
     private void DisableParticle() {
@@ -48,7 +48,7 @@ public class FlagController : MonoBehaviour {
 
     void OnTriggerEnter(Collider other) {
         // Player trying to pick up flag (and flag not already picked up)
-        if (other.CompareTag("InteractCollider") && !IsPickedUp()) {
+        if (other.CompareTag("InteractCollider") && !IsPickedUp() && other.GetComponentInParent<PlayerController>().Color != e_color) {
 			other.GetComponentInParent<PlayerController>().Pickup(gameObject);
 			other.gameObject.SetActive(false);
             ctfo_owner.StopCoroutine("Notify");
@@ -56,7 +56,9 @@ public class FlagController : MonoBehaviour {
         }
         // Player scoring with flag
 		if (other.CompareTag("Goal")) {
-			if (other.GetComponent<GoalController>().Color != e_color) {        // check for correct color of flag/goal
+			if (IsPickedUp() &&
+                transform.parent.parent.GetComponent<PlayerController>().Color == other.GetComponent<GoalController>().Color &&
+                other.GetComponent<GoalController>().Color != e_color) {        // check for correct color of player/flag/goal
                 Vector3 pos = transform.position;
                 go_scoreParticle.transform.position = pos;
                 go_scoreParticle.SetActive(true);
@@ -70,7 +72,7 @@ public class FlagController : MonoBehaviour {
 	}
 
     void OnTriggerStay(Collider other) {
-        if (other.CompareTag("Player") && !IsPickedUp()) {
+        if (other.CompareTag("Player") && !IsPickedUp() && other.GetComponent<PlayerController>().Color != e_color) {
             go_buttonPrompt.SetActive(true);
         }
     }
