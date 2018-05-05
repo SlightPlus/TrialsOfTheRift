@@ -57,7 +57,7 @@ public sealed class DarkMagician : MonoBehaviour {
     private IEnumerator SwitchToEndGame() {
         yield return new WaitForSecondsRealtime(4f);
         Time.timeScale = 1;
-        SceneManager.LoadSceneAsync("EndGame");
+        SceneManager.LoadScene("EndGame");
     }
 #endregion
 

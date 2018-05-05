@@ -27,10 +27,7 @@ public class RiftBossObjective : Objective {
     }
 
     private IEnumerator DelayCompleteforExplosion() {
-        Debug.Log("Boom.");
-        yield return new WaitForSecondsRealtime(5f);
-        Debug.Log("Boom is over.");
-        //Time.timeScale = 1;
+        yield return new WaitForSecondsRealtime(4f);
         b_isComplete = true;
     }
 #endregion

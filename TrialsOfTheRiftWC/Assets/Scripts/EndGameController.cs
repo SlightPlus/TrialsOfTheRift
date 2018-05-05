@@ -33,6 +33,8 @@ public class EndGameController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        //Ensure timeScale is correct.
+        Time.timeScale = 1;
         //Only player 1 does things on this menu.
         p_player = ReInput.players.GetPlayer(0);
         rsim.RewiredPlayerIds = new int[] { 0 };

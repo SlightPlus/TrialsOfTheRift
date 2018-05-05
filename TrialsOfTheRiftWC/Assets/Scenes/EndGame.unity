@@ -653,6 +653,10 @@ Prefab:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 016e28fde64016142be955d79ea04105, type: 2}
+    - target: {fileID: 9500000, guid: 5d50d1b801b4b414a8e8be3daed5a822, type: 3}
+      propertyPath: m_UpdateMode
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5d50d1b801b4b414a8e8be3daed5a822, type: 3}
   m_IsPrefabParent: 0
@@ -1101,6 +1105,10 @@ Prefab:
     - target: {fileID: 400316, guid: 466d47f94d8b8474b9eebc9efdb2ca70, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 466d47f94d8b8474b9eebc9efdb2ca70, type: 3}
+      propertyPath: m_UpdateMode
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 466d47f94d8b8474b9eebc9efdb2ca70, type: 3}
@@ -2940,6 +2948,10 @@ Prefab:
       propertyPath: m_ApplyRootMotion
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: bbc5f47e215252140b83c4259038b462, type: 3}
+      propertyPath: m_UpdateMode
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bbc5f47e215252140b83c4259038b462, type: 3}
   m_IsPrefabParent: 0
@@ -4161,6 +4173,10 @@ Prefab:
     - target: {fileID: 400146, guid: e8e45c2a453a9354db13152c54b06e80, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.28109285
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: e8e45c2a453a9354db13152c54b06e80, type: 3}
+      propertyPath: m_UpdateMode
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e8e45c2a453a9354db13152c54b06e80, type: 3}

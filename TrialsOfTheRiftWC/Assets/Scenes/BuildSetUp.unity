@@ -8085,12 +8085,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 114334927351465418, guid: f981430eb51e2cb44bd79bb554e56b86,
-        type: 2}
-      propertyPath: cam_Camera
-      value: 
-      objectReference: {fileID: 1859528229}
-    - target: {fileID: 114670925637851862, guid: f981430eb51e2cb44bd79bb554e56b86,
+    - target: {fileID: 114836912760660428, guid: f981430eb51e2cb44bd79bb554e56b86,
         type: 2}
       propertyPath: cam_Camera
       value: 
@@ -8100,7 +8095,12 @@ Prefab:
       propertyPath: cam_Camera
       value: 
       objectReference: {fileID: 1859528229}
-    - target: {fileID: 114836912760660428, guid: f981430eb51e2cb44bd79bb554e56b86,
+    - target: {fileID: 114670925637851862, guid: f981430eb51e2cb44bd79bb554e56b86,
+        type: 2}
+      propertyPath: cam_Camera
+      value: 
+      objectReference: {fileID: 1859528229}
+    - target: {fileID: 114334927351465418, guid: f981430eb51e2cb44bd79bb554e56b86,
         type: 2}
       propertyPath: cam_Camera
       value: 
@@ -12635,12 +12635,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 114493011000446486, guid: 4283a83d2382611408980775eb1895ec,
-        type: 2}
-      propertyPath: cam_Camera
-      value: 
-      objectReference: {fileID: 1859528229}
-    - target: {fileID: 114032469319979734, guid: 4283a83d2382611408980775eb1895ec,
+    - target: {fileID: 114433269512629558, guid: 4283a83d2382611408980775eb1895ec,
         type: 2}
       propertyPath: cam_Camera
       value: 
@@ -12650,7 +12645,12 @@ Prefab:
       propertyPath: cam_Camera
       value: 
       objectReference: {fileID: 1859528229}
-    - target: {fileID: 114433269512629558, guid: 4283a83d2382611408980775eb1895ec,
+    - target: {fileID: 114032469319979734, guid: 4283a83d2382611408980775eb1895ec,
+        type: 2}
+      propertyPath: cam_Camera
+      value: 
+      objectReference: {fileID: 1859528229}
+    - target: {fileID: 114493011000446486, guid: 4283a83d2382611408980775eb1895ec,
         type: 2}
       propertyPath: cam_Camera
       value: 
