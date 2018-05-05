@@ -82,7 +82,7 @@ Material:
     - _RimSize: 1.5
     - _RimSmoothness: 0.5
     - _ShadowIntensity: 1.53
-    - _Shininess: 1
+    - _Shininess: 66
     - _SpecularIntensity: 0
     m_Colors:
     - _AnimationDirection: {r: -0.39, g: 1, b: -0.48, a: 2.02}
