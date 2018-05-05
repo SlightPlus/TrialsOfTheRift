@@ -7,6 +7,9 @@
 
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using System.Collections;
+
 
 public sealed class DarkMagician : MonoBehaviour {
 #region Variables and Declarations
@@ -39,6 +42,7 @@ public sealed class DarkMagician : MonoBehaviour {
         if (objectiveNumber == objv_redObjectiveList.Length) {
 			b_gameOver = true;
 			txt_winMsg.text = c + " team won!";
+            Constants.Global.C_WinningTeam = c;
 			return;
 		}
         objectiveNumber++;
@@ -48,6 +52,12 @@ public sealed class DarkMagician : MonoBehaviour {
         objv_currentBlueObjective.Complete();
         objv_currentBlueObjective = objv_blueObjectiveList[objectiveNumber - 1].Activate(objectiveNumber);  // objectiveNumber starts with 1 but array is 0-based
         riftController.ActivateLights(objectiveNumber - 1);
+    }
+
+    private IEnumerator SwitchToEndGame() {
+        yield return new WaitForSecondsRealtime(4f);
+        Time.timeScale = 1;
+        SceneManager.LoadSceneAsync("EndGame");
     }
 #endregion
 
@@ -72,11 +82,9 @@ public sealed class DarkMagician : MonoBehaviour {
         }
 
         // check for completion of objectives
-        if (b_gameOver) {
+        if (b_gameOver && txt_winMsg.enabled == false) {
 			txt_winMsg.enabled = true;
-            butt_winSelect.gameObject.SetActive(true);
-            butt_winSelect.Select();
-			Time.timeScale = 0;
+            StartCoroutine(SwitchToEndGame());	
 		}
 		else {
 			if (objv_currentRedObjective.IsComplete) {

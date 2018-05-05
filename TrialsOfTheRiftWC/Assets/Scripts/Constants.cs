@@ -18,7 +18,7 @@ public static class Constants {
 		public enum DamageType { WIND, ICE, ELECTRICITY, MAGICMISSILE, ENEMY, RIFT, DEATHBOLT, RUNE, PUCK };
         public static string C_BuildNumber = "3.40";
         public static bool C_CanPause = true;
-        public static Global.Color C_WinningTeam = Global.Color.RED;
+        public static Global.Color C_WinningTeam = Global.Color.BLUE;
     }
 
     // Team Stats
@@ -69,8 +69,8 @@ public static class Constants {
         // Magic Missile Stats
         public static float C_MagicMissileLiveTime = 0.35f; //2 sec in GDD
 		public static float C_MagicMissileSpeed = 10.0f;
-        public static float C_MagicMissileDamage = 25.0f;
-        public static float C_MagicMissileCooldown = 0.75f;
+        public static float C_MagicMissileDamage = 250.0f;  //actually 25.0f
+        public static float C_MagicMissileCooldown = 0.25f;
         public static float C_MagicMissileChargeTime = C_SpellChargeTime;
         public static float C_MagicMissileChargeCooldown = 0.5f;
         public static float C_MagicMissileHeal = 25.0f;

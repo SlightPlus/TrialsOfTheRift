@@ -13,14 +13,20 @@ public class EndGameController : MonoBehaviour {
     [SerializeField] Rewired.Integration.UnityUI.RewiredStandaloneInputModule rsim;
 
 
-    private int[] i_hatNums;
-    private Constants.Global.Color[] col_playerColors;
+    private int[] i_hatNums = new int[4];
+    private Constants.Global.Color[] col_playerColors = new Constants.Global.Color[4];
+    [SerializeField] private Image[] img_flags = new Image[4];
+    [SerializeField] private Sprite img_redFlag;
+    [SerializeField] private Sprite img_blueFlag;
+
     [SerializeField] private SkinnedMeshRenderer[] smr_winnerOutfit = new SkinnedMeshRenderer[2];
-    [SerializeField] private SkinnedMeshRenderer[] smr_winnerHat = new SkinnedMeshRenderer[8];
+    [SerializeField] private MeshRenderer[] mr_winnerHat = new MeshRenderer[8];
     [SerializeField] private SkinnedMeshRenderer[] smr_loserOutfit = new SkinnedMeshRenderer[2];
-    [SerializeField] private SkinnedMeshRenderer[] smr_loserHat = new SkinnedMeshRenderer[8];
-    private Material mat_blue;
-    private Material mat_red;
+    [SerializeField] private MeshRenderer[] mr_loserHat = new MeshRenderer[8];
+    [SerializeField] private Material mat_outfitBlue;
+    [SerializeField] private Material mat_outfitRed;
+    [SerializeField] private Material[] mat_hatBlue = new Material[4];
+    [SerializeField] private Material[] mat_hatRed = new Material[4];
 
     private Player p_player;
     private bool b_open = false;
@@ -42,30 +48,39 @@ public class EndGameController : MonoBehaviour {
         i_hatNums[2] = Constants.PlayerStats.C_p3Hat;
         i_hatNums[3] = Constants.PlayerStats.C_p4Hat;
 
-        //Activate the correct hat.
+        //Make flags correct color.
+        if (Constants.Global.C_WinningTeam == Constants.Global.Color.BLUE) {
+            img_flags[0].sprite = img_flags[1].sprite = img_blueFlag;
+            img_flags[2].sprite = img_flags[3].sprite = img_redFlag;
+        } else {
+            img_flags[0].sprite = img_flags[1].sprite = img_redFlag;
+            img_flags[2].sprite = img_flags[3].sprite = img_blueFlag;
+        }
+
+        //Activate the correct hat and materials on models.
         int winnerCounter = 0;
         int loserCounter = 0;
         for (int i = 0; i < 4; i++) {
             if (col_playerColors[i] == Constants.Global.C_WinningTeam) {
                 if (col_playerColors[i] == Constants.Global.Color.BLUE) {
-                    smr_winnerOutfit[winnerCounter].materials = new Material[] { mat_blue };
-                    smr_winnerHat[(4 * winnerCounter) + i_hatNums[i]].materials = new Material[] { mat_blue };
-                    smr_winnerHat[(4 * winnerCounter) + i_hatNums[i]].gameObject.SetActive(true);
+                    smr_winnerOutfit[winnerCounter].materials = new Material[] { mat_outfitBlue, mat_outfitBlue };
+                    mr_winnerHat[(4 * winnerCounter) + i_hatNums[i]].materials = new Material[] { mat_hatBlue[i_hatNums[i]] };
+                    mr_winnerHat[(4 * winnerCounter) + i_hatNums[i]].gameObject.SetActive(true);
                 } else  {
-                    smr_winnerOutfit[winnerCounter].materials = new Material[] { mat_red };
-                    smr_winnerHat[(4 * winnerCounter) + i_hatNums[i]].materials = new Material[] { mat_red };
-                    smr_winnerHat[(4 * winnerCounter) + i_hatNums[i]].gameObject.SetActive(true);
+                    smr_winnerOutfit[winnerCounter].materials = new Material[] { mat_outfitRed, mat_outfitRed };
+                    mr_winnerHat[(4 * winnerCounter) + i_hatNums[i]].materials = new Material[] { mat_hatRed[i_hatNums[i]] };
+                    mr_winnerHat[(4 * winnerCounter) + i_hatNums[i]].gameObject.SetActive(true);
                 }
                 winnerCounter++;
             } else {
                 if (col_playerColors[i] == Constants.Global.Color.BLUE) {
-                    smr_loserOutfit[loserCounter].materials = new Material[] { mat_blue };
-                    smr_loserHat[(4 * loserCounter) + i_hatNums[i]].materials = new Material[] { mat_blue };
-                    smr_loserHat[(4 * loserCounter) + i_hatNums[i]].gameObject.SetActive(true);
+                    smr_loserOutfit[loserCounter].materials = new Material[] { mat_outfitBlue, mat_outfitBlue };
+                    mr_loserHat[(4 * loserCounter) + i_hatNums[i]].materials = new Material[] { mat_hatBlue[i_hatNums[i]] };
+                    mr_loserHat[(4 * loserCounter) + i_hatNums[i]].gameObject.SetActive(true);
                 } else {
-                    smr_loserOutfit[loserCounter].materials = new Material[] { mat_red };
-                    smr_loserHat[(4 * loserCounter) + i_hatNums[i]].materials = new Material[] { mat_red };
-                    smr_loserHat[(4 * loserCounter) + i_hatNums[i]].gameObject.SetActive(true);
+                    smr_loserOutfit[loserCounter].materials = new Material[] { mat_outfitRed, mat_outfitRed };
+                    mr_loserHat[(4 * loserCounter) + i_hatNums[i]].materials = new Material[] { mat_hatRed[i_hatNums[i]] };
+                    mr_loserHat[(4 * loserCounter) + i_hatNums[i]].gameObject.SetActive(true);
                 }
                 loserCounter++;
             }
@@ -86,25 +101,25 @@ public class EndGameController : MonoBehaviour {
         }
 	}
 
-    void OpenEndMenu() {
+    public void OpenEndMenu() {
         go_menu.SetActive(true);
         butt_select.Select();
         b_open = true;
     }
 
-    void MainMenu() {
+    public void MainMenu() {
         SceneManager.LoadSceneAsync("MainMenu");
     }
 
-    void Rematch() {
+    public void Rematch() {
         SceneManager.LoadSceneAsync("BuildSetUp");
     }
 
-    void PlayerSelect() {
+    public void PlayerSelect() {
         SceneManager.LoadSceneAsync("RegisterPlayers");
     }
 
-    void Quit() {
+    public void Quit() {
         Application.Quit();
     }
 }
