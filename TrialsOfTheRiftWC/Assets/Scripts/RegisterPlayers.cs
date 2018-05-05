@@ -220,7 +220,7 @@ public class RegisterPlayers : SceneLoader {
             {
                 i_p2Hat = 3;
             }
-            if (e_p1Color == Constants.Global.Color.RED) {
+            if (e_p2Color == Constants.Global.Color.RED) {
                 mr_hats[(4*1) + i_p2Hat].materials = new Material[] { mat_hatRed[i_p2Hat] };
             } else {
                 mr_hats[(4*1) + i_p2Hat].materials = new Material[] { mat_hatBlue[i_p2Hat] };
@@ -235,7 +235,7 @@ public class RegisterPlayers : SceneLoader {
             {
                 i_p2Hat = 0;
             }
-            if (e_p1Color == Constants.Global.Color.RED) {
+            if (e_p2Color == Constants.Global.Color.RED) {
                 mr_hats[(4*1) + i_p2Hat].materials = new Material[] { mat_hatRed[i_p2Hat] };
             } else {
                 mr_hats[(4*1) + i_p2Hat].materials = new Material[] { mat_hatBlue[i_p2Hat] };
@@ -250,7 +250,7 @@ public class RegisterPlayers : SceneLoader {
             {
                 i_p3Hat = 3;
             }
-            if (e_p2Color == Constants.Global.Color.RED) {
+            if (e_p3Color == Constants.Global.Color.RED) {
                 mr_hats[(4*2) + i_p3Hat].materials = new Material[] { mat_hatRed[i_p3Hat] };
             } else {
                 mr_hats[(4*2) + i_p3Hat].materials = new Material[] { mat_hatBlue[i_p3Hat] };
@@ -265,7 +265,7 @@ public class RegisterPlayers : SceneLoader {
             {
                 i_p3Hat = 0;
             }
-            if (e_p2Color == Constants.Global.Color.RED) {
+            if (e_p3Color == Constants.Global.Color.RED) {
                 mr_hats[(4*2) + i_p3Hat].materials = new Material[] { mat_hatRed[i_p3Hat] };
             } else {
                 mr_hats[(4*2) + i_p3Hat].materials = new Material[] { mat_hatBlue[i_p3Hat] };
