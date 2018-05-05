@@ -94,7 +94,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EmissionColor: {r: 0.11764705, g: 0.11764705, b: 0.11764705, a: 1}
     - _HighlightColor: {r: 0.6351643, g: 0.91506976, b: 0.9705882, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _RimColor: {r: 0.9558824, g: 0.48433957, b: 0.056228373, a: 1}
