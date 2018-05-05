@@ -5,6 +5,7 @@
  */
 
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FlagController : MonoBehaviour {
 #region Variables and Declarations
@@ -12,7 +13,7 @@ public class FlagController : MonoBehaviour {
     [SerializeField] private Constants.Global.Color e_color;        // identifies owning team
     [SerializeField] private GameObject go_buttonPrompt;            // indicator to pickup
     [SerializeField] private GameObject go_scoreParticle;
-    [SerializeField] private GameObject go_timer;
+    [SerializeField] private Text go_timer;
     private int i_flagTimer = 0;
     #endregion
 
@@ -27,7 +28,7 @@ public class FlagController : MonoBehaviour {
 
     private void FlagResetTimer() {
         i_flagTimer++;
-        go_timer.GetComponent<TextMesh>().text = (Constants.ObjectiveStats.C_FlagResetTimer - i_flagTimer).ToString();
+        go_timer.text = (Constants.ObjectiveStats.C_FlagResetTimer - i_flagTimer).ToString();
 
         if (i_flagTimer >= Constants.ObjectiveStats.C_FlagResetTimer) {
             ResetTimer();
@@ -37,7 +38,7 @@ public class FlagController : MonoBehaviour {
 
     private void ResetTimer() {
         i_flagTimer = 0;
-        go_timer.GetComponent<TextMesh>().text = Constants.ObjectiveStats.C_FlagResetTimer.ToString();
+        go_timer.text = "";// Constants.ObjectiveStats.C_FlagResetTimer.ToString();
     }
 
     public void ResetFlagPosition() {
