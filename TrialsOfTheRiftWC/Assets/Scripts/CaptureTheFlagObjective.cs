@@ -34,7 +34,7 @@ public class CaptureTheFlagObjective : Objective {
 
 #region Unity Overrides	
     void OnEnable() {
-        maestro.PlayBeginCTF();
+        //maestro.PlayBeginCTF();
     }
 
     void OnDestroy() {

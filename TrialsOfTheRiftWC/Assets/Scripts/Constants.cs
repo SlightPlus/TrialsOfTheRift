@@ -31,6 +31,7 @@ public static class Constants {
         public static float C_MovementSpeed = 6.0f;
         public static float C_WispMovementSpeed = 1.5f;
         public static float C_RespawnTimer = 5.0f;
+        public static float C_RespawnHealthSubDivision = 100.0f;
         public static float C_MaxHealth = 300.0f;
         public static float C_StepSoundDelay = 0.4f;
         public static float C_InvulnTime = 2.0f;
@@ -131,6 +132,7 @@ public static class Constants {
         //public static Vector3 C_RedCTFGoalSpawn = C_GenericRedObjectiveGoalSpawn;
         //public static Vector3 C_BlueCTFGoalSpawn = C_GenericBlueObjectiveGoalSpawn;
         public static int C_CTFMaxScore = 3;
+        public static float C_FlagResetTimer = 10.0f;
 
         // Crystal Stats
         //public static Vector3 C_RedCrystalSpawn = C_GenericBlueObjectiveTargetSpawn;

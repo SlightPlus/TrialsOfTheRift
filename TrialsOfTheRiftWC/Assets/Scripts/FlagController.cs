@@ -12,6 +12,8 @@ public class FlagController : MonoBehaviour {
     [SerializeField] private Constants.Global.Color e_color;        // identifies owning team
     [SerializeField] private GameObject go_buttonPrompt;            // indicator to pickup
     [SerializeField] private GameObject go_scoreParticle;
+    [SerializeField] private GameObject go_timer;
+    private int i_flagTimer = 0;
     #endregion
 
     #region FlagController Methods
@@ -20,10 +22,27 @@ public class FlagController : MonoBehaviour {
         transform.localPosition = new Vector3(transform.localPosition.x, Constants.ObjectiveStats.C_RedFlagSpawn.y, transform.localPosition.z);
         if(ctfo_owner.gameObject.activeSelf)    // needed for safety of auto flag drop at Objective's end
             ctfo_owner.StartCoroutine("Notify");
+        InvokeRepeating("FlagResetTimer", 1.0f, 1.0f);
+    }
+
+    private void FlagResetTimer() {
+        i_flagTimer++;
+        go_timer.GetComponent<TextMesh>().text = (Constants.ObjectiveStats.C_FlagResetTimer - i_flagTimer).ToString();
+
+        if (i_flagTimer >= Constants.ObjectiveStats.C_FlagResetTimer) {
+            ResetTimer();
+            ResetFlagPosition();
+        }
+    }
+
+    private void ResetTimer() {
+        i_flagTimer = 0;
+        go_timer.GetComponent<TextMesh>().text = Constants.ObjectiveStats.C_FlagResetTimer.ToString();
     }
 
     public void ResetFlagPosition() {
-        if(e_color == Constants.Global.Color.RED) {
+        CancelInvoke("FlagResetTimer");
+        if (e_color == Constants.Global.Color.RED) {
             transform.localPosition = Constants.ObjectiveStats.C_RedFlagSpawn;
         }
         else {
@@ -41,6 +60,7 @@ public class FlagController : MonoBehaviour {
     #endregion
 
     #region Unity Overrides
+
     private void OnDestroy()
     {
         CancelInvoke();
@@ -53,6 +73,9 @@ public class FlagController : MonoBehaviour {
 			other.gameObject.SetActive(false);
             ctfo_owner.StopCoroutine("Notify");
             go_buttonPrompt.SetActive(false);
+
+            ResetTimer();
+            CancelInvoke("FlagResetTimer");
         }
         // Player scoring with flag
 		if (other.CompareTag("Goal")) {
