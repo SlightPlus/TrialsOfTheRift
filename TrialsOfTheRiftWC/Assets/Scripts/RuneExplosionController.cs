@@ -14,7 +14,7 @@ public class RuneExplosionController : MonoBehaviour {
     void Start() {
 		Destroy(gameObject, Constants.EnemyStats.C_RuneExplosionLiveTime);
 		startupFinished = false;
-		startupFinished = false;
+		activeOver = false;
 		Invoke("ExplosionReady",1f);
 	}
 
