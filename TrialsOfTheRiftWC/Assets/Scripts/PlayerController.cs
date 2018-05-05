@@ -1,4 +1,4 @@
-﻿/*  Player Controller - Sam Caulker
+﻿ /*  Player Controller - Sam Caulker
  * 
  *  Desc:   Facilitates player interactions
  * 
@@ -113,7 +113,11 @@ public class PlayerController : SpellTarget {
 
 #region Player Controller Methods
     override public void ApplySpellEffect(Constants.SpellStats.SpellType spell, Constants.Global.Color color, float damage, Vector3 direction) {
-        switch(spell) {
+        if (isWisp) {
+            return;
+        }
+
+        switch (spell) {
             case Constants.SpellStats.SpellType.WIND:
                 DropFlag();
 
@@ -263,12 +267,19 @@ public class PlayerController : SpellTarget {
             go_playerWisp.SetActive(true);
             go_playerCapsule.SetActive(false);
         }
+
+        InvokeRepeating("RespawnTimer", 0.0f, Constants.PlayerStats.C_RespawnTimer / Constants.PlayerStats.C_RespawnHealthSubDivision);
+
         f_nextMagicMissile = 0;
         f_nextWind = 0;
         f_nextIce = 0;
         f_nextElectric = 0;
         f_nextCast = 0;
         Invoke("PlayerRespawn", Constants.PlayerStats.C_RespawnTimer);
+    }
+
+    private void RespawnTimer() {
+        f_health += Constants.PlayerStats.C_MaxHealth / Constants.PlayerStats.C_RespawnHealthSubDivision;
     }
 	
 	private void DissolvePlayer(){
@@ -292,7 +303,8 @@ public class PlayerController : SpellTarget {
  
 
     private void PlayerRespawn() {
-		isWisp = false;
+        CancelInvoke("RespawnTimer");
+        isWisp = false;
         isInvuln = true;
         Invoke("EndInvuln", Constants.PlayerStats.C_InvulnTime);
         InvokeRepeating("InvulnFlicker", 0f, 0.25f);
