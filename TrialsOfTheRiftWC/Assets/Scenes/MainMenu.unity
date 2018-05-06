@@ -4183,6 +4183,7 @@ GameObject:
   - component: {fileID: 512410114}
   - component: {fileID: 512410113}
   - component: {fileID: 512410112}
+  - component: {fileID: 512410117}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -4260,6 +4261,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &512410117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 512410111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4029e32a78629584ea3acf7fe2514c09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  f_ampX: 0.2
+  f_ampY: 0.2
+  f_omegaX: 0.2
+  f_omegaY: 0.2
+  verticalBounce: 1
+  horizBounce: 1
+  start_z: -10
+  start_y: 1
+  start_x: 0
 --- !u!1 &529747189
 GameObject:
   m_ObjectHideFlags: 0
@@ -4589,6 +4610,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4029e32a78629584ea3acf7fe2514c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  f_ampX: 10
+  f_ampY: 0.2
+  f_omegaX: 1
+  f_omegaY: 1
+  verticalBounce: 1
+  horizBounce: 0
+  start_z: -22
+  start_y: 2
+  start_x: 4.9
 --- !u!1001 &577844313
 Prefab:
   m_ObjectHideFlags: 0
@@ -8937,11 +8967,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400026, guid: a83b5224d32106e4c9a4d159743fe240, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 25
+      value: 25.8
       objectReference: {fileID: 0}
     - target: {fileID: 400028, guid: a83b5224d32106e4c9a4d159743fe240, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 25
+      value: 25.8
       objectReference: {fileID: 0}
     - target: {fileID: 400016, guid: a83b5224d32106e4c9a4d159743fe240, type: 3}
       propertyPath: m_LocalPosition.z
@@ -18205,6 +18235,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4029e32a78629584ea3acf7fe2514c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  f_ampX: 10
+  f_ampY: 0.2
+  f_omegaX: 1
+  f_omegaY: 1
+  verticalBounce: 1
+  horizBounce: 0
+  start_z: -22
+  start_y: 2
+  start_x: -4.6
 --- !u!1 &2094518510
 GameObject:
   m_ObjectHideFlags: 0
@@ -18369,7 +18408,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2119272677}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.24, y: 0.63216114, z: 17.87}
+  m_LocalPosition: {x: -0.24, y: 0.4, z: 17.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1085467807}
