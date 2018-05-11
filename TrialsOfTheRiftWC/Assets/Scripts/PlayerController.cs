@@ -152,9 +152,9 @@ public class PlayerController : SpellTarget {
 
                     if (f_canMove != 0) {
                         f_canMove = Constants.SpellStats.C_ElectricAOESlowDownMultiplier;
+						anim.SetTrigger("gooTrigger");
                     }
                     TakeDamage(damage, Constants.Global.DamageType.ELECTRICITY);
-                    anim.SetTrigger("gooTrigger");
                 }
                 break;
             case Constants.SpellStats.SpellType.MAGICMISSILE:
