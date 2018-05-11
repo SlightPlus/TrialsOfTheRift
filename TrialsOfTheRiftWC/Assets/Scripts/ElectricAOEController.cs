@@ -40,6 +40,10 @@ public class ElectricAOEController : MonoBehaviour {
         SpellTarget target;
         if (target = other.GetComponent<SpellTarget>()) {
             target.NegateSpellEffect(Constants.SpellStats.SpellType.ELECTRICITYAOE);
+            PlayerController target_player;
+            if (target_player = other.GetComponent<PlayerController>()) {
+                target_player.CleanOffGoo();
+            }
         }
 	}
 #endregion

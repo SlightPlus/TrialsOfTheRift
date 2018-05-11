@@ -240,19 +240,19 @@ public class NecromancerController : EnemyController {
     }
 
 	private bool IsCornered() {
-		if (transform.position.x <= 2.0 || transform.position.x <= -1*Constants.EnemyStats.C_MapBoundryXAxis+2.0) {
-			if ((transform.position.z >= Constants.EnemyStats.C_MapBoundryZAxis-2.0)) {
+		if (transform.position.x <= 3.0 || transform.position.x <= -1*Constants.EnemyStats.C_MapBoundryXAxis+3.0) {
+			if ((transform.position.z >= Constants.EnemyStats.C_MapBoundryZAxis-3.0)) {
 				return true;
 			}
-			else if ((transform.position.z <= -1*Constants.EnemyStats.C_MapBoundryZAxis+2.0)) {
+			else if ((transform.position.z <= -1*Constants.EnemyStats.C_MapBoundryZAxis+3.0)) {
 				return true;
 			}
 		}
-		else if (transform.position.x >= -2.0 || transform.position.x >= Constants.EnemyStats.C_MapBoundryXAxis-2.0) {
-			if ((transform.position.z >= Constants.EnemyStats.C_MapBoundryZAxis-2.0)) {
+		else if (transform.position.x >= -3.0 || transform.position.x >= Constants.EnemyStats.C_MapBoundryXAxis-3.0) {
+			if ((transform.position.z >= Constants.EnemyStats.C_MapBoundryZAxis-3.0)) {
 				return true;
 			}
-			else if ((transform.position.z <= -1*Constants.EnemyStats.C_MapBoundryZAxis+2.0)) {
+			else if ((transform.position.z <= -1*Constants.EnemyStats.C_MapBoundryZAxis+3.0)) {
 				return true;
 			}
 		}

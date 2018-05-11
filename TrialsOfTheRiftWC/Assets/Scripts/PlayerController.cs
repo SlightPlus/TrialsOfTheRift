@@ -23,6 +23,7 @@ public class PlayerController : SpellTarget {
     [SerializeField] private Transform t_flagPos;       // location on character model of flag
     [SerializeField] private GameObject go_interactCollider;  // activated with button-press to interact with objectives
     [SerializeField] private GameObject go_parryShield;       // activated with right stick click
+    [SerializeField] private GameObject go_healingVFX;			// healing particle effect 
     [SerializeField] private GameObject go_windHitParticles;
     [SerializeField] private PauseController pauc_pause;        // for pausing
 
@@ -31,6 +32,8 @@ public class PlayerController : SpellTarget {
 
     [SerializeField] private Texture txtr_bodyNormal;                       //These are for invulnerability.
     [SerializeField] private Texture txtr_bodyFlash;
+    [SerializeField] private Texture txtr_bodyGooed;
+    [SerializeField] private Texture txtr_outfitNormal;
     [SerializeField] private Material mat_hatFlash;
     [SerializeField] private Color col_outfitNormal;
     [SerializeField] private Color col_outfitFlash;
@@ -155,7 +158,9 @@ public class PlayerController : SpellTarget {
 
                     if (f_canMove != 0) {
                         f_canMove = Constants.SpellStats.C_ElectricAOESlowDownMultiplier;
-						anim.SetTrigger("gooTrigger");
+                        smr_playerBody.material.mainTexture = txtr_bodyGooed;
+                        smr_playerOutfit.material.mainTexture = txtr_bodyGooed;
+                        anim.SetTrigger("gooTrigger");
                     }
                     TakeDamage(damage, Constants.Global.DamageType.ELECTRICITY);
                 }
@@ -233,6 +238,11 @@ public class PlayerController : SpellTarget {
 
     private void TurnOffWindHitParticles() {
         go_windHitParticles.SetActive(false);
+    }
+
+    public void CleanOffGoo() {
+        smr_playerBody.material.mainTexture = txtr_bodyNormal;
+        smr_playerOutfit.material.mainTexture = txtr_outfitNormal;
     }
 
     private void TurnOffInteractCollider() {
@@ -367,7 +377,7 @@ public class PlayerController : SpellTarget {
             } else {
                 f_health = tempHp;
             }
-            //HealVisualOn();
+            HealVisualOn();
         }
     }
 
@@ -444,18 +454,20 @@ public class PlayerController : SpellTarget {
     //    go_playerCapsule.GetComponent<MeshRenderer>().material.color = col_originalColor;
     //}
 
-    //public void HealVisualOn() {
-    //    go_playerCapsule.GetComponent<MeshRenderer>().material.color = Color.green;
-    //    //Call screenshake here.
-    //    Invoke("HealVisualOff", 0.1666f * 2);
-    //}
+    public void HealVisualOn() {
+        go_healingVFX.SetActive(true);
+        //go_playerCapsule.GetComponent<MeshRenderer>().material.color = Color.green;
+        //Call screenshake here.
+        Invoke("HealVisualOff", 1.0f);
+    }
 
-    //public void HealVisualOff() {
-    //    go_playerCapsule.GetComponent<MeshRenderer>().material.color = col_originalColor;
-    //}
+    public void HealVisualOff() {
+        go_healingVFX.SetActive(false);
+        //go_playerCapsule.GetComponent<MeshRenderer>().material.color = col_originalColor;
+    }
     #endregion
 
-#region Unity Overrides
+    #region Unity Overrides
     protected override void Start() {
         maestro = Maestro.Instance;
         riftController = RiftController.Instance;
