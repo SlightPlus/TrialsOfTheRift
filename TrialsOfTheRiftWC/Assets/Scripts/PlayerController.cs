@@ -119,6 +119,7 @@ public class PlayerController : SpellTarget {
 
         switch (spell) {
             case Constants.SpellStats.SpellType.WIND:
+				if(color == e_color) maestro.PlayAnnouncementFriendlyFire();
                 DropFlag();
 
                 if (Constants.UnitTests.C_RunningCTFTests)
@@ -129,6 +130,7 @@ public class PlayerController : SpellTarget {
                 anim.SetTrigger("windTrigger");
                 break;
             case Constants.SpellStats.SpellType.ICE:
+				if(color == e_color) maestro.PlayAnnouncementFriendlyFire();
                 DropFlag();
 
                 if (Constants.UnitTests.C_RunningCTFTests)
@@ -309,6 +311,7 @@ public class PlayerController : SpellTarget {
         Invoke("EndInvuln", Constants.PlayerStats.C_InvulnTime);
         InvokeRepeating("InvulnFlicker", 0f, 0.25f);
 		maestro.PlayPlayerSpawn();
+		maestro.PlayAnnouncementPlayerSpawn();
         if (b_deathAnimOK) {
             ReconstructPlayer();
             b_deathAnimOK = false;

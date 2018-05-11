@@ -97,5 +97,11 @@ public abstract class Objective : MonoBehaviour {
     public void DeNotify() {
         StopCoroutine("Notify");
     }
+	
+	public Constants.Global.Color GetLeadColor(){
+		if(Constants.TeamStats.C_RedTeamScore > Constants.TeamStats.C_RedTeamScore) return Constants.Global.Color.RED;
+		else if(Constants.TeamStats.C_RedTeamScore < Constants.TeamStats.C_RedTeamScore) return Constants.Global.Color.BLUE;
+		else return Constants.Global.Color.NULL;
+	}
 #endregion
 }

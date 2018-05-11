@@ -24,6 +24,9 @@ public class RiftBossObjective : Objective {
         if (f <= 0) {
             StartCoroutine(DelayCompleteforExplosion());
         }
+		else if (f <= Constants.ObjectiveStats.C_RiftBossMaxHealth * .1f) {
+            maestro.PlayTeamEncouragement();
+        }
     }
 
     private IEnumerator DelayCompleteforExplosion() {
