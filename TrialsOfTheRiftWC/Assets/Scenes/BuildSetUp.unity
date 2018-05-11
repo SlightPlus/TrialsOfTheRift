@@ -22210,6 +22210,18 @@ Prefab:
       value: 
       objectReference: {fileID: 1399049070116990, guid: a6ec5ad0254870244b463e157e59b407,
         type: 2}
+    - target: {fileID: 114278817969382078, guid: 7e0373141a7de8e4fb83638891c59bde,
+        type: 2}
+      propertyPath: go_healingVFX
+      value: 
+      objectReference: {fileID: 1931647727678058, guid: 44a09c84e6d3641c8b89632b722cf2b1,
+        type: 2}
+    - target: {fileID: 114799351881642106, guid: 7e0373141a7de8e4fb83638891c59bde,
+        type: 2}
+      propertyPath: go_healingVFX
+      value: 
+      objectReference: {fileID: 1931647727678058, guid: 44a09c84e6d3641c8b89632b722cf2b1,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7e0373141a7de8e4fb83638891c59bde, type: 2}
   m_IsPrefabParent: 0

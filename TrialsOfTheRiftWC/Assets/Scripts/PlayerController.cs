@@ -23,6 +23,7 @@ public class PlayerController : SpellTarget {
     [SerializeField] private Transform t_flagPos;       // location on character model of flag
     [SerializeField] private GameObject go_interactCollider;  // activated with button-press to interact with objectives
     [SerializeField] private GameObject go_parryShield;       // activated with right stick click
+	[SerializeField] private GameObject go_healingVFX;			// healing particle effect
     [SerializeField] private PauseController pauc_pause;        // for pausing
 
     [SerializeField] private SkinnedMeshRenderer smr_playerBody;            //These are for visual cue on the player model
@@ -358,7 +359,7 @@ public class PlayerController : SpellTarget {
             } else {
                 f_health = tempHp;
             }
-            //HealVisualOn();
+            HealVisualOn();
         }
     }
 
@@ -435,15 +436,17 @@ public class PlayerController : SpellTarget {
     //    go_playerCapsule.GetComponent<MeshRenderer>().material.color = col_originalColor;
     //}
 
-    //public void HealVisualOn() {
-    //    go_playerCapsule.GetComponent<MeshRenderer>().material.color = Color.green;
-    //    //Call screenshake here.
-    //    Invoke("HealVisualOff", 0.1666f * 2);
-    //}
+    public void HealVisualOn() {
+		go_healingVFX.SetActive(true);
+        //go_playerCapsule.GetComponent<MeshRenderer>().material.color = Color.green;
+        //Call screenshake here.
+        Invoke("HealVisualOff", 1.0f);
+    }
 
-    //public void HealVisualOff() {
-    //    go_playerCapsule.GetComponent<MeshRenderer>().material.color = col_originalColor;
-    //}
+    public void HealVisualOff() {
+		go_healingVFX.SetActive(false);
+        //go_playerCapsule.GetComponent<MeshRenderer>().material.color = col_originalColor;
+    }
     #endregion
 
 #region Unity Overrides
