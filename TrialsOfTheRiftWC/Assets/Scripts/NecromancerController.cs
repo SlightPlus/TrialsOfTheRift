@@ -21,8 +21,8 @@ public class NecromancerController : EnemyController {
 		nma_agent.speed = Constants.EnemyStats.C_NecromancerBaseSpeed;
 		f_health = Constants.EnemyStats.C_NecromancerHealth;
         b_teleported = false;
-		InvokeRepeating("DropRune", 10.0f, Constants.EnemyStats.C_RuneTimer);
-		InvokeRepeating("Summon", 16.0f, Constants.EnemyStats.C_SummonTimer);
+		//InvokeRepeating("DropRune", 10.0f, Constants.EnemyStats.C_RuneTimer);
+		//InvokeRepeating("Summon", 16.0f, Constants.EnemyStats.C_SummonTimer);
 		maestro.PlayNecromancerSpawn();
 	}
 	
@@ -240,19 +240,19 @@ public class NecromancerController : EnemyController {
     }
 
 	private bool IsCornered() {
-		if (transform.position.x <= 2.0 || transform.position.x <= -1*Constants.EnemyStats.C_MapBoundryXAxis+2.0) {
-			if ((transform.position.z >= Constants.EnemyStats.C_MapBoundryZAxis-2.0)) {
+		if (transform.position.x <= 3.0f || transform.position.x <= -1*Constants.EnemyStats.C_MapBoundryXAxis+3.0f) {
+			if ((transform.position.z >= Constants.EnemyStats.C_MapBoundryZAxis-3.0f)) {
 				return true;
 			}
-			else if ((transform.position.z <= -1*Constants.EnemyStats.C_MapBoundryZAxis+2.0)) {
+			else if ((transform.position.z <= -1*Constants.EnemyStats.C_MapBoundryZAxis+3.0f)) {
 				return true;
 			}
 		}
-		else if (transform.position.x >= -2.0 || transform.position.x >= Constants.EnemyStats.C_MapBoundryXAxis-2.0) {
-			if ((transform.position.z >= Constants.EnemyStats.C_MapBoundryZAxis-2.0)) {
+		else if (transform.position.x >= -3.0f || transform.position.x >= Constants.EnemyStats.C_MapBoundryXAxis-3.0f) {
+			if ((transform.position.z >= Constants.EnemyStats.C_MapBoundryZAxis-3.0f)) {
 				return true;
 			}
-			else if ((transform.position.z <= -1*Constants.EnemyStats.C_MapBoundryZAxis+2.0)) {
+			else if ((transform.position.z <= -1*Constants.EnemyStats.C_MapBoundryZAxis+3.0f)) {
 				return true;
 			}
 		}
