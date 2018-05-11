@@ -31,6 +31,7 @@ public class PlayerController : SpellTarget {
 
     [SerializeField] private Texture txtr_bodyNormal;                       //These are for invulnerability.
     [SerializeField] private Texture txtr_bodyFlash;
+	[SerializeField] private Texture txtr_bodyGooed;
     [SerializeField] private Material mat_hatFlash;
     [SerializeField] private Color col_outfitNormal;
     [SerializeField] private Color col_outfitFlash;
@@ -153,6 +154,7 @@ public class PlayerController : SpellTarget {
 
                     if (f_canMove != 0) {
                         f_canMove = Constants.SpellStats.C_ElectricAOESlowDownMultiplier;
+						smr_playerBody.material.mainTexture = txtr_bodyGooed;
 						anim.SetTrigger("gooTrigger");
                     }
                     TakeDamage(damage, Constants.Global.DamageType.ELECTRICITY);
@@ -228,6 +230,10 @@ public class PlayerController : SpellTarget {
     private void TurnOffParryShield() {
         go_parryShield.SetActive(false);
     }
+
+	public void CleanOffGoo() {
+		smr_playerBody.material.mainTexture = txtr_bodyNormal;
+	}
 
     private void TurnOffInteractCollider() {
         go_interactCollider.transform.localPosition = new Vector3(go_interactCollider.transform.localPosition.x, -1000.0f, go_interactCollider.transform.localPosition.z);

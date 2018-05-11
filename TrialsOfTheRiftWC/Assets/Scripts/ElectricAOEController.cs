@@ -38,8 +38,12 @@ public class ElectricAOEController : MonoBehaviour {
 
 	void OnTriggerExit(Collider other) {
         SpellTarget target;
+		PlayerController target_player;
         if (target = other.GetComponent<SpellTarget>()) {
             target.NegateSpellEffect(Constants.SpellStats.SpellType.ELECTRICITYAOE);
+			if (target_player = other.GetComponent<PlayerController>()) {
+				target_player.CleanOffGoo();
+			}
         }
 	}
 #endregion
