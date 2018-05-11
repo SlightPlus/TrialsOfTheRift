@@ -330,6 +330,10 @@ public sealed class RiftController : MonoBehaviour {
             float diff = pos.x + Constants.EnemyStats.C_MapBoundryXAxis;
             pos.x = pos.x - diff + 1;
         }
+        //Checks to see if the pos.x is the same side thats been passed in.  if not, then swap the side value
+        if(!(pos.x >= 0 && s >= 0) && !(pos.x < 0 && s < 0)) {
+            pos.x *= -1;
+        }
 
         return pos;
     }

@@ -150,7 +150,9 @@ public class PlayerController : SpellTarget {
                     if (Constants.UnitTests.C_RunningCTFTests)
                         return;
 
-                    f_canMove = Constants.SpellStats.C_ElectricAOESlowDownMultiplier;
+                    if (f_canMove != 0) {
+                        f_canMove = Constants.SpellStats.C_ElectricAOESlowDownMultiplier;
+                    }
                     TakeDamage(damage, Constants.Global.DamageType.ELECTRICITY);
                     anim.SetTrigger("gooTrigger");
                 }
@@ -396,7 +398,7 @@ public class PlayerController : SpellTarget {
     #region Flag Stuff
     // there's no good way to do any of this
     public void Pickup(GameObject flag) {
-        if (!isWisp) {
+        if (!isWisp && f_canMove != 0) {
             flag.transform.SetParent(t_flagPos);
             flag.transform.localPosition = Vector3.zero;
             go_flagObj = flag;
