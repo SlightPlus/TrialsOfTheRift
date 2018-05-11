@@ -23,6 +23,7 @@ public class PlayerController : SpellTarget {
     [SerializeField] private Transform t_flagPos;       // location on character model of flag
     [SerializeField] private GameObject go_interactCollider;  // activated with button-press to interact with objectives
     [SerializeField] private GameObject go_parryShield;       // activated with right stick click
+    [SerializeField] private GameObject go_windHitParticles;
     [SerializeField] private PauseController pauc_pause;        // for pausing
 
     [SerializeField] private SkinnedMeshRenderer smr_playerBody;            //These are for visual cue on the player model
@@ -126,6 +127,8 @@ public class PlayerController : SpellTarget {
 
                 StartCoroutine(WindPush(Constants.PlayerStats.C_PlayerWindPushMultiplier,direction,false));
                 TakeDamage(damage, Constants.Global.DamageType.WIND);
+                go_windHitParticles.SetActive(true);
+                Invoke("TurnOffWindHitParticles", 0.5f);
                 anim.SetTrigger("windTrigger");
                 break;
             case Constants.SpellStats.SpellType.ICE:
@@ -226,6 +229,10 @@ public class PlayerController : SpellTarget {
     #region Reset Helper Functions
     private void TurnOffParryShield() {
         go_parryShield.SetActive(false);
+    }
+
+    private void TurnOffWindHitParticles() {
+        go_windHitParticles.SetActive(false);
     }
 
     private void TurnOffInteractCollider() {
