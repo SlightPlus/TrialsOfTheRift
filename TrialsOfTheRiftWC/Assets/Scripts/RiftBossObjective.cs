@@ -27,6 +27,9 @@ public class RiftBossObjective : Objective {
 		else if (f <= Constants.ObjectiveStats.C_RiftBossMaxHealth * .1f) {
             maestro.PlayTeamEncouragement();
         }
+		
+		CancelInvoke("AnnounceIdle");
+		InvokeRepeating("AnnounceIdle",40f,40f);
     }
 
     private IEnumerator DelayCompleteforExplosion() {

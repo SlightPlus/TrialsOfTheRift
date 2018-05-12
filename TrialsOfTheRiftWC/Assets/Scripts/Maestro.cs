@@ -82,6 +82,7 @@ public sealed class Maestro : MonoBehaviour {
 	[SerializeField] private AudioClip[] ac_portal_announcement_three;
 	[SerializeField] private AudioClip[] ac_portal_announcement_four;
 	[SerializeField] private AudioClip[] ac_score_announcement;
+	[SerializeField] private AudioClip[] ac_idle;
 	[SerializeField] private AudioClip ac_begin_ctf;
 	[SerializeField] private AudioClip ac_begin_hockey;
 	[SerializeField] private AudioClip ac_begin_crystal_destruction;
@@ -302,6 +303,9 @@ public sealed class Maestro : MonoBehaviour {
 	}
 	public void PlayAnnouncementPlayerSpawn(){
 		PlayRandomAnnouncement(ac_player_spawn);
+	}
+	public void PlayAnnouncementIdle(){
+		PlayRandomAnnouncement(ac_idle);
 	}
 	public void PlayAnnouncementPortal(int playerNum){
 		if(b_announcementOk && Constants.R_Random.NextDouble() <= f_announcementChance && !as_voi.isPlaying){

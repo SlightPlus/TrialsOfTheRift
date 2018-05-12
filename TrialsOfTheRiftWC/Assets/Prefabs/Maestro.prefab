@@ -933,6 +933,20 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6a81ff32556718d4bbaf23b63f2ca756, type: 3}
   - {fileID: 8300000, guid: e18f3ebef71d47545abd96eb0731dcda, type: 3}
   - {fileID: 8300000, guid: 333cd634b51308545b5fc0bbabd55c89, type: 3}
+  ac_idle:
+  - {fileID: 8300000, guid: 544466df552ffab44bb0986c12be2319, type: 3}
+  - {fileID: 8300000, guid: 35647c59d8e265c45b7342ed11faebb3, type: 3}
+  - {fileID: 8300000, guid: a9c3d097c35a62442811f0a90c74047b, type: 3}
+  - {fileID: 8300000, guid: 26b7a90101e2ddd40b5429afaebcbd2d, type: 3}
+  - {fileID: 8300000, guid: d2b60104d61597242aeaa61098c606a5, type: 3}
+  - {fileID: 8300000, guid: f4d9cc2308b76104e86c2ee5ab054e9c, type: 3}
+  - {fileID: 8300000, guid: 290de71f409b03047b17e677ae0299dc, type: 3}
+  - {fileID: 8300000, guid: 1784243293c05c94bb61995c2ffdc98c, type: 3}
+  - {fileID: 8300000, guid: 1b289c998bbfffd4cbc393f8f76e0098, type: 3}
+  - {fileID: 8300000, guid: 44cb8940c5818f14bafd1c8ebcdcd0da, type: 3}
+  - {fileID: 8300000, guid: 12baf331cd1e914469db95548ac3a9a4, type: 3}
+  - {fileID: 8300000, guid: 92a0d2b7e99e0ea4684aeb15eaebe3dd, type: 3}
+  - {fileID: 8300000, guid: 772dcc29d5d91df41b913e533b049897, type: 3}
   ac_begin_ctf: {fileID: 8300000, guid: 50a6bc59cf96d3943a29663a63d7cd2c, type: 3}
   ac_begin_hockey: {fileID: 8300000, guid: 9809e43e235f47e46be2ee2e30db9976, type: 3}
   ac_begin_crystal_destruction: {fileID: 8300000, guid: c7b9844b8f2b8414e942deea986317c0,
