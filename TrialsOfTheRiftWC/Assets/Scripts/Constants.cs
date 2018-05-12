@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public static class Constants {
+	public static System.Random R_Random = new System.Random();
 
     // Global Constants
     public static class Global {
@@ -19,6 +20,7 @@ public static class Constants {
         public static string C_BuildNumber = "3.50";
         public static bool C_CanPause = true;
         public static Global.Color C_WinningTeam = Global.Color.BLUE;
+		
     }
 
     // Team Stats
