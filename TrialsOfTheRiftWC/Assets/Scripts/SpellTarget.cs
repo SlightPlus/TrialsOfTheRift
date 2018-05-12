@@ -35,10 +35,14 @@ public abstract class SpellTarget : MonoBehaviour {
 	public float Health{
 		get { return f_health; }
 	}
-    #endregion
-#endregion
 
-#region SpellTarget Shared Methods
+    public Rigidbody RigidBody {
+        get { return rb; }
+    }
+    #endregion
+    #endregion
+
+    #region SpellTarget Shared Methods
     public abstract void ApplySpellEffect(Constants.SpellStats.SpellType spell, Constants.Global.Color color, float damage, Vector3 direction);
 
     public virtual void NegateSpellEffect(Constants.SpellStats.SpellType spell) {

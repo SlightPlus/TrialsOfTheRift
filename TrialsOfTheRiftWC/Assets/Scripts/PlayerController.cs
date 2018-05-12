@@ -56,8 +56,7 @@ public class PlayerController : SpellTarget {
     private bool b_deathAnimOK = false;     // used to determine if death animation should play or not.
     private GameObject go_activeHat;        // the hat that's visible on the player.
     private Material mat_hatNormal;         // This is for freezing/invuln visuals.
-    private MeshRenderer mr_hat;
-    private Rigidbody r_rigidBody;
+    private MeshRenderer mr_hat;    
     
 
     // Spells
@@ -112,10 +111,6 @@ public class PlayerController : SpellTarget {
 
     public GameObject Capsule {
         get { return go_playerCapsule; }
-    }
-
-    public Rigidbody RigidBody {
-        get { return r_rigidBody; }
     }
     #endregion
 #endregion
@@ -476,7 +471,6 @@ public class PlayerController : SpellTarget {
     protected override void Start() {
         maestro = Maestro.Instance;
         riftController = RiftController.Instance;
-        r_rigidBody = GetComponent<Rigidbody>();
 
         if (Constants.UnitTests.C_RunningCTFTests)
             return;
