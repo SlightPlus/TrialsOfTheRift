@@ -184,7 +184,6 @@ public class PlayerController : SpellTarget {
 
     override public void NegateSpellEffect(Constants.SpellStats.SpellType spell) {
         if (spell == Constants.SpellStats.SpellType.ELECTRICITYAOE) {
-            StopCoroutine(cor_AOECoroutine);
             f_canMove = 1;
         }
     }

@@ -101,8 +101,9 @@ public static class Constants {
         // TODO: make charge time and Live time tied
         public static float C_ElectricLiveTime = 0.1f;
         public static float C_ElectricSpeed = 15.0f;
-		public static float C_ElectricDamage = 40.0f;
-		public static float C_ElectricCooldown = 8.0f;
+        //public static float C_ElectricDamage = 40.0f;
+        public static float C_ElectricDamage = 1.3f;
+        public static float C_ElectricCooldown = 8.0f;
         public static float C_ElectricChargeTime = C_SpellChargeTime;
         public static float C_ElectricRiftDamageMultiplier = C_RiftDamageMultiplier;
         public static float C_ElectricAOESlowDownMultiplier = 0.5f;
