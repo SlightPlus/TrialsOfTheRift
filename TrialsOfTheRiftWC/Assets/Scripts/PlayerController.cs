@@ -457,16 +457,16 @@ public class PlayerController : SpellTarget {
     //}
 
     public void HealVisualOn() {
-        go_healingVFX.SetActive(true);
+        Instantiate(go_healingVFX,transform.position, Quaternion.identity);
         //go_playerCapsule.GetComponent<MeshRenderer>().material.color = Color.green;
         //Call screenshake here.
-        Invoke("HealVisualOff", 1.0f);
+        //Invoke("HealVisualOff", 1.0f);
     }
 
-    public void HealVisualOff() {
-        go_healingVFX.SetActive(false);
-        //go_playerCapsule.GetComponent<MeshRenderer>().material.color = col_originalColor;
-    }
+    //public void HealVisualOff() {
+    //    go_healingVFX.SetActive(false);
+    //    //go_playerCapsule.GetComponent<MeshRenderer>().material.color = col_originalColor;
+    //}
     #endregion
 
     #region Unity Overrides

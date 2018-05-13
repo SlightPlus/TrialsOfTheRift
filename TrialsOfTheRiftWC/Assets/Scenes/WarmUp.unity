@@ -6728,6 +6728,31 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 198812459215045462, guid: 47ad6f2c4d1214282a4ba519e51eee1e,
+        type: 2}
+      propertyPath: useUnscaledTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198512686703533612, guid: 47ad6f2c4d1214282a4ba519e51eee1e,
+        type: 2}
+      propertyPath: useUnscaledTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198829409442866758, guid: 47ad6f2c4d1214282a4ba519e51eee1e,
+        type: 2}
+      propertyPath: useUnscaledTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198829409442866758, guid: 47ad6f2c4d1214282a4ba519e51eee1e,
+        type: 2}
+      propertyPath: randomSeed
+      value: 1183714589
+      objectReference: {fileID: 0}
+    - target: {fileID: 198696921811553512, guid: 47ad6f2c4d1214282a4ba519e51eee1e,
+        type: 2}
+      propertyPath: useUnscaledTime
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 47ad6f2c4d1214282a4ba519e51eee1e, type: 2}
   m_IsPrefabParent: 0
