@@ -58,6 +58,7 @@ public abstract class Objective : MonoBehaviour {
         riftController.ResetPlayers();
         Debug.Log("オラオラオラ");
         StartCoroutine("Notify");
+		InvokeRepeating("AnnounceIdle",40f,40f);
         return this;
     }
 
@@ -87,15 +88,54 @@ public abstract class Objective : MonoBehaviour {
         if (!go_objectIndicator)
             yield break;
 
-        yield return new WaitForSeconds(Constants.ObjectiveStats.C_NotificationTimer);
         go_objectIndicator.SetActive(true);
         yield return new WaitForSeconds(2.0f);
         go_goalIndicator.SetActive(true);
+        yield return new WaitForSeconds(Constants.ObjectiveStats.C_NotificationTimer);
+
         StartCoroutine("Notify");
     }
 
     public void DeNotify() {
         StopCoroutine("Notify");
     }
+	
+	protected Constants.Global.Color GetLeadColor(){
+		if(Constants.TeamStats.C_RedTeamScore > Constants.TeamStats.C_BlueTeamScore) return Constants.Global.Color.RED;
+		else if(Constants.TeamStats.C_RedTeamScore < Constants.TeamStats.C_BlueTeamScore) return Constants.Global.Color.BLUE;
+		else return Constants.Global.Color.NULL;
+	}
+	
+	protected void UpdateScore(int max){
+		Constants.Global.Color oldLead = GetLeadColor();
+        i_score++;
+		Constants.Global.Color newLead = GetLeadColor();
+		
+		//If this is the first point of the game, play the first point announcement.
+		if(oldLead == Constants.Global.Color.NULL && i_score == 1) maestro.PlayAnnouncementFirstScore();
+		
+		//If the lead changed, play the lead changed announcement.
+		if(oldLead != newLead && newLead != Constants.Global.Color.NULL){
+			maestro.PlayAnnouncementScoreComeback();
+			maestro.PlayAnnouncementScoreLoser();
+		}
+		
+		maestro.PlayAnnouncementScore();
+		
+		maestro.PlayScore();
+        calligrapher.UpdateGoalScoreUI(e_color, i_score);
+		if (i_score == max - 1) {
+            maestro.PlayTeamEncouragement();
+        }
+        else if (i_score >= max) {
+            b_isComplete = true;
+        }
+		CancelInvoke("AnnounceIdle");
+		InvokeRepeating("AnnounceIdle",40f,40f);
+	}
+	
+	protected void AnnounceIdle(){
+		maestro.PlayAnnouncementIdle();
+	}
 #endregion
 }

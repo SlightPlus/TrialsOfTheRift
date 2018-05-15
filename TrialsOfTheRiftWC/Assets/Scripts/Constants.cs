@@ -10,15 +10,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public static class Constants {
+	public static System.Random R_Random = new System.Random();
 
     // Global Constants
     public static class Global {
         public enum Color { RED, BLUE, NULL };
         public enum Side { LEFT = -1, RIGHT = 1 };
 		public enum DamageType { WIND, ICE, ELECTRICITY, MAGICMISSILE, ENEMY, RIFT, DEATHBOLT, RUNE, PUCK };
-        public static string C_BuildNumber = "3.49";
+        public static string C_BuildNumber = "3.60";
         public static bool C_CanPause = true;
         public static Global.Color C_WinningTeam = Global.Color.BLUE;
+		
     }
 
     // Team Stats
@@ -32,6 +34,7 @@ public static class Constants {
         public static float C_MovementSpeed = 6.0f;
         public static float C_WispMovementSpeed = 1.5f;
         public static float C_RespawnTimer = 5.0f;
+        public static float C_RespawnHealthSubDivision = 100.0f;
         public static float C_MaxHealth = 300.0f;
         public static float C_StepSoundDelay = 0.4f;
         public static float C_InvulnTime = 2.0f;
@@ -100,8 +103,9 @@ public static class Constants {
         // TODO: make charge time and Live time tied
         public static float C_ElectricLiveTime = 0.1f;
         public static float C_ElectricSpeed = 15.0f;
-		public static float C_ElectricDamage = 40.0f;
-		public static float C_ElectricCooldown = 8.0f;
+        //public static float C_ElectricDamage = 40.0f;
+        public static float C_ElectricDamage = 1.3f;
+        public static float C_ElectricCooldown = 8.0f;
         public static float C_ElectricChargeTime = C_SpellChargeTime;
         public static float C_ElectricRiftDamageMultiplier = C_RiftDamageMultiplier;
         public static float C_ElectricAOESlowDownMultiplier = 0.5f;
@@ -132,6 +136,7 @@ public static class Constants {
         //public static Vector3 C_RedCTFGoalSpawn = C_GenericRedObjectiveGoalSpawn;
         //public static Vector3 C_BlueCTFGoalSpawn = C_GenericBlueObjectiveGoalSpawn;
         public static int C_CTFMaxScore = 3;
+        public static float C_FlagResetTimer = 10.0f;
 
         // Crystal Stats
         //public static Vector3 C_RedCrystalSpawn = C_GenericBlueObjectiveTargetSpawn;
