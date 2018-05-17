@@ -28,6 +28,7 @@ public sealed class Maestro : MonoBehaviour {
 	[SerializeField] private AudioClip ac_iceShoot;
 	[SerializeField] private AudioClip ac_electricShoot;
 	[SerializeField] private AudioClip[] ac_magicMissileShoot;
+	[SerializeField][Range(0, 2)] private float f_spellVolume;
 	[SerializeField] private AudioClip ac_contact_generic;
 	[SerializeField] private AudioClip ac_spell_charge;
 	
@@ -37,14 +38,19 @@ public sealed class Maestro : MonoBehaviour {
 	[SerializeField] private AudioClip[] ac_necromancer_die;
 	[SerializeField] private AudioClip[] ac_skeleton_spawn;
 	[SerializeField] private AudioClip ac_necromancer_spawn;
+	[SerializeField][Range(0, 6)] private float f_necromancer;
 	[SerializeField] private AudioClip[] ac_heavy_skeleton_footstep;
 	
 	[SerializeField] private AudioClip ac_playerSpawn;
 	[SerializeField] private AudioClip ac_playerDie;
+	[SerializeField][Range(0, 6)] private float f_playerDie;
 	
 	[SerializeField] private AudioClip ac_portal;
 	[SerializeField] private AudioClip ac_score;
 	[SerializeField] private AudioClip ac_objective_start;
+	
+	[SerializeField] private AudioClip[] ac_puck_bounce;
+	[SerializeField][Range(0, 2)] private float f_puck_bounce;
 	
 	[SerializeField] private AudioClip[] ac_bgm;
 
@@ -146,13 +152,13 @@ public sealed class Maestro : MonoBehaviour {
 		}
     }
 	
-	private void PlaySingle(AudioSource s, AudioClip c){
-		s.PlayOneShot(c);
+	private void PlaySingle(AudioSource s, AudioClip c, float volume = 1f){
+		s.PlayOneShot(c,volume);
 	}
 	
-	private void PlayRandom(AudioSource s, AudioClip[] c){
+	private void PlayRandom(AudioSource s, AudioClip[] c, float volume = 1f){
 		
-		s.PlayOneShot(c[Constants.R_Random.Next(0, c.Length)]);
+		s.PlayOneShot(c[Constants.R_Random.Next(0, c.Length)],volume);
 	}
 	
 	private void PlaySingleAnnouncement(AudioClip c){
@@ -175,19 +181,19 @@ public sealed class Maestro : MonoBehaviour {
 	}
 	
 	public void PlayWindShoot(){
-		PlaySingle(as_sfxHi,ac_windShoot);
+		PlaySingle(as_sfxHi,ac_windShoot,f_spellVolume);
 	}
 	public void PlayWindHit(){
-		PlaySingle(as_sfxHi,ac_windHit);
+		PlaySingle(as_sfxHi,ac_windHit,f_spellVolume);
 	}
 	public void PlayIceShoot(){
-		PlaySingle(as_sfxHi,ac_iceShoot);
+		PlaySingle(as_sfxHi,ac_iceShoot,f_spellVolume);
 	}
 	public void PlayElectricShoot(){
-		PlaySingle(as_sfxHi,ac_electricShoot);
+		PlaySingle(as_sfxHi,ac_electricShoot,f_spellVolume);
 	}
 	public void PlayMagicMissileShoot(){
-		PlayRandom(as_sfxHi,ac_magicMissileShoot);
+		PlayRandom(as_sfxHi,ac_magicMissileShoot,f_spellVolume);
 	}
 	public void PlayContactGeneric(){
 		PlaySingle(as_sfxHi,ac_contact_generic);
@@ -206,11 +212,11 @@ public sealed class Maestro : MonoBehaviour {
 		PlayRandom(as_sfxLo,ac_heavy_skeleton_die);
 	}
 	public void PlayNecromancerDie(){
-		PlayRandom(as_sfxHi,ac_necromancer_die);
+		PlayRandom(as_sfxHi,ac_necromancer_die,f_necromancer);
 	}
 	public void PlayNecromancerSpawn(){
 		//PlaySingle(as_sfxHi,ac_necromancer_spawn);
-		as_sfxHi.PlayOneShot(ac_necromancer_spawn,1.5f);
+		as_sfxHi.PlayOneShot(ac_necromancer_spawn,f_necromancer);
 	}
 	public void PlaySkeletonSpawn(){
 		PlayRandom(as_sfxMe,ac_skeleton_spawn);
@@ -223,8 +229,7 @@ public sealed class Maestro : MonoBehaviour {
 		as_sfxHi.PlayOneShot(ac_playerSpawn,1.5f);
 	}
 	public void PlayPlayerDie(){
-		//PlaySingle(as_sfxHi,ac_playerDie);
-		as_sfxHi.PlayOneShot(ac_playerDie,1.5f);
+		PlaySingle(as_sfxHi,ac_playerDie,f_playerDie);
 	}
 	public void PlayPortal(){
 		PlaySingle(as_sfxHi,ac_portal);
@@ -248,6 +253,9 @@ public sealed class Maestro : MonoBehaviour {
 				as_sfxMe.PlayOneShot(ac_player_hit[Constants.R_Random.Next(0, ac_player_hit.Length)],0.4f);
 			}
 		//PlayRandom(as_sfxMe,ac_player_hit);
+	}
+	public void PlayPuckBounce(){
+		PlayRandom(as_sfxLo,ac_puck_bounce,f_puck_bounce);
 	}
 	
 	public void PlayAnnouncmentPlayerHit(int playerNum, Constants.Global.DamageType d){
@@ -457,7 +465,7 @@ public sealed class Maestro : MonoBehaviour {
 		
 		
 		if(!b_alreadyFading){
-			to.clip = ac_bgm[i];
+			to.clip = ac_bgm[i+1];
 			to.timeSamples = from.timeSamples;
 			to.volume = 0;
 			from.volume = 1;

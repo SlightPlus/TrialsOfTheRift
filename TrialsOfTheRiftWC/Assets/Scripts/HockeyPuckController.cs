@@ -23,6 +23,7 @@ public class HockeyPuckController : SpellTarget {
                 f_speed += Constants.ObjectiveStats.C_PuckSpeedHitIncrease;
                 StartCoroutine(WindPush(Constants.ObjectiveStats.C_PuckWindPushMultiplier,direction, false));
                 transform.Rotate(direction);
+				maestro.PlayPuckBounce();
                 break;
             case Constants.SpellStats.SpellType.ICE:
                 rb.velocity = Vector3.zero;
@@ -107,6 +108,7 @@ public class HockeyPuckController : SpellTarget {
             float rot = 90 - Mathf.Atan2(v.z, v.x) * Mathf.Rad2Deg;
             transform.eulerAngles = new Vector3(90, rot, 0);
             transform.Rotate(v);
+			maestro.PlayPuckBounce();
             rb.velocity = transform.forward * f_speed;
         }
     }
