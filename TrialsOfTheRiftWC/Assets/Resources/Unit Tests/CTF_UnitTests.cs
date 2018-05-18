@@ -26,7 +26,7 @@ public class CTF_UnitTests {
     [OneTimeSetUp]
     public void StartUp() {  // StartUp runs once before running any test cases.
         Debug.Log("In StartUp");
-        Constants.UnitTests.C_RunningCTFTests = true;
+        // = true;
         SpawnCamera();
         SpawnMaestro();
         SpawnCanvas();

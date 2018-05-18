@@ -5,6 +5,8 @@
  *
  */
 
+ #define TESTING
+
 using System.Collections;
 using System.Collections.Generic;
 using System.Timers;
@@ -95,8 +97,9 @@ public sealed class Calligrapher : MonoBehaviour {
     //----------------------------
     // Initialization of different objectives
     public void CTFInit(Constants.Global.Color colorIn) {
-        if (Constants.UnitTests.C_RunningCTFTests)
-            return;
+#if TESTING
+        return;
+#endif
 
 
         if (colorIn == Constants.Global.Color.RED) {
@@ -241,9 +244,9 @@ public sealed class Calligrapher : MonoBehaviour {
             img_blueBossIcon.gameObject.SetActive(false);
         }
     }
-    #endregion
+#endregion
 
-    #region UI Fade In/Out Methods
+#region UI Fade In/Out Methods
     private IEnumerator FadeInRed() {
         float timer = (Time.realtimeSinceStartup - f_redStartTime);
         float fracJourney = timer / 1f;
@@ -335,14 +338,14 @@ public sealed class Calligrapher : MonoBehaviour {
         yield return new WaitForSecondsRealtime(0.075f);
         StartCoroutine(RedFlash());
     }
-    #endregion
+#endregion
 
     /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
-    #region Unity Overrides
+#region Unity Overrides
     void Awake() {
         instance = this;
         Constants.TeamStats.C_RedTeamScore = Constants.TeamStats.C_BlueTeamScore = 0;       //Reset the match count through restarts.
     }
-    #endregion
+#endregion
 }

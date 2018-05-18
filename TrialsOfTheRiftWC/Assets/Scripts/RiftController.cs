@@ -4,6 +4,8 @@
  * 
  */
 
+ #define TESTING
+
 using System;
 using System.Collections;
 using UnityEngine;
@@ -401,8 +403,9 @@ public sealed class RiftController : MonoBehaviour {
 	}
 
     public void ResetPlayers() {
-        if (Constants.UnitTests.C_RunningCTFTests)
-            return;
+#if TESTING
+        return;
+#endif
 
         go_playerReferences[0].transform.localPosition = Constants.PlayerStats.C_r1Start;
         go_playerReferences[1].transform.localPosition = Constants.PlayerStats.C_r2Start;

@@ -4,6 +4,8 @@
  * 
  */
 
+ #define TESTING
+
 using UnityEngine;
 
 public class FlagController : MonoBehaviour {
