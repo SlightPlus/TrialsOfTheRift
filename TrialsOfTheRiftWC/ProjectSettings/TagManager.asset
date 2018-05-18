@@ -21,6 +21,7 @@ TagManager:
   - Rune
   - RiftBoss
   - Deathbolt
+  - OutofBounds
   layers:
   - Default
   - TransparentFX
@@ -46,7 +47,7 @@ TagManager:
   - BlueShot
   - RedMM
   - BlueMM
-  - 
+  - OutofBounds
   - 
   - 
   - 

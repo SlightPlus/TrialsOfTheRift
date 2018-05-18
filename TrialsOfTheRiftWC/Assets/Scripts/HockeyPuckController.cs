@@ -100,7 +100,7 @@ public class HockeyPuckController : SpellTarget {
     }
 
     void OnCollisionEnter(Collision collision) {
-        if (!collision.gameObject.CompareTag("Rift") && !collision.gameObject.CompareTag("Portal") && !collision.gameObject.CompareTag("Spell")) {
+         if (!collision.gameObject.CompareTag("Rift") && !collision.gameObject.CompareTag("Portal") && !collision.gameObject.CompareTag("Spell")) {
             // Reflect puck on collision
             // https://youtube.com/watch?v=u_p50wENBY
             Vector3 v = Vector3.Reflect(transform.forward, collision.contacts[0].normal);
@@ -127,6 +127,8 @@ public class HockeyPuckController : SpellTarget {
         }
         else if (other.CompareTag("Enemy") || other.CompareTag("Player")) {
             StartCoroutine("ApplyDamage", other.gameObject);
+        } else if (other.CompareTag("OutofBounds")) {
+            ResetPuckPosition();
         }
     }
 
