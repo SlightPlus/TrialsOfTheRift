@@ -24,7 +24,7 @@ public class NarratorVoicePulse : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		f_currentUpdateTime += Time.deltaTime;
+		f_currentUpdateTime += Time.unscaledDeltaTime;
 		if (f_currentUpdateTime >= f_updateStep) {
 			f_currentUpdateTime = 0f;
 			as_voi.clip.GetData(clipSampleData,as_voi.timeSamples);

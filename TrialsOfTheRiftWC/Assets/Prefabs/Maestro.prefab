@@ -642,7 +642,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1bdf085fedab96c4ea35b426942140b3, type: 3}
   - {fileID: 8300000, guid: 6f26bb2537143d349b2bb807e8a0ad90, type: 3}
   - {fileID: 8300000, guid: ff6d26f815ccc9f40982759cdda38a2c, type: 3}
-  ac_player_hit: []
+  ac_player_hit:
+  - {fileID: 8300000, guid: 79fcc262f12ab784f967b6a9bd34368f, type: 3}
   ac_player_clothing:
   - {fileID: 8300000, guid: 79fcc262f12ab784f967b6a9bd34368f, type: 3}
   - {fileID: 8300000, guid: d20699e9eba1d444a924cf70cb92e171, type: 3}

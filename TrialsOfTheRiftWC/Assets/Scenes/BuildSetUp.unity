@@ -1455,7 +1455,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4945574275532782, guid: 0cd40ee87343b0c41a79839f7c018ac0, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1247629614649196, guid: 0cd40ee87343b0c41a79839f7c018ac0, type: 2}
       propertyPath: m_Layer
@@ -4069,10 +4069,10 @@ Transform:
   m_LocalPosition: {x: -4.53, y: 100, z: 8.85}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1750860353}
-  - {fileID: 1434096356}
   - {fileID: 761925587}
+  - {fileID: 1434096356}
   - {fileID: 223172025}
+  - {fileID: 1750860353}
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -13060,6 +13060,11 @@ Prefab:
       propertyPath: go_roomPool.Array.data[2]
       value: 
       objectReference: {fileID: 34448824}
+    - target: {fileID: 114171931449179728, guid: 014d2cc6e090ae34a8e7bfe5ec453da7,
+        type: 2}
+      propertyPath: go_hologram
+      value: 
+      objectReference: {fileID: 1271551061}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 014d2cc6e090ae34a8e7bfe5ec453da7, type: 2}
   m_IsPrefabParent: 0
@@ -14191,7 +14196,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4508844851291254, guid: 1a650a05d789b5947ac0e7d6bf0366d3, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1295436864286576, guid: 1a650a05d789b5947ac0e7d6bf0366d3, type: 2}
       propertyPath: m_Layer
@@ -21940,6 +21945,11 @@ Prefab:
       propertyPath: go_roomPool.Array.data[2]
       value: 
       objectReference: {fileID: 34448824}
+    - target: {fileID: 114404955938652292, guid: 4283a83d2382611408980775eb1895ec,
+        type: 2}
+      propertyPath: go_hologram
+      value: 
+      objectReference: {fileID: 883271356}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4283a83d2382611408980775eb1895ec, type: 2}
   m_IsPrefabParent: 0
@@ -24534,6 +24544,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114651926557978906, guid: 1f6452573653d4242b25fd7aba3f2dbf,
+        type: 2}
+      propertyPath: go_hologram
+      value: 
+      objectReference: {fileID: 456808004}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1f6452573653d4242b25fd7aba3f2dbf, type: 2}
   m_IsPrefabParent: 0
@@ -25116,7 +25131,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4600859507609544, guid: 9ba272f512e1a864aba2003ed984ce0a, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1282760212027448, guid: 9ba272f512e1a864aba2003ed984ce0a, type: 2}
       propertyPath: m_Layer
@@ -26964,6 +26979,11 @@ Prefab:
       propertyPath: go_roomPool.Array.data[2]
       value: 
       objectReference: {fileID: 34448824}
+    - target: {fileID: 114349391363184172, guid: 2e5fc77228c0f3c4fb40961dae78efe4,
+        type: 2}
+      propertyPath: go_hologram
+      value: 
+      objectReference: {fileID: 1623989900}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2e5fc77228c0f3c4fb40961dae78efe4, type: 2}
   m_IsPrefabParent: 0
