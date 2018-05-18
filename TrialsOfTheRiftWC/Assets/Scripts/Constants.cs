@@ -38,7 +38,7 @@ public static class Constants {
         public static float C_MaxHealth = 300.0f;
         public static float C_StepSoundDelay = 0.4f;
         public static float C_InvulnTime = 2.0f;
-        public static float C_PlayerWindPushMultiplier = 0.5f;
+        public static float C_PlayerWindPushMultiplier = 2.0f;
 
         public static Global.Color C_p1Color = Global.Color.RED;
         public static Global.Color C_p2Color = Global.Color.RED;
