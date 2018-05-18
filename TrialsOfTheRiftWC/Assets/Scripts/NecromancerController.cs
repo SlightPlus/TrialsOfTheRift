@@ -12,10 +12,12 @@ public class NecromancerController : EnemyController {
 #region Variables and Declarations
     [SerializeField] private DefeatNecromancersObjective dno_owner;    // identifies objective necromancer is a part of
     private bool b_teleported = false;
+    private Constants.Global.Side e_currentSide;
 #endregion
 
 	public override void Init(Constants.Global.Side side) {
         base.Init(side);
+        e_currentSide = side;
 		nma_agent.speed = Constants.EnemyStats.C_NecromancerBaseSpeed;
 		f_health = Constants.EnemyStats.C_NecromancerHealth;
         b_teleported = false;
@@ -49,21 +51,28 @@ public class NecromancerController : EnemyController {
 
     protected override void UpdateWander() {
 		base.UpdateWander();
-		bool b_playersAvailable = false;
-		for(int i = 0; i < riftController.go_playerReferences.Length; i++){	
-			if(riftController.go_playerReferences[i].GetComponent<PlayerController>().Side == e_startSide && riftController.go_playerReferences[i].GetComponent<PlayerController>().Wisp == false){
-				if (Vector3.Distance(riftController.go_playerReferences[i].transform.position, transform.position) < Constants.EnemyStats.C_NecromancerAvoidDistance) {
-					b_playersAvailable = true;
-					break;
-				}
-			}
-		}
 
-		if (b_playersAvailable) {
-			EnterStateFlee();
+		if (IsCornered(2.0f) == true) {
+			f_timer = 0;
+			EnterStateBreakout();
 		}
 		else {
-			 Wander();
+			bool b_playersAvailable = false;
+			for(int i = 0; i < riftController.go_playerReferences.Length; i++){	
+				if(riftController.go_playerReferences[i].GetComponent<PlayerController>().Side == e_startSide && riftController.go_playerReferences[i].GetComponent<PlayerController>().Wisp == false){
+					if (Vector3.Distance(riftController.go_playerReferences[i].transform.position, transform.position) < Constants.EnemyStats.C_NecromancerAvoidDistance) {
+						b_playersAvailable = true;
+						break;
+					}
+				}
+			}
+
+			if (b_playersAvailable) {
+				EnterStateFlee();
+			}
+			else {
+				 Wander();
+			}
 		}
     }
 
@@ -168,7 +177,7 @@ public class NecromancerController : EnemyController {
 
 		base.UpdateFlee();
 
-		if (IsCornered() == true) {
+		if (IsCornered(3.0f) == true) {
 			f_timer = 0;
 			EnterStateBreakout();
 		}
@@ -207,6 +216,7 @@ public class NecromancerController : EnemyController {
         base.TakeDamage(damage, color);
         if(f_health < (Constants.ObjectiveStats.C_NecromancerTeleportHealthThreshold * Constants.EnemyStats.C_NecromancerHealth) && !b_teleported) {
             b_teleported = true;
+            e_currentSide = (Constants.Global.Side) (-1 * (int)e_startSide);
             NegateSpellEffect(Constants.SpellStats.SpellType.ELECTRICITYAOE);    // manually stop the coroutine if it's running
             gameObject.SetActive(false);    // nav mesh must be turned off before moving
             gameObject.transform.localPosition = new Vector3(-gameObject.transform.localPosition.x, 0.5f, gameObject.transform.localPosition.z);
@@ -220,7 +230,7 @@ public class NecromancerController : EnemyController {
 
 	private void Summon() {
 		for (int i = 0; i < 2; i++) {
-			riftController.CircularEnemySpawn(transform.position, e_startSide);
+			riftController.CircularEnemySpawn(transform.position, e_currentSide);
 		}
 	}
 
@@ -236,20 +246,20 @@ public class NecromancerController : EnemyController {
         Init(e_startSide);
     }
 
-	private bool IsCornered() {
-		if (transform.position.x <= 2.0 || transform.position.x <= -1*Constants.EnemyStats.C_MapBoundryXAxis+2.0) {
-			if ((transform.position.z >= Constants.EnemyStats.C_MapBoundryZAxis-2.0)) {
+	private bool IsCornered(float length) {
+		if (transform.position.x <= length || transform.position.x <= -1*Constants.EnemyStats.C_MapBoundryXAxis+length) {
+			if ((transform.position.z >= Constants.EnemyStats.C_MapBoundryZAxis-length)) {
 				return true;
 			}
-			else if ((transform.position.z <= -1*Constants.EnemyStats.C_MapBoundryZAxis+2.0)) {
+			else if ((transform.position.z <= -1*Constants.EnemyStats.C_MapBoundryZAxis+length)) {
 				return true;
 			}
 		}
-		else if (transform.position.x >= -2.0 || transform.position.x >= Constants.EnemyStats.C_MapBoundryXAxis-2.0) {
-			if ((transform.position.z >= Constants.EnemyStats.C_MapBoundryZAxis-2.0)) {
+		else if (transform.position.x >= -length || transform.position.x >= Constants.EnemyStats.C_MapBoundryXAxis-length) {
+			if ((transform.position.z >= Constants.EnemyStats.C_MapBoundryZAxis-length)) {
 				return true;
 			}
-			else if ((transform.position.z <= -1*Constants.EnemyStats.C_MapBoundryZAxis+2.0)) {
+			else if ((transform.position.z <= -1*Constants.EnemyStats.C_MapBoundryZAxis+length)) {
 				return true;
 			}
 		}

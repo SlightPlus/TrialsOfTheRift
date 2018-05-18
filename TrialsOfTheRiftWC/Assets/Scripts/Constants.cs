@@ -17,7 +17,7 @@ public static class Constants {
         public enum Color { RED, BLUE, NULL };
         public enum Side { LEFT = -1, RIGHT = 1 };
 		public enum DamageType { WIND, ICE, ELECTRICITY, MAGICMISSILE, ENEMY, RIFT, DEATHBOLT, RUNE, PUCK };
-        public static string C_BuildNumber = "3.50";
+        public static string C_BuildNumber = "3.60";
         public static bool C_CanPause = true;
         public static Global.Color C_WinningTeam = Global.Color.BLUE;
 		
@@ -103,8 +103,9 @@ public static class Constants {
         // TODO: make charge time and Live time tied
         public static float C_ElectricLiveTime = 0.1f;
         public static float C_ElectricSpeed = 15.0f;
-		public static float C_ElectricDamage = 40.0f;
-		public static float C_ElectricCooldown = 8.0f;
+        //public static float C_ElectricDamage = 40.0f;
+        public static float C_ElectricDamage = 1.3f;
+        public static float C_ElectricCooldown = 8.0f;
         public static float C_ElectricChargeTime = C_SpellChargeTime;
         public static float C_ElectricRiftDamageMultiplier = C_RiftDamageMultiplier;
         public static float C_ElectricAOESlowDownMultiplier = 0.5f;
@@ -186,7 +187,7 @@ public static class Constants {
 
         public static float C_NecromancerBaseSpeed = 1.5f;
         public static float C_NecromancerHealth = 400.0f;
-		public static float C_NecromancerAvoidDistance = 2.0f;
+		public static float C_NecromancerAvoidDistance = 5.0f;
 		public static int C_NecromancerSpawnCapPerSide = 1;
 		public static float C_WanderingRadius = 10.0f;
 		public static float C_RuneExplosionCountDownTime = 0.5f;
