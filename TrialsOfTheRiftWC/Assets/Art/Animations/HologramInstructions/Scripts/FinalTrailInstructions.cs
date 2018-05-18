@@ -41,11 +41,11 @@ public class FinalTrailInstructions : MonoBehaviour
     {
         if (isRunning)
         {
-            apprentice.transform.Translate(Vector3.left * Time.deltaTime * 3.0f);
+            apprentice.transform.Translate(Vector3.left * Time.unscaledDeltaTime * 3.0f);
         }
         if (isChasing)
         {
-            skeleton.transform.Translate(Vector3.forward * Time.deltaTime * 1.0f);
+            skeleton.transform.Translate(Vector3.forward * Time.unscaledDeltaTime * 1.0f);
         }
         if (canShoot)
         {
@@ -56,7 +56,7 @@ public class FinalTrailInstructions : MonoBehaviour
                 Destroy(go_spell1, _bulletLifetime);
                 _fireRate = 1.0f;
             }
-            _fireRate -= Time.deltaTime;
+            _fireRate -= Time.unscaledDeltaTime;
         }
     }
 
@@ -64,14 +64,14 @@ public class FinalTrailInstructions : MonoBehaviour
     {
         //Phase 1: Attack Rift Head and dodge death bolt.
         Shoot();
-        yield return new WaitForSeconds(1f);
+        yield return StartCoroutine(CoroutineUnscaledWait.WaitForSecondsUnscaled(1f));
         StrafeLeft();
         FireBolt();
         GameObject bolt = Instantiate(deathBolt, riftHead.transform.position, riftHead.transform.rotation);
         bolt.GetComponent<Rigidbody>().velocity = Vector3.back * Constants.SpellStats.C_MagicMissileSpeed;
-        yield return new WaitForSeconds(1f);
+        yield return StartCoroutine(CoroutineUnscaledWait.WaitForSecondsUnscaled(1f));
         isRunning = false;
-        yield return new WaitForSeconds(1f);
+        yield return StartCoroutine(CoroutineUnscaledWait.WaitForSecondsUnscaled(1f));
         ResetPosition();
 
         //Phase 2: Destroy Skeleton to deactivate shields.
@@ -80,11 +80,11 @@ public class FinalTrailInstructions : MonoBehaviour
         forceField.SetActive(true);
         isChasing = true;
         canShoot = true;
-        yield return new WaitForSeconds(2.0f);
+        yield return StartCoroutine(CoroutineUnscaledWait.WaitForSecondsUnscaled(2.0f));
         skeleton.SetActive(false);
         forceField.SetActive(false);
         canShoot = false;
-        yield return new WaitForSeconds(1.5f);
+        yield return StartCoroutine(CoroutineUnscaledWait.WaitForSecondsUnscaled(1.5f));
 
 
         Debug.Log("End of Instruction.");

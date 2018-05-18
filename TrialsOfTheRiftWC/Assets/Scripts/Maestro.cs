@@ -21,6 +21,7 @@ public sealed class Maestro : MonoBehaviour {
 	[SerializeField] private AudioSource as_sfxMe;		// medium priority sound effect audio source
 	[SerializeField] private AudioSource as_sfxLo;		// low priority sound effect audio source
 	[SerializeField] private AudioSource as_voi;			// voice audio source
+	public AudioSource As_voi{get{return as_voi;}}
 	
 	[Header("Audio Clips")]
 	[SerializeField] private AudioClip ac_windShoot;
