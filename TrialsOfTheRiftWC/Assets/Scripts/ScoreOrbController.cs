@@ -24,16 +24,16 @@ public class ScoreOrbController : MonoBehaviour {
     // Use this for initialization
     #region Unity Overrides
     private void OnEnable() {
-        if (v3_startPos != null) {
+        //if (v3_startPos != null) {
             transform.position = v3_startPos;
-        } else {
-            if (objv_owned.Color == Constants.Global.Color.BLUE) {
-                transform.position = new Vector3(3.81f,0f,0f);
-            } else {
-                transform.position = new Vector3(-3.81f,0f,0f);
-            }
+        //} else {
+        //    if (objv_owned.Color == Constants.Global.Color.BLUE) {
+        //        transform.position = new Vector3(3.81f,0f,0f);
+        //    } else {
+        //        transform.position = new Vector3(-3.81f,0f,0f);
+        //    }
             
-        }
+        //}
         
         InvokeRepeating("MoveToTarget", 0.0f, 0.033f);
     }
