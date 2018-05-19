@@ -136,8 +136,9 @@ public class DebugParametersController : MonoBehaviour {
 
     // Slider change callbacks
     public void ChangePlayerSpeed(float f_playerSpeedIn) {
-        txt_playerMoveSpeed.text = string.Format("{0:0}%",((slider_playerMoveSpeed.value / slider_playerMoveSpeed.maxValue)*100));
+        txt_playerMoveSpeed.text = string.Format("{0:0}%",((slider_playerMoveSpeed.value / 6f)*100));
         Constants.PlayerStats.C_MovementSpeed = f_playerSpeedIn;
+        Constants.PlayerStats.C_WispMovementSpeed = f_playerSpeedIn / 4f;
     }
 
     public void ChangePlayerWispSpeed(float f_playerWispSpeedIn) {
@@ -156,9 +157,8 @@ public class DebugParametersController : MonoBehaviour {
     }
 
     public void ChangeMagicMissileFireRate(float f__magicMissileRate) {
-        float value = f__magicMissileRate / 10.0f;
-        Debug.Log(value);
-        txt_magicMissileFireRate.text = value.ToString();
+        float value = f__magicMissileRate / 20.0f;
+        txt_magicMissileFireRate.text = string.Format("{0:0}%",((slider_magicMissileFireRate.value / 15f)*100));
         Constants.SpellStats.C_MagicMissileCooldown = value;
     }
 
@@ -178,23 +178,23 @@ public class DebugParametersController : MonoBehaviour {
     }
 
     public void ChangeWindCooldown(float f_windCooldownIn) {
-        txt_windCooldown.text = slider_windCooldown.value.ToString();
-        Constants.SpellStats.C_WindCooldown = f_windCooldownIn;
+        txt_windCooldown.text = string.Format("{0:0}%",((slider_windCooldown.value / 5f)*100));
+        Constants.SpellStats.C_WindCooldown = f_windCooldownIn / 5f;
     }
 
     public void ChangeIceCooldown(float f_iceCooldownIn) {
-        txt_iceCooldown.text = slider_iceCooldown.value.ToString();
+        txt_iceCooldown.text = string.Format("{0:0}%",((slider_iceCooldown.value / 5f)*100));
         Constants.SpellStats.C_IceCooldown = f_iceCooldownIn;
     }
 
     public void ChangeElectricCooldown(float f_electricCooldownIn) {
-        txt_electricCooldown.text = slider_electricCooldown.value.ToString();
+        txt_electricCooldown.text = string.Format("{0:0}%",((slider_electricCooldown.value / 8f)*100));
         Constants.SpellStats.C_ElectricCooldown = f_electricCooldownIn;
     }
 
     public void ChangeProjectileSize(float f_projSizeIn) {
         float roundedVal = Mathf.Round(slider_projSize.value * 100f) / 100f;
-        txt_projSize.text = roundedVal.ToString();
+        txt_projSize.text = string.Format("{0:0}%",((roundedVal / 0.5f)*100));
         Constants.SpellStats.C_PlayerProjectileSize = roundedVal;
     }
 
@@ -205,7 +205,7 @@ public class DebugParametersController : MonoBehaviour {
 
     public void ChangeWindForce(float f_windForceIn) {
         float value = f_windForceIn * 250.0f;
-        txt_windForce.text = value.ToString();
+        txt_windForce.text = string.Format("{0:0}%",((slider_windForce.value / 6f)*100));
         Constants.SpellStats.C_WindForce = value;
     }
 
@@ -215,7 +215,7 @@ public class DebugParametersController : MonoBehaviour {
     }
 
     public void ChangeElectricLiveTime(float f_electricLiveTimeIn) {
-        txt_electricLiveTime.text = slider_electricLiveTime.value.ToString();
+        txt_electricLiveTime.text = string.Format("{0:0}%",((slider_electricLiveTime.value / 5f)*100));
         Constants.SpellStats.C_ElectricAOELiveTime = f_electricLiveTimeIn;
     }
 
@@ -250,12 +250,12 @@ public class DebugParametersController : MonoBehaviour {
 
     public void ChangePlayerHealth(float f_playerHealthIn) {
         float value = f_playerHealthIn * 50.0f;
-        txt_playerHealth.text = string.Format("{0:0}%",((slider_playerHealth.value / slider_playerHealth.maxValue)*100));
+        txt_playerHealth.text = string.Format("{0:0}%",((slider_playerHealth.value / 6f)*100));
         Constants.PlayerStats.C_MaxHealth = (int)value;
     }
 
     public void ChangeRespawnTime(float f_respawnTimeIn) {
-        txt_respawnTime.text = slider_respawnTime.value.ToString();
+        txt_respawnTime.text = string.Format("{0:0}%",((slider_respawnTime.value / 5f)*100));
         Constants.PlayerStats.C_RespawnTimer = f_respawnTimeIn;
     }
 
@@ -418,7 +418,7 @@ public class DebugParametersController : MonoBehaviour {
         // Player
 
         // Player Speed
-        txt_playerMoveSpeed.text = Constants.PlayerStats.C_MovementSpeed.ToString();
+        txt_playerMoveSpeed.text = string.Format("{0:0}%",((Constants.PlayerStats.C_MovementSpeed / 6f)*100));
         slider_playerMoveSpeed.value = Constants.PlayerStats.C_MovementSpeed;
 
         // Player Wisp Speed
@@ -426,11 +426,11 @@ public class DebugParametersController : MonoBehaviour {
         slider_wispMoveSpeed.value = Constants.PlayerStats.C_WispMovementSpeed;
 
         // Player Health
-        txt_playerHealth.text = Constants.PlayerStats.C_MaxHealth.ToString();
+        txt_playerHealth.text = string.Format("{0:0}%",(((Constants.PlayerStats.C_MaxHealth / 50f) / 6f)*100));
         slider_playerHealth.value = Constants.PlayerStats.C_MaxHealth / 50;
         
         // Respawn Rate
-        txt_respawnTime.text = Constants.PlayerStats.C_RespawnTimer.ToString();
+        txt_respawnTime.text = string.Format("{0:0}%",(((Constants.PlayerStats.C_RespawnTimer) / 5f)*100));
         slider_respawnTime.value = Constants.PlayerStats.C_RespawnTimer;
 
 
@@ -477,15 +477,15 @@ public class DebugParametersController : MonoBehaviour {
         slider_electricSpeed.value = Constants.SpellStats.C_ElectricSpeed;
 
         // Wind Spell Cooldown
-        txt_windCooldown.text = Constants.SpellStats.C_WindCooldown.ToString();
-        slider_windCooldown.value = Constants.SpellStats.C_WindCooldown;
+        txt_windCooldown.text =  string.Format("{0:0}%",((Constants.SpellStats.C_WindCooldown)*100));
+        slider_windCooldown.value = Constants.SpellStats.C_WindCooldown * 5f;
 
         // Ice Spell Cooldown
-        txt_iceCooldown.text = Constants.SpellStats.C_IceCooldown.ToString();
+        txt_iceCooldown.text = string.Format("{0:0}%",((Constants.SpellStats.C_IceCooldown / 5f)*100));
         slider_iceCooldown.value = Constants.SpellStats.C_IceCooldown;
 
         // Electric Spell Cooldown
-        txt_electricCooldown.text = Constants.SpellStats.C_ElectricCooldown.ToString();
+        txt_electricCooldown.text = string.Format("{0:0}%",((Constants.SpellStats.C_ElectricCooldown / 8f)*100));
         slider_electricCooldown.value = Constants.SpellStats.C_ElectricCooldown;
 
         // Magic Missile Speed
@@ -497,11 +497,11 @@ public class DebugParametersController : MonoBehaviour {
         slider_magicMissileHeal.value = Constants.SpellStats.C_MagicMissileHeal;
 
         // Magic Missile Fire Rate
-        txt_magicMissileFireRate.text = Constants.SpellStats.C_MagicMissileCooldown.ToString();
-        slider_magicMissileFireRate.value = Constants.SpellStats.C_MagicMissileCooldown * 10;
+        txt_magicMissileFireRate.text = string.Format("{0:0}%",(((Constants.SpellStats.C_MagicMissileCooldown) / 0.75f)*100));
+        slider_magicMissileFireRate.value = Constants.SpellStats.C_MagicMissileCooldown * 20;
 
         // Projectile Size 
-        txt_projSize.text = Constants.SpellStats.C_PlayerProjectileSize.ToString();
+        txt_projSize.text = string.Format("{0:0}%",((Constants.SpellStats.C_PlayerProjectileSize / 0.5f)*100));
         slider_projSize.value = Constants.SpellStats.C_PlayerProjectileSize;
 
         // Projectile Live Time
@@ -509,7 +509,7 @@ public class DebugParametersController : MonoBehaviour {
         slider_projLife.value = Constants.SpellStats.C_SpellLiveTime;
 
         // Wind Force
-        txt_windForce.text = Constants.SpellStats.C_WindForce.ToString();
+        txt_windForce.text = string.Format("{0:0}%",(((Constants.SpellStats.C_WindForce / 250f) / 6f)*100));
         slider_windForce.value = Constants.SpellStats.C_WindForce / 250;
 
         // Ice Freeze Duration
@@ -517,7 +517,7 @@ public class DebugParametersController : MonoBehaviour {
         slider_iceFreeze.value = Constants.SpellStats.C_IceFreezeTime;
 
         // Electric AOE Live-Time
-        txt_electricLiveTime.text = Constants.SpellStats.C_ElectricAOELiveTime.ToString();
+        txt_electricLiveTime.text = string.Format("{0:0}%",((Constants.SpellStats.C_ElectricAOELiveTime / 5f)*100));
         slider_electricLiveTime.value = Constants.SpellStats.C_ElectricAOELiveTime;
 
 
