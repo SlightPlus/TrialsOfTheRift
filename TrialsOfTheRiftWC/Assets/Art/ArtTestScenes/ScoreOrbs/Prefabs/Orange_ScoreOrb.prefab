@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4551375761750270}
   - component: {fileID: 198470778064915806}
   - component: {fileID: 199466644623985562}
-  m_Layer: 24
+  m_Layer: 26
   m_Name: Outer Ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4729302307761082}
   - component: {fileID: 198050916235526108}
   - component: {fileID: 199649522492460678}
-  m_Layer: 24
+  m_Layer: 26
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4030441745285916}
   - component: {fileID: 198837326526255306}
   - component: {fileID: 199437247898995308}
-  m_Layer: 24
+  m_Layer: 26
   m_Name: Energy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 4966398165294520}
   - component: {fileID: 198957707954857010}
   - component: {fileID: 199480743360970490}
-  m_Layer: 24
+  m_Layer: 26
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 4637160992672812}
   - component: {fileID: 198383522649186734}
   - component: {fileID: 199088106976510150}
-  m_Layer: 24
+  m_Layer: 26
   m_Name: Core
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 135987321592798940}
   - component: {fileID: 54197557937120314}
   - component: {fileID: 114871863102867040}
-  m_Layer: 24
+  m_Layer: 26
   m_Name: Orange_ScoreOrb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
