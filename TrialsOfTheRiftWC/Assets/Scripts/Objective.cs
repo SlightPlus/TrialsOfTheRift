@@ -14,6 +14,7 @@ public abstract class Objective : MonoBehaviour {
 
     [SerializeField] protected GameObject go_objectIndicator;
     [SerializeField] protected GameObject go_goalIndicator;
+    [SerializeField] protected GameObject go_hologram;
 
     protected GameObject go_activeRoom;     // active room specific to this objective instance 
     protected int i_numberInList;           // this is the i'th objective faced by this team (1-based)
@@ -58,6 +59,7 @@ public abstract class Objective : MonoBehaviour {
         riftController.ResetPlayers();
         StartCoroutine("Notify");
 		InvokeRepeating("AnnounceIdle",40f,40f);
+		go_hologram.SetActive(true);
         return this;
     }
 
@@ -74,6 +76,7 @@ public abstract class Objective : MonoBehaviour {
         riftController.IncreaseVolatility(Constants.RiftStats.C_VolatilityIncrease_RoomAdvance);
         ResetUI();                              // turn off UI
         go_activeRoom.SetActive(false);         // turn off room
+		Destroy(go_hologram);
         Destroy(gameObject);                    // each objective is only played once, so destroy after use
     }
 

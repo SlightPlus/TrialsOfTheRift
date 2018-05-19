@@ -45,14 +45,14 @@ public class NecromancerInstructions : MonoBehaviour
     {
         if (isRunning)
         {
-            apprentice.transform.Translate(Vector3.forward * Time.deltaTime * 3.0f);
-            necromancer.transform.Translate(Vector3.back * Time.deltaTime * 2.0f);
+            apprentice.transform.Translate(Vector3.forward * Time.unscaledDeltaTime * 3.0f);
+            necromancer.transform.Translate(Vector3.back * Time.unscaledDeltaTime * 2.0f);
         }
         if(isChasing)
         {
-            skeletons[0].transform.position = Vector3.MoveTowards(skeletons[0].transform.position, apprentice.transform.position, 0.5f * Time.deltaTime);
-            skeletons[1].transform.position = Vector3.MoveTowards(skeletons[1].transform.position, apprentice.transform.position, 0.5f * Time.deltaTime);
-            skeletons[2].transform.position = Vector3.MoveTowards(skeletons[2].transform.position, apprentice.transform.position, 0.5f * Time.deltaTime);
+            skeletons[0].transform.position = Vector3.MoveTowards(skeletons[0].transform.position, apprentice.transform.position, 0.5f * Time.unscaledDeltaTime);
+            skeletons[1].transform.position = Vector3.MoveTowards(skeletons[1].transform.position, apprentice.transform.position, 0.5f * Time.unscaledDeltaTime);
+            skeletons[2].transform.position = Vector3.MoveTowards(skeletons[2].transform.position, apprentice.transform.position, 0.5f * Time.unscaledDeltaTime);
         }
         if (canShoot)
         {
@@ -63,7 +63,7 @@ public class NecromancerInstructions : MonoBehaviour
                 Destroy(go_spell1, _bulletLifetime);
                 _fireRate = 1.0f;
             }
-            _fireRate -= Time.deltaTime;
+            _fireRate -= Time.unscaledDeltaTime;
         }
     }
 
@@ -73,23 +73,23 @@ public class NecromancerInstructions : MonoBehaviour
         apprenticeAnim.Play("Run", -1, 0f);
         Shoot();
         _bulletLifetime = 1f;
-        yield return new WaitForSeconds(2f);
+        yield return StartCoroutine(CoroutineUnscaledWait.WaitForSecondsUnscaled(2f));
         isRunning = false;
         canShoot = false;
-        yield return new WaitForSeconds(0.5f);
+        yield return StartCoroutine(CoroutineUnscaledWait.WaitForSecondsUnscaled(0.5f));
         necromancer.SetActive(false);     
-        yield return new WaitForSeconds(1f);
+        yield return StartCoroutine(CoroutineUnscaledWait.WaitForSecondsUnscaled(1f));
 
         //Phase 2: Necromancer Spawns Skeletons
         ResetPosition();
         _bulletLifetime = 0.5f;
         StartCoroutine(NecromancerSummon());
         apprenticeAnim.Play("3Fire", -1, 0f);
-        //yield return new WaitForSeconds(0.5f);
+        //yield return StartCoroutine(CoroutineUnscaledWait.WaitForSecondsUnscaled(0.5f));
         Shoot();
-        yield return new WaitForSeconds(3f);
+        yield return StartCoroutine(CoroutineUnscaledWait.WaitForSecondsUnscaled(3f));
         canShoot = false;
-        yield return new WaitForSeconds(1f);
+        yield return StartCoroutine(CoroutineUnscaledWait.WaitForSecondsUnscaled(1f));
 
 
 
@@ -99,11 +99,11 @@ public class NecromancerInstructions : MonoBehaviour
     IEnumerator NecromancerSummon()
     {
         necroAnim.Play("Summon", -1, 0f);
-        yield return new WaitForSeconds(0.2f);
+        yield return StartCoroutine(CoroutineUnscaledWait.WaitForSecondsUnscaled(0.2f));
         Summon();
-        yield return new WaitForSeconds(2.8f);
+        yield return StartCoroutine(CoroutineUnscaledWait.WaitForSecondsUnscaled(2.8f));
         skeletons[0].SetActive(false);
-        yield return new WaitForSeconds(1.2f);
+        yield return StartCoroutine(CoroutineUnscaledWait.WaitForSecondsUnscaled(1.2f));
         isChasing = false;
     }
 
