@@ -15,6 +15,7 @@ public abstract class Objective : MonoBehaviour {
     [SerializeField] protected GameObject go_objectIndicator;
     [SerializeField] protected GameObject go_goalIndicator;
     [SerializeField] protected GameObject go_hologram;
+    [SerializeField] protected ScoreOrbController soc_scoreOrb;
 
     protected GameObject go_activeRoom;     // active room specific to this objective instance 
     protected int i_numberInList;           // this is the i'th objective faced by this team (1-based)
@@ -44,6 +45,7 @@ public abstract class Objective : MonoBehaviour {
 #region Objective Shared Methods
     protected abstract void SetUI();
     protected abstract void ResetUI();
+    public abstract int GetMax();
 
     // Activates all aspects of this objective
     public Objective Activate(int i) {
@@ -57,6 +59,9 @@ public abstract class Objective : MonoBehaviour {
         go_activeRoom.SetActive(true);
         gameObject.SetActive(true);                 // finally, turn on objective
         riftController.ResetPlayers();
+        if (soc_scoreOrb != null) {
+            soc_scoreOrb.Objective = this;
+        }
         StartCoroutine("Notify");
 		InvokeRepeating("AnnounceIdle",40f,40f);
 		go_hologram.SetActive(true);
@@ -125,13 +130,18 @@ public abstract class Objective : MonoBehaviour {
 		maestro.PlayAnnouncementScore();
 		
 		maestro.PlayScore();
-        calligrapher.UpdateGoalScoreUI(e_color, i_score);
+        if (soc_scoreOrb != null) {
+            Debug.Log("Help?");
+            if (go_goalIndicator != null)
+            {
+                soc_scoreOrb.StartPosition = go_goalIndicator.transform.position;
+            }
+            soc_scoreOrb.gameObject.SetActive(true);
+        }
 		if (i_score == max - 1) {
             maestro.PlayTeamEncouragement();
         }
-        else if (i_score >= max) {
-            b_isComplete = true;
-        }
+        else 
 		CancelInvoke("AnnounceIdle");
 		InvokeRepeating("AnnounceIdle",40f,40f);
 	}
@@ -139,5 +149,12 @@ public abstract class Objective : MonoBehaviour {
 	protected void AnnounceIdle(){
 		maestro.PlayAnnouncementIdle();
 	}
+
+    public void ScoreOrbHit(int max) {
+        calligrapher.UpdateGoalScoreUI(e_color, i_score);
+        if (i_score >= max) {
+            b_isComplete = true;
+        }
+    }
 #endregion
 }

@@ -54911,7 +54911,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   go_objectIndicator: {fileID: 0}
-  go_goalIndicator: {fileID: 0}
+  go_goalIndicator: {fileID: 1008036089990400}
+  soc_scoreOrb: {fileID: 0}
 --- !u!114 &114247176871735022
 MonoBehaviour:
   m_ObjectHideFlags: 1
