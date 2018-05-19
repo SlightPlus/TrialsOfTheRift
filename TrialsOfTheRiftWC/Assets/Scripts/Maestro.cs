@@ -53,7 +53,11 @@ public sealed class Maestro : MonoBehaviour {
 	[SerializeField] private AudioClip[] ac_puck_bounce;
 	[SerializeField][Range(0, 2)] private float f_puck_bounce;
 	
+	[SerializeField] private AudioClip[] ac_rift_roar;
+	
 	[SerializeField] private AudioClip[] ac_bgm;
+	[SerializeField] private AudioClip ac_bgm_menu;
+	
 
     [SerializeField] private AudioClip[] ac_volatility_ambience;
 	[SerializeField] private AudioClip[] ac_volatility_noise_0;
@@ -90,12 +94,14 @@ public sealed class Maestro : MonoBehaviour {
 	[SerializeField] private AudioClip[] ac_portal_announcement_four;
 	[SerializeField] private AudioClip[] ac_score_announcement;
 	[SerializeField] private AudioClip[] ac_idle;
-	[SerializeField] private AudioClip ac_begin_ctf;
-	[SerializeField] private AudioClip ac_begin_hockey;
-	[SerializeField] private AudioClip ac_begin_crystal_destruction;
-	[SerializeField] private AudioClip ac_begin_rift_boss;
-	[SerializeField] private AudioClip ac_begin_potato;
-	[SerializeField] private AudioClip ac_tutorial;
+	[SerializeField] private AudioClip[] ac_begin_ctf;
+	[SerializeField] private AudioClip[] ac_begin_hockey;
+	[SerializeField] private AudioClip[] ac_begin_crystal_destruction;
+	[SerializeField] private AudioClip[] ac_begin_necromancer;
+	[SerializeField] private AudioClip[] ac_begin_rift_boss;
+	[SerializeField] private AudioClip[] ac_begin_potato;
+	[SerializeField] private AudioClip[] ac_tutorial;
+	[SerializeField] private AudioClip ac_tutorial_more;
 	
 	[Header("UI")]
 	[SerializeField] private AudioClip[] ac_page_turn;
@@ -112,6 +118,7 @@ public sealed class Maestro : MonoBehaviour {
 	private bool b_hockeyExplained = false;
 	private bool b_potatoExplained = false;
 	private bool b_destroyExplained = false;
+	private bool b_necromancerExplained = false;
 	private bool b_bossExplained = false;
 	private bool b_bgmAIsOn = true;	// BGM switches between Sources A and B for crossfade. Which one is the current source we're hearing from?
 	private bool b_alreadyFading = false;
@@ -258,6 +265,9 @@ public sealed class Maestro : MonoBehaviour {
 	public void PlayPuckBounce(){
 		PlayRandom(as_sfxLo,ac_puck_bounce,f_puck_bounce);
 	}
+	public void PlayRiftRoar(){
+		PlayRandom(as_sfxHi,ac_rift_roar);
+	}
 	
 	public void PlayAnnouncmentPlayerHit(int playerNum, Constants.Global.DamageType d){
 		
@@ -357,13 +367,18 @@ public sealed class Maestro : MonoBehaviour {
 	}
 	public void PlayAnnouncementTutorial(){
 		if(!as_voi.isPlaying){
-			b_announcementOk = false;
-			as_voi.clip = ac_tutorial;
-			as_voi.Play();
-			Invoke("AnnouncementOk",f_announcementDelay);
+			StartCoroutine("PlayAnnouncementTutorialFull");
 		}
 		else
 			Invoke("PlayAnnouncementTutorial",1);
+	}
+	IEnumerator PlayAnnouncementTutorialFull(){
+		b_announcementOk = false;
+		as_voi.clip = ac_tutorial[Constants.R_Random.Next(0, ac_intro.Length)];
+		as_voi.Play();
+		yield return new WaitForSecondsRealtime(as_voi.clip.length);
+		as_voi.clip = ac_tutorial_more;
+		as_voi.Play();
 	}
 	public void PlayAnnouncementIntro(){
 		
@@ -383,17 +398,27 @@ public sealed class Maestro : MonoBehaviour {
 		if(b_ctfExplained)return;
 		if(!as_voi.isPlaying){
 			b_ctfExplained = true;
-			as_voi.clip = ac_begin_ctf;
+			as_voi.clip = ac_begin_ctf[Constants.R_Random.Next(0, ac_begin_ctf.Length)];
 			as_voi.Play();
 		}
 		else
 			Invoke("PlayBeginCTF",1);
 	}
+	public void PlayBeginNecromancer(){
+		if(b_necromancerExplained)return;
+		if(!as_voi.isPlaying){
+			b_necromancerExplained = true;
+			as_voi.clip = ac_begin_necromancer[Constants.R_Random.Next(0, ac_begin_necromancer.Length)];
+			as_voi.Play();
+		}
+		else
+			Invoke("PlayBeginNecromancer",1);
+	}
 	public void PlayBeginCrystalDestruction(){
 		if(b_destroyExplained)return;
 		if(!as_voi.isPlaying){
 			b_destroyExplained = true;
-			as_voi.clip = ac_begin_crystal_destruction;
+			as_voi.clip = ac_begin_crystal_destruction[Constants.R_Random.Next(0, ac_begin_crystal_destruction.Length)];
 			as_voi.Play();
 		}
 		else
@@ -403,7 +428,7 @@ public sealed class Maestro : MonoBehaviour {
 		if(b_hockeyExplained)return;
 		if(!as_voi.isPlaying){
 			b_hockeyExplained = true;
-			as_voi.clip = ac_begin_hockey;
+			as_voi.clip = ac_begin_hockey[Constants.R_Random.Next(0, ac_begin_hockey.Length)];
 			as_voi.Play();
 		}
 		else
@@ -413,7 +438,7 @@ public sealed class Maestro : MonoBehaviour {
 		if(b_bossExplained)return;
 		if(!as_voi.isPlaying){
 			b_bossExplained = true;
-			as_voi.clip = ac_begin_rift_boss;
+			as_voi.clip = ac_begin_rift_boss[Constants.R_Random.Next(0, ac_begin_rift_boss.Length)];
 			as_voi.Play();
 		}
 		else
@@ -423,7 +448,7 @@ public sealed class Maestro : MonoBehaviour {
 		if(b_potatoExplained)return;
 		if(!as_voi.isPlaying){
 			b_potatoExplained = true;
-			as_voi.clip = ac_begin_potato;
+			as_voi.clip = ac_begin_potato[Constants.R_Random.Next(0, ac_begin_potato.Length)];
 			as_voi.Play();
 		}
 		else
@@ -444,12 +469,9 @@ public sealed class Maestro : MonoBehaviour {
 		InvokeRepeating("GenericOk",f_genericAnnouncementDelay,f_genericAnnouncementDelay);
 		if(SceneManager.GetActiveScene().name == "WarmUp")
 			PlayAnnouncementTutorial();
-		/* if(SceneManager.GetActiveScene().name == "BuildSetUp")
-			PlayAnnouncementIntro(); */
-        // am_masterMix.SetFloat("VolumeMaster",Constants.VolOptions.C_MasterVolume);
-        // am_masterMix.SetFloat("VolumeVOI",Constants.VolOptions.C_VOIVolume);
-        // am_masterMix.SetFloat("VolumeBGM",Constants.VolOptions.C_BGMVolume);
-        // am_masterMix.SetFloat("VolumeSFX",Constants.VolOptions.C_SFXVolume);
+		else if(SceneManager.GetActiveScene().name == "MainMenu" || SceneManager.GetActiveScene().name == "RegisterPlayers" || SceneManager.GetActiveScene().name == "EndGame")
+			as_bgmA.clip = ac_bgm_menu;
+			as_bgmA.Play();
 	}
 	
 	// Takes volatility level as a parameter.
@@ -484,14 +506,14 @@ public sealed class Maestro : MonoBehaviour {
 		while(to.volume < 1f){
 			from.volume -= 0.1f;
 			to.volume += 0.1f;
-			yield return new WaitForSeconds(.02f);
+			yield return new WaitForSecondsRealtime(.02f);
 		}
 		from.Stop();
 		b_alreadyFading = false;
 	}
 	
 	IEnumerator Wait(int i){
-		yield return new WaitForSeconds(1f);
+		yield return new WaitForSecondsRealtime(1f);
 		ChangeBGM(i);
 	}
 	

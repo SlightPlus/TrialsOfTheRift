@@ -22,7 +22,7 @@ public class DefeatNecromancersObjective : Objective {
 
 #region Unity Overrides	
     void OnEnable() {
-        //maestro.PlayBeginDefeatNecromancers();
+        maestro.PlayBeginNecromancer();
     }
 #endregion
 }

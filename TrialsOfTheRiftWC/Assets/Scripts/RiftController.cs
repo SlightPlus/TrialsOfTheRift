@@ -95,6 +95,7 @@ public sealed class RiftController : MonoBehaviour {
             e_currentVolatilityLevel = Constants.RiftStats.Volatility.ONEHUNDRED;
             Invoke("ResetVolatility", Constants.RiftStats.C_VolatilityResetTime);
             anim.SetTrigger("rawrTrigger");
+			maestro.PlayRiftRoar();
             BoardClear();
         }
         else if (f_volatility >= 75.0f && e_currentVolatilityLevel != Constants.RiftStats.Volatility.SEVENTYFIVE) {
@@ -102,18 +103,21 @@ public sealed class RiftController : MonoBehaviour {
 			i_volatilityLevel = 4;
             EnterNewVolatilityLevel();
             anim.SetTrigger("rawrTrigger");
+			maestro.PlayRiftRoar();
             anim.SetInteger("volatility", 4);
         }
         else if (f_volatility >= 65.0f && e_currentVolatilityLevel != Constants.RiftStats.Volatility.SIXTYFIVE) {
             e_currentVolatilityLevel = Constants.RiftStats.Volatility.SIXTYFIVE;
 			i_volatilityLevel = 3;
             anim.SetTrigger("rawrTrigger");
+			maestro.PlayRiftRoar();
             EnterNewVolatilityLevel();
         }
         else if (f_volatility >= 50.0f && e_currentVolatilityLevel != Constants.RiftStats.Volatility.FIFTY) {
             e_currentVolatilityLevel = Constants.RiftStats.Volatility.FIFTY;
 			i_volatilityLevel = 3;
             anim.SetTrigger("rawrTrigger");
+			maestro.PlayRiftRoar();
             anim.SetInteger("volatility", 3);
             EnterNewVolatilityLevel();
         }
@@ -121,12 +125,14 @@ public sealed class RiftController : MonoBehaviour {
             e_currentVolatilityLevel = Constants.RiftStats.Volatility.THIRTYFIVE;
 			i_volatilityLevel = 2;
             anim.SetTrigger("rawrTrigger");
+			maestro.PlayRiftRoar();
             EnterNewVolatilityLevel();
         }
         else if (f_volatility >= 25.0f && e_currentVolatilityLevel != Constants.RiftStats.Volatility.TWENTYFIVE) {
             e_currentVolatilityLevel = Constants.RiftStats.Volatility.TWENTYFIVE;
 			i_volatilityLevel = 2;
             anim.SetTrigger("rawrTrigger");
+			maestro.PlayRiftRoar();
             anim.SetInteger("volatility", 2);
             EnterNewVolatilityLevel();
             Constants.Global.Color colorToAttack = DetermineWinningTeam();
@@ -136,6 +142,7 @@ public sealed class RiftController : MonoBehaviour {
             e_currentVolatilityLevel = Constants.RiftStats.Volatility.FIVE;
 			i_volatilityLevel = 1;
             anim.SetTrigger("rawrTrigger");
+			maestro.PlayRiftRoar();
             anim.SetInteger("volatility", 1);
             EnterNewVolatilityLevel();
         }
