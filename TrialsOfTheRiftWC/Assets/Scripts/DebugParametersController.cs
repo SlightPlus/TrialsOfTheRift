@@ -10,6 +10,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine.AI;
+using Rewired;
 
 public class DebugParametersController : MonoBehaviour {
     // Public Vars
@@ -35,6 +36,8 @@ public class DebugParametersController : MonoBehaviour {
     [SerializeField] private GameObject go_enemyMenu;
     [SerializeField] private GameObject go_objectiveMenu;
     private GameObject[] go_menuArray = new GameObject[4];
+    private int currentMenu = 0;
+    private Player p_uiPlayer;
 
     // UI sliders (set in editor)
     [SerializeField] private Slider slider_playerMoveSpeed;
@@ -126,16 +129,19 @@ public class DebugParametersController : MonoBehaviour {
     [SerializeField] private Text txt_deathBoltCooldown;
     [SerializeField] private Text txt_forceFieldCooldown;
 
+    [SerializeField] private Text txt_playerLabel;
+    [SerializeField] private Text txt_objectiveLabel;
+
     /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
     // Slider change callbacks
     public void ChangePlayerSpeed(float f_playerSpeedIn) {
-        txt_playerMoveSpeed.text = slider_playerMoveSpeed.value.ToString();
+        txt_playerMoveSpeed.text = string.Format("{0:0}%",((slider_playerMoveSpeed.value / slider_playerMoveSpeed.maxValue)*100));
         Constants.PlayerStats.C_MovementSpeed = f_playerSpeedIn;
     }
 
     public void ChangePlayerWispSpeed(float f_playerWispSpeedIn) {
-        txt_wispMoveSpeed.text = slider_wispMoveSpeed.value.ToString();
+        txt_wispMoveSpeed.text = string.Format("{0:0}%",((slider_wispMoveSpeed.value / slider_wispMoveSpeed.maxValue)*100));
         Constants.PlayerStats.C_WispMovementSpeed = f_playerWispSpeedIn;
     }
 
@@ -244,7 +250,7 @@ public class DebugParametersController : MonoBehaviour {
 
     public void ChangePlayerHealth(float f_playerHealthIn) {
         float value = f_playerHealthIn * 50.0f;
-        txt_playerHealth.text = value.ToString();
+        txt_playerHealth.text = string.Format("{0:0}%",((slider_playerHealth.value / slider_playerHealth.maxValue)*100));
         Constants.PlayerStats.C_MaxHealth = (int)value;
     }
 
@@ -369,48 +375,37 @@ public class DebugParametersController : MonoBehaviour {
     }
 
     // Light buttons up as they are selected
-    public void LightUp(int which) {
-        for (int i = 0; i < 4; i++) {
-            ColorBlock cb = butt_buttonArray[i].colors;
-            if (i == which) {
-                cb.normalColor = Color.cyan;
-            }
-            else {
-                cb.normalColor = Color.white;
-            }
-            butt_buttonArray[i].colors = cb;
+    public void LightUp() {
+        if (currentMenu == 0) {
+            txt_playerLabel.color = new Color(20f/255f,1f,252f/255f);
+            txt_objectiveLabel.color = Color.white;
+        } else {
+            txt_objectiveLabel.color = new Color(20f/255f,1f,252f/255f);
+            txt_playerLabel.color = Color.white;
         }
     }
 
     // Show the proper menu on click
     public void MenuSwitch(int which) {
-        for (int i = 0; i < 4; i++) {
-            if (i == which) {
-                go_menuArray[i].SetActive(true);
-                Navigation nav_goNav = butt_go.navigation;
-                switch (i) {
-                    case 0:
-                        nav_goNav.selectOnUp = slider_playerHealth;
-                        nav_goNav.selectOnRight = slider_respawnTime;
-                        break;
-                    case 1:
-                        nav_goNav.selectOnUp = slider_electricCooldown;
-                        nav_goNav.selectOnRight = slider_electricLiveTime;
-                        break;
-                    case 2:
-                        nav_goNav.selectOnUp = slider_enemyHealth;
-                        nav_goNav.selectOnRight = slider_enemyDamage;
-                        break;
-                    case 3:
-                        nav_goNav.selectOnUp = slider_puckSpeedDecayRate;
-                        nav_goNav.selectOnRight = slider_selfDestructTimer;
-                        break;
-                }
-                butt_go.navigation = nav_goNav;
-            }
-            else {
-                go_menuArray[i].SetActive(false);
-            }
+        //loop
+        if (which > 1) {
+            currentMenu = 0;
+        } else if (which < 0) { 
+            currentMenu = 1;
+        } else {
+            currentMenu = which;
+        }
+         LightUp();
+        if (currentMenu == 0) {
+            go_playerMenu.SetActive(true);
+            go_objectiveMenu.SetActive(false);
+            slider_playerMoveSpeed.Select();
+            slider_playerMoveSpeed.OnSelect(null);
+        } else {
+            go_objectiveMenu.SetActive(true);
+            go_playerMenu.SetActive(false);
+            slider_CTFScore.Select();
+            slider_CTFScore.OnSelect(null);
         }
     }
 
@@ -612,15 +607,24 @@ public class DebugParametersController : MonoBehaviour {
         butt_buttonArray[2] = butt_enemySelect;
         butt_buttonArray[3] = butt_objectiveSelect;
 
-        LightUp(0);
-        butt_playerSelect.Select();
-
         // Organize menus
         go_menuArray[0] = go_playerMenu;
-        go_menuArray[1] = go_spellMenu;
-        go_menuArray[2] = go_enemyMenu;
-        go_menuArray[3] = go_objectiveMenu;
+        go_menuArray[1] = go_objectiveMenu;
+        currentMenu = 0;
 
-        MenuSwitch(0);
+        p_uiPlayer = ReInput.players.GetPlayer(0);
+        MenuSwitch(currentMenu);
+    }
+
+    private void FixedUpdate() {
+        if (go_topMenu.activeSelf) {
+            if (p_uiPlayer.GetButtonDown("UIPageRight")) {
+                MenuSwitch(++currentMenu);
+            } else if (p_uiPlayer.GetButtonDown("UIPageLeft")) {
+                MenuSwitch(--currentMenu);
+            } else if (p_uiPlayer.GetButtonDown("UICancel")) {
+                psc_master.CloseParams();
+            }
+        }
     }
 }

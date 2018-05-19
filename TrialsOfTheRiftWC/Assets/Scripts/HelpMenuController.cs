@@ -9,7 +9,7 @@ public class HelpMenuController : MonoBehaviour {
     [SerializeField] GameObject[] go_menuArray = new GameObject[3];
     [SerializeField] Button[] butt_selectArray = new Button[3];
     [SerializeField] GameObject go_helpMenu;
-    [SerializeField] Button butt_mainSelect;
+    [SerializeField] MenuController mc_main;
 
     Player p_uiPlayer;
     int currentMenu;
@@ -27,8 +27,7 @@ public class HelpMenuController : MonoBehaviour {
             } else if (p_uiPlayer.GetButtonDown("UIPageLeft")) {
                 MenuSwitch(--currentMenu);
             } else if (p_uiPlayer.GetButtonDown("UICancel")) {
-                go_helpMenu.SetActive(false);
-                butt_mainSelect.Select();
+                mc_main.CloseHelp();
             }
         }
     }
@@ -49,6 +48,7 @@ public class HelpMenuController : MonoBehaviour {
                 go_menuArray[i].SetActive(true);
                 if (go_helpMenu.activeSelf) {
                     butt_selectArray[i].Select();
+                    butt_selectArray[i].OnSelect(null);
                 }
             } else {
                 go_menuArray[i].SetActive(false);

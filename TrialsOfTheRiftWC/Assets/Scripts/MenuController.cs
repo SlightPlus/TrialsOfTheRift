@@ -9,6 +9,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.IO;
+using Rewired;
 
 public class MenuController : MonoBehaviour {
 
@@ -23,8 +24,9 @@ public class MenuController : MonoBehaviour {
     [SerializeField]Button butt_optSelect;
     [SerializeField]Button butt_mainSelect;
     [SerializeField]Button butt_helpSelect;
-    [SerializeField]Button butt_creditSelect;
     [SerializeField]Button butt_quitSelect;
+
+    Player p_uiPlayer;
 
 	public void PlayTheFuckinGame() {
         SceneManager.LoadScene("RegisterPlayers");
@@ -57,7 +59,6 @@ public class MenuController : MonoBehaviour {
     public void OpenCredits() {
         go_credits.SetActive(true);
         go_mainMenu.SetActive(false);
-        butt_creditSelect.Select();
     }
 
     public void CloseCredits() {
@@ -99,5 +100,12 @@ public class MenuController : MonoBehaviour {
     private void Start() {
         Time.timeScale = 1;
         txt_buildLabel.text = "Build: v" + Constants.Global.C_BuildNumber;
+        p_uiPlayer = ReInput.players.GetPlayer(0);
+    }
+
+    private void Update() {
+        if (go_credits.activeSelf && p_uiPlayer.GetButtonDown("UICancel")) {
+            CloseCredits();
+        }
     }
 }

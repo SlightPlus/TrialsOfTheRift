@@ -25,4 +25,9 @@ public class HoverState : MonoBehaviour, ISelectHandler, IDeselectHandler  {
         txt_button.color = col_original;
     }
 
+    public void OnDisable() {
+        go_backing.SetActive(false);
+        txt_button.color = col_original;
+    }
+
 }

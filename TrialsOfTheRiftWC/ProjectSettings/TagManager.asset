@@ -21,6 +21,7 @@ TagManager:
   - Rune
   - RiftBoss
   - Deathbolt
+  - ScoreTarget
   layers:
   - Default
   - TransparentFX
@@ -46,7 +47,7 @@ TagManager:
   - BlueShot
   - RedMM
   - BlueMM
-  - 
+  - Scoring
   - 
   - 
   - 
