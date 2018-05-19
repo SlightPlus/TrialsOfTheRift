@@ -60,11 +60,7 @@ public abstract class Objective : MonoBehaviour {
         riftController.ResetPlayers();
         if (soc_scoreOrb != null) {
             soc_scoreOrb.Objective = this;
-            if (go_goalIndicator != null) { 
-                soc_scoreOrb.StartPosition = go_goalIndicator.transform.position;
-            }
         }
-        Debug.Log("オラオラオラ");
         StartCoroutine("Notify");
 		InvokeRepeating("AnnounceIdle",40f,40f);
         return this;
@@ -133,6 +129,10 @@ public abstract class Objective : MonoBehaviour {
 		maestro.PlayScore();
         if (soc_scoreOrb != null) {
             Debug.Log("Help?");
+            if (go_goalIndicator != null)
+            {
+                soc_scoreOrb.StartPosition = go_goalIndicator.transform.position;
+            }
             soc_scoreOrb.gameObject.SetActive(true);
         }
 		if (i_score == max - 1) {
