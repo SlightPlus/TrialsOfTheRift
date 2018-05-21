@@ -261,32 +261,32 @@ public class DebugParametersController : MonoBehaviour {
         Constants.PlayerStats.C_RespawnTimer = f_respawnTimeIn;
     }
 
-    public void ChangeCrystalHealth(float f_crystalHealthIn) {
-        float value = f_crystalHealthIn * 50.0f;
-        txt_crystalHealth.text = value.ToString();
-        Constants.ObjectiveStats.C_CrystalMaxHealth = (int)value;
-    }
+    //public void ChangeCrystalHealth(float f_crystalHealthIn) {
+    //    float value = f_crystalHealthIn * 50.0f;
+    //    txt_crystalHealth.text = value.ToString();
+    //    Constants.ObjectiveStats.C_CrystalMaxHealth = (int)value;
+    //}
 
-    public void ChangeCrystalHealthRegen(float f_crystalHealthIn)
-    {
-        float value = f_crystalHealthIn;
-        txt_crystalHealthRegen.text = value.ToString();
-        Constants.ObjectiveStats.C_CrystalRegenHeal = (int)value;
-    }
+    //public void ChangeCrystalHealthRegen(float f_crystalHealthIn)
+    //{
+    //    float value = f_crystalHealthIn;
+    //    txt_crystalHealthRegen.text = value.ToString();
+    //    Constants.ObjectiveStats.C_CrystalRegenHeal = (int)value;
+    //}
 
-    public void ChangeCrystalHealthRegenRate(float f_crystalHealthIn)
-    {
-        float value = f_crystalHealthIn;
-        txt_crystalHealthRegenRate.text = value.ToString();
-        Constants.ObjectiveStats.C_CrystalHealRate = (int)value;
-    }
+    //public void ChangeCrystalHealthRegenRate(float f_crystalHealthIn)
+    //{
+    //    float value = f_crystalHealthIn;
+    //    txt_crystalHealthRegenRate.text = value.ToString();
+    //    Constants.ObjectiveStats.C_CrystalHealRate = (int)value;
+    //}
 
-    public void ChangeCrystalHealthRegenDelay(float f_crystalHealthIn)
-    {
-        float value = f_crystalHealthIn;
-        txt_crystalHealthRegenDelay.text = value.ToString();
-        Constants.ObjectiveStats.C_CrystalHealDelay = (int)value;
-    }
+    //public void ChangeCrystalHealthRegenDelay(float f_crystalHealthIn)
+    //{
+    //    float value = f_crystalHealthIn;
+    //    txt_crystalHealthRegenDelay.text = value.ToString();
+    //    Constants.ObjectiveStats.C_CrystalHealDelay = (int)value;
+    //}
 
     public void ChangeObjMaxScore(float f_CTFScoreIn) {
         txt_CTFScore.text = string.Format("{0:0}%",((slider_CTFScore.value / 3f)*100));
@@ -307,15 +307,15 @@ public class DebugParametersController : MonoBehaviour {
         Constants.ObjectiveStats.C_PotatoSelfDestructTimer = (int)value;
     }
 
-    public void ChangeEnemySpawnCap(float f_capIn) {
-        txt_enemySpawnCap.text = slider_enemySpawnCap.value.ToString();
-        Constants.EnemyStats.C_EnemySpawnCapPerSide = (int)(f_capIn - 1);
-    }
+    //public void ChangeEnemySpawnCap(float f_capIn) {
+    //    txt_enemySpawnCap.text = slider_enemySpawnCap.value.ToString();
+    //    Constants.EnemyStats.C_EnemySpawnCapPerSide = (int)(f_capIn - 1);
+    //}
 
-    public void ChangeHockeyMaxScore(float f_score) {
-        txt_hockeyMaxScore.text = slider_hockeyMaxScore.value.ToString();
-        Constants.ObjectiveStats.C_HockeyMaxScore = (int)f_score;
-    }
+    //public void ChangeHockeyMaxScore(float f_score) {
+    //    txt_hockeyMaxScore.text = slider_hockeyMaxScore.value.ToString();
+    //    Constants.ObjectiveStats.C_HockeyMaxScore = (int)f_score;
+    //}
 
     public void ChangePuckDamage(float f_damage) {
         float value = f_damage * 5.0f;
@@ -348,10 +348,10 @@ public class DebugParametersController : MonoBehaviour {
         Constants.ObjectiveStats.C_PuckSpeedHitIncrease = (int)f_hit;
     }
 
-    public void ChangeNecroMaxScore(float f_score) {
-        txt_necroMaxScore.text = slider_necroMaxScore.value.ToString();
-        Constants.ObjectiveStats.C_NecromancersMaxScore = (int)f_score;
-    }
+    //public void ChangeNecroMaxScore(float f_score) {
+    //    txt_necroMaxScore.text = slider_necroMaxScore.value.ToString();
+    //    Constants.ObjectiveStats.C_NecromancersMaxScore = (int)f_score;
+    //}
 
     public void ChangeRiftBossHealth(float f_riftBossHealthIn) {
         float value = f_riftBossHealthIn * 250.0f;
@@ -528,36 +528,36 @@ public class DebugParametersController : MonoBehaviour {
         // Objective
 
         // CTF Score
-        txt_CTFScore.text = string.Format("{0:0}%",((slider_CTFScore.value / 3f)*100));
+        txt_CTFScore.text = string.Format("{0:0}%",((Constants.ObjectiveStats.C_CTFMaxScore / 3f)*100));
         slider_CTFScore.value = Constants.ObjectiveStats.C_CTFMaxScore;
         
-        // Crystal Health
-        txt_crystalHealth.text = Constants.ObjectiveStats.C_CrystalMaxHealth.ToString();
-        slider_crystalHealth.value = Constants.ObjectiveStats.C_CrystalMaxHealth / 50;
+        //// Crystal Health
+        //txt_crystalHealth.text = Constants.ObjectiveStats.C_CrystalMaxHealth.ToString();
+        //slider_crystalHealth.value = Constants.ObjectiveStats.C_CrystalMaxHealth / 50;
 
-        // Crystal Health Regen
-        txt_crystalHealthRegen.text = Constants.ObjectiveStats.C_CrystalRegenHeal.ToString();
-        slider_crystalHealthRegen.value = Constants.ObjectiveStats.C_CrystalRegenHeal;
+        //// Crystal Health Regen
+        //txt_crystalHealthRegen.text = Constants.ObjectiveStats.C_CrystalRegenHeal.ToString();
+        //slider_crystalHealthRegen.value = Constants.ObjectiveStats.C_CrystalRegenHeal;
 
-        // Crystal Health Regen Rate
-        txt_crystalHealthRegenRate.text = Constants.ObjectiveStats.C_CrystalHealRate.ToString();
-        slider_crystalHealthRegenRate.value = Constants.ObjectiveStats.C_CrystalHealRate;
+        //// Crystal Health Regen Rate
+        //txt_crystalHealthRegenRate.text = Constants.ObjectiveStats.C_CrystalHealRate.ToString();
+        //slider_crystalHealthRegenRate.value = Constants.ObjectiveStats.C_CrystalHealRate;
 
-        // Crystal Health Regen Delay
-        txt_crystalHealthRegenDelay.text = Constants.ObjectiveStats.C_CrystalHealDelay.ToString();
-        slider_crystalHealthRegenDelay.value = Constants.ObjectiveStats.C_CrystalHealDelay;
+        //// Crystal Health Regen Delay
+        //txt_crystalHealthRegenDelay.text = Constants.ObjectiveStats.C_CrystalHealDelay.ToString();
+        //slider_crystalHealthRegenDelay.value = Constants.ObjectiveStats.C_CrystalHealDelay;
 
-        // Hot Potato Completion Timer 
-        txt_completionTimer.text = Constants.ObjectiveStats.C_PotatoCompletionTimer.ToString();
-        slider_completionTimer.value = Constants.ObjectiveStats.C_PotatoCompletionTimer / 5;
+        //// Hot Potato Completion Timer 
+        //txt_completionTimer.text = Constants.ObjectiveStats.C_PotatoCompletionTimer.ToString();
+        //slider_completionTimer.value = Constants.ObjectiveStats.C_PotatoCompletionTimer / 5;
 
-        // Hot Potato Self Destruct Timer
-        txt_selfDestructTimer.text = Constants.ObjectiveStats.C_PotatoSelfDestructTimer.ToString();
-        slider_selfDestructTimer.value = Constants.ObjectiveStats.C_PotatoSelfDestructTimer / 5;
+        //// Hot Potato Self Destruct Timer
+        //txt_selfDestructTimer.text = Constants.ObjectiveStats.C_PotatoSelfDestructTimer.ToString();
+        //slider_selfDestructTimer.value = Constants.ObjectiveStats.C_PotatoSelfDestructTimer / 5;
 
-        // Hockey Max Score
-        txt_hockeyMaxScore.text = Constants.ObjectiveStats.C_HockeyMaxScore.ToString();
-        slider_hockeyMaxScore.value = Constants.ObjectiveStats.C_HockeyMaxScore;
+        //// Hockey Max Score
+        //txt_hockeyMaxScore.text = Constants.ObjectiveStats.C_HockeyMaxScore.ToString();
+        //slider_hockeyMaxScore.value = Constants.ObjectiveStats.C_HockeyMaxScore;
 
         // Hockey Puck Damage
         txt_puckDamage.text = string.Format("{0:0}%",(((Constants.ObjectiveStats.C_PuckDamage / 5f) / 2f)*100));
@@ -583,9 +583,9 @@ public class DebugParametersController : MonoBehaviour {
         txt_puckSpeedDecreaseRate.text = Constants.ObjectiveStats.C_PuckSpeedDecreaseAmount.ToString();
         slider_puckSpeedDecreaseRate.value = Constants.ObjectiveStats.C_PuckSpeedDecreaseAmount;
 
-        // Necromancers to Defeat
-        txt_necroMaxScore.text = Constants.ObjectiveStats.C_NecromancersMaxScore.ToString();
-        slider_necroMaxScore.value = Constants.ObjectiveStats.C_NecromancersMaxScore;
+        //// Necromancers to Defeat
+        //txt_necroMaxScore.text = Constants.ObjectiveStats.C_NecromancersMaxScore.ToString();
+        //slider_necroMaxScore.value = Constants.ObjectiveStats.C_NecromancersMaxScore;
 
         // Rift Boss Max Health
         txt_riftBossHealth.text = string.Format("{0:0}%",(((Constants.ObjectiveStats.C_RiftBossMaxHealth / 250f) / 16f)*100));
