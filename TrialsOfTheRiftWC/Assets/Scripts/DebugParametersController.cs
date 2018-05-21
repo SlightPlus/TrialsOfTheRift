@@ -225,8 +225,9 @@ public class DebugParametersController : MonoBehaviour {
     }
 
     public void ChangeEnemySpeed(float f_enemySpeedIn) {
-        txt_enemySpeed.text = slider_enemySpeed.value.ToString();
-        Constants.EnemyStats.C_EnemyBaseSpeed = f_enemySpeedIn;
+        float value = f_enemySpeedIn / 10;
+        txt_enemySpeed.text = string.Format("{0:0}%",((slider_enemySpeed.value / 12f)*100));
+        Constants.EnemyStats.C_EnemyBaseSpeed = value;
     }
 
     public void ChangeEnemyHealth(float f_enemyHealthIn) {
@@ -238,13 +239,13 @@ public class DebugParametersController : MonoBehaviour {
     public void ChangeNecromancerHealth(float f_neckHealthIn)
     {
         float value = f_neckHealthIn * 50.0f;
-        txt_necromancerHealth.text = value.ToString();
+        txt_necromancerHealth.text = string.Format("{0:0}%",((slider_necromancerHealth.value / 8f)*100));
         Constants.EnemyStats.C_NecromancerHealth = (int)value;
     }
 
     public void ChangeEnemyDamage(float f_enemyDamageIn) {
         float value = f_enemyDamageIn * 5.0f;
-        txt_enemyDamage.text = value.ToString();
+        txt_enemyDamage.text = string.Format("{0:0}%",((slider_enemyDamage.value / 5f)*100));
         Constants.EnemyStats.C_EnemyDamage = (int)value;
     }
 
@@ -286,9 +287,11 @@ public class DebugParametersController : MonoBehaviour {
         Constants.ObjectiveStats.C_CrystalHealDelay = (int)value;
     }
 
-    public void ChangeCTFMaxScore(float f_CTFScoreIn) {
-        txt_CTFScore.text = slider_CTFScore.value.ToString();
+    public void ChangeObjMaxScore(float f_CTFScoreIn) {
+        txt_CTFScore.text = string.Format("{0:0}%",((slider_CTFScore.value / 3f)*100));
         Constants.ObjectiveStats.C_CTFMaxScore = (int)f_CTFScoreIn;
+        Constants.ObjectiveStats.C_NecromancersMaxScore = (int)f_CTFScoreIn;
+        Constants.ObjectiveStats.C_HockeyMaxScore = (int)f_CTFScoreIn;
     }
 
     public void ChangeCompletionTimer(float f_timerIn) {
@@ -315,7 +318,7 @@ public class DebugParametersController : MonoBehaviour {
 
     public void ChangePuckDamage(float f_damage) {
         float value = f_damage * 5.0f;
-        txt_puckDamage.text = value.ToString();
+        txt_puckDamage.text = string.Format("{0:0}%",((slider_puckDamage.value / 2f)*100));
         Constants.ObjectiveStats.C_PuckDamage = (int)value;
     }
 
@@ -330,13 +333,12 @@ public class DebugParametersController : MonoBehaviour {
     }
 
     public void ChangePuckBaseSpeed(float f_speed) {
-        txt_puckBaseSpeed.text = slider_puckBaseSpeed.value.ToString();
+        txt_puckBaseSpeed.text = string.Format("{0:0}%",((slider_puckBaseSpeed.value / 10f)*100));
         Constants.ObjectiveStats.C_PuckBaseSpeed = (int)f_speed;
     }
 
-    public void ChangePuckMaxSpeed(float f_speed)
-    {
-        txt_puckMaxSpeed.text = slider_puckMaxSpeed.value.ToString();
+    public void ChangePuckMaxSpeed(float f_speed) {
+        txt_puckMaxSpeed.text = string.Format("{0:0}%",((slider_puckMaxSpeed.value / 15f)*100));
         Constants.ObjectiveStats.C_PuckMaxSpeed = (int)f_speed;
     }
 
@@ -352,7 +354,7 @@ public class DebugParametersController : MonoBehaviour {
 
     public void ChangeRiftBossHealth(float f_riftBossHealthIn) {
         float value = f_riftBossHealthIn * 250.0f;
-        txt_riftBossHealth.text = value.ToString();
+        txt_riftBossHealth.text = string.Format("{0:0}%",((slider_riftBossHealth.value / 16f)*100));
         Constants.ObjectiveStats.C_RiftBossMaxHealth = (int)value;
     }
 
@@ -442,19 +444,19 @@ public class DebugParametersController : MonoBehaviour {
         slider_enemySpawn.value = Constants.RiftStats.C_VolatilityEnemySpawnTimer;
 
         // Enemy Speed
-        txt_enemySpeed.text = Constants.EnemyStats.C_EnemyBaseSpeed.ToString();
-        slider_enemySpeed.value = Constants.EnemyStats.C_EnemyBaseSpeed;
+        txt_enemySpeed.text = string.Format("{0:0}%",(((Constants.EnemyStats.C_EnemyBaseSpeed * 10) / 12f)*100));
+        slider_enemySpeed.value = Constants.EnemyStats.C_EnemyBaseSpeed * 10;
 
         // Enemy Health
         txt_enemyHealth.text = Constants.EnemyStats.C_EnemyHealth.ToString();
         slider_enemyHealth.value = Constants.EnemyStats.C_EnemyHealth / 25;
 
         // Necromancer Health
-        txt_necromancerHealth.text = Constants.EnemyStats.C_NecromancerHealth.ToString();
+        txt_necromancerHealth.text = string.Format("{0:0}%",(((Constants.EnemyStats.C_NecromancerHealth / 50f) / 8f)*100));
         slider_necromancerHealth.value = Constants.EnemyStats.C_NecromancerHealth / 50;
 
         // Enemy Damage
-        txt_enemyDamage.text = Constants.EnemyStats.C_EnemyDamage.ToString();
+        txt_enemyDamage.text = string.Format("{0:0}%",(((Constants.EnemyStats.C_EnemyDamage / 5f) / 5f)*100));
         slider_enemyDamage.value = Constants.EnemyStats.C_EnemyDamage / 5;
 
         // Enemy Spawn Cap
@@ -525,7 +527,7 @@ public class DebugParametersController : MonoBehaviour {
         // Objective
 
         // CTF Score
-        txt_CTFScore.text = Constants.ObjectiveStats.C_CTFMaxScore.ToString();
+        txt_CTFScore.text = string.Format("{0:0}%",((slider_CTFScore.value / 3f)*100));
         slider_CTFScore.value = Constants.ObjectiveStats.C_CTFMaxScore;
         
         // Crystal Health
@@ -557,15 +559,15 @@ public class DebugParametersController : MonoBehaviour {
         slider_hockeyMaxScore.value = Constants.ObjectiveStats.C_HockeyMaxScore;
 
         // Hockey Puck Damage
-        txt_puckDamage.text = Constants.ObjectiveStats.C_PuckDamage.ToString();
+        txt_puckDamage.text = string.Format("{0:0}%",(((Constants.ObjectiveStats.C_PuckDamage / 5f) / 2f)*100));
         slider_puckDamage.value = Constants.ObjectiveStats.C_PuckDamage / 5;
 
         // Hockey Puck Base Speed
-        txt_puckBaseSpeed.text = Constants.ObjectiveStats.C_PuckBaseSpeed.ToString();
+        txt_puckBaseSpeed.text = string.Format("{0:0}%",((Constants.ObjectiveStats.C_PuckBaseSpeed / 10f)*100));
         slider_puckBaseSpeed.value = Constants.ObjectiveStats.C_PuckBaseSpeed;
 
         // Hockey Puck Max Speed
-        txt_puckMaxSpeed.text = Constants.ObjectiveStats.C_PuckMaxSpeed.ToString();
+        txt_puckMaxSpeed.text = string.Format("{0:0}%",((Constants.ObjectiveStats.C_PuckMaxSpeed / 15f)*100));
         slider_puckMaxSpeed.value = Constants.ObjectiveStats.C_PuckMaxSpeed;
 
         // Hockey Puck Hit Increase Speed
@@ -585,7 +587,7 @@ public class DebugParametersController : MonoBehaviour {
         slider_necroMaxScore.value = Constants.ObjectiveStats.C_NecromancersMaxScore;
 
         // Rift Boss Max Health
-        txt_riftBossHealth.text = Constants.ObjectiveStats.C_RiftBossMaxHealth.ToString();
+        txt_riftBossHealth.text = string.Format("{0:0}%",(((Constants.ObjectiveStats.C_RiftBossMaxHealth / 250f) / 16f)*100));
         slider_riftBossHealth.value = Constants.ObjectiveStats.C_RiftBossMaxHealth / 250;
 
         // Rift Boss Rune Spawn Interval
