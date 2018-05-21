@@ -6,6 +6,7 @@ public class NecromancerInstructions : MonoBehaviour
 {
     public GameObject apprentice;
     public GameObject magicMissile;
+    public GameObject magicMissile2;
     public GameObject necromancer;
     public GameObject[] skeletons;
 
@@ -20,10 +21,13 @@ public class NecromancerInstructions : MonoBehaviour
     private bool canShoot = false;
     private bool isRunning = false;
     private bool isChasing = false;
+    private bool isMissile = false;
+    private bool isMissile2 = false;
 
     private Rigidbody rb;
     private float _fireRate;
     private float _bulletLifetime;
+	private Vector3 start;
 
     // Use this for initialization
     void Start()
@@ -38,6 +42,7 @@ public class NecromancerInstructions : MonoBehaviour
         skeletons[2].SetActive(false);
 
         _fireRate = 0.5f;
+		start = magicMissile.transform.position;
     }
 
     // Update is called once per frame
@@ -58,14 +63,23 @@ public class NecromancerInstructions : MonoBehaviour
         {
             if (_fireRate <= 0f)
             {
-                GameObject go_spell1 = Instantiate(magicMissile, apprentice.transform.position, apprentice.transform.rotation);
-                go_spell1.GetComponent<Rigidbody>().velocity = Vector3.forward * Constants.SpellStats.C_MagicMissileSpeed;
-                Destroy(go_spell1, _bulletLifetime);
+				isMissile = true;
+				magicMissile.SetActive(true);
+                StartCoroutine("ResetBullet");
                 _fireRate = 1.0f;
             }
             _fireRate -= Time.unscaledDeltaTime;
         }
+		if(isMissile)
+			magicMissile.transform.Translate(Vector3.down * Time.unscaledDeltaTime * 10.0f);
     }
+	
+	IEnumerator ResetBullet(){
+		yield return new WaitForSecondsRealtime(_bulletLifetime);
+		magicMissile.transform.position = start;
+		magicMissile.SetActive(false);
+		isMissile = false;
+	}
 
     IEnumerator DestroyTheNecromancer()
     {
