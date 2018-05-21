@@ -17,6 +17,7 @@ public class CTGIntructions : MonoBehaviour
 
     private bool apprentince1Run = false;
     private bool apprentince2Run = false;
+    private bool magicMissileRun = false;
 
     private Rigidbody rb;
 
@@ -27,6 +28,7 @@ public class CTGIntructions : MonoBehaviour
         originalPos = apprentice1.transform.position;
         gemPosition = gem.transform.position;
         apprentice2.SetActive(false);
+        magicMissile.SetActive(false);
     }
 	
 	// Update is called once per frame
@@ -40,6 +42,8 @@ public class CTGIntructions : MonoBehaviour
         {
             apprentice2.transform.Translate(Vector3.forward * Time.unscaledDeltaTime * 3.0f);
         }
+		if (magicMissile != null && magicMissileRun)
+			magicMissile.transform.Translate(Vector3.down * Time.unscaledDeltaTime * 10.0f);
     }
 
     IEnumerator CaptureTheGem()
@@ -65,6 +69,7 @@ public class CTGIntructions : MonoBehaviour
         apprentice1.transform.position = originalPos;
         gem.SetActive(true);
         apprentice2.SetActive(true);
+		magicMissile.SetActive(true);
         StartCoroutine(EnemyInterception());
         //yield return StartCoroutine(CoroutineUnscaledWait.WaitForSecondsUnscaled(0.5f));
         MoveToGem();
@@ -86,13 +91,10 @@ public class CTGIntructions : MonoBehaviour
         //yield return StartCoroutine(CoroutineUnscaledWait.WaitForSecondsUnscaled(0.5f));
         Chase();
         yield return StartCoroutine(CoroutineUnscaledWait.WaitForSecondsUnscaled(0.6f));
-        Debug.Log("Fire.");
-        GameObject go_spell = Instantiate(magicMissile, apprentice2.transform.position, apprentice2.transform.rotation);
-        go_spell.GetComponent<Rigidbody>().velocity = Vector3.left * Constants.SpellStats.C_MagicMissileSpeed;
-        Destroy(go_spell, 0.8f);
+		magicMissileRun = true;
+		Destroy(magicMissile, 0.8f);
         yield return StartCoroutine(CoroutineUnscaledWait.WaitForSecondsUnscaled(1.2f));
         apprentince2Run = false;
-		Destroy(gem);
         //anim2.SetTrigger("stop");
 
     }
@@ -119,6 +121,6 @@ public class CTGIntructions : MonoBehaviour
 
     void DropGem()
     {
-        gem.transform.parent = null;
+        gem.transform.parent = gameObject.transform;
     }
 }
