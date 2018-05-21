@@ -55,14 +55,14 @@ public class RegisterPlayers : SceneLoader {
 
     void Start()
     {
-        e_p1Color = Constants.PlayerStats.C_p1Color;
-        e_p2Color = Constants.PlayerStats.C_p2Color;
-        e_p3Color = Constants.PlayerStats.C_p3Color;
-        e_p4Color = Constants.PlayerStats.C_p4Color;
-        i_p1Hat = Constants.PlayerStats.C_p1Hat;
-        i_p2Hat = Constants.PlayerStats.C_p2Hat;
-        i_p3Hat = Constants.PlayerStats.C_p3Hat;
-        i_p4Hat = Constants.PlayerStats.C_p4Hat;
+        e_p1Color = Constants.Global.Color.RED;
+        e_p2Color = Constants.Global.Color.RED;
+        e_p3Color = Constants.Global.Color.BLUE;
+        e_p4Color = Constants.Global.Color.BLUE;
+        i_p1Hat = 0;
+        i_p2Hat = 1;
+        i_p3Hat = 2;
+        i_p4Hat = 3;
     }
 
     void Update()
