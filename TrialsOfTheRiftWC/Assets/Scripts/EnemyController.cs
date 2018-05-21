@@ -239,8 +239,8 @@ public abstract class EnemyController : SpellTarget {
         this.enabled = true;
         riftController = RiftController.Instance;   // Init() is called before Start(), these must be set here (repeatedly...)
         maestro = Maestro.Instance;
-        EnterStateWander();
-		e_startSide = side;
+        e_startSide = side;
+	EnterStateWander();
 	}
 
     protected override void Start() {
