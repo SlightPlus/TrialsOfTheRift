@@ -507,6 +507,16 @@ public class PlayerController : SpellTarget {
 
     }
 
+    protected virtual void Update()
+    {
+        // pause
+        if (p_player.GetButtonDown("Menu") && Time.timeScale == 1) {
+            Debug.Log("Check");
+            pauc_pause.Pause(this);
+        }
+    }
+
+
 	protected virtual void FixedUpdate() {
         if (Constants.UnitTests.C_RunningCTFTests)
             return;
@@ -521,12 +531,6 @@ public class PlayerController : SpellTarget {
             e_side = Constants.Global.Side.LEFT;
 
         Move();
-
-        // pause
-        if (p_player.GetButtonDown("Menu") && Time.timeScale == 1) {
-            Debug.Log("Check");
-            pauc_pause.Pause(this);
-        }
 
         if (isWisp)
             return;

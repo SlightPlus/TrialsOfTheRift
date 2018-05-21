@@ -636,6 +636,26 @@ Prefab:
       propertyPath: go_redBossGif
       value: 
       objectReference: {fileID: 835309710}
+    - target: {fileID: 114958164094048562, guid: 2a97dbeeb9d674443932d17a2290b92a,
+        type: 2}
+      propertyPath: go_backing
+      value: 
+      objectReference: {fileID: 260733866}
+    - target: {fileID: 114622698814694130, guid: 2a97dbeeb9d674443932d17a2290b92a,
+        type: 2}
+      propertyPath: go_backing
+      value: 
+      objectReference: {fileID: 1866269879}
+    - target: {fileID: 114901798047226024, guid: 2a97dbeeb9d674443932d17a2290b92a,
+        type: 2}
+      propertyPath: go_backing
+      value: 
+      objectReference: {fileID: 130205824}
+    - target: {fileID: 114081691726784356, guid: 2a97dbeeb9d674443932d17a2290b92a,
+        type: 2}
+      propertyPath: go_backing
+      value: 
+      objectReference: {fileID: 433920001}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2a97dbeeb9d674443932d17a2290b92a, type: 2}
   m_IsPrefabParent: 0
@@ -730,6 +750,11 @@ Transform:
   m_Father: {fileID: 595873758}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &130205824 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1917873106603924, guid: 2a97dbeeb9d674443932d17a2290b92a,
+    type: 2}
+  m_PrefabInternal: {fileID: 77202535}
 --- !u!1001 &131724504
 Prefab:
   m_ObjectHideFlags: 0
@@ -4075,6 +4100,11 @@ GameObject:
   m_PrefabParentObject: {fileID: 1461957535052422, guid: 9de8c005069aeca4fac05ee8f9619fe4,
     type: 2}
   m_PrefabInternal: {fileID: 489817196}
+--- !u!1 &260733866 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1274618232220392, guid: 2a97dbeeb9d674443932d17a2290b92a,
+    type: 2}
+  m_PrefabInternal: {fileID: 77202535}
 --- !u!4 &261112505 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4830088548240664, guid: c421bb72df22d2f459aee8369505fc32,
@@ -8770,6 +8800,11 @@ Transform:
   m_Father: {fileID: 871343755}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &433920001 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1666900897757202, guid: 2a97dbeeb9d674443932d17a2290b92a,
+    type: 2}
+  m_PrefabInternal: {fileID: 77202535}
 --- !u!1 &436279013 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1945058664738198, guid: 9de8c005069aeca4fac05ee8f9619fe4,
@@ -27114,6 +27149,11 @@ SkinnedMeshRenderer:
     m_Center: {x: -276.26303, y: 16.939045, z: -103.858246}
     m_Extent: {x: 13.95871, y: 31.46883, z: 10.639732}
   m_DirtyAABB: 0
+--- !u!1 &1866269879 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1561756104976976, guid: 2a97dbeeb9d674443932d17a2290b92a,
+    type: 2}
+  m_PrefabInternal: {fileID: 77202535}
 --- !u!1 &1868287706
 GameObject:
   m_ObjectHideFlags: 0
