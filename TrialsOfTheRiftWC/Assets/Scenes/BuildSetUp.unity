@@ -656,6 +656,10 @@ Prefab:
       propertyPath: go_backing
       value: 
       objectReference: {fileID: 433920001}
+    - target: {fileID: 1153708936750586, guid: 2a97dbeeb9d674443932d17a2290b92a, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2a97dbeeb9d674443932d17a2290b92a, type: 2}
   m_IsPrefabParent: 0
