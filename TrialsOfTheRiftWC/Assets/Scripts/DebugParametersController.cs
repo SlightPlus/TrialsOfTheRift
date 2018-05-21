@@ -131,6 +131,7 @@ public class DebugParametersController : MonoBehaviour {
 
     [SerializeField] private Text txt_playerLabel;
     [SerializeField] private Text txt_objectiveLabel;
+    
 
     /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
