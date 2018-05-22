@@ -27118,8 +27118,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 4
-    m_SelectOnUp: {fileID: 50507560}
-    m_SelectOnDown: {fileID: 2077748870}
+    m_SelectOnUp: {fileID: 94258484}
+    m_SelectOnDown: {fileID: 721316961}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
