@@ -45,7 +45,7 @@ public class PlayerSelectController : MonoBehaviour {
         go_regController.SetActive(false);
 
         butt_optionsSelect.Select();
-        butt_optionsSelect.OnSelect(null);
+        butt_optionsSelect.GetComponent<HoverState>().OnSelect(null);
     }
 
     public void CloseOptions() {
