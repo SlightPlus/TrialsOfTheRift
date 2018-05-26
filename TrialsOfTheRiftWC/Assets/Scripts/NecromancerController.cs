@@ -257,20 +257,24 @@ public class NecromancerController : EnemyController {
     }
 
 	private bool IsCornered(float length) {
-		if (transform.position.x <= length || transform.position.x <= -1*Constants.EnemyStats.C_MapBoundryXAxis+length) {
-			if ((transform.position.z >= Constants.EnemyStats.C_MapBoundryZAxis-length)) {
-				return true;
-			}
-			else if ((transform.position.z <= -1*Constants.EnemyStats.C_MapBoundryZAxis+length)) {
-				return true;
+		if (transform.position.x > 0) {
+			if (transform.position.x <= length || transform.position.x >= Constants.EnemyStats.C_MapBoundryXAxis-length) {
+				if ((transform.position.z >= Constants.EnemyStats.C_MapBoundryZAxis-length)) {
+					return true;
+				}
+				else if ((transform.position.z <= -1*Constants.EnemyStats.C_MapBoundryZAxis+length)) {
+					return true;
+				}
 			}
 		}
-		else if (transform.position.x >= -length || transform.position.x >= Constants.EnemyStats.C_MapBoundryXAxis-length) {
-			if ((transform.position.z >= Constants.EnemyStats.C_MapBoundryZAxis-length)) {
-				return true;
-			}
-			else if ((transform.position.z <= -1*Constants.EnemyStats.C_MapBoundryZAxis+length)) {
-				return true;
+		else {
+			if (transform.position.x >= -length || transform.position.x <= -1*Constants.EnemyStats.C_MapBoundryXAxis+length) {
+				if ((transform.position.z >= Constants.EnemyStats.C_MapBoundryZAxis-length)) {
+					return true;
+				}
+				else if ((transform.position.z <= -1*Constants.EnemyStats.C_MapBoundryZAxis+length)) {
+					return true;
+				}
 			}
 		}
 		return false;
