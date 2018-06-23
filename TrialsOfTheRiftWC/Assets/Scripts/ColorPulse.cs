@@ -45,8 +45,9 @@ public class ColorPulse : MonoBehaviour
 				throw;
 			}
 
-			SetDefaults ();
+			
 		}
+        SetDefaults ();
 	}
 
     void SetDefaults()
@@ -117,6 +118,7 @@ public class ColorPulse : MonoBehaviour
         yield return new WaitForSeconds(duration);
         isPulsing = false;
         image.color = colorPrePulse;
+        //ResetToDefault();
 
     }
     public void SwapImage( Sprite imageSp, Color first, Color last, float duration )
@@ -154,6 +156,7 @@ public class ColorPulse : MonoBehaviour
     {
         firstColor = c1;
         lastColor = c2;
-        StartCoroutine(PlayOnePulse(duration));
+        if( !isPulsing )
+            StartCoroutine(PlayOnePulse(duration));
     }
 }
