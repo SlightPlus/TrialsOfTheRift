@@ -619,7 +619,7 @@ public class DebugParametersController : MonoBehaviour {
         MenuSwitch(currentMenu);
     }
 
-    private void FixedUpdate() {
+    private void Update() {
         if (go_topMenu.activeSelf) {
             if (p_uiPlayer.GetButtonDown("UIPageRight")) {
                 MenuSwitch(++currentMenu);

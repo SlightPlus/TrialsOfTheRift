@@ -27,6 +27,7 @@ public class RegisterPlayers : SceneLoader {
 
     [SerializeField] private GameObject go_go;
     [SerializeField] private GameObject go_paramMenu;
+    [SerializeField] private PlayerSelectController psc_controller;
     //ART ADDITION
     [SerializeField] private ColorPulse[] controllerIcons;
     [SerializeField] private Sprite sp_teamSunIcon;
@@ -359,6 +360,9 @@ public class RegisterPlayers : SceneLoader {
                 }
                 controllerIcons[0].ResetToDefault();
                 b_p1Ready = false;
+            }
+            else if (p_player1.GetButtonDown("UICancel") && !psc_controller.SettingsActive) {
+                LoadNextScene("MainMenu");
             }
             if (p_player2.GetButtonDown("UICancel") && b_p2Ready) {
                 // reduce color number

@@ -7,10 +7,10 @@ using Rewired;
 
 public class PlayerSelectController : MonoBehaviour {
 
-    private Player p_player1, p_player2, p_player3, p_player4;
+    private Player p_player1;//, p_player2, p_player3, p_player4;
     bool b_settingsActive = false;
 
-    [SerializeField] Rewired.Integration.UnityUI.RewiredStandaloneInputModule rsim;
+    //[SerializeField] Rewired.Integration.UnityUI.RewiredStandaloneInputModule rsim;
 
     [SerializeField] GameObject go_settingsMenu;
     [SerializeField] GameObject go_optionsMenu;
@@ -20,9 +20,14 @@ public class PlayerSelectController : MonoBehaviour {
     [SerializeField] Button butt_optionsSelect;
     [SerializeField] DebugParametersController dpc_params;
 
-    public void SettingsFree() {
-        b_settingsActive = false;
+    public bool SettingsActive {
+        get { return b_settingsActive; }
+        set { b_settingsActive = value; }
     }
+
+    //public void SettingsFree() {
+    //    b_settingsActive = false;
+    //}
 
     public void OpenParams() {
         go_settingsMenu.SetActive(true);
@@ -36,7 +41,7 @@ public class PlayerSelectController : MonoBehaviour {
         go_selectMenu.SetActive(true);
         go_settingsMenu.SetActive(false);
         go_regController.SetActive(true);
-        SettingsFree();
+        b_settingsActive = false;
     }
 
     public void OpenOptions() {
@@ -52,7 +57,7 @@ public class PlayerSelectController : MonoBehaviour {
         go_selectMenu.SetActive(true);
         go_optionsMenu.SetActive(false);
         go_regController.SetActive(true);
-        SettingsFree();
+        b_settingsActive = false;
     }
 
     public void AdjustMasterVolume(float f_volIn) {
@@ -93,10 +98,10 @@ public class PlayerSelectController : MonoBehaviour {
             OpenOptions();
         }
 
-        //check for back.
-         if ((p_player1.GetButtonDown("MenuBack")) && !b_settingsActive) {
-            SceneManager.LoadScene("MainMenu");
-        }
+        ////check for back.
+        // if ((p_player1.GetButtonDown("MenuBack")) && !b_settingsActive) {
+        //    SceneManager.LoadScene("MainMenu");
+        //}
 	}
 
 }
