@@ -104,6 +104,9 @@ public class MenuController : MonoBehaviour {
     }
 
     private void Update() {
+        if (Input.GetKeyDown("space")) {
+            PlayTheFuckinGame();
+        }
         if (go_credits.activeSelf && p_uiPlayer.GetButtonDown("UICancel")) {
             CloseCredits();
         }
